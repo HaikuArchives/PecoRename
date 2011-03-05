@@ -23,17 +23,17 @@ int SortByName(const void *item1, const void *item2) {
 
 	FileListItem	**Item1 = (FileListItem **)item1;
 	FileListItem	**Item2 = (FileListItem **)item2;
-	
+
 	return (*Item1)->fName.ICompare( (*Item2)->fName );
-	
+
 }
 
 int SortBySize(const void *item1, const void *item2) {
 	FileListItem	**Item1 = (FileListItem **)item1;
 	FileListItem	**Item2 = (FileListItem **)item2;
-	
+
 	if ( (*Item1)->fGroesse > (*Item2)->fGroesse ) return 1;
-	else 
+	else
 			if ( (*Item1)->fGroesse < (*Item2)->fGroesse ) return -1;
 			else return 0;
 }
@@ -41,9 +41,9 @@ int SortBySize(const void *item1, const void *item2) {
 int SortByDate(const void *item1, const void *item2) {
 	FileListItem	**Item1 = (FileListItem **)item1;
 	FileListItem	**Item2 = (FileListItem **)item2;
-	
+
 	if ( (*Item1)->fZeit > (*Item2)->fZeit ) return 1;
-	else 
+	else
 			if ( (*Item1)->fZeit < (*Item2)->fZeit ) return -1;
 			else return 0;
 }
@@ -53,8 +53,8 @@ void MakeList() {
 	BButton		*SortButton = (BButton *)myView->fSortButton;
 	BList		*FileList = ((PecoApp *)be_app)->fList;
 
-	((PecoApp *)be_app)->fStatusBar->SetText(STATUS_SORTING);
 	((PecoApp *)be_app)->fWindow->Lock();
+	((PecoApp *)be_app)->fStatusBar->SetText(STATUS_SORTING);
 	do {
 		if (strcmp(SortButton->Name(), "Name") == 0) {
 			((PecoApp *)be_app)->fListView->SortItems(SortByName); FileList->SortItems(SortByName); break; }
@@ -63,20 +63,20 @@ void MakeList() {
 		((PecoApp *)be_app)->fListView->SortItems(SortBySize); FileList->SortItems(SortBySize);
 	} while (false);
 	((PecoApp *)be_app)->fStatusBar->SetText(STATUS_PREVIEW);
-	
-	if (((PecoApp *)be_app)->fRenameMode != MODE_NONE) 
+
+	if (((PecoApp *)be_app)->fRenameMode != MODE_NONE)
 		((PecoApp *)be_app)->fRenamers[((PecoApp *)be_app)->fRenameMode]->RenameList(FileList);
-	
+
 	// Auf Duplikate überprüfen und markieren
 	((PecoApp *)be_app)->fStatusBar->SetText(STATUS_CHECKDUPS);
 	FileListItem	*ListItem;
-	
+
 	for (int32 i = 0; (ListItem = (FileListItem *)FileList->ItemAt(i)) != NULL; i++ ) {
 		for (int32 j = 0; j <= i; j++ )
 			if (ListItem->CompareWith((FileListItem *)FileList->ItemAt(j))) break;
 	}
 	((PecoApp *)be_app)->fStatusBar->Reset(STATUS_STATUS);
-	
+
 	((PecoApp *)be_app)->fWindow->Unlock();
 	UpdateWindowStatus();
 }
@@ -87,12 +87,12 @@ BString ShortenString(BString aString, const float width) {
 
 	char*	resultString = (char *)malloc( aString.Length() + 4 );
 	char*	resultArray[] = { resultString};
-	
+
 	be_plain_font->GetTruncatedStrings(stringArray, 1, B_TRUNCATE_END, width, resultArray);
-												
+
 	aString = resultString;
 	free( resultString );
-	
+
 	return aString;
 }
 
@@ -100,17 +100,17 @@ BString ShortenString(BString aString, const float width) {
 void UpdateWindowStatus() {
 	BButton		*okButton = (BButton *)((PecoApp *)be_app)->fWindow->FindView("DoIt");
 	((PecoApp *)be_app)->fWindow->Lock();
-	
+
 	BMenuItem	*scriptMenu = (BMenuItem *)((PecoApp *)be_app)->fWindow->KeyMenuBar()->FindItem(STR_MENU_CREATE_SCRIPT);
 
 	bool isenabled = false; // Is Ok-Button enabled?
-	
+
 	do {
 		if (((PecoApp *)be_app)->fList->IsEmpty()) {
-			((PecoApp *)be_app)->fStatusBar->SetText(STATUS_SELECT_FILES); 
+			((PecoApp *)be_app)->fStatusBar->SetText(STATUS_SELECT_FILES);
 			if (((PecoApp *)be_app)->fRenameMode == -1)
 				((PecoApp *)be_app)->fWindow->FindView("selectFiles")->MakeFocus();
-			break; 
+			break;
 		}
 		if (((PecoApp *)be_app)->fRenameMode == -1) {
 			((PecoApp *)be_app)->fStatusBar->SetText(STATUS_SELECT_MODE);
@@ -124,7 +124,7 @@ void UpdateWindowStatus() {
 
 	okButton->SetEnabled(isenabled);
 	scriptMenu->SetEnabled(isenabled);
-	
+
 	((PecoApp *)be_app)->fWindow->Unlock();
 
 }
@@ -133,7 +133,7 @@ BFile PrefsFile( int32 mode ) {
 	BPath	path;
 	find_directory(B_USER_SETTINGS_DIRECTORY, &path);
 	path.SetTo( path.Path(), PREFS_FILENAME );
-	
+
 	return BFile( path.Path(), mode );
 }
 
@@ -142,7 +142,7 @@ void UpdatePreferences( const char *identifier, BMessage &msg ) {
 	BMessage	message;
 	BFile file = PrefsFile( B_READ_ONLY );
 	message.Unflatten( &file );
-	
+
 	message.RemoveName(identifier);
 	message.AddMessage(identifier, &msg);
 
@@ -156,6 +156,6 @@ void ReadPreferences( const char *identifier, BMessage &msg ) {
 	BMessage	message;
 	BFile file = PrefsFile( B_READ_ONLY );
 	message.Unflatten( &file );
-	
+
 	message.FindMessage(identifier, &msg);
 }
