@@ -19,7 +19,7 @@
 #include "constants.h"
 #include "functions.h"
 
-BottomView::BottomView(BRect frame) : BBox( frame, "bottomView", B_FOLLOW_BOTTOM | B_FOLLOW_LEFT ) {
+BottomView::BottomView(BRect frame) : BBox( frame, "bottomView", B_FOLLOW_BOTTOM | B_FOLLOW_LEFT_RIGHT) {
 	SetLabel(STR_BOTTOMVIEW_TITLE);
 }
 

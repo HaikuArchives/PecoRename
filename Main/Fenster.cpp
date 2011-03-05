@@ -21,6 +21,7 @@
 #include <View.h>
 
 #include <string.h>
+#include <stdlib.h>
 
 #include "constants.h"
 #include "functions.h"
@@ -59,7 +60,7 @@ Fenster::Fenster() : BWindow( BRect( 20, 40, 620, 460), "PecoRename", B_TITLED_W
 // Größe bestimmen + Fenster anpassen
 	float BarWidth, BarHeight;
 	MenuBar->GetPreferredSize ( &BarWidth, &BarHeight );
-	SetSizeLimits( 600, 600, 155 + BarHeight + 5 * be_plain_font->Size() + 2 * be_bold_font->Size() , 10000 );
+	SetSizeLimits( 600, 600, 10000, 155 + BarHeight + 5 * be_plain_font->Size() + 2 * be_bold_font->Size());
 
 // Main Frame
 	BRect MainFrame = Bounds();

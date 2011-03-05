@@ -22,7 +22,7 @@
 #include "FileView.h"
 #include "FileListView.h"
 
-FileView::FileView(BRect frame) : BView( frame, "fileView", B_FOLLOW_TOP_BOTTOM, B_WILL_DRAW ) {
+FileView::FileView(BRect frame) : BView( frame, "fileView", B_FOLLOW_ALL, B_WILL_DRAW ) {
 };
 
 void FileView::AttachedToWindow() {

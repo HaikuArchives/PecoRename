@@ -21,7 +21,7 @@
 #include "TopView.h"
 #include "FileView.h"
 
-TopView::TopView(BRect frame) : BBox( frame, "topView", B_FOLLOW_TOP_BOTTOM ) {
+TopView::TopView(BRect frame) : BBox(frame, "topView", B_FOLLOW_ALL) {
 	SetLabel(STR_TOPVIEW_TITLE);
 };
 
