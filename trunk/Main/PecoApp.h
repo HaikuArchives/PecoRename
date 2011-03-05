@@ -16,6 +16,9 @@
 
 #include "constants.h"
 
+class BFilePanel;
+class BListView;
+class BStatusBar;
 class Fenster;
 class Renamer;
 

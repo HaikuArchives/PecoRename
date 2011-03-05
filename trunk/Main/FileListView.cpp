@@ -22,7 +22,8 @@
 #include "FileListItem.h"
 #include "PecoApp.h"
 
-FileListView::FileListView(BRect frame)	: BListView(frame, "fileListView", B_SINGLE_SELECTION_LIST, B_FOLLOW_TOP_BOTTOM|B_FRAME_EVENTS, B_WILL_DRAW|B_NAVIGABLE) {
+FileListView::FileListView(BRect frame)
+	: BListView(frame, "fileListView", B_SINGLE_SELECTION_LIST, B_FOLLOW_ALL, B_FRAME_EVENTS|B_WILL_DRAW|B_NAVIGABLE) {
 }
 
 void FileListView::MouseDown(BPoint where) {

@@ -16,6 +16,8 @@
 
 #include "FileListItem.h"
 
+class BPictureButton;
+
 enum {
 	button_flat,
 	button_out,
