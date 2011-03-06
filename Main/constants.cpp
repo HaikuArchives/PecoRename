@@ -11,7 +11,7 @@
 #include "constants.h"
 
 // Localization
-#define LOCALE_FRENCH
+#define LOCALE_ENGLISH
 
 // Programm allgemein
 extern const char* STR_APP_NAME				= "PecoRename";
@@ -179,7 +179,7 @@ extern const char* STR_WELL					= "Oups...";
 extern const char* STR_DATE_TIME_SECS_FORMAT	= "%d/%m/%Y, %T";
 extern const char* STR_DATE_TIME_FORMAT		= "%d/%m/%Y, %H:%M";
 extern const char* STR_DATE_FORMAT			= "%d/%m/%Y";
- 
+
 extern const char* STR_CANCEL				= "Annuler";
 extern const char* STR_CONTINUE				= "Continuer";
 extern const char* STR_CONTINUE_WO_MSG		= "Continuer sans messages";
@@ -238,7 +238,7 @@ extern const char* STR_ABOUT_COPYRIGHT_2	= "Merci à Stéphane pour la traductio
 extern const char* STR_ABOUT_THANKYOU		= "Merci :-)";
 
 // Errormessages
-extern const char* MESSAGE_MULTIDIR			= "Désolé, impossible de renommer des fichiers provenant de différents répertoire\n\n//" 
+extern const char* MESSAGE_MULTIDIR			= "Désolé, impossible de renommer des fichiers provenant de différents répertoire\n\n//"
 											  "Seuls les fichiers suivants (provenant du premier répertoire trouvé) seront importés\n\n";
 												// I'm sorry, but I can't rename files from different directories.\n\n
 												// Only those files will be imported, which are in the first found directory!";
@@ -284,12 +284,12 @@ extern const char* REN_SET_LOWERCASE		= "Minuscule"; //"lowercase";
 extern const char* REN_SET_UPPERCASE		= "MAJUSCULE"; //"UPPERCASE";
 
 extern const char* REN_SET_FORMAT			= "Format : ";
-extern const char* REN_SET_STARTWITH		= "Commencer à : "; 
+extern const char* REN_SET_STARTWITH		= "Commencer à : ";
 extern const char* REN_SET_TEXTBEFORE		= "Texte en tête"; //"Text before:";
 extern const char* REN_SET_TEXTBEHIND		= "Texte en fin"; //"Text behind:";
 
 extern const char* REN_SET_INSERTREPLACE	= "Insérer ou remplacer";
-extern const char* REN_SET_INSERT			= "Insérer"; 
+extern const char* REN_SET_INSERT			= "Insérer";
 extern const char* REN_SET_REPLACE			= "Remplacer par";
 extern const char* REN_SET_TEXT				= "Texte :";
 extern const char* REN_SET_ATPOSITION		= "Position :";
@@ -496,7 +496,7 @@ extern const char* STATUS_DIDIT_BAD			= "Es sind Fehler aufgetreten.";
 // TopView
 extern const char* STR_TOPVIEW_TITLE		= "Wähle Deine Dateien und Verzeichnisse...";
 
-//Buttons 
+//Buttons
 extern const char* STR_PLEASE_CHOOSE		= "Bitte wählen...";
 extern const char* STR_PATH					= "Pfad:";
 extern const char* STR_NAME					= "Name";
