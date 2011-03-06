@@ -10,7 +10,7 @@
 
 #include <Roster.h>
 #include <Entry.h>
-#include <TrackerAddon.h>
+#include <TrackerAddOn.h>
 #include <Alert.h>
 #include <Messenger.h>
 
