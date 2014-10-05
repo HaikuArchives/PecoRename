@@ -127,14 +127,17 @@ BPicture* FileView::CreateButton(float width, const char* text, int mode) {
 	
 			MovePenTo( aRect.RightTop() );
 			StrokeLine( aRect.LeftTop() );
+			MovePenTo( aRect.LeftTop() );
 			StrokeLine( aRect.LeftBottom() );
 	
 			switch (mode) {
 				case button_in:	SetHighColor(72, 96, 190); break;
 				default: 		SetHighColor(40, 70, 120); 
 			}
-	
+
+			MovePenTo( aRect.LeftBottom() );
 			StrokeLine( aRect.RightBottom() );
+			MovePenTo( aRect.RightBottom() );
 			StrokeLine( aRect.RightTop() );
 	
 		}
