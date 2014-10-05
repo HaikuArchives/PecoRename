@@ -51,10 +51,10 @@ Fenster::Fenster() : BWindow( BRect( 20, 40, 620, 460), "PecoRename", B_TITLED_W
 
 	Menu->AddItem(new BMenuItem(STR_MENU_CREATE_SCRIPT, 	new BMessage(MSG_MENU_SCRIPT)));
 
-	Menu = new BMenu(STR_MENU_HELP);
-	MenuBar->AddItem(Menu);
+//	Menu = new BMenu(STR_MENU_HELP);
+//	MenuBar->AddItem(Menu);
 
-	Menu->AddItem(new BMenuItem(STR_MENU_DOCU, new BMessage(MSG_MENU_DOCU)));
+//	Menu->AddItem(new BMenuItem(STR_MENU_DOCU, new BMessage(MSG_MENU_DOCU)));
 
 	AddChild( MenuBar );
 // Größe bestimmen + Fenster anpassen
