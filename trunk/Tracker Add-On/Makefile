@@ -1,7 +1,8 @@
-NAME = ../PecoRename-R
+NAME = ../PecoRename
 TYPE = SHARED
 SRCS = main.cpp
-RSRCS = FileInfo.rsrc
+RDEFS = pecorename_addon.rdef
+RSRCS = 
 LIBS = be
 LIBPATHS=
 SYSTEM_INCLUDE_PATHS=
