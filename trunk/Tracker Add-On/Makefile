@@ -1,7 +1,7 @@
 NAME = ../PecoRename
 TYPE = SHARED
 SRCS = main.cpp
-RDEFS = pecorename_addon.rdef
+RDEFS = PecoRename_addon.rdef
 RSRCS = 
 LIBS = be
 LIBPATHS=

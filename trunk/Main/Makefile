@@ -38,12 +38,12 @@ SRCS= main.cpp constants.cpp functions.cpp BottomView.cpp Fenster.cpp FileListIt
 
 #	specify the resource definition files to use
 #	full path or a relative path to the resource file can be used.
-RDEFS= pecorename.rdef
+RDEFS= PecoRename.rdef About.rdef
 	
 #	specify the resource files to use. 
 #	full path or a relative path to the resource file can be used.
 #	both RDEFS and RSRCS can be defined in the same makefile.
-RSRCS= About.rsrc
+RSRCS=
 
 # @<-src@ 
 #%}
