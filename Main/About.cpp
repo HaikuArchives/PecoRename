@@ -106,14 +106,14 @@ AboutView::AboutView(BRect frame, const char *ProgrammName, const char *Release,
 	BNode 		myNode = BNode(&myEntry);
 	BNodeInfo	myNodeInfo(&myNode);
 	
-	fIcon		= new BBitmap(BRect(0,0,31,31), B_CMAP8 );
+	fIcon		= new BBitmap(BRect(0,0,31,31), B_RGBA32 );
 	myNodeInfo.GetTrackerIcon(fIcon);
 
 	entry_ref	ref;
 
 	char		Signatur[B_MIME_TYPE_LENGTH];
-	fMailIcon = new BBitmap( BRect(0,0,15,15), B_CMAP8 );
-	fSiteIcon = new BBitmap( BRect(0,0,15,15), B_CMAP8 );
+	fMailIcon = new BBitmap( BRect(0,0,15,15), B_RGBA32 );
+	fSiteIcon = new BBitmap( BRect(0,0,15,15), B_RGBA32 );
 
 	BMimeType("text/x-email").GetPreferredApp(Signatur);
 	if ( BMimeType(Signatur).GetIcon(fMailIcon, B_MINI_ICON) != B_OK )
