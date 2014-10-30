@@ -29,7 +29,7 @@ FileListItem::FileListItem(const char *name, int64 size, time_t timer, const ent
 	BNodeInfo	myNodeInfo;
 	if (myNode.InitCheck() == B_OK) myNodeInfo.SetTo(&myNode);
 	
-	fIcon		= new BBitmap(BRect(0,0,15,15), B_CMAP8 );
+	fIcon		= new BBitmap(BRect(0,0,15,15), B_RGBA32 );
 	myNodeInfo.GetTrackerIcon(fIcon, B_MINI_ICON);
 	
 	myNodeInfo.GetType((char *)&fMimeType);
