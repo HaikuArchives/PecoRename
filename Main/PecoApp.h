@@ -15,9 +15,9 @@
 #include <Path.h>
 
 #include "constants.h"
+#include "FileListView.h"
 
 class BFilePanel;
-class BListView;
 class BStatusBar;
 class Fenster;
 class Renamer;
@@ -32,7 +32,7 @@ class PecoApp : public BApplication {
 		virtual	void	AboutRequested();
 
 		Fenster			*fWindow;
-		BListView		*fListView;
+		FileListView	*fListView;
 		BList			*fList;
 		BFilePanel		*fFilePanel, *fScriptFilePanel;
 		BPath			fPfad;

@@ -55,6 +55,8 @@ void MakeList() {
 
 	((PecoApp *)be_app)->fWindow->Lock();
 	((PecoApp *)be_app)->fStatusBar->SetText(STATUS_SORTING);
+// Keep the code below until sortings by BColumnListView is fully tested.
+#if 0
 	do {
 		if (strcmp(SortButton->Name(), "Name") == 0) {
 			((PecoApp *)be_app)->fListView->SortItems(SortByName); FileList->SortItems(SortByName); break; }
@@ -62,6 +64,7 @@ void MakeList() {
 			((PecoApp *)be_app)->fListView->SortItems(SortByDate); FileList->SortItems(SortByDate); break; }
 		((PecoApp *)be_app)->fListView->SortItems(SortBySize); FileList->SortItems(SortBySize);
 	} while (false);
+#endif
 	((PecoApp *)be_app)->fStatusBar->SetText(STATUS_PREVIEW);
 
 	if (((PecoApp *)be_app)->fRenameMode != MODE_NONE)

@@ -24,6 +24,7 @@ class FileListItem : public BListItem {
 friend	void PecoApp::DoIt();
 friend	bool PecoApp::NothingToDo();
 friend	void PecoApp::CreateScript(BMessage *msg);
+friend	class FileListRow;
 public: 
 					FileListItem( const char *name, int64 size, time_t timer, const entry_ref *ref ); 
 					~FileListItem();
@@ -31,6 +32,8 @@ public:
 	void			SetNewName( BString	myNewName );
 	void 			SetName( BString name );
 	bool			CompareWith(FileListItem *CompareItem);
+	void			SetRow(FileListRow* row) { fRow = row; }
+	FileListRow*	GetRow() const { return fRow; }
 	
 	BString			fName;
 	int64			fGroesse;
@@ -45,6 +48,7 @@ private:
 	BString			fListZeit;
 	BString			fNewName;
 	BString			fListNewName;
+	FileListRow*	fRow;
 };
 
 #endif

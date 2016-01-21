@@ -55,7 +55,7 @@ PecoApp::PecoApp() : BApplication("application/x-vnd.pecora-PecoRename") {
 void PecoApp::ReadyToRun() {
 
 	fWindow = new Fenster();
-	fListView	= (BListView *)fWindow->FindView("fileListView");
+	fListView	= (FileListView *)fWindow->FindView("fileListView");
 	fStatusBar	= (BStatusBar *)fWindow->FindView("statusBar");
 
 	UpdateWindowStatus();
@@ -183,10 +183,10 @@ void PecoApp::RefsReceived ( BMessage* msg ) {
 		fListView->AddList(fList);
 		float Hoehe = be_plain_font->Size() + 2;
 		if (Hoehe < 18) {
-			BListItem*	myListItem;
+			FileListItem*	myListItem;
 			for (int i=0; (myListItem = fListView->ItemAt(i)); i++) myListItem->SetHeight(18);
 			// Zum Updaten:
-			fListView->AddItem(myListItem = new BStringItem(""));
+			fListView->AddItem(myListItem = new FileListItem("", 0, 0, NULL));
 			fListView->RemoveItem(myListItem);
 		}
 		fStatusBar->Reset(STATUS_STATUS);
@@ -203,11 +203,11 @@ void PecoApp::New() {
 	
 	fWindow->Lock();
 	
-	fListView->MakeEmpty();
+	fListView->Clear();
 	
 	//...und Updaten...
-	BListItem*	myListItem;
-	fListView->AddItem(myListItem = new BStringItem(""));
+	FileListItem*	myListItem;
+	fListView->AddItem(myListItem = new FileListItem("", 0, 0, NULL));
 	fListView->RemoveItem(myListItem);
 
 	BTextControl* 	pfadView = (BTextControl *)fWindow->FindView("pfadView");

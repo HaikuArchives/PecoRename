@@ -14,7 +14,7 @@
 #include <PictureButton.h>
 #include <Alert.h>
 #include <ScrollBar.h>
-#include <ListView.h>
+#include <ColumnTypes.h>
 
 #include "constants.h"
 #include "functions.h"
@@ -26,6 +26,8 @@ FileView::FileView(BRect frame) : BView( frame, "fileView", B_FOLLOW_ALL, B_WILL
 };
 
 void FileView::AttachedToWindow() {
+// Keep the code below until the BColumnListView implementation is thoroughly tested.
+#if 0
 // ** Buttons über der Liste	
 	BPictureButton* 	aPictureButton;
 
@@ -80,23 +82,23 @@ void FileView::AttachedToWindow() {
 	aPictureButton->SetEnabled(false);
 	
 	SetFont(be_bold_font);
+#endif
 
 // ** FileListView
-	BRect TextViewFrame = BRect(1.0, be_plain_font->Size() + 6.0, Bounds().Width() - B_V_SCROLL_BAR_WIDTH - 1.0, Bounds().Height() - 1.0);
+	BRect TextViewFrame = BRect(1.0, 1.0, Bounds().Width() - 1.0, Bounds().Height() - 1.0);
 
 	FileListView *aListView = new FileListView(TextViewFrame);
+	int32 i = 0;
+	aListView->AddColumn(new BBitmapColumn(NULL, WIDTH_ICON, 10, 1000), i++);
+	aListView->AddColumn(new BStringColumn(STR_NAME, WIDTH_NAME, 10, 1000, 0), i++);
+	aListView->AddColumn(new BStringColumn(STR_SIZE, WIDTH_SIZE, 10, 1000, 0), i++);
+	aListView->AddColumn(new BStringColumn(STR_DATE, WIDTH_DATE, 10, 1000, 0), i++);
+	aListView->AddColumn(new BStringColumn(STR_PREVIEW, WIDTH_PREVIEW, 10, 1000, 0), i++);
 	AddChild( aListView );
-	
-// Scrollbar
-	TextViewFrame.left = TextViewFrame.right + 1.0;
-	TextViewFrame.right += B_V_SCROLL_BAR_WIDTH + 1.0;
-	TextViewFrame.top = 0.0; TextViewFrame.bottom++;
-
-	BScrollBar* ScrollBar = new BScrollBar( TextViewFrame, NULL, aListView, 0.0, 0.0, B_VERTICAL );
-	ScrollBar->SetRange(0.0, 0.0);
-	AddChild( ScrollBar );
 };
 
+// Keep the code below until the appearance of the header row is decided.
+#if 0
 BPicture* FileView::CreateButton(float width, const char* text, int mode) {
 
 	BString	Titel = ShortenString(text, width - 8);
@@ -157,6 +159,7 @@ BPicture* FileView::CreateButton(float width, const char* text, int mode) {
 
 	return EndPicture();
 }
+#endif
 
 void FileView::MessageReceived(BMessage *msg) {
 	switch (msg->what) {

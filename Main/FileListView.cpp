@@ -9,6 +9,7 @@
  */
 
 #include <Bitmap.h>
+#include <ColumnTypes.h>
 #include <MenuItem.h>
 #include <PopUpMenu.h>
 #include <String.h>
@@ -22,17 +23,29 @@
 #include "FileListItem.h"
 #include "PecoApp.h"
 
+FileListRow::FileListRow(FileListItem* item) : BRow(), fItem(item)
+{
+	int32 i = 0;
+	SetField(new BBitmapField(item->fIcon), i++);
+	SetField(new BStringField(item->fListName), i++);
+	SetField(new BStringField(item->fListGroesse), i++);
+	SetField(new BStringField(item->fListZeit), i++);
+	SetField(new BStringField(item->fListNewName), i++);
+}
+
 FileListView::FileListView(BRect frame)
-	: BListView(frame, "fileListView", B_SINGLE_SELECTION_LIST, B_FOLLOW_ALL, B_FRAME_EVENTS|B_WILL_DRAW|B_NAVIGABLE) {
+	: BColumnListView(frame, "fileListView", B_FOLLOW_ALL, B_FRAME_EVENTS|B_WILL_DRAW|B_NAVIGABLE, B_NO_BORDER, false) {
 }
 
 void FileListView::MouseDown(BPoint where) {
-	BListView::MouseDown(where);
+	BColumnListView::MouseDown(where);
 //	DeselectAll();
 };
 
-bool FileListView::InitiateDrag(BPoint where, int32 itemIndex, bool initialySelected) {
-	FileListItem	*Item = (FileListItem *)ItemAt(itemIndex);
+bool FileListView::InitiateDrag(BPoint where, bool initialySelected) {
+	FileListRow* row = (FileListRow*) RowAt(where);
+	FileListItem* Item = row->Item();
+	int32 itemIndex = IndexOf(row);
 
 	Select(itemIndex);
 	BRect r (0, 0, Item->Width(), Item->Height());
@@ -74,8 +87,9 @@ bool FileListView::InitiateDrag(BPoint where, int32 itemIndex, bool initialySele
 };
 
 void FileListView::KeyDown(const char *bytes, int32 numBytes) {
-	int32	selectedItem = CurrentSelection();
-	FileListItem	*Item = (FileListItem *)ItemAt(selectedItem);
+	FileListRow* row = (FileListRow*) CurrentSelection();
+	FileListItem* Item = row->Item();
+	int32 selectedItem = IndexOf(row);
 	
 	if ( bytes[0] == 127 ) {
 		((PecoApp *)be_app)->fWindow->Lock();
@@ -84,11 +98,47 @@ void FileListView::KeyDown(const char *bytes, int32 numBytes) {
 		((PecoApp *)be_app)->fWindow->Unlock();
 		MakeList();
 		MakeFocus(true);
-		if (selectedItem == CountItems() )
+		if (selectedItem == CountRows())
 			Select(selectedItem-1);
 		else
 			Select(selectedItem);
 		delete Item;
 	} else 
-		BListView::KeyDown(bytes, numBytes);
+		BColumnListView::KeyDown(bytes, numBytes);
+}
+
+FileListItem* FileListView::ItemAt(int32 index) const
+{
+	FileListRow* row = (FileListRow*) RowAt(index);
+
+	return row == NULL ? NULL : row->Item();
+}
+
+void FileListView::Select(int32 index)
+{
+	AddToSelection(RowAt(index));
+}
+
+void FileListView::InvalidateItem(int32 index)
+{
+	InvalidateRow(RowAt(index));
+}
+
+void FileListView::AddItem(FileListItem* item)
+{
+	FileListRow* row = new FileListRow(item);
+
+	AddRow(row);
+	item->SetRow(row);
+}
+
+void FileListView::AddList(BList* list)
+{
+	for (int32 i = 0; i < list->CountItems(); i++)
+		AddItem((FileListItem*) list->ItemAt(i));
+}
+
+void FileListView::RemoveItem(FileListItem* item)
+{
+	RemoveRow(item->GetRow());
 }
