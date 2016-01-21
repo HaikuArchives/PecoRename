@@ -20,6 +20,7 @@
 
 FileListItem::FileListItem(const char *name, int64 size, time_t timer, const entry_ref *ref) : BListItem(){ 
 	
+	fRow		= NULL;
 	fGroesse 	= size;
 	fZeit		= timer;
 

@@ -8,12 +8,33 @@
  *              Werner Freytag <freytag@gmx.de>
  */
 
-#include <ListView.h>
+#ifndef FILE_LIST_VIEW_H
+#define FILE_LIST_VIEW_H
 
-class FileListView : public BListView {
+#include <ColumnListView.h>
+
+class FileListItem;
+
+class FileListRow : public BRow
+{
+	FileListItem* fItem;
+public:
+	FileListRow(FileListItem* item);
+	FileListItem* Item() const { return fItem; }
+};
+
+class FileListView : public BColumnListView {
 public:
 					FileListView(BRect frame);
 	virtual void	MouseDown(BPoint where);
 	virtual	void	KeyDown(const char *bytes, int32 numBytes);
-	virtual bool	InitiateDrag(BPoint pt, int32 itemIndex, bool initialySelected);
+	virtual bool	InitiateDrag(BPoint pt, bool initialySelected);
+	FileListItem*	ItemAt(int32 index) const;
+			void	Select(int32 index);
+			void	InvalidateItem(int32 index);
+			void	AddItem(FileListItem* item);
+			void	AddList(BList* list);
+			void	RemoveItem(FileListItem* item);
 };
+
+#endif
