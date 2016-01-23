@@ -88,6 +88,9 @@ bool FileListView::InitiateDrag(BPoint where, bool initialySelected) {
 
 void FileListView::KeyDown(const char *bytes, int32 numBytes) {
 	FileListRow* row = (FileListRow*) CurrentSelection();
+	if (row == NULL)
+		return;
+
 	FileListItem* Item = row->Item();
 	int32 selectedItem = IndexOf(row);
 	
