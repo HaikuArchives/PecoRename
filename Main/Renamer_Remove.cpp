@@ -29,7 +29,6 @@ Renamer_Remove::Renamer_Remove() : Renamer() {
 	fName 		= REN_REMOVE;
 
 	fPosition1 = new BTextControl( NULL, REN_SET_FROMPOS, "0", new BMessage(MSG_RENAME_SETTINGS));
-	fPosition1->TextView()->SetMaxBytes(3);
 
 	BPopUpMenu	*myMenu;
 	myMenu = new BPopUpMenu(STR_PLEASE_SELECT);
@@ -41,7 +40,6 @@ Renamer_Remove::Renamer_Remove() : Renamer() {
 	fDirection1 = new BMenuField( NULL, NULL, myMenu);
 
 	fPosition2 = new BTextControl( NULL, REN_SET_TOPOS, "0", new BMessage(MSG_RENAME_SETTINGS));
-	fPosition2->TextView()->SetMaxBytes(3);
 
 	myMenu = new BPopUpMenu(STR_PLEASE_SELECT);
 	myMenu->AddItem(new BMenuItem(REN_SET_FROMLEFT, new BMessage(MSG_RENAME_SETTINGS)));

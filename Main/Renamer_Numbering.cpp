@@ -38,7 +38,6 @@ Renamer_Numbering::Renamer_Numbering() : Renamer() {
 	fFormat = new BMenuField( NULL, REN_SET_FORMAT, myMenu);
 
 	fStartWith = new BTextControl( NULL, REN_SET_STARTWITH, "0", new BMessage(MSG_RENAME_SETTINGS));
-	fStartWith->TextView()->SetMaxBytes(4);
 
 	fTextBefore = new BTextControl( NULL, REN_SET_TEXTBEFORE, NULL, new BMessage(MSG_RENAME_SETTINGS));
 	fTextBehind = new BTextControl( NULL, REN_SET_TEXTBEHIND, NULL, new BMessage(MSG_RENAME_SETTINGS));

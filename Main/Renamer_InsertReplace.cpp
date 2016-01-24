@@ -39,7 +39,6 @@ Renamer_InsertReplace::Renamer_InsertReplace() : Renamer() {
 	fText = new BTextControl( NULL, REN_SET_TEXT, NULL, new BMessage(MSG_RENAME_SETTINGS));
 
 	fPosition = new BTextControl( NULL, REN_SET_ATPOSITION, "0", new BMessage(MSG_RENAME_SETTINGS));
-	fPosition->TextView()->SetMaxBytes(3);
 
 	myMenu = new BPopUpMenu(STR_PLEASE_SELECT);
 	myMenu->AddItem(new BMenuItem(REN_SET_FROMLEFT, new BMessage(MSG_RENAME_SETTINGS)));
