@@ -13,9 +13,20 @@
 
 #include <View.h>
 
+class BMessage;
+class BCardLayout;
+class BPopUpMenu;
+class BTextView;
+
 class MainView : public BView {
 	public:
-					MainView( BRect frame );
+					MainView();
+			void	MessageReceived( BMessage* message);
+			void	AttachedToWindow();
+
+	private:
+		BCardLayout* fCards;
+		BPopUpMenu* fRenamers;
 };
 
 #endif

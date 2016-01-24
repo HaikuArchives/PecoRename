@@ -20,7 +20,6 @@
 #include <View.h>
 
 #include "FileListItem.h"
-#include "FileView.h"
 #include "PecoApp.h"
 #include "Renamer.h"
 

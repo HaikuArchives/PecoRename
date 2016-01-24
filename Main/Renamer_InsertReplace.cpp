@@ -15,19 +15,18 @@
 #include <MenuItem.h>
 #include <Beep.h>
 #include <UTF8.h>
+#include <TextControl.h>
+#include <LayoutBuilder.h>
 
 #include "constants.h"
 #include "functions.h"
 
 #include "FileListItem.h"
-#include "LiveTextControl.h"
 #include "Renamer_InsertReplace.h"
 
 Renamer_InsertReplace::Renamer_InsertReplace() : Renamer() {
 
 	fName 		= REN_INSERTREPLACE;
-
-	BRect	frame = Bounds().InsetByCopy(4.0, 4.0);
 
 	BPopUpMenu	*myMenu = new BPopUpMenu(STR_PLEASE_SELECT);
 	myMenu->AddItem(new BMenuItem(REN_SET_INSERT, new BMessage(MSG_RENAME_SETTINGS)));
@@ -35,25 +34,12 @@ Renamer_InsertReplace::Renamer_InsertReplace() : Renamer() {
 
 	myMenu->ItemAt(0)->SetMarked(true);
 
-	fInsertOrReplace = new BMenuField( BRect(frame.left, frame.top - 2, frame.left + be_plain_font->StringWidth(REN_SET_INSERTREPLACE) + 140, frame.top + be_plain_font->Size() + 8), NULL, REN_SET_INSERTREPLACE, myMenu, new BMessage(MSG_RENAME_SETTINGS));
-	fInsertOrReplace->SetDivider( be_plain_font->StringWidth(REN_SET_INSERTREPLACE) + 5);
-	AddChild( fInsertOrReplace );
+	fInsertOrReplace = new BMenuField(REN_SET_INSERTREPLACE, myMenu);
 
-	frame.left += be_plain_font->StringWidth(REN_SET_INSERTREPLACE) + 150;
+	fText = new BTextControl( NULL, REN_SET_TEXT, NULL, new BMessage(MSG_RENAME_SETTINGS));
 
-	fText = new LiveTextControl( BRect(frame.left, frame.top, frame.left + be_plain_font->StringWidth(REN_SET_TEXT) + 130, 0), NULL, REN_SET_TEXT, NULL, new BMessage(MSG_RENAME_SETTINGS));
-	fText->SetDivider( be_plain_font->StringWidth(REN_SET_TEXT) + 5);
-	AddChild(fText);
-
-	frame = Bounds().InsetByCopy(4.0, 4.0);
-	frame.top += be_plain_font->Size() + 14;
-	
-	fPosition = new LiveTextControl( BRect(frame.left, frame.top, frame.left + be_plain_font->StringWidth(REN_SET_ATPOSITION) + 70, 0), NULL, REN_SET_ATPOSITION, "0", new BMessage(MSG_RENAME_SETTINGS));
-	fPosition->SetDivider( be_plain_font->StringWidth(REN_SET_ATPOSITION) + 5);
-	AddChild(fPosition);
-	((BTextView *)fPosition->ChildAt(0))->SetMaxBytes(3);
-
-	frame.left += be_plain_font->StringWidth(REN_SET_ATPOSITION) + 80;
+	fPosition = new BTextControl( NULL, REN_SET_ATPOSITION, "0", new BMessage(MSG_RENAME_SETTINGS));
+	fPosition->TextView()->SetMaxBytes(3);
 
 	myMenu = new BPopUpMenu(STR_PLEASE_SELECT);
 	myMenu->AddItem(new BMenuItem(REN_SET_FROMLEFT, new BMessage(MSG_RENAME_SETTINGS)));
@@ -61,9 +47,18 @@ Renamer_InsertReplace::Renamer_InsertReplace() : Renamer() {
 
 	myMenu->ItemAt(0)->SetMarked(true);
 
-	fDirection = new BMenuField( BRect(frame.left, frame.top, frame.left + 150, frame.top + be_plain_font->Size() + 10), NULL, NULL, myMenu, new BMessage(MSG_RENAME_SETTINGS));
-	AddChild( fDirection );
-};
+	fDirection = new BMenuField( NULL, NULL, myMenu);
+
+	BLayoutBuilder::Group<>(this, B_VERTICAL)
+		.SetInsets(B_USE_WINDOW_INSETS)
+		.AddGroup(B_HORIZONTAL)
+			.Add(fInsertOrReplace)
+			.Add(fText)
+		.End()
+		.AddGroup(B_HORIZONTAL)
+			.Add(fPosition)
+			.Add(fDirection);
+}
 
 void Renamer_InsertReplace::RenameList(BList *FileList) {
 

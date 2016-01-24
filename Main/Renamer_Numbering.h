@@ -17,7 +17,7 @@
 
 #include "Renamer.h"
 
-class LiveTextControl;
+class BTextControl;
 
 class Renamer_Numbering : public Renamer {
 	public:
@@ -28,7 +28,7 @@ class Renamer_Numbering : public Renamer {
 		void		DetachedFromWindow();
 
 	private:
-		LiveTextControl		*fTextBefore, *fTextBehind, *fStartWith;
+		BTextControl		*fTextBefore, *fTextBehind, *fStartWith;
 		BMenuField			*fFormat;
 };
 

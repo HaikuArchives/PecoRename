@@ -14,19 +14,18 @@
 #include <PopUpMenu.h>
 #include <MenuItem.h>
 #include <Beep.h>
+#include <TextControl.h>
+#include <LayoutBuilder.h>
 
 #include "constants.h"
 
 #include "FileListItem.h"
 #include "functions.h"
 #include "Renamer_UpperLower.h"
-#include "LiveTextControl.h"
 
 Renamer_UpperLower::Renamer_UpperLower() : Renamer() {
 
 	fName 		= REN_UPPERLOWER;
-
-	BRect	frame = Bounds().InsetByCopy(4.0, 4.0);
 
 	BPopUpMenu	*myMenu = new BPopUpMenu(STR_PLEASE_SELECT);
 
@@ -35,11 +34,16 @@ Renamer_UpperLower::Renamer_UpperLower() : Renamer() {
 
 	myMenu->ItemAt(0)->SetMarked(true);
 
-	fUpperOrLower = new BMenuField( BRect(frame.left, frame.top - 2, frame.right, frame.top + be_plain_font->Size() + 8), NULL, REN_SET_CONVERTTO, myMenu);
-	fUpperOrLower->SetDivider( be_plain_font->StringWidth(REN_SET_CONVERTTO) + 5);
-	AddChild( fUpperOrLower );
-	fUpperOrLower->ResizeToPreferred();
-};
+	fUpperOrLower = new BMenuField(NULL, REN_SET_CONVERTTO, myMenu);
+
+	BLayoutBuilder::Group<>(this, B_VERTICAL)
+		.SetInsets(B_USE_WINDOW_INSETS)
+		.AddGroup(B_HORIZONTAL)
+			.Add(fUpperOrLower)
+			.AddGlue()
+		.End()
+		.AddGlue();
+}
 
 void Renamer_UpperLower::RenameList(BList *FileList) {
 

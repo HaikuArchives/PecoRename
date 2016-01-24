@@ -45,8 +45,6 @@ class PecoApp : public BApplication {
 		bool			NothingToDo();
 		void			CreateScript(BMessage *msg);
 		void			DoIt();
-		void			ChangeRenamer();
-		void 			NoRenamer();
 };
 
 #endif

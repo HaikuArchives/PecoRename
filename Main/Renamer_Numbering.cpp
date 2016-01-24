@@ -14,12 +14,13 @@
 #include <PopUpMenu.h>
 #include <MenuItem.h>
 #include <Beep.h>
+#include <TextControl.h>
+#include <LayoutBuilder.h>
 
 #include "constants.h"
 #include "functions.h"
 
 #include "FileListItem.h"
-#include "LiveTextControl.h"
 #include "Renamer_Numbering.h"
 
 Renamer_Numbering::Renamer_Numbering() : Renamer() {
@@ -28,39 +29,38 @@ Renamer_Numbering::Renamer_Numbering() : Renamer() {
 
 	fName 		= REN_NUMBERING;
 
-	BRect	frame = Bounds().InsetByCopy(4.0, 4.0);
-
 	BPopUpMenu	*myMenu = new BPopUpMenu(STR_PLEASE_SELECT);
 	for ( uint32 i = 0; i < sizeof(Modi) / sizeof(char *); i++ )
 		myMenu->AddItem(new BMenuItem(Modi[i], new BMessage(MSG_RENAME_SETTINGS)));
 
 	myMenu->ItemAt(0)->SetMarked(true);
 
-	fFormat = new BMenuField( BRect(frame.left, frame.top - 2, frame.left + be_plain_font->StringWidth(REN_SET_FORMAT) + 130, frame.top + be_plain_font->Size() + 8), NULL, REN_SET_FORMAT, myMenu, new BMessage(MSG_RENAME_SETTINGS));
-	fFormat->SetDivider( be_plain_font->StringWidth(REN_SET_FORMAT) + 5);
-	AddChild( fFormat );
+	fFormat = new BMenuField( NULL, REN_SET_FORMAT, myMenu);
 
-	frame.left += be_plain_font->StringWidth(REN_SET_FORMAT) + 140;
+	fStartWith = new BTextControl( NULL, REN_SET_STARTWITH, "0", new BMessage(MSG_RENAME_SETTINGS));
+	fStartWith->TextView()->SetMaxBytes(4);
 
-	fStartWith = new LiveTextControl( BRect(frame.left, frame.top, frame.left + be_plain_font->StringWidth(REN_SET_STARTWITH) + 50, 0), NULL, REN_SET_STARTWITH, "0", new BMessage(MSG_RENAME_SETTINGS));
-	fStartWith->SetDivider( be_plain_font->StringWidth(REN_SET_STARTWITH) + 5);
-	fStartWith->SetAlignment(B_ALIGN_LEFT, B_ALIGN_CENTER);
-	((BTextView *)fStartWith->ChildAt(0))->SetMaxBytes(4);
-	AddChild(fStartWith);
+	fTextBefore = new BTextControl( NULL, REN_SET_TEXTBEFORE, NULL, new BMessage(MSG_RENAME_SETTINGS));
+	fTextBehind = new BTextControl( NULL, REN_SET_TEXTBEHIND, NULL, new BMessage(MSG_RENAME_SETTINGS));
 
-	frame = Bounds().InsetByCopy(4.0, 4.0);
-	frame.top += be_plain_font->Size() + 14;
-	
-	fTextBefore = new LiveTextControl( BRect(frame.left, frame.top, frame.left + be_plain_font->StringWidth(REN_SET_TEXTBEFORE) + 130, 0), NULL, REN_SET_TEXTBEFORE, NULL, new BMessage(MSG_RENAME_SETTINGS));
-	fTextBefore->SetDivider( be_plain_font->StringWidth(REN_SET_TEXTBEFORE) + 5);
-	AddChild(fTextBefore);
-
-	frame.left += be_plain_font->StringWidth(REN_SET_TEXTBEFORE) + 140;
-
-	fTextBehind = new LiveTextControl( BRect(frame.left, frame.top, frame.left + be_plain_font->StringWidth(REN_SET_TEXTBEHIND) + 130, 0), NULL, REN_SET_TEXTBEHIND, NULL, new BMessage(MSG_RENAME_SETTINGS));
-	fTextBehind->SetDivider( be_plain_font->StringWidth(REN_SET_TEXTBEHIND) + 5);
-	AddChild(fTextBehind);
-};
+	BLayoutBuilder::Group<>(this, B_HORIZONTAL)
+		.SetInsets(B_USE_WINDOW_INSETS)
+		.AddGroup(B_VERTICAL)
+			.Add(fFormat->CreateLabelLayoutItem())
+			.Add(fTextBefore->CreateLabelLayoutItem())
+		.End()
+		.AddGroup(B_VERTICAL)
+			.Add(fFormat->CreateMenuBarLayoutItem())
+			.Add(fTextBefore->CreateTextViewLayoutItem())
+		.End()
+		.AddGroup(B_VERTICAL)
+			.Add(fStartWith->CreateLabelLayoutItem())
+			.Add(fTextBehind->CreateLabelLayoutItem())
+		.End()
+		.AddGroup(B_VERTICAL)
+			.Add(fStartWith->CreateTextViewLayoutItem())
+			.Add(fTextBehind->CreateTextViewLayoutItem());
+}
 
 void Renamer_Numbering::RenameList(BList *FileList) {
 

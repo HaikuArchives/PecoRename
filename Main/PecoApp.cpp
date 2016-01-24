@@ -19,6 +19,7 @@
 #include <NodeInfo.h>
 #include <String.h>
 #include <TextControl.h>
+#include <FilePanel.h>
 
 #include <malloc.h>
 #include <string.h>
@@ -28,19 +29,16 @@
 
 #include "About.h"
 #include "Fenster.h"
-#include "LiveTextControl.h"
-#include "Panel.h"
 #include "Renamer_SearchReplace.h"
 #include "Renamer_Extension.h"
 #include "Renamer_Numbering.h"
 #include "Renamer_InsertReplace.h"
 #include "Renamer_UpperLower.h"
 #include "Renamer_Remove.h"
-#include "ScriptFilePanel.h"
 
 PecoApp::PecoApp() : BApplication("application/x-vnd.pecora-PecoRename") {
 
-	fRenameMode	= MODE_NONE;
+	fRenameMode	= 0;
 	fPfad		= NULL;
 	fList		= new BList();
 
@@ -60,8 +58,16 @@ void PecoApp::ReadyToRun() {
 
 	UpdateWindowStatus();
 
-	fFilePanel = new Panel();
-	fScriptFilePanel = new ScriptFilePanel();
+	fFilePanel = new BFilePanel(B_OPEN_PANEL, NULL, NULL, B_FILE_NODE|B_DIRECTORY_NODE);
+	fFilePanel->SetButtonLabel(B_DEFAULT_BUTTON, STR_SELECT);
+	fFilePanel->SetButtonLabel(B_CANCEL_BUTTON, STR_CANCEL);
+	fFilePanel->Window()->SetTitle(STR_PANEL_TITLE);
+
+	fScriptFilePanel = new BFilePanel(B_SAVE_PANEL, NULL, NULL, B_FILE_NODE, false,
+		0, 0, true);
+	fScriptFilePanel->SetButtonLabel(B_DEFAULT_BUTTON, STR_OK);
+	fScriptFilePanel->SetButtonLabel(B_CANCEL_BUTTON, STR_CANCEL);
+	fScriptFilePanel->Window()->SetTitle(STR_MENU_CREATE_SCRIPT);
 
 	fWindow->Show();
 
@@ -86,10 +92,9 @@ bool PecoApp::QuitRequested() {
 void PecoApp::MessageReceived(BMessage *msg) {
 	switch( msg->what ) {
 		case B_SIMPLE_DATA:			RefsReceived (msg); break;
-		case MSG_MENU_NEW:			New(); NoRenamer(); break;
+		case MSG_MENU_NEW:			New(); break;
 		case MSG_SELECT_FILES: 		fFilePanel->Show(); break;
 		case MSG_DO_IT: 			MakeList(); DoIt(); break;
-		case MSG_RENAMER: 			ChangeRenamer(); break;
 		case MSG_RENAME_SETTINGS:	MakeList(); break;
 		case MSG_MENU_SCRIPT:		if (!NothingToDo()) fScriptFilePanel->Show(); break;
 		case B_SAVE_REQUESTED:		CreateScript(msg); break;
@@ -174,21 +179,13 @@ void PecoApp::RefsReceived ( BMessage* msg ) {
 					else continue;
 			
 			aEntry.GetModificationTime(&timer);
-			
 			fList->AddItem(new FileListItem(aPath.Leaf(), size, timer, &ref));
 			
 		}
 		
 		fWindow->Lock();
 		fListView->AddList(fList);
-		float Hoehe = be_plain_font->Size() + 2;
-		if (Hoehe < 18) {
-			FileListItem*	myListItem;
-			for (int i=0; (myListItem = fListView->ItemAt(i)); i++) myListItem->SetHeight(18);
-			// Zum Updaten:
-			fListView->AddItem(myListItem = new FileListItem("", 0, 0, NULL));
-			fListView->RemoveItem(myListItem);
-		}
+
 		fStatusBar->Reset(STATUS_STATUS);
 		fStatusBar->SetMaxValue(fList->CountItems());
 		fWindow->Unlock();
@@ -205,11 +202,6 @@ void PecoApp::New() {
 	
 	fListView->Clear();
 	
-	//...und Updaten...
-	FileListItem*	myListItem;
-	fListView->AddItem(myListItem = new FileListItem("", 0, 0, NULL));
-	fListView->RemoveItem(myListItem);
-
 	BTextControl* 	pfadView = (BTextControl *)fWindow->FindView("pfadView");
 	pfadView->SetText(NULL);
 	
@@ -219,68 +211,6 @@ void PecoApp::New() {
 		delete myItem;
 	
 	UpdateWindowStatus();
-}
-
-void PecoApp::ChangeRenamer() {
-	BMenuField	*myField = (BMenuField *)fWindow->FindView("selectMode");
-	BMenu		*myMenu = myField->Menu();
-	if (fRenameMode != myMenu->IndexOf(myField->Menu()->FindMarked())) {
-		BView	*bottomView = fWindow->FindView("bottomView");
-		fWindow->Lock();
-		if (fRenameMode != -1) 
-			bottomView->RemoveChild((BView *)((PecoApp *)be_app)->fRenamers[fRenameMode]);
-		else {
-			float deltaHeight = be_plain_font->Size()*2 + 40;
-			fWindow->FindView("topView")->SetResizingMode(0);
-			fWindow->FindView("bottomView")->SetResizingMode(B_FOLLOW_TOP_BOTTOM);	
-			fWindow->ResizeBy(0, deltaHeight);
-			fWindow->FindView("topView")->SetResizingMode(B_FOLLOW_TOP_BOTTOM);
-			fWindow->FindView("bottomView")->SetResizingMode(B_FOLLOW_BOTTOM);	
-			float min_h, max_h, min_v, max_v;
-			fWindow->GetSizeLimits( &min_h, &max_h, &min_v, &max_v );
-			fWindow->SetSizeLimits( min_h, max_h, min_v + deltaHeight, max_v );
-		}
-		fRenameMode = myMenu->IndexOf(myField->Menu()->FindMarked());
-		bottomView->AddChild(((PecoApp *)be_app)->fRenamers[fRenameMode]);
-		if (((PecoApp *)be_app)->fRenamers[fRenameMode]->ChildAt(0) != NULL) 
-			((PecoApp *)be_app)->fRenamers[fRenameMode]->ChildAt(0)->MakeFocus();
-		else
-			fWindow->FindView("DoIt")->MakeFocus();
-		fWindow->Unlock();
-		MakeList();
-	}
-}
-
-void PecoApp::NoRenamer() {
-	if (fRenameMode == MODE_NONE) return;
-
-	fWindow->Lock();
-	BMenuField	*myField = (BMenuField *)fWindow->FindView("selectMode");
-	BMenu		*myMenu = myField->Menu();
-	
-	myMenu->FindMarked()->SetMarked(false);
-
-	myField->MenuItem()->SetLabel(STR_PLEASE_SELECT);
-	
-	BView	*bottomView = fWindow->FindView("bottomView");
-	bottomView->RemoveChild((BView *)((PecoApp *)be_app)->fRenamers[fRenameMode]);
-
-	fRenameMode = MODE_NONE;
-
-	float deltaHeight = - be_plain_font->Size()*2 - 40;
-
-	float min_h, max_h, min_v, max_v;
-	fWindow->GetSizeLimits( &min_h, &max_h, &min_v, &max_v );
-	fWindow->SetSizeLimits( min_h, max_h, min_v + deltaHeight, max_v );
-
-	fWindow->FindView("topView")->SetResizingMode(0);
-	fWindow->FindView("bottomView")->SetResizingMode(B_FOLLOW_TOP_BOTTOM);	
-	fWindow->ResizeBy(0, deltaHeight);
-	fWindow->FindView("topView")->SetResizingMode(B_FOLLOW_TOP_BOTTOM);
-	fWindow->FindView("bottomView")->SetResizingMode(B_FOLLOW_BOTTOM);	
-
-	fWindow->Unlock();
-
 }
 
 bool PecoApp::NothingToDo() {

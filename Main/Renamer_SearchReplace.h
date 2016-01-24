@@ -15,7 +15,7 @@
 
 #include "Renamer.h"
 
-class LiveTextControl;
+class BTextControl;
 
 class Renamer_SearchReplace : public Renamer {
 	public:
@@ -30,7 +30,7 @@ class Renamer_SearchReplace : public Renamer {
 #if __INTEL__
 		BCheckBox			*RegEx;
 #endif
-		LiveTextControl		*SearchFor, *ReplaceWith;		
+		BTextControl		*SearchFor, *ReplaceWith;		
 };
 
 #endif
