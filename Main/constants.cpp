@@ -255,7 +255,7 @@ extern const char* MESSAGE_MARKED_FILES		= "Les fichiers ayant provoqué une err
 extern const char* MESSAGE_REALLY_DOIT		= "Voulez-vous vraiment renommer ces fichiers ?\n"
 											  "Cette opération peut provoquer des problèmes !\n\n"
 											  "Choisissez 'Continuer' (A VOS RISQUES ET PERILS) ou annulez !";
-												//"Do you really want to rename this files?
+												//"Do you really want to rename these files?
 												//\nThis could probably lead to problems!\n\n
 												//If you click on 'Continue', the files will be renamed AT YOUR OWN RISK!";
 extern const char* MESSAGE_NOTHING_TO_DO	= "Que dois-je faire ?"; // (not very good) "What shall I do?";
@@ -394,7 +394,7 @@ extern const char* MESSAGE_HAVE_PROBLEM		= "A problem occurred when renaming '%1
 
 extern const char* MESSAGE_MARKED_FILES		= "I've marked the files that caused the errors in red!";
 
-extern const char* MESSAGE_REALLY_DOIT		= "Do you really want to rename this files?\nThis could probably lead to problems!\n\n"
+extern const char* MESSAGE_REALLY_DOIT		= "Do you really want to rename these files?\nThis could probably lead to problems!\n\n"
 											  "If you click on 'Continue', the files will be renamed AT YOUR OWN RISK!";
 extern const char* MESSAGE_NOTHING_TO_DO	= "What shall I do?";
 
