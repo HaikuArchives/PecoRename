@@ -12,6 +12,7 @@
 #include <Node.h>
 #include <Entry.h>
 #include <strstream.h>
+#include <ColumnTypes.h>
 
 #include "constants.h"
 #include "functions.h"
@@ -156,6 +157,8 @@ void FileListItem::DrawItem(BView *owner, BRect frame, bool complete) {
 void FileListItem::SetNewName( BString myNewName ) {
 	if (myNewName == fName) fNewName = ""; else fNewName = myNewName;
 	fListNewName = ShortenString( fNewName, WIDTH_PREVIEW - 4 );
+	if (fRow != NULL)
+		fRow->SetField(new BStringField(fListNewName), 4);
 }
 
 void FileListItem::SetName( BString name ) {
