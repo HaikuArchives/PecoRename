@@ -12,14 +12,15 @@
 
 #include <Alert.h>
 #include <CheckBox.h>
+#include <LayoutBuilder.h>
 #include <regex.h>
 #include <string.h>
+#include <TextControl.h>
 #include <UTF8.h>
 
 #include "constants.h"
 #include "FileListItem.h"
 #include "functions.h"
-#include "LiveTextControl.h"
 
 // TODO: this effectively turns off this replace mode, and should be fixed instead
 #undef __INTEL__
@@ -37,34 +38,29 @@ Renamer_SearchReplace::Renamer_SearchReplace()
 
 	fName 		= REN_SEARCH_REPLACE;
 
-	BRect	frame = Bounds().InsetByCopy(4.0, 4.0);
-
-	MatchCase = new BCheckBox( BRect(frame.left, frame.top, frame.left + be_plain_font->StringWidth(REN_SET_MATCHCASE) + 30, 0), NULL, REN_SET_MATCHCASE, new BMessage(MSG_RENAME_SETTINGS));
-	AddChild(MatchCase);
+	MatchCase = new BCheckBox( NULL, REN_SET_MATCHCASE, new BMessage(MSG_RENAME_SETTINGS));
 
 #if __INTEL__
-	frame.left += be_plain_font->StringWidth(REN_SET_MATCHCASE) + 30;
-	RegEx = new BCheckBox( BRect(frame.left + 20, frame.top, frame.left + be_plain_font->StringWidth(REN_SET_REGEX) + 50, 0), NULL, REN_SET_REGEX, new BMessage(MSG_RENAME_SETTINGS));
-	AddChild(RegEx);
+	RegEx = new BCheckBox( REN_SET_REGEX, new BMessage(MSG_RENAME_SETTINGS));
 #endif
 
-	frame.left = 4.0;
-	frame.top += be_plain_font->Size() + 14;
+	SearchFor = new BTextControl( REN_SET_SEARCHPATTERN, NULL, new BMessage(MSG_RENAME_SETTINGS));
+	ReplaceWith = new BTextControl( NULL, REN_SET_REPLACESTRING, NULL, new BMessage(MSG_RENAME_SETTINGS));
 
-	float			width;
+	BLayoutBuilder::Group<>(this, B_VERTICAL)
+		.SetInsets(B_USE_WINDOW_INSETS)
+		.AddGroup(B_HORIZONTAL)
+			.Add(MatchCase)
+#if __INTEL__
+			.Add(RegEx)
+#endif
+			.AddGlue()
+		.End()
+		.AddGroup(B_HORIZONTAL)
+			.Add(SearchFor)
+			.Add(ReplaceWith);
 
-	width = be_plain_font->StringWidth(REN_SET_SEARCHPATTERN);
-	SearchFor = new LiveTextControl( BRect(frame.left, frame.top, frame.left + width + 150, 0), NULL, REN_SET_SEARCHPATTERN, NULL, new BMessage(MSG_RENAME_SETTINGS));
-	SearchFor->SetDivider(width + 5);
-	AddChild(SearchFor);
-
-	frame.left += width + 160;
-	width = be_plain_font->StringWidth(REN_SET_REPLACESTRING);
-	ReplaceWith = new LiveTextControl( BRect(frame.left, frame.top, frame.left + width + 150, 0), NULL, REN_SET_REPLACESTRING, NULL, new BMessage(MSG_RENAME_SETTINGS));
-	ReplaceWith->SetDivider(width + 5);
-	AddChild(ReplaceWith);
-
-};
+}
 
 void Renamer_SearchReplace::RenameList(BList *FileList) {
 

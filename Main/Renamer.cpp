@@ -14,12 +14,10 @@
 #include "FileListItem.h"
 #include "constants.h"
 
-Renamer::Renamer() : BView (BRect( 6, be_plain_font->Size() + be_bold_font->Size() + 24, 582, be_bold_font->Size() + 3 * be_plain_font->Size() + 57 ), NULL, B_FOLLOW_LEFT|B_FOLLOW_TOP, B_WILL_DRAW) {
+Renamer::Renamer() : BView ("", 0) {
 	
 	fName 		= "";
 
-	SetViewColor(200, 200, 205);
-	SetLowColor(200, 200, 205);
 };
 
 void Renamer::RenameList(BList *FileList) {

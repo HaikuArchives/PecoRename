@@ -33,8 +33,16 @@ FileListRow::FileListRow(FileListItem* item) : BRow(), fItem(item)
 	SetField(new BStringField(item->fListNewName), i++);
 }
 
-FileListView::FileListView(BRect frame)
-	: BColumnListView(frame, "fileListView", B_FOLLOW_ALL, B_FRAME_EVENTS|B_WILL_DRAW|B_NAVIGABLE, B_NO_BORDER, false) {
+FileListView::FileListView()
+	: BColumnListView("fileListView",
+		B_FRAME_EVENTS|B_NAVIGABLE|B_FULL_UPDATE_ON_RESIZE,
+		B_NO_BORDER, false) {
+	int32 i = 0;
+	AddColumn(new BBitmapColumn(NULL, WIDTH_ICON, 10, 1000), i++);
+	AddColumn(new BStringColumn(STR_NAME, WIDTH_NAME, 10, 1000, 0), i++);
+	AddColumn(new BStringColumn(STR_SIZE, WIDTH_SIZE, 10, 1000, 0), i++);
+	AddColumn(new BStringColumn(STR_DATE, WIDTH_DATE, 10, 1000, 0), i++);
+	AddColumn(new BStringColumn(STR_PREVIEW, WIDTH_PREVIEW, 10, 1000, 0), i++);
 }
 
 void FileListView::MouseDown(BPoint where) {
@@ -88,6 +96,9 @@ bool FileListView::InitiateDrag(BPoint where, bool initialySelected) {
 
 void FileListView::KeyDown(const char *bytes, int32 numBytes) {
 	FileListRow* row = (FileListRow*) CurrentSelection();
+	if (row == NULL)
+		return;
+
 	FileListItem* Item = row->Item();
 	int32 selectedItem = IndexOf(row);
 	
@@ -141,4 +152,9 @@ void FileListView::AddList(BList* list)
 void FileListView::RemoveItem(FileListItem* item)
 {
 	RemoveRow(item->GetRow());
+}
+
+void FileListView::MessageDropped(BMessage* message, BPoint point)
+{
+	be_app_messenger.SendMessage(message);
 }

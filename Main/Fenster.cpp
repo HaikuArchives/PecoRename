@@ -13,6 +13,7 @@
 #include <Box.h>
 #include <Button.h>
 #include <Font.h>
+#include <LayoutBuilder.h>
 #include <Menu.h>
 #include <MenuBar.h>
 #include <MenuItem.h>
@@ -27,12 +28,11 @@
 #include "functions.h"
 
 #include "Fenster.h"
-#include "LiveTextControl.h"
 #include "MainView.h"
 
-Fenster::Fenster() : BWindow( BRect( 20, 40, 620, 460), "PecoRename", B_TITLED_WINDOW, 0){
+Fenster::Fenster() : BWindow( BRect( 20, 40, 620, 460), "PecoRename", B_TITLED_WINDOW, B_AUTO_UPDATE_SIZE_LIMITS){
 // Menü
-	BMenuBar* MenuBar = new BMenuBar( BRect( 0, 0, 0, 0 ), "MenuBar" );
+	BMenuBar* MenuBar = new BMenuBar( "MenuBar" );
 
 	BMenu* Menu;
 
@@ -56,22 +56,13 @@ Fenster::Fenster() : BWindow( BRect( 20, 40, 620, 460), "PecoRename", B_TITLED_W
 
 //	Menu->AddItem(new BMenuItem(STR_MENU_DOCU, new BMessage(MSG_MENU_DOCU)));
 
-	AddChild( MenuBar );
-// Größe bestimmen + Fenster anpassen
-	float BarWidth, BarHeight;
-	MenuBar->GetPreferredSize ( &BarWidth, &BarHeight );
-	SetSizeLimits( 600, 600, 10000, 155 + BarHeight + 5 * be_plain_font->Size() + 2 * be_bold_font->Size());
+	MainView* mainView = new MainView();
 
-// Main Frame
-	BRect MainFrame = Bounds();
-	MainFrame.top += BarHeight;
+	BLayoutBuilder::Group<>(this, B_VERTICAL, 0)
+		.Add(MenuBar)
+		.Add(mainView);
 
-	MainView* mainView = new MainView( MainFrame );
-	AddChild( mainView );
-	
-	BTextControl*	TextControl = (BTextControl *)FindView("pfadView");
-	TextControl->TextView()->MakeEditable(false);
-
+	static_cast<BTextControl*>(mainView->FindView("pfadView"))->TextView()->MakeEditable(false);
 };
 
 void Fenster::Help() {

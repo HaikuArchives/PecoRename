@@ -49,8 +49,6 @@ int SortByDate(const void *item1, const void *item2) {
 }
 
 void MakeList() {
-	FileView	*myView = (FileView *)((PecoApp *)be_app)->fWindow->FindView("fileView");
-	BButton		*SortButton = (BButton *)myView->fSortButton;
 	BList		*FileList = ((PecoApp *)be_app)->fList;
 
 	((PecoApp *)be_app)->fWindow->Lock();
@@ -67,17 +65,12 @@ void MakeList() {
 #endif
 	((PecoApp *)be_app)->fStatusBar->SetText(STATUS_PREVIEW);
 
-	if (((PecoApp *)be_app)->fRenameMode != MODE_NONE)
-		((PecoApp *)be_app)->fRenamers[((PecoApp *)be_app)->fRenameMode]->RenameList(FileList);
+	((PecoApp *)be_app)->fRenamers[((PecoApp *)be_app)->fRenameMode]->RenameList(FileList);
 
 	// Auf Duplikate überprüfen und markieren
 	((PecoApp *)be_app)->fStatusBar->SetText(STATUS_CHECKDUPS);
 	FileListItem	*ListItem;
 
-	for (int32 i = 0; (ListItem = (FileListItem *)FileList->ItemAt(i)) != NULL; i++ ) {
-		for (int32 j = 0; j <= i; j++ )
-			if (ListItem->CompareWith((FileListItem *)FileList->ItemAt(j))) break;
-	}
 	((PecoApp *)be_app)->fStatusBar->Reset(STATUS_STATUS);
 
 	((PecoApp *)be_app)->fWindow->Unlock();
@@ -111,13 +104,6 @@ void UpdateWindowStatus() {
 	do {
 		if (((PecoApp *)be_app)->fList->IsEmpty()) {
 			((PecoApp *)be_app)->fStatusBar->SetText(STATUS_SELECT_FILES);
-			if (((PecoApp *)be_app)->fRenameMode == -1)
-				((PecoApp *)be_app)->fWindow->FindView("selectFiles")->MakeFocus();
-			break;
-		}
-		if (((PecoApp *)be_app)->fRenameMode == -1) {
-			((PecoApp *)be_app)->fStatusBar->SetText(STATUS_SELECT_MODE);
-			((PecoApp *)be_app)->fWindow->FindView("selectMode")->MakeFocus();
 			break;
 		}
 		// else:

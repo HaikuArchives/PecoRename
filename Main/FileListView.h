@@ -25,7 +25,7 @@ public:
 
 class FileListView : public BColumnListView {
 public:
-					FileListView(BRect frame);
+					FileListView();
 	virtual void	MouseDown(BPoint where);
 	virtual	void	KeyDown(const char *bytes, int32 numBytes);
 	virtual bool	InitiateDrag(BPoint pt, bool initialySelected);
@@ -35,6 +35,7 @@ public:
 			void	AddItem(FileListItem* item);
 			void	AddList(BList* list);
 			void	RemoveItem(FileListItem* item);
+			void	MessageDropped(BMessage* message, BPoint point);
 };
 
 #endif

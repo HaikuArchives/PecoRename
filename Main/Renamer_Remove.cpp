@@ -15,26 +15,20 @@
 #include <MenuItem.h>
 #include <Beep.h>
 #include <UTF8.h>
+#include <TextControl.h>
+#include <LayoutBuilder.h>
 
 #include "constants.h"
 #include "functions.h"
 
 #include "FileListItem.h"
-#include "LiveTextControl.h"
 #include "Renamer_Remove.h"
 
 Renamer_Remove::Renamer_Remove() : Renamer() {
 
 	fName 		= REN_REMOVE;
 
-	BRect	frame = Bounds().InsetByCopy(4.0, 4.0);
-
-	fPosition1 = new LiveTextControl( BRect(frame.left, frame.top, frame.left + be_plain_font->StringWidth(REN_SET_FROMPOS) + 70, 0), NULL, REN_SET_FROMPOS, "0", new BMessage(MSG_RENAME_SETTINGS));
-	fPosition1->SetDivider( be_plain_font->StringWidth(REN_SET_FROMPOS) + 5);
-	AddChild(fPosition1);
-	((BTextView *)fPosition1->ChildAt(0))->SetMaxBytes(3);
-
-	frame.left += be_plain_font->StringWidth(REN_SET_FROMPOS) + 80;
+	fPosition1 = new BTextControl( NULL, REN_SET_FROMPOS, "0", new BMessage(MSG_RENAME_SETTINGS));
 
 	BPopUpMenu	*myMenu;
 	myMenu = new BPopUpMenu(STR_PLEASE_SELECT);
@@ -43,17 +37,9 @@ Renamer_Remove::Renamer_Remove() : Renamer() {
 
 	myMenu->ItemAt(0)->SetMarked(true);
 
-	fDirection1 = new BMenuField( BRect(frame.left, frame.top, frame.left + 150, frame.top + be_plain_font->Size() + 10), NULL, NULL, myMenu, new BMessage(MSG_RENAME_SETTINGS));
-	AddChild( fDirection1 );
+	fDirection1 = new BMenuField( NULL, NULL, myMenu);
 
-	frame.OffsetTo(4, frame.top + be_plain_font->Size() + 14);
-
-	fPosition2 = new LiveTextControl( BRect(frame.left, frame.top, frame.left + be_plain_font->StringWidth(REN_SET_TOPOS) + 70, 0), NULL, REN_SET_TOPOS, "0", new BMessage(MSG_RENAME_SETTINGS));
-	fPosition2->SetDivider( be_plain_font->StringWidth(REN_SET_TOPOS) + 5);
-	AddChild(fPosition2);
-	((BTextView *)fPosition2->ChildAt(0))->SetMaxBytes(3);
-
-	frame.left += be_plain_font->StringWidth(REN_SET_TOPOS) + 80;
+	fPosition2 = new BTextControl( NULL, REN_SET_TOPOS, "0", new BMessage(MSG_RENAME_SETTINGS));
 
 	myMenu = new BPopUpMenu(STR_PLEASE_SELECT);
 	myMenu->AddItem(new BMenuItem(REN_SET_FROMLEFT, new BMessage(MSG_RENAME_SETTINGS)));
@@ -61,9 +47,18 @@ Renamer_Remove::Renamer_Remove() : Renamer() {
 
 	myMenu->ItemAt(0)->SetMarked(true);
 
-	fDirection2 = new BMenuField( BRect(frame.left, frame.top, frame.left + 150, frame.top + be_plain_font->Size() + 10), NULL, NULL, myMenu, new BMessage(MSG_RENAME_SETTINGS));
-	AddChild( fDirection2 );
-};
+	fDirection2 = new BMenuField( NULL, NULL, myMenu);
+
+	BLayoutBuilder::Group<>(this, B_VERTICAL)
+		.SetInsets(B_USE_WINDOW_INSETS)
+		.AddGroup(B_HORIZONTAL)
+			.Add(fPosition1)
+			.Add(fDirection1)
+		.End()
+		.AddGroup(B_HORIZONTAL)
+			.Add(fPosition2)
+			.Add(fDirection2);
+}
 
 void Renamer_Remove::RenameList(BList *FileList) {
 

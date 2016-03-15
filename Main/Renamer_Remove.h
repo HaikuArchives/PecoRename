@@ -17,7 +17,7 @@
 
 #include "Renamer.h"
 
-class LiveTextControl;
+class BTextControl;
 
 class Renamer_Remove : public Renamer {
 	public:
@@ -28,7 +28,7 @@ class Renamer_Remove : public Renamer {
 		void	AttachedToWindow();
 
 	private:
-		LiveTextControl		*fPosition1, *fPosition2;
+		BTextControl		*fPosition1, *fPosition2;
 		BMenuField			*fDirection1, *fDirection2;
 };
 
