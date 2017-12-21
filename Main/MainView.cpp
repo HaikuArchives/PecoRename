@@ -28,7 +28,7 @@
 
 #include "MainView.h"
 
-MainView::MainView() : BView ("mainView", B_FULL_UPDATE_ON_RESIZE) {
+MainView::MainView() : BView ("mainView",  B_FRAME_EVENTS | B_WILL_DRAW) {
 
 	SetViewUIColor(B_PANEL_BACKGROUND_COLOR);
 
@@ -129,3 +129,11 @@ void MainView::AttachedToWindow() {
 		fRenamers->ItemAt(i)->SetTarget(this);
 	}
 }
+
+
+void MainView::FrameResized(float height, float width) {
+	FindView("fileListView")->Hide();
+	BView::FrameResized(height,width);
+	FindView("fileListView")->Show();
+}
+

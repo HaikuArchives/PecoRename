@@ -23,26 +23,16 @@
 #include "FileListItem.h"
 #include "PecoApp.h"
 
-FileListRow::FileListRow(FileListItem* item) : BRow(), fItem(item)
-{
-	int32 i = 0;
-	SetField(new BBitmapField(item->fIcon), i++);
-	SetField(new BStringField(item->fListName), i++);
-	SetField(new BStringField(item->fListGroesse), i++);
-	SetField(new BStringField(item->fListZeit), i++);
-	SetField(new BStringField(item->fListNewName), i++);
-}
 
 FileListView::FileListView()
 	: BColumnListView("fileListView",
-		B_FRAME_EVENTS|B_NAVIGABLE|B_FULL_UPDATE_ON_RESIZE,
-		B_NO_BORDER, false) {
+		B_FRAME_EVENTS|B_NAVIGABLE) {
 	int32 i = 0;
-	AddColumn(new BBitmapColumn(NULL, WIDTH_ICON, 10, 1000), i++);
-	AddColumn(new BStringColumn(STR_NAME, WIDTH_NAME, 10, 1000, 0), i++);
-	AddColumn(new BStringColumn(STR_SIZE, WIDTH_SIZE, 10, 1000, 0), i++);
-	AddColumn(new BStringColumn(STR_DATE, WIDTH_DATE, 10, 1000, 0), i++);
-	AddColumn(new BStringColumn(STR_PREVIEW, WIDTH_PREVIEW, 10, 1000, 0), i++);
+	AddColumn(new BBitmapColumn("Icon", WIDTH_ICON, 10, 600, B_ALIGN_CENTER), i++);
+	AddColumn(new BStringColumn(STR_NAME, WIDTH_NAME, 10, 600, 0), i++);
+	AddColumn(new BSizeColumn(STR_SIZE, WIDTH_SIZE, 10, 600), i++);
+	AddColumn(new BDateColumn(STR_DATE, WIDTH_DATE, 10, 600), i++);
+	AddColumn(new BStringColumn(STR_PREVIEW, WIDTH_PREVIEW, 10, 600, 0), i++);
 }
 
 void FileListView::MouseDown(BPoint where) {
@@ -51,13 +41,14 @@ void FileListView::MouseDown(BPoint where) {
 };
 
 bool FileListView::InitiateDrag(BPoint where, bool initialySelected) {
-	FileListRow* row = (FileListRow*) RowAt(where);
-	FileListItem* Item = row->Item();
-	int32 itemIndex = IndexOf(row);
+	/*
+	FileListItem* Item = (FileListItem*) RowAt(where);
+	int32 itemIndex = IndexOf(Item);
 
 	Select(itemIndex);
-	BRect r (0, 0, Item->Width(), Item->Height());
+	//BRect r (0, 0, Item->Width(), Item->Height());
 
+	BRect r (0, 0, 100 Item->Width(), Item->Height());
 	BBitmap *bmp = new BBitmap(r, B_RGB32, true);
 	BView	*ItemView = new BView(r, "",  B_FOLLOW_LEFT|B_FOLLOW_TOP, B_WILL_DRAW);
 
@@ -90,17 +81,16 @@ bool FileListView::InitiateDrag(BPoint where, bool initialySelected) {
 	}	
 
 //	DeselectAll();
-
+   */
 	return true;
 };
 
 void FileListView::KeyDown(const char *bytes, int32 numBytes) {
-	FileListRow* row = (FileListRow*) CurrentSelection();
-	if (row == NULL)
-		return;
 
-	FileListItem* Item = row->Item();
-	int32 selectedItem = IndexOf(row);
+	FileListItem* Item = (FileListItem*) CurrentSelection();
+	if (Item == NULL)
+		return;
+	int32 selectedItem = IndexOf(Item);
 	
 	if ( bytes[0] == 127 ) {
 		((PecoApp *)be_app)->fWindow->Lock();
@@ -120,9 +110,7 @@ void FileListView::KeyDown(const char *bytes, int32 numBytes) {
 
 FileListItem* FileListView::ItemAt(int32 index) const
 {
-	FileListRow* row = (FileListRow*) RowAt(index);
-
-	return row == NULL ? NULL : row->Item();
+	return (FileListItem*) RowAt(index);
 }
 
 void FileListView::Select(int32 index)
@@ -137,21 +125,18 @@ void FileListView::InvalidateItem(int32 index)
 
 void FileListView::AddItem(FileListItem* item)
 {
-	FileListRow* row = new FileListRow(item);
-
-	AddRow(row);
-	item->SetRow(row);
+	AddRow(item);
 }
 
 void FileListView::AddList(BList* list)
 {
 	for (int32 i = 0; i < list->CountItems(); i++)
-		AddItem((FileListItem*) list->ItemAt(i));
+		AddRow((FileListItem*) list->ItemAt(i));
 }
 
 void FileListView::RemoveItem(FileListItem* item)
 {
-	RemoveRow(item->GetRow());
+	RemoveRow(item);
 }
 
 void FileListView::MessageDropped(BMessage* message, BPoint point)

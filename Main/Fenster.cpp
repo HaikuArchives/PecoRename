@@ -99,6 +99,8 @@ void Fenster::MessageReceived ( BMessage* msg ) {
 	switch (msg->what) {
 	case MSG_MENU_DOCU:
 		Help(); break;
+	case B_COLORS_UPDATED:
+		break;
 	default:
 		be_app->PostMessage(msg);
 	}

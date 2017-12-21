@@ -207,8 +207,7 @@ void PecoApp::New() {
 	
 	fWindow->Unlock();
 	
-	for( FileListItem* myItem; (myItem = (FileListItem *)fList->RemoveItem((int32)0) ) != NULL; )
-		delete myItem;
+	fList->MakeEmpty(); // TODO This can be remove is redundance of fListView
 	
 	UpdateWindowStatus();
 }
@@ -218,7 +217,7 @@ bool PecoApp::NothingToDo() {
 	FileListItem	*ListItem;
 	
 	bool nothing_to_do = true;
-	
+
 	for (int32 i = 0; (ListItem = (FileListItem *)fListView->ItemAt(i)) != NULL; i++ )
 		if (ListItem->fNewName.Length() > 0 ) { nothing_to_do = false; break; }
 	
@@ -301,7 +300,8 @@ void PecoApp::DoIt() {
 	
 	BAlert	*myAlert	= new BAlert(NULL, MESSAGE_REALLY_DOIT, STR_CONTINUE, STR_CANCEL);
 	if (myAlert->Go() == 1) return;
-		for (int32 i = 0; (ListItem = (FileListItem *)fListView->ItemAt(i)) != NULL; i++ ) {
+
+	for (int32 i = 0; (ListItem = (FileListItem *)fListView->ItemAt(i)) != NULL; i++ ) {
 		if (ListItem->fErrorStatus == 1 ) {
 			BAlert	*myAlert	= new BAlert(NULL, MESSAGE_WILL_HAVE_PROBS, STR_CONTINUE, STR_CANCEL);
 			if (myAlert->Go() == 1) return;
@@ -330,7 +330,7 @@ void PecoApp::DoIt() {
 		fStatusBar->Update(1);
 		fWindow->Unlock();
 		if (canceled) { ListItem->fErrorStatus=0; continue; }
-		if (ListItem->fNewName.String() != "" ) {
+		if (ListItem->fNewName != "" ) {
 			AlterName = Pfad; AlterName.Append("/").Append(ListItem->fName);
 			NeuerName = Pfad; NeuerName.Append("/").Append(ListItem->fNewName);
 			Datei.SetTo(AlterName.String());
