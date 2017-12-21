@@ -20,11 +20,6 @@
 #include "FileListItem.h"
 
 FileListItem::FileListItem(const char *name, int64 size, time_t timer, const entry_ref *ref) : BRow(){
-	
-
-	fGroesse 	= size;
-	fZeit		= timer;
-
 	BEntry		myEntry = BEntry(ref, true);
 	if (myEntry.InitCheck() != B_OK) myEntry = BEntry(ref, false);
 	BNode 		myNode = BNode(&myEntry);
@@ -43,14 +38,13 @@ FileListItem::FileListItem(const char *name, int64 size, time_t timer, const ent
 	int32 i = 0;
 	SetField(new BBitmapField(fIcon), i++);
 	SetField(new BStringField(fName), i++);
-	SetField(new BSizeField(size), i++);
+	SetField(new BSizeField(size < 0 ? 0 : size), i++);
 	SetField(new BDateField(&timer), i++);
 	SetField(new BStringField(fNewName), i++);
 
 }
 
 FileListItem::~FileListItem() {
-	// TODO delete fIcon;
 }
 
 void FileListItem::SetNewName( BString myNewName ) {

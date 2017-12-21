@@ -13,7 +13,6 @@
 
 #include <malloc.h>
 
-#include <ListItem.h>
 #include <String.h>
 #include <Bitmap.h>
 #include <Mime.h>
@@ -32,8 +31,6 @@ public:
 	bool			CompareWith(FileListItem *CompareItem);
 
 	BString			fName;
-	int64			fGroesse;
-	time_t			fZeit;
 	char			fMimeType[B_MIME_TYPE_LENGTH];
 	
 private: 

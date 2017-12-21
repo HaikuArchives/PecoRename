@@ -87,8 +87,6 @@ MainView::MainView() : BView ("mainView",  B_FRAME_EVENTS | B_WILL_DRAW) {
 	// StatusBar
 	BStatusBar*	statusBar	= new BStatusBar( "statusBar", STATUS_STATUS, NULL);
 	statusBar->SetText(STATUS_SELECT_FILES);
-	rgb_color color = { 70, 100, 180, 255};
-	statusBar->SetBarColor(color);
 
 	// Do it! - Button
 	BButton* DoItButton = new BButton( "DoIt", STR_DO_IT, new BMessage(MSG_DO_IT));
@@ -100,7 +98,9 @@ MainView::MainView() : BView ("mainView",  B_FRAME_EVENTS | B_WILL_DRAW) {
 		.Add(bottom)
 		.AddGroup(B_HORIZONTAL)
 			.Add(statusBar)
-			.Add(DoItButton);
+			.AddGroup(B_VERTICAL)
+				.AddStrut(B_USE_HALF_ITEM_SPACING)
+				.Add(DoItButton);
 }
 
 

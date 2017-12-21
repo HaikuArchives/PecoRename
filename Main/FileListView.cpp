@@ -28,7 +28,7 @@ FileListView::FileListView()
 	: BColumnListView("fileListView",
 		B_FRAME_EVENTS|B_NAVIGABLE) {
 	int32 i = 0;
-	AddColumn(new BBitmapColumn("Icon", WIDTH_ICON, 10, 600, B_ALIGN_CENTER), i++);
+	AddColumn(new BBitmapColumn("Icon", 16, 16, 16, B_ALIGN_CENTER), i++);
 	AddColumn(new BStringColumn(STR_NAME, WIDTH_NAME, 10, 600, 0), i++);
 	AddColumn(new BSizeColumn(STR_SIZE, WIDTH_SIZE, 10, 600), i++);
 	AddColumn(new BDateColumn(STR_DATE, WIDTH_DATE, 10, 600), i++);
@@ -48,7 +48,7 @@ bool FileListView::InitiateDrag(BPoint where, bool initialySelected) {
 	Select(itemIndex);
 	//BRect r (0, 0, Item->Width(), Item->Height());
 
-	BRect r (0, 0, 100 Item->Width(), Item->Height());
+	BRect r (0, 0, 100, Item->Height());
 	BBitmap *bmp = new BBitmap(r, B_RGB32, true);
 	BView	*ItemView = new BView(r, "",  B_FOLLOW_LEFT|B_FOLLOW_TOP, B_WILL_DRAW);
 
@@ -79,9 +79,9 @@ bool FileListView::InitiateDrag(BPoint where, bool initialySelected) {
 		MakeList();
 		delete Item;
 	}	
+	*/
 
 //	DeselectAll();
-   */
 	return true;
 };
 
