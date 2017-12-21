@@ -25,16 +25,16 @@
 
 Renamer_UpperLower::Renamer_UpperLower() : Renamer() {
 
-	fName 		= REN_UPPERLOWER;
+	fName 		= B_TRANSLATE("Uppercase / lowercase");
 
-	BPopUpMenu	*myMenu = new BPopUpMenu(STR_PLEASE_SELECT);
+	BPopUpMenu	*myMenu = new BPopUpMenu(B_TRANSLATE("Please select"));
 
-	myMenu->AddItem(new BMenuItem(REN_SET_UPPERCASE, new BMessage(MSG_RENAME_SETTINGS)));
-	myMenu->AddItem(new BMenuItem(REN_SET_LOWERCASE, new BMessage(MSG_RENAME_SETTINGS)));
+	myMenu->AddItem(new BMenuItem(B_TRANSLATE("UPPERCASE"), new BMessage(MSG_RENAME_SETTINGS)));
+	myMenu->AddItem(new BMenuItem(B_TRANSLATE("lowercase"), new BMessage(MSG_RENAME_SETTINGS)));
 
 	myMenu->ItemAt(0)->SetMarked(true);
 
-	fUpperOrLower = new BMenuField(NULL, REN_SET_CONVERTTO, myMenu);
+	fUpperOrLower = new BMenuField(NULL, B_TRANSLATE("Convert to"), myMenu);
 
 	BLayoutBuilder::Group<>(this, B_VERTICAL)
 		.SetInsets(B_USE_WINDOW_INSETS)

@@ -27,20 +27,20 @@ Renamer_Numbering::Renamer_Numbering() : Renamer() {
 
 	char *Modi[] = { "1, 2, 3, ...", "01, 02, 03, ...", "001, 002, 003, ...", "0001, 0002, 0003, ..."};
 
-	fName 		= REN_NUMBERING;
+	fName 		= B_TRANSLATE("Numbering");
 
-	BPopUpMenu	*myMenu = new BPopUpMenu(STR_PLEASE_SELECT);
+	BPopUpMenu	*myMenu = new BPopUpMenu(B_TRANSLATE("Please select"));
 	for ( uint32 i = 0; i < sizeof(Modi) / sizeof(char *); i++ )
 		myMenu->AddItem(new BMenuItem(Modi[i], new BMessage(MSG_RENAME_SETTINGS)));
 
 	myMenu->ItemAt(0)->SetMarked(true);
 
-	fFormat = new BMenuField( NULL, REN_SET_FORMAT, myMenu);
+	fFormat = new BMenuField( NULL, B_TRANSLATE("Format:"), myMenu);
 
-	fStartWith = new BTextControl( NULL, REN_SET_STARTWITH, "0", new BMessage(MSG_RENAME_SETTINGS));
+	fStartWith = new BTextControl( NULL, B_TRANSLATE("Start with:"), "0", new BMessage(MSG_RENAME_SETTINGS));
 
-	fTextBefore = new BTextControl( NULL, REN_SET_TEXTBEFORE, NULL, new BMessage(MSG_RENAME_SETTINGS));
-	fTextBehind = new BTextControl( NULL, REN_SET_TEXTBEHIND, NULL, new BMessage(MSG_RENAME_SETTINGS));
+	fTextBefore = new BTextControl( NULL, B_TRANSLATE("Text before:"), NULL, new BMessage(MSG_RENAME_SETTINGS));
+	fTextBehind = new BTextControl( NULL, B_TRANSLATE("Text behind:"), NULL, new BMessage(MSG_RENAME_SETTINGS));
 
 	BLayoutBuilder::Group<>(this, B_HORIZONTAL)
 		.SetInsets(B_USE_WINDOW_INSETS)
