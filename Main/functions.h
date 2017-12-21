@@ -25,10 +25,6 @@
 
 #include "constants.h"
 
-int		SortByName(const void *item1, const void *item2);
-int		SortByDate(const void *item1, const void *item2);
-int		SortBySize(const void *item1, const void *item2);
-BString	ShortenString(BString aString, const float width);
 void	MakeList();
 void	UpdateWindowStatus();
 

@@ -15,14 +15,6 @@
 
 class FileListItem;
 
-class FileListRow : public BRow
-{
-	FileListItem* fItem;
-public:
-	FileListRow(FileListItem* item);
-	FileListItem* Item() const { return fItem; }
-};
-
 class FileListView : public BColumnListView {
 public:
 					FileListView();

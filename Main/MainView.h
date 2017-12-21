@@ -23,7 +23,7 @@ class MainView : public BView {
 					MainView();
 			void	MessageReceived( BMessage* message);
 			void	AttachedToWindow();
-
+			void	FrameResized(float w, float h);
 	private:
 		BCardLayout* fCards;
 		BPopUpMenu* fRenamers;

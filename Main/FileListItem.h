@@ -20,21 +20,17 @@
 
 #include "PecoApp.h"
 
-class FileListItem : public BListItem {
+class FileListItem : public BRow {
 friend	void PecoApp::DoIt();
 friend	bool PecoApp::NothingToDo();
 friend	void PecoApp::CreateScript(BMessage *msg);
-friend	class FileListRow;
 public: 
 					FileListItem( const char *name, int64 size, time_t timer, const entry_ref *ref ); 
 					~FileListItem();
-	virtual void	DrawItem(BView *owner, BRect frame, bool complete = false); 
 	void			SetNewName( BString	myNewName );
 	void 			SetName( BString name );
 	bool			CompareWith(FileListItem *CompareItem);
-	void			SetRow(FileListRow* row) { fRow = row; }
-	FileListRow*	GetRow() const { return fRow; }
-	
+
 	BString			fName;
 	int64			fGroesse;
 	time_t			fZeit;
@@ -43,12 +39,8 @@ public:
 private: 
 	char			fErrorStatus;
 	BBitmap			*fIcon;
-	BString			fListName; 
-	BString			fListGroesse;
-	BString			fListZeit;
 	BString			fNewName;
-	BString			fListNewName;
-	FileListRow*	fRow;
+
 };
 
 #endif

@@ -19,9 +19,9 @@
 
 #include "FileListItem.h"
 
-FileListItem::FileListItem(const char *name, int64 size, time_t timer, const entry_ref *ref) : BListItem(){ 
+FileListItem::FileListItem(const char *name, int64 size, time_t timer, const entry_ref *ref) : BRow(){
 	
-	fRow		= NULL;
+
 	fGroesse 	= size;
 	fZeit		= timer;
 
@@ -37,133 +37,34 @@ FileListItem::FileListItem(const char *name, int64 size, time_t timer, const ent
 	myNodeInfo.GetType((char *)&fMimeType);
 
 	SetName(name);
-	
-	// Größe
-	strstream	Stream;
-	
-	if ( size < 0 ) {
-	
-		Stream << "-";
-		Stream.put(0);
-		
-	} else {
-
-		char*		Einheit;
-		float 		floatsize = size;
-		
-		if ( floatsize > 999 ) { // kB
-			Einheit = "kB";
-			floatsize = floatsize / 1024;
-			if ( floatsize > 9999 ) { // MB
-				Einheit = "MB";
-				floatsize = floatsize / 1024;
-				if ( floatsize > 9999 ) { // GB
-					Einheit = "GB";
-					floatsize = floatsize / 1024;
-					if ( floatsize > 9999 ) { // TB
-						Einheit = "TB";
-						floatsize = floatsize / 1024;
-					}
-				}
-			}
-
-			int Praezision = 2;
-		
-			do {
-				Stream.seekp(0);
-				Stream.setf( ios::fixed );
-		
-				Stream.precision(Praezision);
-		
-				Stream << floatsize << " " << Einheit;
-				Stream.put(0);
-				Praezision--;
-			} while ( (Praezision >= 0) && ( be_plain_font->StringWidth( Stream.str() ) > WIDTH_SIZE - 4 ) );
-
-		} else {
-
-			Stream << floatsize << " bytes";
-			Stream.put(0);
-		}
-	}
-	
-	fListGroesse = ShortenString( BString(Stream.str()), WIDTH_SIZE - 4 );
-
-	// Zeit ausgeben
-	tm		*time = localtime(&timer);
-	char	buf[100];
-	
-	// Auf Ausgabegröße anpassen
-	strftime((char*)&buf, sizeof(buf) - 1, STR_DATE_TIME_SECS_FORMAT, time);
-	if (be_plain_font->StringWidth( (char *)&buf) > WIDTH_DATE - 4 ) {
-		strftime((char*)&buf, sizeof(buf) - 1, STR_DATE_TIME_FORMAT, time);
-		if (be_plain_font->StringWidth( (char *)&buf) > WIDTH_DATE - 4 ) {
-			strftime((char*)&buf, sizeof(buf) - 1, STR_DATE_FORMAT, time);
-		}
-	}
-	
-	fListZeit = ShortenString( BString( buf ), WIDTH_DATE - 4 );
 
 	fErrorStatus = 0;
+
+	int32 i = 0;
+	SetField(new BBitmapField(fIcon), i++);
+	SetField(new BStringField(fName), i++);
+	SetField(new BSizeField(size), i++);
+	SetField(new BDateField(&timer), i++);
+	SetField(new BStringField(fNewName), i++);
+
 }
 
 FileListItem::~FileListItem() {
-	delete fIcon;
-}
-
-void FileListItem::DrawItem(BView *owner, BRect frame, bool complete) {
-
-	if (IsSelected())
-		owner->SetLowColor(200,220,250, 128);
-	else
-		owner->SetLowColor(255,255,255, 128);
-
-	owner->FillRect( frame, B_SOLID_LOW );
-
-	owner->SetDrawingMode(B_OP_OVER);
-	owner->DrawBitmapAsync(fIcon, BPoint(frame.left + 4, frame.top + (frame.Height() - 16) / 2));
-	owner->SetDrawingMode(B_OP_COPY);
-	
-	float left = WIDTH_ICON;
-	
-	// Baseline bestimmen
-	font_height	myFontHeight;
-	be_plain_font->GetHeight(&myFontHeight);
-
-	float	 Baseline = frame.bottom - myFontHeight.descent - ( frame.Height() - be_plain_font->Size() ) / 2 + 1;
-
-	if ( fGroesse == -1) { // Link unterstreichen
-		owner->SetHighColor(127, 127, 127);
-		owner->StrokeLine(BPoint(left, Baseline + myFontHeight.descent), BPoint(left + be_plain_font->StringWidth(fListName.String()) + 2, Baseline + myFontHeight.descent), B_MIXED_COLORS);
-	}
-
-	owner->SetHighColor(0, 0, 0);
-
-	owner->DrawString(fListName.String(), BPoint(left + 2, Baseline ) );
-
-	left += WIDTH_NAME;
-	owner->DrawString(fListGroesse.String(), BPoint(left + WIDTH_SIZE - 2 - owner->StringWidth(fListGroesse.String()), Baseline ) );
-
-	left += WIDTH_SIZE;
-	owner->DrawString(fListZeit.String(), BPoint( left + WIDTH_DATE - 2 - owner->StringWidth(fListZeit.String()), Baseline ) );
-
-	left += WIDTH_DATE;
-	if (fNewName.String() != "") {
-		if (fErrorStatus==1) owner->SetHighColor(255, 0, 0); else owner->SetHighColor(20, 50, 150);
-		owner->DrawString(fListNewName.String(), BPoint( left + 2, Baseline ) );
-	}
+	// TODO delete fIcon;
 }
 
 void FileListItem::SetNewName( BString myNewName ) {
-	if (myNewName == fName) fNewName = ""; else fNewName = myNewName;
-	fListNewName = ShortenString( fNewName, WIDTH_PREVIEW - 4 );
-	if (fRow != NULL)
-		fRow->SetField(new BStringField(fListNewName), 4);
+	if (myNewName == fName)
+		fNewName = "";
+	else
+		fNewName = myNewName;
+
+	SetField(new BStringField(fNewName), 4);
 }
 
 void FileListItem::SetName( BString name ) {
-	fName 		= name;
-	fListName	= ShortenString( BString(name), WIDTH_NAME - 4 );
+	fName = name;
+	SetField(new BStringField(fName), 1);
 }
 
 bool FileListItem::CompareWith(FileListItem *CompareItem) {
