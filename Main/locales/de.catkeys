@@ -1,19 +1,19 @@
 1	English	application/x-vnd.pecora-PecoRename	586651114
 Well...	PecoApp		Äh...
 Errors occurred.	PecoApp		Es sind Fehler aufgetreten.
-About PecoRename	PecoApp		Über...coRename
+About PecoRename	PecoApp		Über...PecoRename
 UPPERCASE	Renamer_UpperLower		GROSSBUCHSTABEN
 Thank you :-)	PecoApp		Dankeschön :-)
 Remove	Renamer_Remove		Entfernen
 I expect some problems with double used file names.\n\nShould I still start with the renaming?	PecoApp		Es wird voraussichtlich Probleme mit doppelt vorhandenen Dateinamen geben.\n\nSoll trotzdem mit dem Umbenennen begonnen werden?
-Uppercase / lowercase:	Renamer_Extension		Groß- REN_UPPERLOWER Kleinschreibung:
+Uppercase / lowercase:	Renamer_Extension		Groß- & Kleinschreibung:
 Ok	Fenster		Ok
 from the back (right)	Renamer_InsertReplace		von hinten (rechts)
-Continue without messages	PecoApp		Fortfahren_WO_MSG
+Continue without messages	PecoApp		Ohne Meldungen fortfahren
 Status: 	functions		Status: 
 At position:	Renamer_InsertReplace		An Position:
 Mode:	MainView		Modus:
-Uppercase / lowercase	Renamer_UpperLower		Groß- REN_UPPERLOWER Kleinschreibung
+Uppercase / lowercase	Renamer_UpperLower		Groß- & Kleinschreibung
 Default	Renamer_Extension		Vorgabe
 to position	Renamer_Remove		bis Position
 I've marked the files that caused the errors in red!	PecoApp		Ich habe die Dateien, die Fehler verursacht haben, rot markiert!

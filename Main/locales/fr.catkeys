@@ -1,7 +1,7 @@
 1	English	application/x-vnd.pecora-PecoRename	586651114
 Well...	PecoApp		Oups...
 Errors occurred.	PecoApp		Erreurs détectées.
-About PecoRename	PecoApp		A propos...coRename
+About PecoRename	PecoApp		A propos...PecoRename
 UPPERCASE	Renamer_UpperLower		MAJUSCULE
 Thank you :-)	PecoApp		Merci :-)
 Remove	Renamer_Remove		Supprimer
@@ -9,7 +9,7 @@ I expect some problems with double used file names.\n\nShould I still start with
 Uppercase / lowercase:	Renamer_Extension		Majuscule / Minuscule:
 Ok	Fenster		Ok
 from the back (right)	Renamer_InsertReplace		en fin (à droite)
-Continue without messages	PecoApp		Continuer_WO_MSG
+Continue without messages	PecoApp		Continuer sans messages
 Status: 	functions		Status : 
 At position:	Renamer_InsertReplace		Position :
 Mode:	MainView		Mode:
