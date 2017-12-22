@@ -11,6 +11,7 @@
 #include "Renamer_SearchReplace.h"
 
 #include <Alert.h>
+#include <Catalog.h>
 #include <CheckBox.h>
 #include <LayoutBuilder.h>
 #include <regex.h>
@@ -21,6 +22,9 @@
 #include "constants.h"
 #include "FileListItem.h"
 #include "functions.h"
+
+#undef B_TRANSLATION_CONTEXT
+#define B_TRANSLATION_CONTEXT "Renamer_SearchReplace"
 
 // TODO: this effectively turns off this replace mode, and should be fixed instead
 #undef __INTEL__

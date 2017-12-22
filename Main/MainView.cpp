@@ -9,6 +9,7 @@
  */
 
 #include <Alert.h>
+#include <Catalog.h>
 #include <Rect.h>
 #include <Button.h>
 #include <Font.h>
@@ -27,6 +28,9 @@
 #include "functions.h"
 
 #include "MainView.h"
+
+#undef B_TRANSLATION_CONTEXT
+#define B_TRANSLATION_CONTEXT "MainView"
 
 MainView::MainView() : BView ("mainView",  B_FRAME_EVENTS | B_WILL_DRAW) {
 

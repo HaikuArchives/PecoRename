@@ -7,7 +7,8 @@
  * Original Author:
  *              Werner Freytag <freytag@gmx.de>
  */
-
+ 
+#include <Catalog.h>
 #include <Mime.h>
 #include <PopUpMenu.h>
 #include <MenuItem.h>
@@ -18,6 +19,9 @@
 #include "functions.h"
 #include "PecoApp.h"
 #include "Renamer_Extension.h"
+
+#undef B_TRANSLATION_CONTEXT
+#define B_TRANSLATION_CONTEXT "Renamer_Extension"
 
 // Maximale Länge einer FileExtension
 #define MAX_EXTENSION_LENGTH 5

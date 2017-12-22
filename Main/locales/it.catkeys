@@ -1,0 +1,92 @@
+1	Italian	application/x-vnd.pecora-PecoRename	586651114
+Well...	PecoApp		Bene...
+An error has occurred:\nEither the help file is missing, or an HTML browser can not be found.	Fenster		Si è verificato un errore:\nNon riesco a trovare il file della guida, oppure non posso trovare un browser HTML.
+Errors occurred.	PecoApp		Si sono verificati errori.
+About PecoRename	PecoApp		Informazioni...coRename
+UPPERCASE	Renamer_UpperLower		MAIUSCOLO
+Thank you :-)	PecoApp		Grazie :-)
+Remove	Renamer_Remove		Rimuovi
+Uppercase / lowercase:	Renamer_Extension		Maiuscolo / minuscolo:
+I'm sorry, but I can't rename files from different directories.\n\nOnly the files in the first found directory will be imported!	PecoApp		Spiacente, ma non posso rinominare files da cartelle diverse.\n\nSoltanto i files nella prima cartella trovata saranno importati!
+Do you really want to rename these files?\nThis could probably lead to problems!\n\nIf you click on 'Continue', the files will be renamed AT YOUR OWN RISK!	PecoApp		Si desidera rinominare il file?\nQuesto potrebbe generare degli errori!\n\nSe si clicca su 'Continua', i files verranno rinominati a VOSTRO RISCHIO!
+Ok	Fenster		Ok
+from the back (right)	Renamer_InsertReplace		dalla fine (destra)
+Continue without messages	PecoApp		Continua senza messaggi
+Status: 	functions		Stato: 
+At position:	Renamer_InsertReplace		Nella posizione:
+Mode:	MainView		Modo:
+Uppercase / lowercase	Renamer_UpperLower		Maiuscolo / minuscolo
+I expect some problems with double used file names.\n\nShould I still start with the renaming?	PecoApp		Mi aspetto qualche problema con i nomi usati due volte.\n\nAvvio ugualmente il processo?
+Default	Renamer_Extension		Default
+to position	Renamer_Remove		alla posizione
+I've marked the files that caused the errors in red!	PecoApp		Ho segnato in rosso i files che hanno generato un errore!
+Text before:	Renamer_Numbering		Testo prima:
+Format:	Renamer_Numbering		Formato:
+Please select	Renamer_Numbering		Seleziona
+lowercase	Renamer_UpperLower		minuscolo
+Select files...	Fenster		Seleziona files...
+...and rename them!	MainView		...e rinominali!
+Insert or replace:	Renamer_InsertReplace		Inserisci o sostituisci:
+Please select...	MainView		Seleziona...
+Search and replace	Renamer_SearchReplace		Cerca e sostituisci
+Modified	FileListView		Modificato
+Create shell script...	Fenster		Crea script per la shell...
+Release 1.5	PecoApp		Release 1.5
+Please select	Renamer_InsertReplace		Seleziona
+from the back (right)	Renamer_Remove		dalla fine (destra)
+Continue	PecoApp		Continua
+from the front (left)	Renamer_InsertReplace		dall'inizio (sinistra)
+Select your files and directories...	MainView		Seleziona i files e le cartelle...
+Please select files!	functions		Seleziona i files!
+Cancel	PecoApp		Annulla
+A problem occurred when renaming '%1' to '%2'.\n\nDo you want to cancel, continue or continue without getting any further error messages?	PecoApp		Si è verificato un problema rinominando '%1' in '%2'.\n\nSi desidera annullare, continuare oppure continuare senza ricevere ulteriori messaggi di errore?
+Let's do it!	MainView		Si parte!
+About...	Fenster		Informazioni...
+Ok	PecoApp		Ok
+Select	PecoApp		Seleziona
+Please select files!	MainView		Seleziona i files!
+This software is freeware.	PecoApp		Questo programma è freeware.
+Find pattern:	Renamer_SearchReplace		Trova pattern:
+Create shell script...	functions		Crea script per la shell...
+lowercase	Renamer_Extension		minuscolo
+Creating preview...	functions		Creazione anteprima...
+documentation/index.html	Fenster		documentation/index.html
+Status: 	PecoApp		Stato: 
+New	Fenster		Nuovo
+Renaming...	PecoApp		Ridenominazione...
+Preview	FileListView		Anteprima
+Quit	Fenster		Esci
+Numbering	Renamer_Numbering		Numerazione
+Convert to	Renamer_UpperLower		Converti in
+PecoRename	System name		PecoRename
+Sorting...	functions		Ordinamento...
+Replace old extension	Renamer_Extension		Sostituisci la vecchia estensione
+Case sensitive	Renamer_SearchReplace		Considera maiuscole/minuscole
+Please select	Renamer_Remove		Seleziona
+Replace with	Renamer_InsertReplace		sostituisci con
+Name	FileListView		Nome
+Importing...	PecoApp		Importazione...
+Create shell script...	PecoApp		Crea script per la shell...
+Insert	Renamer_InsertReplace		Inserisci
+Remove characters from position	Renamer_Remove		Rimuovi i caratteri dalla posizione
+Select files for renaming	PecoApp		Seleziona i files da rinominare
+Status: 	MainView		Stato: 
+File	Fenster		File
+Path:	MainView		Percorso:
+Awaiting your instructions... :-)	functions		Aspetto istruzioni... :-)
+UPPERCASE	Renamer_Extension		MAIUSCOLO
+What shall I do?	PecoApp		Che faccio?
+Tools	Fenster		Strumenti
+Insert / replace	Renamer_InsertReplace		Inserisci / sostituisci
+Please select	Renamer_UpperLower		Seleziona
+Text:	Renamer_InsertReplace		Testo:
+from the front (left)	Renamer_Remove		dall'inizio (sinistra)
+Text behind:	Renamer_Numbering		Testo dopo:
+Start with:	Renamer_Numbering		Comincia con:
+Copyright ©2000 by Werner Freytag	PecoApp		Copyright ©2000 by Werner Freytag
+Special thanks to Sci for his help with the English translation!	PecoApp		Grazie a Gian Davide per la traduzione italiana!
+Replace with:	Renamer_SearchReplace		Sostituisci con:
+Size	FileListView		Dimensioni
+Add file extension	Renamer_Extension		Aggiungi l'estensione al file
+Please select	Renamer_Extension		Seleziona
+Are there any problems?	functions		Ci sono problemi?

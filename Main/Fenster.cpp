@@ -12,6 +12,7 @@
 #include <Application.h>
 #include <Box.h>
 #include <Button.h>
+#include <Catalog.h>
 #include <Font.h>
 #include <LayoutBuilder.h>
 #include <Menu.h>
@@ -30,7 +31,11 @@
 #include "Fenster.h"
 #include "MainView.h"
 
-Fenster::Fenster() : BWindow( BRect( 20, 40, 620, 460), "PecoRename", B_TITLED_WINDOW, B_AUTO_UPDATE_SIZE_LIMITS){
+#undef B_TRANSLATION_CONTEXT
+#define B_TRANSLATION_CONTEXT "Fenster"
+
+Fenster::Fenster() : BWindow( BRect( 20, 40, 620, 460), B_TRANSLATE_SYSTEM_NAME("PecoRename"),
+	B_TITLED_WINDOW, B_AUTO_UPDATE_SIZE_LIMITS){
 // Menü
 	BMenuBar* MenuBar = new BMenuBar( "MenuBar" );
 
@@ -80,7 +85,7 @@ void Fenster::Help() {
 	BMimeType(Signatur).GetAppHint(&ref);
 	
 	if ( (BPath(&ref).Path()==NULL) || (!BEntry(HelpFilePath.Path()).Exists()) ) {
-		BAlert*	myAlert = new BAlert(NULL, B_TRANSLATE("An error has occurred:nEither the help file is missing, or an HTML browser can not be found."), B_TRANSLATE("Ok"));
+		BAlert*	myAlert = new BAlert(NULL, B_TRANSLATE("An error has occurred:\nEither the help file is missing, or an HTML browser can not be found."), B_TRANSLATE("Ok"));
 		myAlert->Go(); return;
 	}
 	

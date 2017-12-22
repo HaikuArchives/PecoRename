@@ -7,7 +7,7 @@
  * Original Author:
  *              Werner Freytag <freytag@gmx.de>
  */
-
+#include <Catalog.h>
 #include <FindDirectory.h>
 #include <MenuBar.h>
 #include <MenuItem.h>
@@ -16,6 +16,9 @@
 
 #include "constants.h"
 #include "functions.h"
+
+#undef B_TRANSLATION_CONTEXT
+#define B_TRANSLATION_CONTEXT "functions"
 
 #define PREFS_FILENAME "PecoRename_settings"
 

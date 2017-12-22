@@ -13,6 +13,7 @@
 #include <Alert.h>
 #include <Application.h>
 #include <Bitmap.h>
+#include <Catalog.h>
 #include <ListView.h>
 #include <MenuField.h>
 #include <MenuItem.h>
@@ -35,6 +36,10 @@
 #include "Renamer_InsertReplace.h"
 #include "Renamer_UpperLower.h"
 #include "Renamer_Remove.h"
+
+
+#undef B_TRANSLATION_CONTEXT
+#define B_TRANSLATION_CONTEXT "PecoApp"
 
 PecoApp::PecoApp() : BApplication("application/x-vnd.pecora-PecoRename") {
 
@@ -163,7 +168,7 @@ void PecoApp::RefsReceived ( BMessage* msg ) {
 			
 			if ( (strcmp( fPfad.Path(), newPath.Path() ) != 0 ) ) {
 				if ( didntshow_msgmultidir ) {
-					BAlert*	myAlert = new BAlert(NULL, B_TRANSLATE("I'm sorry, but I can't rename files from different directories.nnOnly the files in the first found directory will be imported!"), B_TRANSLATE("Ok"));
+					BAlert*	myAlert = new BAlert(NULL, B_TRANSLATE("I'm sorry, but I can't rename files from different directories.\n\nOnly the files in the first found directory will be imported!"), B_TRANSLATE("Ok"));
 					myAlert->Go();
 					didntshow_msgmultidir = false;
 				}
@@ -298,12 +303,12 @@ void PecoApp::DoIt() {
 	
 	FileListItem	*ListItem;
 	
-	BAlert	*myAlert	= new BAlert(NULL, B_TRANSLATE("Do you really want to rename these files?nThis could probably lead to problems!nnIf you click on 'Continue', the files will be renamed AT YOUR OWN RISK!"), B_TRANSLATE("Continue"), B_TRANSLATE("Cancel"));
+	BAlert	*myAlert	= new BAlert(NULL, B_TRANSLATE("Do you really want to rename these files?\nThis could probably lead to problems!\n\nIf you click on 'Continue', the files will be renamed AT YOUR OWN RISK!"), B_TRANSLATE("Continue"), B_TRANSLATE("Cancel"));
 	if (myAlert->Go() == 1) return;
 
 	for (int32 i = 0; (ListItem = (FileListItem *)fListView->ItemAt(i)) != NULL; i++ ) {
 		if (ListItem->fErrorStatus == 1 ) {
-			BAlert	*myAlert	= new BAlert(NULL, B_TRANSLATE("I expect some problems with double ufile names.nnShould I still start with the renaming?"), B_TRANSLATE("Continue"), B_TRANSLATE("Cancel"));
+			BAlert	*myAlert	= new BAlert(NULL, B_TRANSLATE("I expect some problems with double used file names.\n\nShould I still start with the renaming?"), B_TRANSLATE("Continue"), B_TRANSLATE("Cancel"));
 			if (myAlert->Go() == 1) return;
 			break;
 		}
@@ -343,7 +348,7 @@ void PecoApp::DoIt() {
 				if (!nomoreerrors) {
 					noerror = false;
 
-					BString		ErrorMessage(B_TRANSLATE("A problem occurred when renaming '%1' to '%2'.nnDo you want to cancel, continue or continue without getting any further error messages?"));
+					BString		ErrorMessage(B_TRANSLATE("A problem occurred when renaming '%1' to '%2'.\n\nDo you want to cancel, continue or continue without getting any further error messages?"));
 					ErrorMessage.ReplaceFirst("%1", ListItem->fName.String());
 					ErrorMessage.ReplaceFirst("%2", ListItem->fNewName.String());
 					
@@ -376,7 +381,7 @@ void PecoApp::DoIt() {
 	else {
 		fStatusBar->SetText(B_TRANSLATE("Errors occurred."));
 
-		BAlert	*myAlert	= new BAlert(NULL, B_TRANSLATE("I've marked the files that cauthe errors in red!"), B_TRANSLATE("Ok"));
+		BAlert	*myAlert	= new BAlert(NULL, B_TRANSLATE("I've marked the files that caused the errors in red!"), B_TRANSLATE("Ok"));
 		myAlert->Go();
 	}
 	

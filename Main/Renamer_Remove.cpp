@@ -11,6 +11,7 @@
 #include <strstream.h>
 
 #include <Alert.h>
+#include <Catalog.h>
 #include <PopUpMenu.h>
 #include <MenuItem.h>
 #include <Beep.h>
@@ -23,6 +24,10 @@
 
 #include "FileListItem.h"
 #include "Renamer_Remove.h"
+
+#undef B_TRANSLATION_CONTEXT
+#define B_TRANSLATION_CONTEXT "Renamer_Remove"
+
 
 Renamer_Remove::Renamer_Remove() : Renamer() {
 

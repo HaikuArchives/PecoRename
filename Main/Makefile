@@ -66,7 +66,7 @@ RSRCS=
 #		naming scheme you need to specify the path to the library
 #		and it's name
 #		library: my_lib.a entry: my_lib.a or path/my_lib.a
-LIBS= /boot/system/lib/libbe.so /boot/system/lib/libstdc++.r4.so /boot/system/lib/libtextencoding.so /boot/system/lib/libtracker.so columnlistview
+LIBS= /boot/system/lib/libbe.so /boot/system/lib/libstdc++.r4.so /boot/system/lib/libtextencoding.so /boot/system/lib/libtracker.so columnlistview localestub
 
 #	specify additional paths to directories following the standard
 #	libXXX.so or libXXX.a naming scheme.  You can specify full paths
@@ -96,7 +96,7 @@ OPTIMIZE= FULL
 # 	locales/en.catkeys file. Use it as template for creating other
 # 	languages catkeys. All localization files must be placed
 # 	in "locales" sub-directory.
-LOCALES=
+LOCALES= en fr de it
 
 #	specify any preprocessor symbols to be defined.  The symbols will not
 #	have their values set automatically; you must supply the value (if any)
@@ -119,7 +119,7 @@ SYMBOLS =
 #	specify debug settings
 #	if TRUE will allow application to be run from a source-level
 #	debugger.  Note that this will disable all optimzation.
-DEBUGGER = 
+DEBUGGER =
 
 #	specify additional compiler flags for all files
 COMPILER_FLAGS= -Woverloaded-virtual -funsigned-bitfields -Wwrite-strings 

@@ -9,6 +9,7 @@
  */
 
 #include <Bitmap.h>
+#include <Catalog.h>
 #include <ColumnTypes.h>
 #include <MenuItem.h>
 #include <PopUpMenu.h>
@@ -22,6 +23,9 @@
 #include "FileListView.h"
 #include "FileListItem.h"
 #include "PecoApp.h"
+
+#undef B_TRANSLATION_CONTEXT
+#define B_TRANSLATION_CONTEXT "FileListView"
 
 
 FileListView::FileListView()
