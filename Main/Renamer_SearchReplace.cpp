@@ -11,6 +11,7 @@
 #include "Renamer_SearchReplace.h"
 
 #include <Alert.h>
+#include <Catalog.h>
 #include <CheckBox.h>
 #include <LayoutBuilder.h>
 #include <regex.h>
@@ -21,6 +22,9 @@
 #include "constants.h"
 #include "FileListItem.h"
 #include "functions.h"
+
+#undef B_TRANSLATION_CONTEXT
+#define B_TRANSLATION_CONTEXT "Renamer_SearchReplace"
 
 // TODO: this effectively turns off this replace mode, and should be fixed instead
 #undef __INTEL__
@@ -36,16 +40,16 @@
 Renamer_SearchReplace::Renamer_SearchReplace()
 :	Renamer() {
 
-	fName 		= REN_SEARCH_REPLACE;
+	fName 		= B_TRANSLATE("Search and replace");
 
-	MatchCase = new BCheckBox( NULL, REN_SET_MATCHCASE, new BMessage(MSG_RENAME_SETTINGS));
+	MatchCase = new BCheckBox( NULL, B_TRANSLATE("Case sensitive"), new BMessage(MSG_RENAME_SETTINGS));
 
 #if __INTEL__
-	RegEx = new BCheckBox( REN_SET_REGEX, new BMessage(MSG_RENAME_SETTINGS));
+	RegEx = new BCheckBox( B_TRANSLATE("Regular expression"), new BMessage(MSG_RENAME_SETTINGS));
 #endif
 
-	SearchFor = new BTextControl( REN_SET_SEARCHPATTERN, NULL, new BMessage(MSG_RENAME_SETTINGS));
-	ReplaceWith = new BTextControl( NULL, REN_SET_REPLACESTRING, NULL, new BMessage(MSG_RENAME_SETTINGS));
+	SearchFor = new BTextControl( B_TRANSLATE("Find pattern:"), NULL, new BMessage(MSG_RENAME_SETTINGS));
+	ReplaceWith = new BTextControl( NULL, B_TRANSLATE("Replace with:"), NULL, new BMessage(MSG_RENAME_SETTINGS));
 
 	BLayoutBuilder::Group<>(this, B_VERTICAL)
 		.SetInsets(B_USE_WINDOW_INSETS)

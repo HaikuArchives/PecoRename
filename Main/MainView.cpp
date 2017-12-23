@@ -9,6 +9,7 @@
  */
 
 #include <Alert.h>
+#include <Catalog.h>
 #include <Rect.h>
 #include <Button.h>
 #include <Font.h>
@@ -28,13 +29,16 @@
 
 #include "MainView.h"
 
+#undef B_TRANSLATION_CONTEXT
+#define B_TRANSLATION_CONTEXT "MainView"
+
 MainView::MainView() : BView ("mainView",  B_FRAME_EVENTS | B_WILL_DRAW) {
 
 	SetViewUIColor(B_PANEL_BACKGROUND_COLOR);
 
-	BButton* ChooseButton = new BButton("selectFiles", STR_PLEASE_CHOOSE,
+	BButton* ChooseButton = new BButton("selectFiles", B_TRANSLATE("Please select..."),
 		new BMessage(MSG_SELECT_FILES));
-	BTextControl* PathControl = new BTextControl("pfadView", STR_PATH, "", NULL);
+	BTextControl* PathControl = new BTextControl("pfadView", B_TRANSLATE("Path:"), "", NULL);
 
 	FileListView* aFileView = new FileListView();
 
@@ -47,7 +51,7 @@ MainView::MainView() : BView ("mainView",  B_FRAME_EVENTS | B_WILL_DRAW) {
 		.Add(aFileView);
 
 	BBox* top = new BBox("top");
-	top->SetLabel(STR_TOPVIEW_TITLE);
+	top->SetLabel(B_TRANSLATE("Select your files and directories..."));
 	top->AddChild(topBox->View());
 
 	BMessage prefs;
@@ -72,9 +76,9 @@ MainView::MainView() : BView ("mainView",  B_FRAME_EVENTS | B_WILL_DRAW) {
 	((PecoApp *)be_app)->fRenameMode = 0;
 	fCards->SetVisibleItem((int32)0);
 
-	BStringView* title = new BStringView("", STR_BOTTOMVIEW_TITLE);
+	BStringView* title = new BStringView("", B_TRANSLATE("...and rename them!"));
 	title->SetFont(be_bold_font);
-	BMenuField* Field = new BMenuField( "selectMode", STR_MODE, fRenamers);
+	BMenuField* Field = new BMenuField( "selectMode", B_TRANSLATE("Mode:"), fRenamers);
 
 	BGroupLayout* compoundTitle = BLayoutBuilder::Group<>(B_HORIZONTAL)
 		.Add(title)
@@ -85,11 +89,11 @@ MainView::MainView() : BView ("mainView",  B_FRAME_EVENTS | B_WILL_DRAW) {
 	bottom->AddChild(cards);
 
 	// StatusBar
-	BStatusBar*	statusBar	= new BStatusBar( "statusBar", STATUS_STATUS, NULL);
-	statusBar->SetText(STATUS_SELECT_FILES);
+	BStatusBar*	statusBar	= new BStatusBar( "statusBar", B_TRANSLATE("Status: "), NULL);
+	statusBar->SetText(B_TRANSLATE("Please select files!"));
 
 	// Do it! - Button
-	BButton* DoItButton = new BButton( "DoIt", STR_DO_IT, new BMessage(MSG_DO_IT));
+	BButton* DoItButton = new BButton( "DoIt", B_TRANSLATE("Let's do it!"), new BMessage(MSG_DO_IT));
 	DoItButton->SetEnabled(false);
 
 	BLayoutBuilder::Group<>(this, B_VERTICAL)

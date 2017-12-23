@@ -12,6 +12,7 @@
 #include <Application.h>
 #include <Box.h>
 #include <Button.h>
+#include <Catalog.h>
 #include <Font.h>
 #include <LayoutBuilder.h>
 #include <Menu.h>
@@ -30,31 +31,35 @@
 #include "Fenster.h"
 #include "MainView.h"
 
-Fenster::Fenster() : BWindow( BRect( 20, 40, 620, 460), "PecoRename", B_TITLED_WINDOW, B_AUTO_UPDATE_SIZE_LIMITS){
+#undef B_TRANSLATION_CONTEXT
+#define B_TRANSLATION_CONTEXT "Fenster"
+
+Fenster::Fenster() : BWindow( BRect( 20, 40, 620, 460), B_TRANSLATE_SYSTEM_NAME("PecoRename"),
+	B_TITLED_WINDOW, B_AUTO_UPDATE_SIZE_LIMITS){
 // Menü
 	BMenuBar* MenuBar = new BMenuBar( "MenuBar" );
 
 	BMenu* Menu;
 
-	Menu = new BMenu(STR_MENU_FILE);
+	Menu = new BMenu(B_TRANSLATE("File"));
 	MenuBar->AddItem(Menu);
 
-	Menu->AddItem(new BMenuItem(STR_MENU_NEW, 				new BMessage(MSG_MENU_NEW), 'N'));
-	Menu->AddItem(new BMenuItem(STR_MENU_OPEN, 				new BMessage(MSG_SELECT_FILES), 'O'));
+	Menu->AddItem(new BMenuItem(B_TRANSLATE("New"), 				new BMessage(MSG_MENU_NEW), 'N'));
+	Menu->AddItem(new BMenuItem(B_TRANSLATE("Select files..."), 				new BMessage(MSG_SELECT_FILES), 'O'));
 	Menu->AddSeparatorItem();
-	Menu->AddItem(new BMenuItem(STR_MENU_ABOUT, 			new BMessage(B_ABOUT_REQUESTED)));
+	Menu->AddItem(new BMenuItem(B_TRANSLATE("About..."), 			new BMessage(B_ABOUT_REQUESTED)));
 	Menu->AddSeparatorItem();
-	Menu->AddItem(new BMenuItem(STR_MENU_QUIT, 				new BMessage(B_QUIT_REQUESTED), 'Q'));
+	Menu->AddItem(new BMenuItem(B_TRANSLATE("Quit"), 				new BMessage(B_QUIT_REQUESTED), 'Q'));
 
-	Menu = new BMenu(STR_MENU_TOOLS);
+	Menu = new BMenu(B_TRANSLATE("Tools"));
 	MenuBar->AddItem(Menu);
 
-	Menu->AddItem(new BMenuItem(STR_MENU_CREATE_SCRIPT, 	new BMessage(MSG_MENU_SCRIPT)));
+	Menu->AddItem(new BMenuItem(B_TRANSLATE("Create shell script..."), 	new BMessage(MSG_MENU_SCRIPT)));
 
-//	Menu = new BMenu(STR_MENU_HELP);
+//	Menu = new BMenu(B_TRANSLATE("Help"));
 //	MenuBar->AddItem(Menu);
 
-//	Menu->AddItem(new BMenuItem(STR_MENU_DOCU, new BMessage(MSG_MENU_DOCU)));
+//	Menu->AddItem(new BMenuItem(B_TRANSLATE("Documentation"), new BMessage(MSG_MENU_DOCU)));
 
 	MainView* mainView = new MainView();
 
@@ -71,7 +76,7 @@ void Fenster::Help() {
 	
 	BPath	HelpFilePath;
 	BPath(&myAppInfo.ref).GetParent(&HelpFilePath);
-	HelpFilePath.Append(HELP_FILE);
+	HelpFilePath.Append(B_TRANSLATE("documentation/index.html"));
 	
 	entry_ref	ref;
 	char		Signatur[B_MIME_TYPE_LENGTH];
@@ -80,7 +85,7 @@ void Fenster::Help() {
 	BMimeType(Signatur).GetAppHint(&ref);
 	
 	if ( (BPath(&ref).Path()==NULL) || (!BEntry(HelpFilePath.Path()).Exists()) ) {
-		BAlert*	myAlert = new BAlert(NULL, MESSAGE_NOHELP, STR_OK);
+		BAlert*	myAlert = new BAlert(NULL, B_TRANSLATE("An error has occurred:\nEither the help file is missing, or an HTML browser can not be found."), B_TRANSLATE("Ok"));
 		myAlert->Go(); return;
 	}
 	

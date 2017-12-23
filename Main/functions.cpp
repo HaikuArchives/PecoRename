@@ -7,7 +7,7 @@
  * Original Author:
  *              Werner Freytag <freytag@gmx.de>
  */
-
+#include <Catalog.h>
 #include <FindDirectory.h>
 #include <MenuBar.h>
 #include <MenuItem.h>
@@ -17,13 +17,16 @@
 #include "constants.h"
 #include "functions.h"
 
+#undef B_TRANSLATION_CONTEXT
+#define B_TRANSLATION_CONTEXT "functions"
+
 #define PREFS_FILENAME "PecoRename_settings"
 
 void MakeList() {
 	BList		*FileList = ((PecoApp *)be_app)->fList;
 
 	((PecoApp *)be_app)->fWindow->Lock();
-	((PecoApp *)be_app)->fStatusBar->SetText(STATUS_SORTING);
+	((PecoApp *)be_app)->fStatusBar->SetText(B_TRANSLATE("Sorting..."));
 // Keep the code below until sortings by BColumnListView is fully tested.
 #if 0
 	do {
@@ -34,15 +37,15 @@ void MakeList() {
 		((PecoApp *)be_app)->fListView->SortItems(SortBySize); FileList->SortItems(SortBySize);
 	} while (false);
 #endif
-	((PecoApp *)be_app)->fStatusBar->SetText(STATUS_PREVIEW);
+	((PecoApp *)be_app)->fStatusBar->SetText(B_TRANSLATE("Creating preview..."));
 
 	((PecoApp *)be_app)->fRenamers[((PecoApp *)be_app)->fRenameMode]->RenameList(FileList);
 
 	// Auf Duplikate überprüfen und markieren
-	((PecoApp *)be_app)->fStatusBar->SetText(STATUS_CHECKDUPS);
+	((PecoApp *)be_app)->fStatusBar->SetText(B_TRANSLATE("Are there any problems?"));
 	FileListItem	*ListItem;
 
-	((PecoApp *)be_app)->fStatusBar->Reset(STATUS_STATUS);
+	((PecoApp *)be_app)->fStatusBar->Reset(B_TRANSLATE("Status: "));
 
 	((PecoApp *)be_app)->fWindow->Unlock();
 	UpdateWindowStatus();
@@ -53,18 +56,18 @@ void UpdateWindowStatus() {
 	BButton		*okButton = (BButton *)((PecoApp *)be_app)->fWindow->FindView("DoIt");
 	((PecoApp *)be_app)->fWindow->Lock();
 
-	BMenuItem	*scriptMenu = (BMenuItem *)((PecoApp *)be_app)->fWindow->KeyMenuBar()->FindItem(STR_MENU_CREATE_SCRIPT);
+	BMenuItem	*scriptMenu = (BMenuItem *)((PecoApp *)be_app)->fWindow->KeyMenuBar()->FindItem(B_TRANSLATE("Create shell script..."));
 
 	bool isenabled = false; // Is Ok-Button enabled?
 
 	do {
 		if (((PecoApp *)be_app)->fList->IsEmpty()) {
-			((PecoApp *)be_app)->fStatusBar->SetText(STATUS_SELECT_FILES);
+			((PecoApp *)be_app)->fStatusBar->SetText(B_TRANSLATE("Please select files!"));
 			break;
 		}
 		// else:
 		isenabled = true;
-		((PecoApp *)be_app)->fStatusBar->SetText(STATUS_WAITING);
+		((PecoApp *)be_app)->fStatusBar->SetText(B_TRANSLATE("Awaiting your instructions... :-)"));
 	} while (false);
 
 	okButton->SetEnabled(isenabled);

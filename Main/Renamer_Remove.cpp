@@ -11,6 +11,7 @@
 #include <strstream.h>
 
 #include <Alert.h>
+#include <Catalog.h>
 #include <PopUpMenu.h>
 #include <MenuItem.h>
 #include <Beep.h>
@@ -24,26 +25,30 @@
 #include "FileListItem.h"
 #include "Renamer_Remove.h"
 
+#undef B_TRANSLATION_CONTEXT
+#define B_TRANSLATION_CONTEXT "Renamer_Remove"
+
+
 Renamer_Remove::Renamer_Remove() : Renamer() {
 
-	fName 		= REN_REMOVE;
+	fName 		= B_TRANSLATE("Remove");
 
-	fPosition1 = new BTextControl( NULL, REN_SET_FROMPOS, "0", new BMessage(MSG_RENAME_SETTINGS));
+	fPosition1 = new BTextControl( NULL, B_TRANSLATE("Remove characters from position"), "0", new BMessage(MSG_RENAME_SETTINGS));
 
 	BPopUpMenu	*myMenu;
-	myMenu = new BPopUpMenu(STR_PLEASE_SELECT);
-	myMenu->AddItem(new BMenuItem(REN_SET_FROMLEFT, new BMessage(MSG_RENAME_SETTINGS)));
-	myMenu->AddItem(new BMenuItem(REN_SET_FROMRIGHT, new BMessage(MSG_RENAME_SETTINGS)));
+	myMenu = new BPopUpMenu(B_TRANSLATE("Please select"));
+	myMenu->AddItem(new BMenuItem(B_TRANSLATE("from the front (left)"), new BMessage(MSG_RENAME_SETTINGS)));
+	myMenu->AddItem(new BMenuItem(B_TRANSLATE("from the back (right)"), new BMessage(MSG_RENAME_SETTINGS)));
 
 	myMenu->ItemAt(0)->SetMarked(true);
 
 	fDirection1 = new BMenuField( NULL, NULL, myMenu);
 
-	fPosition2 = new BTextControl( NULL, REN_SET_TOPOS, "0", new BMessage(MSG_RENAME_SETTINGS));
+	fPosition2 = new BTextControl( NULL, B_TRANSLATE("to position"), "0", new BMessage(MSG_RENAME_SETTINGS));
 
-	myMenu = new BPopUpMenu(STR_PLEASE_SELECT);
-	myMenu->AddItem(new BMenuItem(REN_SET_FROMLEFT, new BMessage(MSG_RENAME_SETTINGS)));
-	myMenu->AddItem(new BMenuItem(REN_SET_FROMRIGHT, new BMessage(MSG_RENAME_SETTINGS)));
+	myMenu = new BPopUpMenu(B_TRANSLATE("Please select"));
+	myMenu->AddItem(new BMenuItem(B_TRANSLATE("from the front (left)"), new BMessage(MSG_RENAME_SETTINGS)));
+	myMenu->AddItem(new BMenuItem(B_TRANSLATE("from the back (right)"), new BMessage(MSG_RENAME_SETTINGS)));
 
 	myMenu->ItemAt(0)->SetMarked(true);
 

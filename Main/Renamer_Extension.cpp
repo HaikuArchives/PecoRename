@@ -7,7 +7,8 @@
  * Original Author:
  *              Werner Freytag <freytag@gmx.de>
  */
-
+ 
+#include <Catalog.h>
 #include <Mime.h>
 #include <PopUpMenu.h>
 #include <MenuItem.h>
@@ -19,22 +20,25 @@
 #include "PecoApp.h"
 #include "Renamer_Extension.h"
 
+#undef B_TRANSLATION_CONTEXT
+#define B_TRANSLATION_CONTEXT "Renamer_Extension"
+
 // Maximale Länge einer FileExtension
 #define MAX_EXTENSION_LENGTH 5
 
 Renamer_Extension::Renamer_Extension() : Renamer() {
-	fName 		= REN_EXTENSION;
+	fName 		= B_TRANSLATE("Add file extension");
 
-	fReplaceOldCheckBox = new BCheckBox(NULL, REN_SET_EXT_REPLACE_OLD, new BMessage(MSG_RENAME_SETTINGS));
+	fReplaceOldCheckBox = new BCheckBox(NULL, B_TRANSLATE("Replace old extension"), new BMessage(MSG_RENAME_SETTINGS));
 
-	BPopUpMenu	*myMenu = new BPopUpMenu(STR_PLEASE_SELECT);
+	BPopUpMenu	*myMenu = new BPopUpMenu(B_TRANSLATE("Please select"));
 
 	BMenuItem	*MenuItem;
-	myMenu->AddItem(MenuItem = new BMenuItem(REN_SET_DEFAULT, new BMessage(MSG_RENAME_SETTINGS)));
+	myMenu->AddItem(MenuItem = new BMenuItem(B_TRANSLATE("Default"), new BMessage(MSG_RENAME_SETTINGS)));
 	MenuItem->SetMarked(true);
-	myMenu->AddItem(new BMenuItem(REN_SET_LOWERCASE, new BMessage(MSG_RENAME_SETTINGS)));
-	myMenu->AddItem(new BMenuItem(REN_SET_UPPERCASE, new BMessage(MSG_RENAME_SETTINGS)));
-	fSelectCaseMenu = new BMenuField(NULL, REN_SET_EXT_UPPERLOWER, myMenu);
+	myMenu->AddItem(new BMenuItem(B_TRANSLATE("lowercase"), new BMessage(MSG_RENAME_SETTINGS)));
+	myMenu->AddItem(new BMenuItem(B_TRANSLATE("UPPERCASE"), new BMessage(MSG_RENAME_SETTINGS)));
+	fSelectCaseMenu = new BMenuField(NULL, B_TRANSLATE("Uppercase / lowercase:"), myMenu);
 
 	BLayoutBuilder::Group<>(this, B_VERTICAL)
 		.SetInsets(B_USE_WINDOW_INSETS)

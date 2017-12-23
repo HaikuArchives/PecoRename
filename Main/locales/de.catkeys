@@ -1,0 +1,92 @@
+1	English	application/x-vnd.pecora-PecoRename	586651114
+Well...	PecoApp		Äh...
+Errors occurred.	PecoApp		Es sind Fehler aufgetreten.
+About PecoRename	PecoApp		Über...PecoRename
+UPPERCASE	Renamer_UpperLower		GROSSBUCHSTABEN
+Thank you :-)	PecoApp		Dankeschön :-)
+Remove	Renamer_Remove		Entfernen
+I expect some problems with double used file names.\n\nShould I still start with the renaming?	PecoApp		Es wird voraussichtlich Probleme mit doppelt vorhandenen Dateinamen geben.\n\nSoll trotzdem mit dem Umbenennen begonnen werden?
+Uppercase / lowercase:	Renamer_Extension		Groß- & Kleinschreibung:
+Ok	Fenster		Ok
+from the back (right)	Renamer_InsertReplace		von hinten (rechts)
+Continue without messages	PecoApp		Ohne Meldungen fortfahren
+Status: 	functions		Status: 
+At position:	Renamer_InsertReplace		An Position:
+Mode:	MainView		Modus:
+Uppercase / lowercase	Renamer_UpperLower		Groß- & Kleinschreibung
+Default	Renamer_Extension		Vorgabe
+to position	Renamer_Remove		bis Position
+I've marked the files that caused the errors in red!	PecoApp		Ich habe die Dateien, die Fehler verursacht haben, rot markiert!
+A problem occurred when renaming '%1' to '%2'.\n\nDo you want to cancel, continue or continue without getting any further error messages?	PecoApp		Es ist ein Problem beim Umbenennen von '%1' in '%2' aufgetreten.\n\nWillst Du abbrechen, fortfahren oder fortfahren, ohne weitere Fehlermeldungen angezeigt zu bekommen?
+Text before:	Renamer_Numbering		Text davor:
+Format:	Renamer_Numbering		Format:
+Do you really want to rename these files?\nThis could probably lead to problems!\n\nIf you click on 'Continue', the files will be renamed AT YOUR OWN RISK!	PecoApp		Willst Du diese Dateien wirklich umbenennen?\nDies könnte möglicherweise zu Problemen führen!\n\nWenn Du auf 'Fortfahren' klickst, werden die Dateien auf DEINE EIGENE VERANTWORTUNG umbenannt.
+Please select	Renamer_Numbering		Bitte wählen
+lowercase	Renamer_UpperLower		kleinbuchstaben
+Select files...	Fenster		Dateien wählen...
+...and rename them!	MainView		...und benenne sie um!
+Insert or replace:	Renamer_InsertReplace		Einfügen oder überschreiben:
+Please select...	MainView		Bitte wählen...
+Search and replace	Renamer_SearchReplace		Suchen und ersetzen
+Modified	FileListView		Änderungsdatum
+Create shell script...	Fenster		Shell-Script erzeugen...
+Release 1.5	PecoApp		Version 1.5
+Please select	Renamer_InsertReplace		Bitte wählen
+from the back (right)	Renamer_Remove		von hinten (rechts)
+Continue	PecoApp		Fortfahren
+from the front (left)	Renamer_InsertReplace		von vorne (links)
+An error has occurred:\nEither the help file is missing, or an HTML browser can not be found.	Fenster		Es ist ein Fehler auftetreten:\nEntweder die Hilfedatei fehlt, oder ein Browser, um sie anzuzeigen.
+Select your files and directories...	MainView		Wähle Deine Dateien und Verzeichnisse...
+Please select files!	functions		Bitte Dateien wählen!
+Cancel	PecoApp		Abbrechen
+Let's do it!	MainView		Los geht's!
+About...	Fenster		Über...
+Ok	PecoApp		Ok
+Select	PecoApp		Wählen
+Please select files!	MainView		Bitte Dateien wählen!
+This software is freeware.	PecoApp		Dieses Programm ist Freeware.
+Find pattern:	Renamer_SearchReplace		Suchmuster:
+Create shell script...	functions		Shell-Script erzeugen...
+lowercase	Renamer_Extension		kleinbuchstaben
+Creating preview...	functions		Erstelle die Vorschau...
+documentation/index.html	Fenster		Anleitung/index.html
+Status: 	PecoApp		Status: 
+New	Fenster		Neu
+Renaming...	PecoApp		Benenne um...
+Preview	FileListView		Vorschau
+Quit	Fenster		Beenden
+Numbering	Renamer_Numbering		Nummerieren
+Convert to	Renamer_UpperLower		Ändern in
+PecoRename	System name		PecoRename
+Sorting...	functions		Sortiere...
+Replace old extension	Renamer_Extension		Alte Endung ersetzen
+Case sensitive	Renamer_SearchReplace		Groß/Kleinschreibung beachten
+Please select	Renamer_Remove		Bitte wählen
+Replace with	Renamer_InsertReplace		Überschreiben mit
+Name	FileListView		Name
+Importing...	PecoApp		Importiere...
+I'm sorry, but I can't rename files from different directories.\n\nOnly the files in the first found directory will be imported!	PecoApp		Leider können nicht Dateien aus verschiedenen Verzeichnissen umbenannt werden.\n\nEs werden nur die Dateien importiert, die sich im ersten übergebenen Verzeichnis befinden!
+Create shell script...	PecoApp		Shell-Script erzeugen...
+Insert	Renamer_InsertReplace		Einfügen
+Remove characters from position	Renamer_Remove		Buchstaben entfernen ab Position
+Select files for renaming	PecoApp		Dateien zum Umbenennen wählen
+Status: 	MainView		Status: 
+File	Fenster		Datei
+Path:	MainView		Pfad:
+Awaiting your instructions... :-)	functions		Erwarte Deine Anweisungen... :-)
+UPPERCASE	Renamer_Extension		GROSSBUCHSTABEN
+What shall I do?	PecoApp		Was soll ich denn tun?
+Tools	Fenster		Werkzeug
+Insert / replace	Renamer_InsertReplace		Einfügen / überschreiben
+Please select	Renamer_UpperLower		Bitte wählen
+Text:	Renamer_InsertReplace		Text:
+from the front (left)	Renamer_Remove		von vorne (links)
+Text behind:	Renamer_Numbering		Text dahinter:
+Start with:	Renamer_Numbering		Starte mit:
+Copyright ©2000 by Werner Freytag	PecoApp		Copyright ©2000 by Werner Freytag
+Special thanks to Sci for his help with the English translation!	PecoApp		Ein großes Dankeschön an Stéphane und Sci für die Hilfe!
+Replace with:	Renamer_SearchReplace		Ersetzen durch:
+Size	FileListView		Größe
+Add file extension	Renamer_Extension		Dateiendung hinzufügen
+Please select	Renamer_Extension		Bitte wählen
+Are there any problems?	functions		Gibt's Probleme?

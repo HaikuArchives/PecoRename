@@ -13,6 +13,7 @@
 #include <Alert.h>
 #include <Application.h>
 #include <Bitmap.h>
+#include <Catalog.h>
 #include <ListView.h>
 #include <MenuField.h>
 #include <MenuItem.h>
@@ -35,6 +36,10 @@
 #include "Renamer_InsertReplace.h"
 #include "Renamer_UpperLower.h"
 #include "Renamer_Remove.h"
+
+
+#undef B_TRANSLATION_CONTEXT
+#define B_TRANSLATION_CONTEXT "PecoApp"
 
 PecoApp::PecoApp() : BApplication("application/x-vnd.pecora-PecoRename") {
 
@@ -59,15 +64,15 @@ void PecoApp::ReadyToRun() {
 	UpdateWindowStatus();
 
 	fFilePanel = new BFilePanel(B_OPEN_PANEL, NULL, NULL, B_FILE_NODE|B_DIRECTORY_NODE);
-	fFilePanel->SetButtonLabel(B_DEFAULT_BUTTON, STR_SELECT);
-	fFilePanel->SetButtonLabel(B_CANCEL_BUTTON, STR_CANCEL);
-	fFilePanel->Window()->SetTitle(STR_PANEL_TITLE);
+	fFilePanel->SetButtonLabel(B_DEFAULT_BUTTON, B_TRANSLATE("Select"));
+	fFilePanel->SetButtonLabel(B_CANCEL_BUTTON, B_TRANSLATE("Cancel"));
+	fFilePanel->Window()->SetTitle(B_TRANSLATE("Select files for renaming"));
 
 	fScriptFilePanel = new BFilePanel(B_SAVE_PANEL, NULL, NULL, B_FILE_NODE, false,
 		0, 0, true);
-	fScriptFilePanel->SetButtonLabel(B_DEFAULT_BUTTON, STR_OK);
-	fScriptFilePanel->SetButtonLabel(B_CANCEL_BUTTON, STR_CANCEL);
-	fScriptFilePanel->Window()->SetTitle(STR_MENU_CREATE_SCRIPT);
+	fScriptFilePanel->SetButtonLabel(B_DEFAULT_BUTTON, B_TRANSLATE("Ok"));
+	fScriptFilePanel->SetButtonLabel(B_CANCEL_BUTTON, B_TRANSLATE("Cancel"));
+	fScriptFilePanel->Window()->SetTitle(B_TRANSLATE("Create shell script..."));
 
 	fWindow->Show();
 
@@ -76,13 +81,13 @@ void PecoApp::ReadyToRun() {
 void PecoApp::AboutRequested() {
 
 	const char	*CopyrightTexte[10];
-	CopyrightTexte[0] = STR_ABOUT_COPYRIGHT_0;
-	CopyrightTexte[1] = STR_ABOUT_COPYRIGHT_1;
+	CopyrightTexte[0] = B_TRANSLATE("Copyright ©2000 by Werner Freytag");
+	CopyrightTexte[1] = B_TRANSLATE("This software is freeware.");
 	CopyrightTexte[2] = "";
-	CopyrightTexte[3] = STR_ABOUT_COPYRIGHT_2;
+	CopyrightTexte[3] = B_TRANSLATE("Special thanks to Sci for his help with the English translation!");
 	CopyrightTexte[4] = NULL;
 	
-	About(STR_ABOUT_TITLE, STR_APP_NAME, STR_APP_VERSION, CopyrightTexte, STR_ABOUT_THANKYOU, "http://www.pecora.de/pecorename/");
+	About(B_TRANSLATE("About PecoRename"), STR_APP_NAME, B_TRANSLATE("Release 1.5"), CopyrightTexte, B_TRANSLATE("Thank you :-)"), "http://www.pecora.de/pecorename/");
 }
 
 bool PecoApp::QuitRequested() {
@@ -123,7 +128,7 @@ void PecoApp::RefsReceived ( BMessage* msg ) {
 		New();
 
 		fWindow->Lock();
-		((PecoApp *)be_app)->fStatusBar->SetText(STATUS_IMPORT);
+		((PecoApp *)be_app)->fStatusBar->SetText(B_TRANSLATE("Importing..."));
 		fWindow->Unlock();
 	
 		aEntry = BEntry(&ref);
@@ -163,7 +168,7 @@ void PecoApp::RefsReceived ( BMessage* msg ) {
 			
 			if ( (strcmp( fPfad.Path(), newPath.Path() ) != 0 ) ) {
 				if ( didntshow_msgmultidir ) {
-					BAlert*	myAlert = new BAlert(NULL, MESSAGE_MULTIDIR, STR_OK);
+					BAlert*	myAlert = new BAlert(NULL, B_TRANSLATE("I'm sorry, but I can't rename files from different directories.\n\nOnly the files in the first found directory will be imported!"), B_TRANSLATE("Ok"));
 					myAlert->Go();
 					didntshow_msgmultidir = false;
 				}
@@ -186,7 +191,7 @@ void PecoApp::RefsReceived ( BMessage* msg ) {
 		fWindow->Lock();
 		fListView->AddList(fList);
 
-		fStatusBar->Reset(STATUS_STATUS);
+		fStatusBar->Reset(B_TRANSLATE("Status: "));
 		fStatusBar->SetMaxValue(fList->CountItems());
 		fWindow->Unlock();
 		
@@ -222,7 +227,7 @@ bool PecoApp::NothingToDo() {
 		if (ListItem->fNewName.Length() > 0 ) { nothing_to_do = false; break; }
 	
 	if (nothing_to_do) {
-		BAlert	*myAlert	= new BAlert(NULL, MESSAGE_NOTHING_TO_DO, STR_WELL);
+		BAlert	*myAlert	= new BAlert(NULL, B_TRANSLATE("What shall I do?"), B_TRANSLATE("Well..."));
 		myAlert->Go();
 	}
 	
@@ -287,7 +292,7 @@ void PecoApp::CreateScript(BMessage *msg) {
 	node_info.SetType("text/plain");
 	
 	fWindow->Lock();
-	fStatusBar->Reset(STATUS_STATUS);
+	fStatusBar->Reset(B_TRANSLATE("Status: "));
 	fWindow->Unlock();
 
 }
@@ -298,12 +303,12 @@ void PecoApp::DoIt() {
 	
 	FileListItem	*ListItem;
 	
-	BAlert	*myAlert	= new BAlert(NULL, MESSAGE_REALLY_DOIT, STR_CONTINUE, STR_CANCEL);
+	BAlert	*myAlert	= new BAlert(NULL, B_TRANSLATE("Do you really want to rename these files?\nThis could probably lead to problems!\n\nIf you click on 'Continue', the files will be renamed AT YOUR OWN RISK!"), B_TRANSLATE("Continue"), B_TRANSLATE("Cancel"));
 	if (myAlert->Go() == 1) return;
 
 	for (int32 i = 0; (ListItem = (FileListItem *)fListView->ItemAt(i)) != NULL; i++ ) {
 		if (ListItem->fErrorStatus == 1 ) {
-			BAlert	*myAlert	= new BAlert(NULL, MESSAGE_WILL_HAVE_PROBS, STR_CONTINUE, STR_CANCEL);
+			BAlert	*myAlert	= new BAlert(NULL, B_TRANSLATE("I expect some problems with double used file names.\n\nShould I still start with the renaming?"), B_TRANSLATE("Continue"), B_TRANSLATE("Cancel"));
 			if (myAlert->Go() == 1) return;
 			break;
 		}
@@ -312,7 +317,7 @@ void PecoApp::DoIt() {
 	bool 	noerror = true, nomoreerrors=false, canceled=false;
 
 	fWindow->Lock();
-	fStatusBar->SetText(STATUS_RENAMING);
+	fStatusBar->SetText(B_TRANSLATE("Renaming..."));
 	fStatusBar->SetMaxValue(fList->CountItems());
 
 	BButton		*okButton = (BButton *)fWindow->FindView("DoIt");
@@ -343,11 +348,11 @@ void PecoApp::DoIt() {
 				if (!nomoreerrors) {
 					noerror = false;
 
-					BString		ErrorMessage(MESSAGE_HAVE_PROBLEM);
+					BString		ErrorMessage(B_TRANSLATE("A problem occurred when renaming '%1' to '%2'.\n\nDo you want to cancel, continue or continue without getting any further error messages?"));
 					ErrorMessage.ReplaceFirst("%1", ListItem->fName.String());
 					ErrorMessage.ReplaceFirst("%2", ListItem->fNewName.String());
 					
-					BAlert	*myAlert	= new BAlert(NULL, ErrorMessage.String(), STR_CANCEL, STR_CONTINUE, STR_CONTINUE_WO_MSG, B_WIDTH_AS_USUAL, B_WARNING_ALERT);
+					BAlert	*myAlert	= new BAlert(NULL, ErrorMessage.String(), B_TRANSLATE("Cancel"), B_TRANSLATE("Continue"), B_TRANSLATE("Continue without messages"), B_WIDTH_AS_USUAL, B_WARNING_ALERT);
 
 					int32	result = myAlert->Go();
 					if (result == 0) { canceled = true; continue; }
@@ -369,14 +374,14 @@ void PecoApp::DoIt() {
 //	NoRenamer();
 
 	fWindow->Lock();
-	fStatusBar->Reset(STATUS_STATUS);
+	fStatusBar->Reset(B_TRANSLATE("Status: "));
 	fWindow->Unlock();
 
 	if (noerror) MakeList();
 	else {
-		fStatusBar->SetText(STATUS_DIDIT_BAD);
+		fStatusBar->SetText(B_TRANSLATE("Errors occurred."));
 
-		BAlert	*myAlert	= new BAlert(NULL, MESSAGE_MARKED_FILES, STR_OK);
+		BAlert	*myAlert	= new BAlert(NULL, B_TRANSLATE("I've marked the files that caused the errors in red!"), B_TRANSLATE("Ok"));
 		myAlert->Go();
 	}
 	
