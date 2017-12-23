@@ -41,8 +41,9 @@ Renamer_InsertReplace::Renamer_InsertReplace() : Renamer() {
 	fInsertOrReplace = new BMenuField(B_TRANSLATE("Insert or replace:"), myMenu);
 
 	fText = new BTextControl( NULL, B_TRANSLATE("Text:"), NULL, new BMessage(MSG_RENAME_SETTINGS));
-
+	fText->SetModificationMessage(new BMessage(MSG_RENAME_SETTINGS));
 	fPosition = new BTextControl( NULL, B_TRANSLATE("At position:"), "0", new BMessage(MSG_RENAME_SETTINGS));
+	fPosition->SetModificationMessage(new BMessage(MSG_RENAME_SETTINGS));
 
 	myMenu = new BPopUpMenu(B_TRANSLATE("Please select"));
 	myMenu->AddItem(new BMenuItem(B_TRANSLATE("from the front (left)"), new BMessage(MSG_RENAME_SETTINGS)));

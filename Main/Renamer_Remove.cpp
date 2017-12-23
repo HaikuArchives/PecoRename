@@ -34,6 +34,7 @@ Renamer_Remove::Renamer_Remove() : Renamer() {
 	fName 		= B_TRANSLATE("Remove");
 
 	fPosition1 = new BTextControl( NULL, B_TRANSLATE("Remove characters from position"), "0", new BMessage(MSG_RENAME_SETTINGS));
+	fPosition1->SetModificationMessage(new BMessage(MSG_RENAME_SETTINGS));
 
 	BPopUpMenu	*myMenu;
 	myMenu = new BPopUpMenu(B_TRANSLATE("Please select"));
@@ -45,6 +46,7 @@ Renamer_Remove::Renamer_Remove() : Renamer() {
 	fDirection1 = new BMenuField( NULL, NULL, myMenu);
 
 	fPosition2 = new BTextControl( NULL, B_TRANSLATE("to position"), "0", new BMessage(MSG_RENAME_SETTINGS));
+	fPosition2->SetModificationMessage(new BMessage(MSG_RENAME_SETTINGS));
 
 	myMenu = new BPopUpMenu(B_TRANSLATE("Please select"));
 	myMenu->AddItem(new BMenuItem(B_TRANSLATE("from the front (left)"), new BMessage(MSG_RENAME_SETTINGS)));
