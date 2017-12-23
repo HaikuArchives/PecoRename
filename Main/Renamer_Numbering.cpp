@@ -43,9 +43,12 @@ Renamer_Numbering::Renamer_Numbering() : Renamer() {
 	fFormat = new BMenuField( NULL, B_TRANSLATE("Format:"), myMenu);
 
 	fStartWith = new BTextControl( NULL, B_TRANSLATE("Start with:"), "0", new BMessage(MSG_RENAME_SETTINGS));
+	fStartWith->SetModificationMessage(new BMessage(MSG_RENAME_SETTINGS));
 
 	fTextBefore = new BTextControl( NULL, B_TRANSLATE("Text before:"), NULL, new BMessage(MSG_RENAME_SETTINGS));
+	fTextBefore->SetModificationMessage(new BMessage(MSG_RENAME_SETTINGS));
 	fTextBehind = new BTextControl( NULL, B_TRANSLATE("Text behind:"), NULL, new BMessage(MSG_RENAME_SETTINGS));
+	fTextBehind->SetModificationMessage(new BMessage(MSG_RENAME_SETTINGS));
 
 	BLayoutBuilder::Group<>(this, B_HORIZONTAL)
 		.SetInsets(B_USE_WINDOW_INSETS)

@@ -49,7 +49,9 @@ Renamer_SearchReplace::Renamer_SearchReplace()
 #endif
 
 	SearchFor = new BTextControl( B_TRANSLATE("Find pattern:"), NULL, new BMessage(MSG_RENAME_SETTINGS));
+	SearchFor->SetModificationMessage(new BMessage(MSG_RENAME_SETTINGS));
 	ReplaceWith = new BTextControl( NULL, B_TRANSLATE("Replace with:"), NULL, new BMessage(MSG_RENAME_SETTINGS));
+	ReplaceWith->SetModificationMessage(new BMessage(MSG_RENAME_SETTINGS));
 
 	BLayoutBuilder::Group<>(this, B_VERTICAL)
 		.SetInsets(B_USE_WINDOW_INSETS)
