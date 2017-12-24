@@ -19,6 +19,7 @@
 #include <MenuItem.h>
 #include <NodeInfo.h>
 #include <String.h>
+#include <StringView.h>
 #include <TextControl.h>
 #include <FilePanel.h>
 
@@ -118,7 +119,9 @@ void PecoApp::RefsReceived ( BMessage* msg ) {
 	time_t		timer;
 	
 	fWindow->Lock();
-	BTextControl* 	pfadView 	= (BTextControl *)fWindow->FindView("pfadView");
+	BStringView* 	pfadView 	= (BStringView *)fWindow->FindView("pfadView");
+	BButton* ChooseButton = (BButton *) fWindow->FindView("selectFiles");
+	ChooseButton->SetFlat(true);
 	fWindow->Unlock();
 	
 	//Pfad finden
@@ -127,10 +130,6 @@ void PecoApp::RefsReceived ( BMessage* msg ) {
 	if ( ref.device > 1 ) {
 		New();
 
-		fWindow->Lock();
-		((PecoApp *)be_app)->fStatusBar->SetText(B_TRANSLATE("Importing..."));
-		fWindow->Unlock();
-	
 		aEntry = BEntry(&ref);
 		BPath( &aEntry ).GetParent(&fPfad);
 				
@@ -144,6 +143,8 @@ void PecoApp::RefsReceived ( BMessage* msg ) {
 		msg->GetInfo("refs", &typeFound, &total);
 		
 		fWindow->Lock();
+		fStatusBar->SetText("");
+		fStatusBar->Show();
 		fStatusBar->SetMaxValue( total );
 		fWindow->Unlock();
 		
@@ -190,9 +191,9 @@ void PecoApp::RefsReceived ( BMessage* msg ) {
 		
 		fWindow->Lock();
 		fListView->AddList(fList);
-
-		fStatusBar->Reset(B_TRANSLATE("Status: "));
+		fStatusBar->Hide();
 		fStatusBar->SetMaxValue(fList->CountItems());
+		fStatusBar->Reset("");
 		fWindow->Unlock();
 		
 		MakeList();
@@ -207,7 +208,7 @@ void PecoApp::New() {
 	
 	fListView->Clear();
 	
-	BTextControl* 	pfadView = (BTextControl *)fWindow->FindView("pfadView");
+	BStringView* 	pfadView = (BStringView *)fWindow->FindView("pfadView");
 	pfadView->SetText(NULL);
 	
 	fWindow->Unlock();
@@ -225,12 +226,12 @@ bool PecoApp::NothingToDo() {
 
 	for (int32 i = 0; (ListItem = (FileListItem *)fListView->ItemAt(i)) != NULL; i++ )
 		if (ListItem->fNewName.Length() > 0 ) { nothing_to_do = false; break; }
-	
+/*
 	if (nothing_to_do) {
 		BAlert	*myAlert	= new BAlert(NULL, B_TRANSLATE("What shall I do?"), B_TRANSLATE("Well..."));
 		myAlert->Go();
 	}
-	
+*/
 	return	nothing_to_do;
 
 }
@@ -248,8 +249,11 @@ void PecoApp::CreateScript(BMessage *msg) {
 
 	// Initiate
 	fWindow->Lock();
+	fStatusBar->Show();
+	fStatusBar->Reset("");
 	fStatusBar->SetMaxValue(fList->CountItems());
-	BTextControl* 	pfadView = (BTextControl *)fWindow->FindView("pfadView");
+
+	BStringView* 	pfadView = (BStringView *)fWindow->FindView("pfadView");
 	BString			Pfad(pfadView->Text());
 	fWindow->Unlock();
 
@@ -292,7 +296,7 @@ void PecoApp::CreateScript(BMessage *msg) {
 	node_info.SetType("text/plain");
 	
 	fWindow->Lock();
-	fStatusBar->Reset(B_TRANSLATE("Status: "));
+	fStatusBar->Hide();
 	fWindow->Unlock();
 
 }
@@ -317,13 +321,14 @@ void PecoApp::DoIt() {
 	bool 	noerror = true, nomoreerrors=false, canceled=false;
 
 	fWindow->Lock();
-	fStatusBar->SetText(B_TRANSLATE("Renaming..."));
+	fStatusBar->SetText("");
+	fStatusBar->Show();
 	fStatusBar->SetMaxValue(fList->CountItems());
 
 	BButton		*okButton = (BButton *)fWindow->FindView("DoIt");
 	okButton->SetEnabled(false);
 	
-	BTextControl* 	pfadView = (BTextControl *)fWindow->FindView("pfadView");
+	BStringView* 	pfadView = (BStringView *)fWindow->FindView("pfadView");
 	BString	Pfad(pfadView->Text());
 	fWindow->Unlock();
 	
@@ -374,12 +379,13 @@ void PecoApp::DoIt() {
 //	NoRenamer();
 
 	fWindow->Lock();
-	fStatusBar->Reset(B_TRANSLATE("Status: "));
+	fStatusBar->Reset("");
+	fStatusBar->Hide();
 	fWindow->Unlock();
 
 	if (noerror) MakeList();
 	else {
-		fStatusBar->SetText(B_TRANSLATE("Errors occurred."));
+		//fStatusBar->SetText(B_TRANSLATE("Errors occurred."));
 
 		BAlert	*myAlert	= new BAlert(NULL, B_TRANSLATE("I've marked the files that caused the errors in red!"), B_TRANSLATE("Ok"));
 		myAlert->Go();

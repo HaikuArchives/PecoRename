@@ -11,11 +11,14 @@
 #include <FindDirectory.h>
 #include <MenuBar.h>
 #include <MenuItem.h>
-
+#include <StopWatch.h>
 #include "Fenster.h"
 
 #include "constants.h"
 #include "functions.h"
+#include "ConsistencyCheck.h"
+
+#include <stdio.h>
 
 #undef B_TRANSLATION_CONTEXT
 #define B_TRANSLATION_CONTEXT "functions"
@@ -23,29 +26,25 @@
 #define PREFS_FILENAME "PecoRename_settings"
 
 void MakeList() {
+	/*static */
+	ConsistencyCheck consistencyCheck;
 	BList		*FileList = ((PecoApp *)be_app)->fList;
 
-	((PecoApp *)be_app)->fWindow->Lock();
-	((PecoApp *)be_app)->fStatusBar->SetText(B_TRANSLATE("Sorting..."));
-// Keep the code below until sortings by BColumnListView is fully tested.
-#if 0
-	do {
-		if (strcmp(SortButton->Name(), "Name") == 0) {
-			((PecoApp *)be_app)->fListView->SortItems(SortByName); FileList->SortItems(SortByName); break; }
-		if (strcmp(SortButton->Name(), "Date") == 0) {
-			((PecoApp *)be_app)->fListView->SortItems(SortByDate); FileList->SortItems(SortByDate); break; }
-		((PecoApp *)be_app)->fListView->SortItems(SortBySize); FileList->SortItems(SortBySize);
-	} while (false);
-#endif
-	((PecoApp *)be_app)->fStatusBar->SetText(B_TRANSLATE("Creating preview..."));
+	//if (consistencyCheck.CountOldNames() == 0) {
+	//	consistencyCheck.AddList(FileList);
+	//}
 
+	((PecoApp *)be_app)->fWindow->Lock();
 	((PecoApp *)be_app)->fRenamers[((PecoApp *)be_app)->fRenameMode]->RenameList(FileList);
 
-	// Auf Duplikate überprüfen und markieren
-	((PecoApp *)be_app)->fStatusBar->SetText(B_TRANSLATE("Are there any problems?"));
-	FileListItem	*ListItem;
-
-	((PecoApp *)be_app)->fStatusBar->Reset(B_TRANSLATE("Status: "));
+	{
+		BStopWatch stopWatch("CheckDup");
+		consistencyCheck.AddList(FileList);
+		consistencyCheck.ResetNewName();
+		consistencyCheck.AddNewList(FileList);
+		consistencyCheck.CheckForDuplicates();
+		consistencyCheck.PrintStatistic();
+	}
 
 	((PecoApp *)be_app)->fWindow->Unlock();
 	UpdateWindowStatus();
@@ -58,17 +57,7 @@ void UpdateWindowStatus() {
 
 	BMenuItem	*scriptMenu = (BMenuItem *)((PecoApp *)be_app)->fWindow->KeyMenuBar()->FindItem(B_TRANSLATE("Create shell script..."));
 
-	bool isenabled = false; // Is Ok-Button enabled?
-
-	do {
-		if (((PecoApp *)be_app)->fList->IsEmpty()) {
-			((PecoApp *)be_app)->fStatusBar->SetText(B_TRANSLATE("Please select files!"));
-			break;
-		}
-		// else:
-		isenabled = true;
-		((PecoApp *)be_app)->fStatusBar->SetText(B_TRANSLATE("Awaiting your instructions... :-)"));
-	} while (false);
+	bool isenabled = !((PecoApp *)be_app)->NothingToDo();
 
 	okButton->SetEnabled(isenabled);
 	scriptMenu->SetEnabled(isenabled);
