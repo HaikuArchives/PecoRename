@@ -23,6 +23,7 @@
 #include "FileListView.h"
 #include "FileListItem.h"
 #include "PecoApp.h"
+#include "PreviewColumn.h"
 
 #undef B_TRANSLATION_CONTEXT
 #define B_TRANSLATION_CONTEXT "FileListView"
@@ -36,7 +37,7 @@ FileListView::FileListView()
 	AddColumn(new BStringColumn(B_TRANSLATE("Name"), WIDTH_NAME, 10, 600, 0), i++);
 	AddColumn(new BSizeColumn(B_TRANSLATE("Size"), WIDTH_SIZE, 10, 600), i++);
 	AddColumn(new BDateColumn(B_TRANSLATE("Modified"), WIDTH_DATE, 10, 600), i++);
-	AddColumn(new BStringColumn(B_TRANSLATE("Preview"), WIDTH_PREVIEW, 10, 600, 0), i++);
+	AddColumn(new PreviewColumn(B_TRANSLATE("Preview"), WIDTH_PREVIEW, 10, 600, 0), i++);
 }
 
 void FileListView::MouseDown(BPoint where) {

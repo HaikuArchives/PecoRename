@@ -35,7 +35,8 @@ const	BString& Name() {
 			}
 		}
 		void SetDuplicate() {
-			fFileListItem->SetError(1);
+			if (fType == item_new_name)
+				fFileListItem->SetError(1);
 		}
 
 private: item_name_type fType;

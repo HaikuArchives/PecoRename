@@ -33,7 +33,7 @@ public:
 	BString			fName;
 	char			fMimeType[B_MIME_TYPE_LENGTH];
 	BString			fNewName;
-	void			SetError(char err) {fErrorStatus = err; }
+	void			SetError(char err) ;
 private: 
 	char			fErrorStatus;
 	BBitmap			*fIcon;
