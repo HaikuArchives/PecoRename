@@ -34,7 +34,7 @@ APP_MIME_SIG= application/x-vnd.pecora-PecoRename
 #	if two source files with the same name (source.c or source.cpp)
 #	are included from different directories.  Also note that spaces
 #	in folder names do not work well with this makefile.
-SRCS= main.cpp constants.cpp ConsistencyCheck.cpp functions.cpp Fenster.cpp FileListItem.cpp FileListView.cpp MainView.cpp PecoApp.cpp Renamer.cpp Renamer_SearchReplace.cpp Renamer_InsertReplace.cpp Renamer_Remove.cpp Renamer_Numbering.cpp Renamer_Extension.cpp Renamer_UpperLower.cpp About.cpp
+SRCS= main.cpp constants.cpp ConsistencyCheck.cpp functions.cpp Fenster.cpp FileListItem.cpp FileListView.cpp MainView.cpp PecoApp.cpp PreviewColumn.cpp Renamer.cpp Renamer_SearchReplace.cpp Renamer_InsertReplace.cpp Renamer_Remove.cpp Renamer_Numbering.cpp Renamer_Extension.cpp Renamer_UpperLower.cpp About.cpp
 
 #	specify the resource definition files to use
 #	full path or a relative path to the resource file can be used.

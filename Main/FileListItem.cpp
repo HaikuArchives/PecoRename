@@ -13,6 +13,7 @@
 #include <Entry.h>
 #include <strstream.h>
 #include <ColumnTypes.h>
+#include "PreviewColumn.h"
 
 #include "constants.h"
 #include "functions.h"
@@ -40,7 +41,7 @@ FileListItem::FileListItem(const char *name, int64 size, time_t timer, const ent
 	SetField(new BStringField(fName), i++);
 	SetField(new BSizeField(size < 0 ? 0 : size), i++);
 	SetField(new BDateField(&timer), i++);
-	SetField(new BStringField(fNewName), i++);
+	SetField(new PreviewField(fNewName), i++);
 
 }
 
@@ -53,13 +54,19 @@ void FileListItem::SetNewName( BString myNewName ) {
 	else
 		fNewName = myNewName;
 
-	SetField(new BStringField(fNewName), 4);
+	SetField(new PreviewField(fNewName), 4);
 }
 
 void FileListItem::SetName( BString name ) {
 	fName = name;
 	SetField(new BStringField(fName), 1);
 }
+
+void FileListItem::SetError(char error)  {
+	((PreviewField*)GetField(4))->SetError(error == 1);
+	fErrorStatus = error;
+}
+
 
 bool FileListItem::CompareWith(FileListItem *CompareItem) {
 	fErrorStatus=0;
