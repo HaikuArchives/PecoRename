@@ -66,8 +66,6 @@ Fenster::Fenster() : BWindow( BRect( 20, 40, 620, 460), B_TRANSLATE_SYSTEM_NAME(
 	BLayoutBuilder::Group<>(this, B_VERTICAL, 0)
 		.Add(MenuBar)
 		.Add(mainView);
-
-	static_cast<BTextControl*>(mainView->FindView("pfadView"))->TextView()->MakeEditable(false);
 };
 
 void Fenster::Help() {

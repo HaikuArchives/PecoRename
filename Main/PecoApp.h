@@ -31,6 +31,8 @@ class PecoApp : public BApplication {
 		virtual void	ReadyToRun();
 		virtual	void	AboutRequested();
 
+		bool			NothingToDo();
+
 		Fenster			*fWindow;
 		FileListView	*fListView;
 		BList			*fList;
@@ -42,7 +44,6 @@ class PecoApp : public BApplication {
 
 	private:
 		void			New();
-		bool			NothingToDo();
 		void			CreateScript(BMessage *msg);
 		void			DoIt();
 };
