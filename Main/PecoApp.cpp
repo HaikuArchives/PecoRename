@@ -100,7 +100,7 @@ void PecoApp::MessageReceived(BMessage *msg) {
 		case B_SIMPLE_DATA:			RefsReceived (msg); break;
 		case MSG_MENU_NEW:			New(); break;
 		case MSG_SELECT_FILES: 		fFilePanel->Show(); break;
-		case MSG_DO_IT: 			MakeList(); DoIt(); break;
+		case MSG_DO_IT: 			/*MakeList();*/ DoIt(); break; // Use the current List
 		case MSG_RENAME_SETTINGS:	MakeList(); break;
 		case MSG_MENU_SCRIPT:		if (!NothingToDo()) fScriptFilePanel->Show(); break;
 		case B_SAVE_REQUESTED:		CreateScript(msg); break;
@@ -226,12 +226,7 @@ bool PecoApp::NothingToDo() {
 
 	for (int32 i = 0; (ListItem = (FileListItem *)fListView->ItemAt(i)) != NULL; i++ )
 		if (ListItem->fNewName.Length() > 0 ) { nothing_to_do = false; break; }
-/*
-	if (nothing_to_do) {
-		BAlert	*myAlert	= new BAlert(NULL, B_TRANSLATE("What shall I do?"), B_TRANSLATE("Well..."));
-		myAlert->Go();
-	}
-*/
+
 	return	nothing_to_do;
 
 }
@@ -318,7 +313,7 @@ void PecoApp::DoIt() {
 		}
 	}
 
-	bool 	noerror = true, nomoreerrors=false, canceled=false;
+	bool 	noerror = true, nomoreerrors=false;
 
 	fWindow->Lock();
 	fStatusBar->SetText("");
@@ -339,13 +334,12 @@ void PecoApp::DoIt() {
 		fWindow->Lock();
 		fStatusBar->Update(1);
 		fWindow->Unlock();
-		if (canceled) { ListItem->fErrorStatus=0; continue; }
 		if (ListItem->fNewName != "" ) {
 			AlterName = Pfad; AlterName.Append("/").Append(ListItem->fName);
 			NeuerName = Pfad; NeuerName.Append("/").Append(ListItem->fNewName);
 			Datei.SetTo(AlterName.String());
 			if ( Datei.Rename(NeuerName.String()) != B_OK ) {
-				ListItem->fErrorStatus=1;
+				ListItem->SetError(1);
 				fWindow->Lock();
 				fListView->InvalidateItem(i);
 				fWindow->Unlock();
@@ -360,7 +354,7 @@ void PecoApp::DoIt() {
 					BAlert	*myAlert	= new BAlert(NULL, ErrorMessage.String(), B_TRANSLATE("Cancel"), B_TRANSLATE("Continue"), B_TRANSLATE("Continue without messages"), B_WIDTH_AS_USUAL, B_WARNING_ALERT);
 
 					int32	result = myAlert->Go();
-					if (result == 0) { canceled = true; continue; }
+					if (result == 0) { break;}
 					if (result == 2) nomoreerrors = true;
 				}
 				
@@ -376,8 +370,6 @@ void PecoApp::DoIt() {
 		}
 	}
 
-//	NoRenamer();
-
 	fWindow->Lock();
 	fStatusBar->Reset("");
 	fStatusBar->Hide();
@@ -385,8 +377,6 @@ void PecoApp::DoIt() {
 
 	if (noerror) MakeList();
 	else {
-		//fStatusBar->SetText(B_TRANSLATE("Errors occurred."));
-
 		BAlert	*myAlert	= new BAlert(NULL, B_TRANSLATE("I've marked the files that caused the errors in red!"), B_TRANSLATE("Ok"));
 		myAlert->Go();
 	}
