@@ -48,23 +48,17 @@ private: item_name_type fType;
 
 
 class ConsistencyCheck {
-	public:		
-		virtual	~ConsistencyCheck();	
+	public:			ConsistencyCheck(BList *namesList);
+		 virtual	~ConsistencyCheck();
+			bool    CheckForDuplicates();
+
+	private:
+			void 	AddNamesList(BList* namesList);
 			void	AddNewName(FileListItem *fileListItem);
 			void	AddOldName(FileListItem *fileListItem);
-			void	AddDiskName(const BString name);
-			bool    CheckForDuplicates();
-			void    ResetNewName();
-			void    Clear();
-			void 	AddList(BList* nameList);
-			void    AddNewList(BList* nameList);
-			int 	CountOldNames() const {return fOldNames.CountItems();};
-			void    PrintStatistic();
-	private:
-		BList fOldNames;
-		BList fNewNames;
-		BList fNames;
-		int fNumDupFound;
+//			void	AddDiskName(const BString name);
+
+			BList 	fNames;
 };
 
 #endif
