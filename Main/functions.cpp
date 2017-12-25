@@ -26,24 +26,15 @@
 #define PREFS_FILENAME "PecoRename_settings"
 
 void MakeList() {
-	/*static */
-	ConsistencyCheck consistencyCheck;
-	BList		*FileList = ((PecoApp *)be_app)->fList;
 
-	//if (consistencyCheck.CountOldNames() == 0) {
-	//	consistencyCheck.AddList(FileList);
-	//}
+	BList *FileList = ((PecoApp *)be_app)->fList;
 
 	((PecoApp *)be_app)->fWindow->Lock();
 	((PecoApp *)be_app)->fRenamers[((PecoApp *)be_app)->fRenameMode]->RenameList(FileList);
 
 	{
 		BStopWatch stopWatch("CheckDup");
-		consistencyCheck.AddList(FileList);
-		consistencyCheck.ResetNewName();
-		consistencyCheck.AddNewList(FileList);
-		consistencyCheck.CheckForDuplicates();
-		consistencyCheck.PrintStatistic();
+		ConsistencyCheck(FileList).CheckForDuplicates();
 	}
 
 	((PecoApp *)be_app)->fWindow->Unlock();
