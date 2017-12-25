@@ -26,15 +26,27 @@
 #define PREFS_FILENAME "PecoRename_settings"
 
 void MakeList() {
-
+	BList numberingList;
 	BList *FileList = ((PecoApp *)be_app)->fList;
-
+	if (((PecoApp *)be_app)->fRenameMode == 3)  // When numbering the items it's important the order choose by the user
+	{
+		FileListView *sortedList = ((PecoApp *)be_app)->fListView;
+		for (int32 i = 0; i < sortedList->CountRows(); i++ )
+			numberingList.AddItem((FileListItem *)sortedList->ItemAt(i));
+		FileList = &numberingList;
+	}
 	((PecoApp *)be_app)->fWindow->Lock();
 	((PecoApp *)be_app)->fRenamers[((PecoApp *)be_app)->fRenameMode]->RenameList(FileList);
 
 	{
 		BStopWatch stopWatch("CheckDup");
 		ConsistencyCheck(FileList).CheckForDuplicates();
+	}
+
+
+	if (((PecoApp *)be_app)->fRenameMode == 3)
+	{
+		numberingList.MakeEmpty();
 	}
 
 	((PecoApp *)be_app)->fWindow->Unlock();
