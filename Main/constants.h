@@ -43,10 +43,10 @@ const uint32 MSG_RENAME_SETTINGS	= 'Ren1';
 //--------------------------------------------------------------------
 //  Andere Konstanten
 
-const float WIDTH_ICON			= 24.0;
+const float WIDTH_ICON			= 16.0;
 const float WIDTH_NAME			= 176.0;
 const float WIDTH_SIZE			= 70.0;
-const float WIDTH_DATE			= 116.0;
+const float WIDTH_DATE			= 84.0;
 const float WIDTH_PREVIEW		= 176.0;
 
 #endif
