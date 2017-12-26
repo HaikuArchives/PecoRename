@@ -11,6 +11,7 @@
 #include <FindDirectory.h>
 #include <MenuBar.h>
 #include <MenuItem.h>
+#include <MessageFormat.h>
 #include <StopWatch.h>
 #include "Fenster.h"
 
@@ -56,6 +57,8 @@ void MakeList() {
 
 void UpdateWindowStatus() {
 	BButton		*okButton = (BButton *)((PecoApp *)be_app)->fWindow->FindView("DoIt");
+	StatusView  *statusView = (StatusView *)((PecoApp *)be_app)->fWindow->FindView("statusview");
+	FileListView *fileListView = (FileListView *)((PecoApp *)be_app)->fWindow->FindView("fileListView");
 	((PecoApp *)be_app)->fWindow->Lock();
 
 	BMenuItem	*scriptMenu = (BMenuItem *)((PecoApp *)be_app)->fWindow->KeyMenuBar()->FindItem(B_TRANSLATE("Create shell script..."));
@@ -65,8 +68,46 @@ void UpdateWindowStatus() {
 	okButton->SetEnabled(isenabled);
 	scriptMenu->SetEnabled(isenabled);
 
-	((PecoApp *)be_app)->fWindow->Unlock();
+	BString itemsNumber;
+	BString renamesNumber;
+	BString duplicatesNumber;
 
+	BList *fileList = ((PecoApp *)be_app)->fList;
+	static BMessageFormat formatItems(B_TRANSLATE("{0, plural,"
+		"=0{no items}"
+		"=1{1 item}"
+		"other{# items}}" ));
+	formatItems.Format(itemsNumber, fileList->CountItems());
+
+	int duplicates = 0;
+	int renames = 0;
+
+	for (int32 i = 0; i < fileList->CountItems(); i++ ) {
+		if	(((FileListItem *)fileList->ItemAt(i))->fNewName != ""){
+			renames++;
+			if	(((FileListItem *)fileList->ItemAt(i))->Error() != 0)
+				duplicates++;
+		}
+	}
+	if (renames > 0)
+	{
+		static BMessageFormat formatRenamed(B_TRANSLATE("{0, plural,"
+		"=0{no renames}"
+		"=1{1 rename}"
+		"other{# renames}}" ));
+		formatRenamed.Format(renamesNumber, renames);
+	}
+	if (duplicates > 0)
+	{
+		static BMessageFormat formatDuplicated(B_TRANSLATE("{0, plural,"
+		"=0{no duplicates}"
+		"=1{1 duplicate}"
+		"other{# duplicates}}" ));
+		formatDuplicated.Format(duplicatesNumber, duplicates);
+	}
+	statusView->Update(itemsNumber, renamesNumber, duplicatesNumber);
+
+	((PecoApp *)be_app)->fWindow->Unlock();
 }
 
 BFile PrefsFile( int32 mode ) {

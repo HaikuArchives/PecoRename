@@ -12,6 +12,7 @@
 #define MAIN_VIEW_H
 
 #include <View.h>
+#include "StatusView.h"
 
 class BMessage;
 class BCardLayout;
