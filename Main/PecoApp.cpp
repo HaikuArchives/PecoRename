@@ -88,7 +88,7 @@ void PecoApp::AboutRequested() {
 	CopyrightTexte[3] = B_TRANSLATE("Special thanks to Sci for his help with the English translation!");
 	CopyrightTexte[4] = NULL;
 	
-	About(B_TRANSLATE("About PecoRename"), STR_APP_NAME, B_TRANSLATE("Release 1.5"), CopyrightTexte, B_TRANSLATE("Thank you :-)"), "http://www.pecora.de/pecorename/");
+	About(B_TRANSLATE("About PecoRename"), B_TRANSLATE_SYSTEM_NAME("PecoRename"), B_TRANSLATE("Release 1.5"), CopyrightTexte, B_TRANSLATE("Thank you :-)"), "http://www.pecora.de/pecorename/");
 }
 
 bool PecoApp::QuitRequested() {
