@@ -8,7 +8,7 @@
  *              Werner Freytag <freytag@gmx.de>
  */
 
-#include <strstream.h>
+#include <strstream>
 
 #include <Alert.h>
 #include <Catalog.h>
@@ -74,7 +74,7 @@ void Renamer_Numbering::RenameList(BList *FileList) {
 	Renamer :: RenameList(FileList);
 
 	int			Startzahl;
-	strstream	iStream, oStream;
+	std::strstream	iStream, oStream;
 	
 	if (strlen(fStartWith->Text())==0) {
 		Startzahl = 0;
@@ -101,7 +101,7 @@ void Renamer_Numbering::RenameList(BList *FileList) {
 		
 		ListItem = (FileListItem *)FileList->ItemAt(i);
 
-		strstream 	oStream;
+		std::strstream 	oStream;
 		BString		NummerString;
 		
 		oStream << i + Startzahl; oStream.put(0);

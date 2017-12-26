@@ -11,8 +11,6 @@
 #ifndef INSERTREPLACE_H
 #define INSERTREPLACE_H
 
-#include <iostream.h>
-
 #include <MenuField.h>
 
 #include "Renamer.h"

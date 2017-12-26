@@ -11,7 +11,6 @@
 #include <NodeInfo.h>
 #include <Node.h>
 #include <Entry.h>
-#include <strstream.h>
 #include <ColumnTypes.h>
 #include "PreviewColumn.h"
 

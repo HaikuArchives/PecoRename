@@ -11,8 +11,6 @@
 #ifndef UPPERLOWER_H
 #define UPPERLOWER_H
 
-#include <iostream.h>
-
 #include <MenuField.h>
 
 #include "Renamer.h"

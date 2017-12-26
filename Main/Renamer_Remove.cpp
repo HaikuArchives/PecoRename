@@ -8,7 +8,7 @@
  *              Werner Freytag <freytag@gmx.de>
  */
 
-#include <strstream.h>
+#include <strstream>
 
 #include <Alert.h>
 #include <Catalog.h>
@@ -72,7 +72,7 @@ void Renamer_Remove::RenameList(BList *FileList) {
 	Renamer :: RenameList(FileList);
 
 	int			Position1, Position2;
-	strstream	iStream, oStream;
+	std::strstream	iStream, oStream;
 	
 	do {
 		iStream << fPosition1->Text(); iStream >> Position1;
