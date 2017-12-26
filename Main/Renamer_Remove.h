@@ -11,8 +11,6 @@
 #ifndef REMOVE_H
 #define REMOVE_H
 
-#include <iostream.h>
-
 #include <MenuField.h>
 
 #include "Renamer.h"

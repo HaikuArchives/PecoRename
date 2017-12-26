@@ -8,8 +8,6 @@
  *              Werner Freytag <freytag@gmx.de>
  */
 
-#include <strstream.h>
-
 #include <Alert.h>
 #include <Catalog.h>
 #include <PopUpMenu.h>

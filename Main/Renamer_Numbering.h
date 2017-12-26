@@ -11,8 +11,6 @@
 #ifndef NUMBERING_H
 #define NUMBERING_H
 
-#include <iostream.h>
-
 #include <MenuField.h>
 
 #include "Renamer.h"
