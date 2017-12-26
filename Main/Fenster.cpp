@@ -34,7 +34,7 @@
 #undef B_TRANSLATION_CONTEXT
 #define B_TRANSLATION_CONTEXT "Fenster"
 
-Fenster::Fenster() : BWindow( BRect( 20, 40, 620, 460), B_TRANSLATE_SYSTEM_NAME("PecoRename"),
+Fenster::Fenster() : BWindow( BRect( 20, 40, 640, 460), B_TRANSLATE_SYSTEM_NAME("PecoRename"),
 	B_TITLED_WINDOW, B_AUTO_UPDATE_SIZE_LIMITS){
 // Menü
 	BMenuBar* MenuBar = new BMenuBar( "MenuBar" );
