@@ -139,7 +139,7 @@ void PecoApp::RefsReceived ( BMessage* msg ) {
 		
 		//zählen
 		type_code	typeFound;
-		long		total = 0;
+		int32		total = 0;
 		msg->GetInfo("refs", &typeFound, &total);
 		
 		fWindow->Lock();
