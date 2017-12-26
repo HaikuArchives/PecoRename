@@ -50,7 +50,8 @@ SRCS =  About.cpp  \
         Renamer_Numbering.cpp  \
         Renamer_Remove.cpp  \
         Renamer_SearchReplace.cpp  \
-        Renamer_UpperLower.cpp
+        Renamer_UpperLower.cpp  \
+        StatusView.cpp
 
 
 #	specify the resource definition files to use

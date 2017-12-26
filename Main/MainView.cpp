@@ -27,6 +27,7 @@
 #include "constants.h"
 #include "functions.h"
 
+
 #include "MainView.h"
 
 #undef B_TRANSLATION_CONTEXT
@@ -52,6 +53,8 @@ MainView::MainView() : BView ("mainView",  B_WILL_DRAW) {
 
 	FileListView* aFileView = new FileListView();
 
+	BScrollBar* scrollBar = (BScrollBar*)aFileView->FindView("horizontal_scroll_bar");
+
 	BGroupLayout* compoundTitle = BLayoutBuilder::Group<>(B_HORIZONTAL, 2)
 		.Add(ChooseButton)
 		.Add(PathString);
@@ -59,6 +62,9 @@ MainView::MainView() : BView ("mainView",  B_WILL_DRAW) {
 	BGroupLayout *topBox = BLayoutBuilder::Group<>(B_VERTICAL)
 		.SetInsets(B_USE_WINDOW_INSETS)
 		.Add(aFileView);
+
+	StatusView* statusView = new StatusView(scrollBar);
+	aFileView->AddStatusView(statusView);
 
 	BBox* top = new BBox("top");
 	top->SetLabel(B_TRANSLATE("Select your files and directories..."));
@@ -85,7 +91,7 @@ MainView::MainView() : BView ("mainView",  B_WILL_DRAW) {
 	}
 
 	((PecoApp *)be_app)->fRenameMode = 0;
-	fCards->SetVisibleItem((int32)0);
+	fCards->SetVisibleItem((int32)activeRenamer);
 
 
 	BMenuField* menuField = new BMenuField( "selectMode", "", fRenamers);
