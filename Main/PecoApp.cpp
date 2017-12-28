@@ -22,6 +22,7 @@
 #include <StringView.h>
 #include <TextControl.h>
 #include <FilePanel.h>
+#include <Volume.h>
 
 #include <malloc.h>
 #include <string.h>
@@ -120,13 +121,24 @@ void PecoApp::RefsReceived ( BMessage* msg ) {
 	
 	fWindow->Lock();
 	BStringView* 	pfadView 	= (BStringView *)fWindow->FindView("pfadView");
-	BButton* ChooseButton = (BButton *) fWindow->FindView("selectFiles");
-	ChooseButton->SetFlat(true);
 	fWindow->Unlock();
 	
 	//Pfad finden
 	for ( int i=0; msg->FindRef("refs", i, &ref) == B_OK; i++ ) if ( ref.device > 1 ) break;
-	
+
+	BVolume volume(ref.device);
+	if (volume.IsReadOnly()) {
+	   BAlert  *myAlert = new BAlert(NULL, B_TRANSLATE("The volume is read only you cannot rename the files"), B_TRANSLATE("OK"));
+	   myAlert->Go();
+	   return;
+	}
+	// TODO Check the directory
+
+	fWindow->Lock();
+	BButton* ChooseButton = (BButton *) fWindow->FindView("selectFiles");
+	ChooseButton->SetFlat(true);
+	fWindow->Unlock();
+
 	if ( ref.device > 1 ) {
 		New();
 
@@ -299,21 +311,6 @@ void PecoApp::CreateScript(BMessage *msg) {
 void PecoApp::DoIt() {
 
 	if (NothingToDo()) return;
-	
-	FileListItem	*ListItem;
-	
-	BAlert	*myAlert	= new BAlert(NULL, B_TRANSLATE("Do you really want to rename these files?\nThis could probably lead to problems!\n\nIf you click on 'Continue', the files will be renamed AT YOUR OWN RISK!"), B_TRANSLATE("Continue"), B_TRANSLATE("Cancel"));
-	if (myAlert->Go() == 1) return;
-
-	for (int32 i = 0; (ListItem = (FileListItem *)fListView->ItemAt(i)) != NULL; i++ ) {
-		if (ListItem->fErrorStatus == 1 ) {
-			BAlert	*myAlert	= new BAlert(NULL, B_TRANSLATE("I expect some problems with double used file names.\n\nShould I still start with the renaming?"), B_TRANSLATE("Continue"), B_TRANSLATE("Cancel"));
-			if (myAlert->Go() == 1) return;
-			break;
-		}
-	}
-
-	bool 	noerror = true, nomoreerrors=false;
 
 	fWindow->Lock();
 	fStatusBar->SetText("");
@@ -329,37 +326,22 @@ void PecoApp::DoIt() {
 	
 	BString	AlterName, NeuerName;
 	BEntry	Datei;
-	
+	FileListItem    *ListItem;
 	for (int32 i = 0; (ListItem = (FileListItem *)fListView->ItemAt(i)) != NULL; i++ ) {
 		fWindow->Lock();
 		fStatusBar->Update(1);
 		fWindow->Unlock();
-		if (ListItem->fNewName != "" ) {
+		if (ListItem->fNewName != "" && ListItem->Error() == 0) {
 			AlterName = Pfad; AlterName.Append("/").Append(ListItem->fName);
 			NeuerName = Pfad; NeuerName.Append("/").Append(ListItem->fNewName);
 			Datei.SetTo(AlterName.String());
-			if ( Datei.Rename(NeuerName.String()) != B_OK ) {
+			status_t result;
+			if ( (result = Datei.Rename(NeuerName.String())) != B_OK ) {
 				ListItem->SetError(1);
 				fWindow->Lock();
 				fListView->InvalidateItem(i);
 				fWindow->Unlock();
-
-				if (!nomoreerrors) {
-					noerror = false;
-
-					BString		ErrorMessage(B_TRANSLATE("A problem occurred when renaming '%1' to '%2'.\n\nDo you want to cancel, continue or continue without getting any further error messages?"));
-					ErrorMessage.ReplaceFirst("%1", ListItem->fName.String());
-					ErrorMessage.ReplaceFirst("%2", ListItem->fNewName.String());
-					
-					BAlert	*myAlert	= new BAlert(NULL, ErrorMessage.String(), B_TRANSLATE("Cancel"), B_TRANSLATE("Continue"), B_TRANSLATE("Continue without messages"), B_WIDTH_AS_USUAL, B_WARNING_ALERT);
-
-					int32	result = myAlert->Go();
-					if (result == 0) { break;}
-					if (result == 2) nomoreerrors = true;
-				}
-				
 			} else {
-			
 				fWindow->Lock();
 				ListItem->SetName(ListItem->fNewName);
 				ListItem->SetNewName("");
@@ -374,6 +356,15 @@ void PecoApp::DoIt() {
 	fStatusBar->Reset("");
 	fStatusBar->Hide();
 	fWindow->Unlock();
+
+	bool noerror = true;
+
+	for (int32 i = 0; (ListItem = (FileListItem *)fListView->ItemAt(i)) != NULL; i++ ) {
+		if (ListItem->fErrorStatus == 1 ) {
+				noerror = false;
+			break;
+		}
+	}
 
 	if (noerror) MakeList();
 	else {
