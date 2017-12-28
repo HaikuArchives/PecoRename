@@ -64,7 +64,7 @@ void Renamer_UpperLower::RenameList(BList *FileList) {
 		uint8	Buchstabe, Byte0 = 0;
 		int32   choice = fUpperOrLower->Menu()->IndexOf(fUpperOrLower->Menu()->FindMarked());
 	
-		int32 isCap = 1;
+		bool isCap = true;
 		
 		for (int j = 0; j < laenge; j++) {
 			Buchstabe = ListItem->fName.ByteAt(j);
@@ -80,21 +80,21 @@ void Renamer_UpperLower::RenameList(BList *FileList) {
 						break;
 					case 2: 
 						// Capitalize only the first letter.
-						if (isCap == 1)
-							{isCap = 0; Buchstabe &= ~32;}
+						if (isCap)
+							{isCap = false; Buchstabe &= ~32;}
 						else {
 							if (((Buchstabe>=0x41) && (Buchstabe<=0x5a)) || ( (Byte0==0xc3) && (Buchstabe>=0x80 && Buchstabe<=0x96) || (Buchstabe>=0x98 && Buchstabe<=0x9e)))
 								Buchstabe |= 32;
 						}
 						break;
 					case 3:
-						if (isCap == 1) {isCap = 0; Buchstabe &= ~32;}
+						if (isCap) {isCap = false; Buchstabe &= ~32;}
 						else {
 							if (((Buchstabe>=0x41) && (Buchstabe<=0x5a)) || ( (Byte0==0xc3) && (Buchstabe>=0x80 && Buchstabe<=0x96) || (Buchstabe>=0x98 && Buchstabe<=0x9e)))
 									Buchstabe |= 32;
 						}
 						// If space is found, toggle caps again.
-						if (Buchstabe==0x20) isCap = 1;
+						if (Buchstabe==0x20) isCap = true;
 						break;
 				}
 				Byte0 = 0;
