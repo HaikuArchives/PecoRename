@@ -12,14 +12,11 @@
 #include <MenuBar.h>
 #include <MenuItem.h>
 #include <MessageFormat.h>
-#include <StopWatch.h>
 #include "Fenster.h"
 
 #include "constants.h"
 #include "functions.h"
 #include "ConsistencyCheck.h"
-
-#include <stdio.h>
 
 #undef B_TRANSLATION_CONTEXT
 #define B_TRANSLATION_CONTEXT "functions"
@@ -39,11 +36,7 @@ void MakeList() {
 	((PecoApp *)be_app)->fWindow->Lock();
 	((PecoApp *)be_app)->fRenamers[((PecoApp *)be_app)->fRenameMode]->RenameList(FileList);
 
-	{
-		BStopWatch stopWatch("CheckDup");
-		ConsistencyCheck(FileList).CheckForDuplicates();
-	}
-
+	ConsistencyCheck(FileList).CheckForDuplicates();
 
 	if (((PecoApp *)be_app)->fRenameMode == 3)
 	{
@@ -61,12 +54,9 @@ void UpdateWindowStatus() {
 	FileListView *fileListView = (FileListView *)((PecoApp *)be_app)->fWindow->FindView("fileListView");
 	((PecoApp *)be_app)->fWindow->Lock();
 
-	BMenuItem	*scriptMenu = (BMenuItem *)((PecoApp *)be_app)->fWindow->KeyMenuBar()->FindItem(B_TRANSLATE("Create shell script" B_UTF8_ELLIPSIS));
-
 	bool isenabled = !((PecoApp *)be_app)->NothingToDo();
 
 	okButton->SetEnabled(isenabled);
-	scriptMenu->SetEnabled(isenabled);
 
 	BString itemsNumber;
 	BString renamesNumber;

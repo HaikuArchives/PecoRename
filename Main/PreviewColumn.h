@@ -2,11 +2,7 @@
 #ifndef PREVIEW_COLUMN_H
 #define PREVIEW_COLUMN_H
 
-
 #include <ColumnTypes.h>
-
-#include <String.h>
-#include <Font.h>
 
 class PreviewField : public BStringField
 {

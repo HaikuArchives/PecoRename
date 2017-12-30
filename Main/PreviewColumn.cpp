@@ -1,9 +1,5 @@
 #include "PreviewColumn.h"
 
-#include <View.h>
-
-#include <stdio.h>
-
 
 PreviewField::PreviewField(const char* string)
 	:

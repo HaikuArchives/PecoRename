@@ -19,7 +19,6 @@
 #include <MenuBar.h>
 #include <MenuItem.h>
 #include <Roster.h>
-#include <TextControl.h>
 #include <View.h>
 
 #include <string.h>
@@ -43,18 +42,14 @@ Fenster::Fenster() : BWindow( BRect( 20, 40, 640, 460), B_TRANSLATE_SYSTEM_NAME(
 
 	Menu = new BMenu(B_TRANSLATE("File"));
 	MenuBar->AddItem(Menu);
+	// Maybe in the future...Multy directories support
+	// Menu->AddItem(new BMenuItem(B_TRANSLATE("New"), new BMessage(MSG_MENU_NEW), 'N'));
 
-	Menu->AddItem(new BMenuItem(B_TRANSLATE("New"), new BMessage(MSG_MENU_NEW), 'N'));
 	Menu->AddItem(new BMenuItem(B_TRANSLATE("Select files" B_UTF8_ELLIPSIS), new BMessage(MSG_SELECT_FILES), 'O'));
 	Menu->AddSeparatorItem();
 	Menu->AddItem(new BMenuItem(B_TRANSLATE("About PecoRename"), new BMessage(B_ABOUT_REQUESTED)));
 	Menu->AddSeparatorItem();
 	Menu->AddItem(new BMenuItem(B_TRANSLATE("Quit"), new BMessage(B_QUIT_REQUESTED), 'Q'));
-
-	Menu = new BMenu(B_TRANSLATE("Tools"));
-	MenuBar->AddItem(Menu);
-
-	Menu->AddItem(new BMenuItem(B_TRANSLATE("Create shell script" B_UTF8_ELLIPSIS), new BMessage(MSG_MENU_SCRIPT)));
 
 //	Menu = new BMenu(B_TRANSLATE("Help"));
 //	MenuBar->AddItem(Menu);
