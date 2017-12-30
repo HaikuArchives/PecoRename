@@ -46,7 +46,7 @@ MainView::MainView() : BView ("mainView",  B_WILL_DRAW) {
 		new BMessage(MSG_SELECT_FILES));
 	ChooseButton->SetIcon(folder);
 
-	BStringView* PathString = new BStringView("pfadView", B_TRANSLATE("Select your files and directories..."));
+	BStringView* PathString = new BStringView("pfadView", B_TRANSLATE("Choose files and directories"));
 	PathString->SetFont(be_bold_font);
 	PathString->SetExplicitMaxSize(BSize(550, 32));
 	PathString->SetTruncation(B_TRUNCATE_MIDDLE);
@@ -67,7 +67,7 @@ MainView::MainView() : BView ("mainView",  B_WILL_DRAW) {
 	aFileView->AddStatusView(statusView);
 
 	BBox* top = new BBox("top");
-	top->SetLabel(B_TRANSLATE("Select your files and directories..."));
+	top->SetLabel(B_TRANSLATE("Choose files and directories"));
 	top->AddChild(topBox->View());
 	top->SetLabel(compoundTitle->View());
 

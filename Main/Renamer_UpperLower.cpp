@@ -37,7 +37,7 @@ Renamer_UpperLower::Renamer_UpperLower() : Renamer() {
 
 	myMenu->ItemAt(0)->SetMarked(true);
 
-	fUpperOrLower = new BMenuField(NULL, B_TRANSLATE("Convert to"), myMenu);
+	fUpperOrLower = new BMenuField(NULL, B_TRANSLATE("Convert to:"), myMenu);
 
 	BLayoutBuilder::Group<>(this, B_VERTICAL)
 		.SetInsets(B_USE_WINDOW_INSETS)

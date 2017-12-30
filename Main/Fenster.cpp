@@ -44,17 +44,17 @@ Fenster::Fenster() : BWindow( BRect( 20, 40, 640, 460), B_TRANSLATE_SYSTEM_NAME(
 	Menu = new BMenu(B_TRANSLATE("File"));
 	MenuBar->AddItem(Menu);
 
-	Menu->AddItem(new BMenuItem(B_TRANSLATE("New"), 				new BMessage(MSG_MENU_NEW), 'N'));
-	Menu->AddItem(new BMenuItem(B_TRANSLATE("Select files..."), 				new BMessage(MSG_SELECT_FILES), 'O'));
+	Menu->AddItem(new BMenuItem(B_TRANSLATE("New"), new BMessage(MSG_MENU_NEW), 'N'));
+	Menu->AddItem(new BMenuItem(B_TRANSLATE("Select files" B_UTF8_ELLIPSIS), new BMessage(MSG_SELECT_FILES), 'O'));
 	Menu->AddSeparatorItem();
-	Menu->AddItem(new BMenuItem(B_TRANSLATE("About..."), 			new BMessage(B_ABOUT_REQUESTED)));
+	Menu->AddItem(new BMenuItem(B_TRANSLATE("About PecoRename"), new BMessage(B_ABOUT_REQUESTED)));
 	Menu->AddSeparatorItem();
-	Menu->AddItem(new BMenuItem(B_TRANSLATE("Quit"), 				new BMessage(B_QUIT_REQUESTED), 'Q'));
+	Menu->AddItem(new BMenuItem(B_TRANSLATE("Quit"), new BMessage(B_QUIT_REQUESTED), 'Q'));
 
 	Menu = new BMenu(B_TRANSLATE("Tools"));
 	MenuBar->AddItem(Menu);
 
-	Menu->AddItem(new BMenuItem(B_TRANSLATE("Create shell script..."), 	new BMessage(MSG_MENU_SCRIPT)));
+	Menu->AddItem(new BMenuItem(B_TRANSLATE("Create shell script" B_UTF8_ELLIPSIS), new BMessage(MSG_MENU_SCRIPT)));
 
 //	Menu = new BMenu(B_TRANSLATE("Help"));
 //	MenuBar->AddItem(Menu);
@@ -83,7 +83,7 @@ void Fenster::Help() {
 	BMimeType(Signatur).GetAppHint(&ref);
 	
 	if ( (BPath(&ref).Path()==NULL) || (!BEntry(HelpFilePath.Path()).Exists()) ) {
-		BAlert*	myAlert = new BAlert(NULL, B_TRANSLATE("An error has occurred:\nEither the help file is missing, or an HTML browser can not be found."), B_TRANSLATE("Ok"));
+		BAlert*	myAlert = new BAlert(NULL, B_TRANSLATE("An error has occurred:\nEither the help file is missing, or an HTML browser can not be found."), B_TRANSLATE("OK"));
 		myAlert->Go(); return;
 	}
 	

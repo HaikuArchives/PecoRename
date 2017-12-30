@@ -30,7 +30,7 @@
 
 Renamer_Numbering::Renamer_Numbering() : Renamer() {
 
-	char *Modi[] = { "1, 2, 3, ...", "01, 02, 03, ...", "001, 002, 003, ...", "0001, 0002, 0003, ..."};
+	char *Modi[] = { "1, 2, 3, " B_UTF8_ELLIPSIS, "01, 02, 03, " B_UTF8_ELLIPSIS, "001, 002, 003, " B_UTF8_ELLIPSIS, "0001, 0002, 0003, " B_UTF8_ELLIPSIS};
 
 	fName 		= B_TRANSLATE("Numbering");
 

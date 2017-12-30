@@ -61,7 +61,7 @@ void UpdateWindowStatus() {
 	FileListView *fileListView = (FileListView *)((PecoApp *)be_app)->fWindow->FindView("fileListView");
 	((PecoApp *)be_app)->fWindow->Lock();
 
-	BMenuItem	*scriptMenu = (BMenuItem *)((PecoApp *)be_app)->fWindow->KeyMenuBar()->FindItem(B_TRANSLATE("Create shell script..."));
+	BMenuItem	*scriptMenu = (BMenuItem *)((PecoApp *)be_app)->fWindow->KeyMenuBar()->FindItem(B_TRANSLATE("Create shell script" B_UTF8_ELLIPSIS));
 
 	bool isenabled = !((PecoApp *)be_app)->NothingToDo();
 
