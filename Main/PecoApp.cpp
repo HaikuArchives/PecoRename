@@ -362,18 +362,24 @@ void PecoApp::DoIt() {
 	fWindow->Unlock();
 
 	bool noerror = true;
+	bool noerrorDup = true;
 
 	for (int32 i = 0; (ListItem = (FileListItem *)fListView->ItemAt(i)) != NULL; i++ ) {
-		if (ListItem->fErrorStatus > 0) {
+		if (ListItem->fErrorStatus > 1) {
 				noerror = false;
+			break;
+		} else if (ListItem->fErrorStatus > 0) {
+				noerrorDup = false;
 			break;
 		}
 	}
 
-	if (noerror) MakeList();
+	if (noerror && noerrorDup) MakeList();
 	else {
-		ReportWindow *reportWindow = new ReportWindow(fList);
-		reportWindow->Show();
+		if (!noerror) {
+			ReportWindow *reportWindow = new ReportWindow(fList);
+			reportWindow->Show();
+		}
 	}
 	
 }
