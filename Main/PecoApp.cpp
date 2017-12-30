@@ -38,6 +38,7 @@
 #include "Renamer_InsertReplace.h"
 #include "Renamer_UpperLower.h"
 #include "Renamer_Remove.h"
+#include "ReportWindow.h"
 
 
 #undef B_TRANSLATION_CONTEXT
@@ -337,7 +338,10 @@ void PecoApp::DoIt() {
 			Datei.SetTo(AlterName.String());
 			status_t result;
 			if ( (result = Datei.Rename(NeuerName.String())) != B_OK ) {
-				ListItem->SetError(1);
+				if (result == B_FILE_EXISTS)
+					ListItem->SetError(2);
+				else
+					ListItem->SetError(3);
 				fWindow->Lock();
 				fListView->InvalidateItem(i);
 				fWindow->Unlock();
@@ -360,7 +364,7 @@ void PecoApp::DoIt() {
 	bool noerror = true;
 
 	for (int32 i = 0; (ListItem = (FileListItem *)fListView->ItemAt(i)) != NULL; i++ ) {
-		if (ListItem->fErrorStatus == 1 ) {
+		if (ListItem->fErrorStatus > 0) {
 				noerror = false;
 			break;
 		}
@@ -368,8 +372,8 @@ void PecoApp::DoIt() {
 
 	if (noerror) MakeList();
 	else {
-		BAlert	*myAlert	= new BAlert(NULL, B_TRANSLATE("I've marked the files that caused the errors in red!"), B_TRANSLATE("Ok"));
-		myAlert->Go();
+		ReportWindow *reportWindow = new ReportWindow(fList);
+		reportWindow->Show();
 	}
 	
 }

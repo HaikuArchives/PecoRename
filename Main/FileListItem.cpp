@@ -62,7 +62,7 @@ void FileListItem::SetName( BString name ) {
 }
 
 void FileListItem::SetError(char error)  {
-	((PreviewField*)GetField(4))->SetError(error == 1);
+	((PreviewField*)GetField(4))->SetError(error > 0);
 	fErrorStatus = error;
 }
 
