@@ -367,10 +367,9 @@ void PecoApp::DoIt() {
 	for (int32 i = 0; (ListItem = (FileListItem *)fListView->ItemAt(i)) != NULL; i++ ) {
 		if (ListItem->fErrorStatus > 1) {
 				noerror = false;
-			break;
+				break;
 		} else if (ListItem->fErrorStatus > 0) {
 				noerrorDup = false;
-			break;
 		}
 	}
 
