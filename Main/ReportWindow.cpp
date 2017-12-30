@@ -34,9 +34,11 @@ ReportWindow::ReportWindow(BList *filelist) : BWindow( BRect( 60, 80, 600, 280),
 	 B_TITLED_WINDOW,B_AUTO_UPDATE_SIZE_LIMITS)
 {
 
-	BStringView *messageView = new BStringView("Errors", B_TRANSLATE("There were problems during the renaming"));
-	BBox* reportBox = new BBox("Errors");
-	reportBox->SetLabel(B_TRANSLATE("There were problems during the renaming"));
+
+	BStringView *messageView = new BStringView("Errors", B_TRANSLATE("There were some problems during the renaming"));
+	//BBox* reportBox = new BBox("Errors");
+	//reportBox->SetLabel(B_TRANSLATE("There were some problems during the renaming"));
+
 	messageView->SetExplicitMaxSize(BSize(B_SIZE_UNLIMITED, B_SIZE_UNSET));
 	BColumnListView* reportView = new BColumnListView("reportView", B_FRAME_EVENTS|B_NAVIGABLE, B_NO_BORDER);
 
@@ -72,16 +74,16 @@ ReportWindow::ReportWindow(BList *filelist) : BWindow( BRect( 60, 80, 600, 280),
 	
 	}
 	
-	BGroupLayout *topBox = BLayoutBuilder::Group<>(B_VERTICAL)
-		.SetInsets(B_USE_WINDOW_INSETS)
-		.Add(reportView);
-	reportBox->AddChild(topBox->View());
+//	BGroupLayout *topBox = BLayoutBuilder::Group<>(B_VERTICAL)
+//		.SetInsets(B_USE_WINDOW_INSETS)
+//		.Add(reportView);
+//	reportBox->AddChild(topBox->View());
 
 	BLayoutBuilder::Group<>(this, B_VERTICAL)
 		.SetInsets(B_USE_WINDOW_INSETS)
-//		.Add(messageView)
-//		.Add(reportView)
-		.Add(reportBox)
+		.Add(messageView)
+		.Add(reportView)
+//		.Add(reportBox)
 		.AddGroup(B_HORIZONTAL)
 			.AddGlue()
 			.Add( new BButton( "OK", B_TRANSLATE("OK"), new BMessage('CLO_'))); 
