@@ -51,6 +51,7 @@ SRCS =  About.cpp  \
         Renamer_Remove.cpp  \
         Renamer_SearchReplace.cpp  \
         Renamer_UpperLower.cpp  \
+        ReportWindow.cpp  \
         StatusView.cpp
 
 
