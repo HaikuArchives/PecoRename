@@ -22,7 +22,6 @@
 class FileListItem : public BRow {
 friend	void PecoApp::DoIt();
 friend	bool PecoApp::NothingToDo();
-friend	void PecoApp::CreateScript(BMessage *msg);
 public: 
 					FileListItem( const char *name, int64 size, time_t timer, const entry_ref *ref ); 
 					~FileListItem();

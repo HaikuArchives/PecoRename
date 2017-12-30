@@ -1,22 +1,11 @@
 /*
  */
-
-#include <Alert.h>
-#include <Application.h>
-#include <Box.h>
 #include <Button.h>
 #include <Catalog.h>
 #include <ColumnListView.h>
 #include <ColumnTypes.h>
-#include <Font.h>
 #include <LayoutBuilder.h>
-#include <Menu.h>
-#include <MenuBar.h>
-#include <MenuItem.h>
-#include <Roster.h>
 #include <StringView.h>
-#include <TextControl.h>
-#include <View.h>
 
 #include <string.h>
 #include <stdlib.h>
@@ -34,10 +23,7 @@ ReportWindow::ReportWindow(BList *filelist) : BWindow( BRect( 60, 80, 600, 280),
 	 B_TITLED_WINDOW,B_AUTO_UPDATE_SIZE_LIMITS)
 {
 
-
 	BStringView *messageView = new BStringView("Errors", B_TRANSLATE("There were some problems during the renaming"));
-	//BBox* reportBox = new BBox("Errors");
-	//reportBox->SetLabel(B_TRANSLATE("There were some problems during the renaming"));
 
 	messageView->SetExplicitMaxSize(BSize(B_SIZE_UNLIMITED, B_SIZE_UNSET));
 	BColumnListView* reportView = new BColumnListView("reportView", B_FRAME_EVENTS|B_NAVIGABLE, B_NO_BORDER);
@@ -73,17 +59,11 @@ ReportWindow::ReportWindow(BList *filelist) : BWindow( BRect( 60, 80, 600, 280),
 			}
 	
 	}
-	
-//	BGroupLayout *topBox = BLayoutBuilder::Group<>(B_VERTICAL)
-//		.SetInsets(B_USE_WINDOW_INSETS)
-//		.Add(reportView);
-//	reportBox->AddChild(topBox->View());
 
 	BLayoutBuilder::Group<>(this, B_VERTICAL)
 		.SetInsets(B_USE_WINDOW_INSETS)
 		.Add(messageView)
 		.Add(reportView)
-//		.Add(reportBox)
 		.AddGroup(B_HORIZONTAL)
 			.AddGlue()
 			.Add( new BButton( "OK", B_TRANSLATE("OK"), new BMessage('CLO_'))); 

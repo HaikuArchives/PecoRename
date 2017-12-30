@@ -5,11 +5,8 @@
 #ifndef STATUS_VIEW_H
 #define STATUS_VIEW_H
 
-
-#include <Entry.h>
 #include <String.h>
 #include <View.h>
-
 
 enum {
 	kItemsNumberCell,

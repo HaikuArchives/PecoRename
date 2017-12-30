@@ -14,14 +14,13 @@
 #include <Application.h>
 #include <Bitmap.h>
 #include <Catalog.h>
-#include <ListView.h>
+#include <FilePanel.h>
 #include <MenuField.h>
 #include <MenuItem.h>
 #include <NodeInfo.h>
 #include <String.h>
 #include <StringView.h>
 #include <TextControl.h>
-#include <FilePanel.h>
 #include <Volume.h>
 
 #include <malloc.h>
@@ -29,7 +28,6 @@
 
 #include "constants.h"
 #include "functions.h"
-
 #include "About.h"
 #include "Fenster.h"
 #include "Renamer_SearchReplace.h"
@@ -102,11 +100,10 @@ void PecoApp::MessageReceived(BMessage *msg) {
 		case B_SIMPLE_DATA:			RefsReceived (msg); break;
 		case MSG_MENU_NEW:			New(); break;
 		case MSG_SELECT_FILES: 		fFilePanel->Show(); break;
-		case MSG_DO_IT: 			/*MakeList();*/ DoIt(); break; // Use the current List
+		case MSG_DO_IT: 			DoIt(); break; // Use the current List
 		case MSG_RENAME_SETTINGS:	MakeList(); break;
 		case MSG_MENU_SCRIPT:		if (!NothingToDo()) fScriptFilePanel->Show(); break;
-		case B_SAVE_REQUESTED:		CreateScript(msg); break;
-		
+
 	   	default:
 	   		BApplication::MessageReceived(msg);
 	}
@@ -133,7 +130,6 @@ void PecoApp::RefsReceived ( BMessage* msg ) {
 	   myAlert->Go();
 	   return;
 	}
-	// TODO Check the directory
 
 	fWindow->Lock();
 	BButton* ChooseButton = (BButton *) fWindow->FindView("selectFiles");
@@ -241,71 +237,6 @@ bool PecoApp::NothingToDo() {
 		if (ListItem->fNewName.Length() > 0 ) { nothing_to_do = false; break; }
 
 	return	nothing_to_do;
-
-}
-
-void PecoApp::CreateScript(BMessage *msg) {
-	entry_ref	directory;
-	const char	*name;
-	msg->FindRef("directory", &directory);
-	msg->FindString("name", &name);
-	
-	BPath path(&directory);
-	path.Append(name);
-	
-	BFile file(path.Path(), B_READ_WRITE | B_CREATE_FILE | B_ERASE_FILE);
-
-	// Initiate
-	fWindow->Lock();
-	fStatusBar->Show();
-	fStatusBar->Reset("");
-	fStatusBar->SetMaxValue(fList->CountItems());
-
-	BStringView* 	pfadView = (BStringView *)fWindow->FindView("pfadView");
-	BString			Pfad(pfadView->Text());
-	fWindow->Unlock();
-
-	FileListItem	*ListItem;
-	BString			AlterName, NeuerName;
-	BString			output = 
-					"#!/bin/sh\n"
-					"\n"
-					"# This script was created with PecoRename by Werner Freytag.\n"
-					"# Visit http://www.pecora.de/pecorename for details!\n\n"
-					"alert \"This script will rename files.\n\n"
-					"Do you really want to continue?\" \"Yes\" \"No\"\n\n"
-					"if [ $? -ne 0 ]\n"
-					"then\n"
-					"	exit 0\n"
-					"fi\n\n";
-	
-	for (int32 i = 0; (ListItem = (FileListItem *)fListView->ItemAt(i)) != NULL; i++ ) {
-		fWindow->Lock();
-		fStatusBar->Update(1);
-		fWindow->Unlock();
-		if (ListItem->fNewName.String() != "" ) {
-			AlterName = Pfad; AlterName.Append("/").Append(ListItem->fName);
-			AlterName.Replace("\"", "\\\"", AlterName.Length());
-			NeuerName = Pfad; NeuerName.Append("/").Append(ListItem->fNewName);
-			NeuerName.Replace("\"", "\\\"", NeuerName.Length());
-			output << "mv \"" << AlterName.String() << "\" \"" << NeuerName.String() << "\"\n";
-		}
-	}
-	
-	file.Write(output.String(), output.Length());
-	
-	mode_t	perms;
-	
-	file.GetPermissions(&perms);
-	file.SetPermissions(perms | S_IXUSR | S_IXGRP | S_IXOTH );
-	
-	BNode		node(file);
-	BNodeInfo	node_info(&node);
-	node_info.SetType("text/plain");
-	
-	fWindow->Lock();
-	fStatusBar->Hide();
-	fWindow->Unlock();
 
 }
 

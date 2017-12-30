@@ -13,9 +13,7 @@
 
 #include <ControlLook.h>
 #include <Entry.h>
-#include <MenuItem.h>
 #include <Path.h>
-#include <PopUpMenu.h>
 #include <ScrollView.h>
 
 const float kHorzSpacing = 5.f;
@@ -121,21 +119,6 @@ StatusView::Draw(BRect updateRect)
 void
 StatusView::MouseDown(BPoint where)
 {
-	/*BPrivate::BDirMenu* menu = new BDirMenu(NULL, BMessenger(kTrackerSignature),
-		B_REFS_RECEIVED);
-	BEntry entry;
-	if (entry.SetTo(&fRef) == B_OK)
-		menu->Populate(&entry, Window(), false, false, true, false, true);
-	else
-		menu->Populate(NULL, Window(), false, false, true, false, true);
-
-	BPoint point = Bounds().LeftBottom();
-	point.y += 3;
-	ConvertToScreen(&point);
-	BRect clickToOpenRect(Bounds());
-	ConvertToScreen(&clickToOpenRect);
-	menu->Go(point, true, true, clickToOpenRect);
-	delete menu;*/
 }
 
 

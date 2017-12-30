@@ -33,7 +33,6 @@ class PecoApp : public BApplication {
 
 		bool			NothingToDo();
 		void			New();
-		void			CreateScript(BMessage *msg);
 		void			DoIt();
 
 		Fenster			*fWindow;
