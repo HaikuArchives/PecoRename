@@ -15,7 +15,8 @@
 #include <Beep.h>
 #include <TextControl.h>
 #include <LayoutBuilder.h>
-
+#include <StopWatch.h>
+#include <UnicodeChar.h>
 #include "constants.h"
 
 #include "FileListItem.h"
@@ -34,6 +35,8 @@ Renamer_UpperLower::Renamer_UpperLower() : Renamer() {
 
 	myMenu->AddItem(new BMenuItem(B_TRANSLATE("UPPERCASE"), new BMessage(MSG_RENAME_SETTINGS)));
 	myMenu->AddItem(new BMenuItem(B_TRANSLATE("lowercase"), new BMessage(MSG_RENAME_SETTINGS)));
+	myMenu->AddItem(new BMenuItem(B_TRANSLATE("Sentence case"), new BMessage(MSG_RENAME_SETTINGS)));
+	myMenu->AddItem(new BMenuItem(B_TRANSLATE("Title Case"), new BMessage(MSG_RENAME_SETTINGS)));
 
 	myMenu->ItemAt(0)->SetMarked(true);
 
@@ -53,36 +56,71 @@ void Renamer_UpperLower::RenameList(BList *FileList) {
 	Renamer :: RenameList(FileList);
 
 	FileListItem	*ListItem;
+	{BStopWatch("Upper/lower");
+
+	char newNameArr[B_FILE_NAME_LENGTH + 4];
+
+	int conversionMenuIndex = fUpperOrLower->Menu()->IndexOf(fUpperOrLower->Menu()->FindMarked());
 
 	for (int i = 0; i < fNumberOfItems; i++ ) {
 		ListItem = (FileListItem *)FileList->ItemAt(i);
-		
-		int32	laenge = ListItem->fName.Length();
-		char	*tempStr = new char[laenge + 1];
 
-		uint8	Buchstabe, Byte0 = 0;
-		bool	MakeUpper = !bool(fUpperOrLower->Menu()->IndexOf(fUpperOrLower->Menu()->FindMarked()));
-		for (int j = 0; j < laenge; j++) {
-			Buchstabe = ListItem->fName.ByteAt(j);
-			if (Buchstabe>=0xc0) {
-				Byte0 = Buchstabe;
-			} else {
-				if (MakeUpper) {
-					if (((Buchstabe>=0x61) && (Buchstabe<=0x7a)) || ( (Byte0==0xc3) && (Buchstabe>=0xa0 && Buchstabe<=0xb6) || (Buchstabe>=0xb8 && Buchstabe<=0xbe)))
-						Buchstabe &= ~32;
-				} else { // kleinbuchstaben
-					if (((Buchstabe>=0x41) && (Buchstabe<=0x5a)) || ( (Byte0==0xc3) && (Buchstabe>=0x80 && Buchstabe<=0x96) || (Buchstabe>=0x98 && Buchstabe<=0x9e)))
-						Buchstabe |= 32;
-				}
-				Byte0 = 0;
+		int conversionMode = conversionMenuIndex; // reset for each name
+									// the value change during the conversion
+
+		const char *pointInName = ListItem->fName.String();
+		char *pointOutName = newNameArr;
+		int32 numChar = ListItem->fName.CountChars();
+		uint32 unicodeChar;
+
+		bool titleCase = false;
+
+		for (int32 i = 0; i < numChar; i++)
+		{
+			unicodeChar = BUnicodeChar::FromUTF8(&pointInName);
+
+			if (titleCase && BUnicodeChar::IsWhitespace(unicodeChar))
+			{
+				conversionMode = 3; // If in Title Case mode
+									// only the first letter is Title case
+									// and the others are UpperCase this must
+									// be change to 4
 			}
-			tempStr[j] = Buchstabe;
-		}
-		tempStr[laenge] = 0;
+			else
+			switch(conversionMode) {
+			case 0 : // upperCase
+					unicodeChar = BUnicodeChar::ToUpper(unicodeChar);
+					break;
+			case 1 : // lowerCase
+					unicodeChar = BUnicodeChar::ToLower(unicodeChar);
+					break;
+			case 2 : // Sentence case
+					unicodeChar = BUnicodeChar::ToTitle(unicodeChar);
+					conversionMode = 1;
+					break;
+			case 3 : // Title Case
+					unicodeChar = BUnicodeChar::ToTitle(unicodeChar);
+					conversionMode = 1;
+					titleCase = true;
+					break;
+			case 4 : // Title Case with other words in uppercase
+					unicodeChar = BUnicodeChar::ToUpper(unicodeChar);
+					conversionMode = 1;
+					break;
+			}
 
-		ListItem->SetNewName( tempStr );
+			BUnicodeChar::ToUTF8(unicodeChar, &pointOutName);
 
-		delete tempStr;
+			// check for overflow improbable but can happen
+			if (pointOutName - newNameArr >= B_FILE_NAME_LENGTH)
+			{
+				ListItem->SetError(3);
+				break;
+			}
+		};
+		*pointOutName = 0;
+		ListItem->SetNewName( newNameArr );
+	}
 	}
 	
 };
@@ -91,7 +129,7 @@ void Renamer_UpperLower::DetachedFromWindow() {
 	BMessage	msg;
 
 	BMenu *menu = fUpperOrLower->Menu();
-	msg.AddBool("upperlower", bool(menu->IndexOf(menu->FindMarked())));
+	msg.AddInt32("upperlower", menu->IndexOf(menu->FindMarked()));
 	UpdatePreferences("ren_upperlower", msg);
 }
 
@@ -99,10 +137,9 @@ void Renamer_UpperLower::AttachedToWindow() {
 	BMessage	msg;
 	ReadPreferences("ren_upperlower", msg);
 	
-	bool boolean;
-	if (msg.FindBool("upperlower", &boolean)==B_OK) {
+	int32 index;
+	if (msg.FindInt32("upperlower", &index)==B_OK) {
 		BMenu *menu = fUpperOrLower->Menu();
-		for (int i=0; i<2; ++i) menu->ItemAt(i)->SetMarked(i==(int)boolean);
+		menu->ItemAt(index)->SetMarked(true);
 	}
-
 }
