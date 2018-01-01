@@ -34,7 +34,8 @@ Renamer_UpperLower::Renamer_UpperLower() : Renamer() {
 
 	myMenu->AddItem(new BMenuItem(B_TRANSLATE("UPPERCASE"), new BMessage(MSG_RENAME_SETTINGS)));
 	myMenu->AddItem(new BMenuItem(B_TRANSLATE("lowercase"), new BMessage(MSG_RENAME_SETTINGS)));
-
+	myMenu->AddItem(new BMenuItem(B_TRANSLATE("Sentence case"), new BMessage(MSG_RENAME_SETTINGS)));
+	myMenu->AddItem(new BMenuItem(B_TRANSLATE("Title Case"), new BMessage(MSG_RENAME_SETTINGS)));
 	myMenu->ItemAt(0)->SetMarked(true);
 
 	fUpperOrLower = new BMenuField(NULL, B_TRANSLATE("Convert to:"), myMenu);
@@ -61,18 +62,40 @@ void Renamer_UpperLower::RenameList(BList *FileList) {
 		char	*tempStr = new char[laenge + 1];
 
 		uint8	Buchstabe, Byte0 = 0;
-		bool	MakeUpper = !bool(fUpperOrLower->Menu()->IndexOf(fUpperOrLower->Menu()->FindMarked()));
+		int32   choice = fUpperOrLower->Menu()->IndexOf(fUpperOrLower->Menu()->FindMarked());
+	
+		bool isCap = true;
+		
 		for (int j = 0; j < laenge; j++) {
 			Buchstabe = ListItem->fName.ByteAt(j);
 			if (Buchstabe>=0xc0) {
 				Byte0 = Buchstabe;
 			} else {
-				if (MakeUpper) {
-					if (((Buchstabe>=0x61) && (Buchstabe<=0x7a)) || ( (Byte0==0xc3) && (Buchstabe>=0xa0 && Buchstabe<=0xb6) || (Buchstabe>=0xb8 && Buchstabe<=0xbe)))
+				switch (choice){
+					case 0: if (((Buchstabe>=0x61) && (Buchstabe<=0x7a)) || ( (Byte0==0xc3) && (Buchstabe>=0xa0 && Buchstabe<=0xb6) || (Buchstabe>=0xb8 && Buchstabe<=0xbe)))
 						Buchstabe &= ~32;
-				} else { // kleinbuchstaben
-					if (((Buchstabe>=0x41) && (Buchstabe<=0x5a)) || ( (Byte0==0xc3) && (Buchstabe>=0x80 && Buchstabe<=0x96) || (Buchstabe>=0x98 && Buchstabe<=0x9e)))
+						break;
+					case 1: if (((Buchstabe>=0x41) && (Buchstabe<=0x5a)) || ( (Byte0==0xc3) && (Buchstabe>=0x80 && Buchstabe<=0x96) || (Buchstabe>=0x98 && Buchstabe<=0x9e)))
 						Buchstabe |= 32;
+						break;
+					case 2: 
+						// Capitalize only the first letter.
+						if (isCap)
+							{isCap = false; Buchstabe &= ~32;}
+						else {
+							if (((Buchstabe>=0x41) && (Buchstabe<=0x5a)) || ( (Byte0==0xc3) && (Buchstabe>=0x80 && Buchstabe<=0x96) || (Buchstabe>=0x98 && Buchstabe<=0x9e)))
+								Buchstabe |= 32;
+						}
+						break;
+					case 3:
+						if (isCap) {isCap = false; Buchstabe &= ~32;}
+						else {
+							if (((Buchstabe>=0x41) && (Buchstabe<=0x5a)) || ( (Byte0==0xc3) && (Buchstabe>=0x80 && Buchstabe<=0x96) || (Buchstabe>=0x98 && Buchstabe<=0x9e)))
+									Buchstabe |= 32;
+						}
+						// If space is found, toggle caps again.
+						if (Buchstabe==0x20) isCap = true;
+						break;
 				}
 				Byte0 = 0;
 			}
