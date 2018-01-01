@@ -67,9 +67,9 @@ lowercase	Renamer_UpperLower		minuscolo
 Please select	Renamer_UpperLower		Seleziona
 UPPERCASE	Renamer_UpperLower		MAIUSCOLO
 Uppercase / lowercase	Renamer_UpperLower		Maiuscolo / minuscolo
-A file with that name already exists	ReportWindow		Un file con quel nome già esiste
+A file with that name already exists	ReportWindow		Un file con questo nome già esiste
 Duplicated name	ReportWindow		Nome duplicato
-Failed rename to	ReportWindow		Fallito di rinominare in
+Failed rename to	ReportWindow		Fallito di rinominare
 Name	ReportWindow		Nome
 OK	ReportWindow		OK
 Problem	ReportWindow		Problema
@@ -78,3 +78,4 @@ There were some problems during the renaming	ReportWindow		Ci sono stati dei pro
 Unknown error	ReportWindow		Errore sconosciuto
 PecoRename	System name		PecoRename
 			
+
