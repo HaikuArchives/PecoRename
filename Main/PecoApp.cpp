@@ -69,14 +69,7 @@ void PecoApp::ReadyToRun() {
 	fFilePanel->SetButtonLabel(B_CANCEL_BUTTON, B_TRANSLATE("Cancel"));
 	fFilePanel->Window()->SetTitle(B_TRANSLATE("Select files for renaming"));
 
-	fScriptFilePanel = new BFilePanel(B_SAVE_PANEL, NULL, NULL, B_FILE_NODE, false,
-		0, 0, true);
-	fScriptFilePanel->SetButtonLabel(B_DEFAULT_BUTTON, B_TRANSLATE("OK"));
-	fScriptFilePanel->SetButtonLabel(B_CANCEL_BUTTON, B_TRANSLATE("Cancel"));
-	fScriptFilePanel->Window()->SetTitle(B_TRANSLATE("Create shell script" B_UTF8_ELLIPSIS));
-
 	fWindow->Show();
-
 };
 
 void PecoApp::AboutRequested() {
@@ -102,7 +95,6 @@ void PecoApp::MessageReceived(BMessage *msg) {
 		case MSG_SELECT_FILES: 		fFilePanel->Show(); break;
 		case MSG_DO_IT: 			DoIt(); break; // Use the current List
 		case MSG_RENAME_SETTINGS:	MakeList(); break;
-		case MSG_MENU_SCRIPT:		if (!NothingToDo()) fScriptFilePanel->Show(); break;
 
 	   	default:
 	   		BApplication::MessageReceived(msg);

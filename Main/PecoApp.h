@@ -38,7 +38,7 @@ class PecoApp : public BApplication {
 		Fenster			*fWindow;
 		FileListView	*fListView;
 		BList			*fList;
-		BFilePanel		*fFilePanel, *fScriptFilePanel;
+		BFilePanel		*fFilePanel;
 		BPath			fPfad;
 		int32			fRenameMode;
 		BStatusBar		*fStatusBar;

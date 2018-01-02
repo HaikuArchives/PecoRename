@@ -27,7 +27,6 @@ enum {
 //	Message IDs
 
 const uint32 MSG_MENU_NEW		= 'New ';
-const uint32 MSG_MENU_SCRIPT	= 'CrSc';
 const uint32 MSG_MENU_DOCU		= 'Docu';
 const uint32 MSG_DO_IT			= 'DoIt';
 
