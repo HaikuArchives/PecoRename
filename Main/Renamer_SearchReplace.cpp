@@ -64,8 +64,9 @@ Renamer_SearchReplace::Renamer_SearchReplace()
 		.End()
 		.AddGroup(B_HORIZONTAL)
 			.Add(SearchFor)
-			.Add(ReplaceWith);
-
+			.Add(ReplaceWith)
+		.End()
+		.AddGlue();
 }
 
 void Renamer_SearchReplace::RenameList(BList *FileList) {

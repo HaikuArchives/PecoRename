@@ -64,7 +64,9 @@ Renamer_Remove::Renamer_Remove() : Renamer() {
 		.End()
 		.AddGroup(B_HORIZONTAL)
 			.Add(fPosition2)
-			.Add(fDirection2);
+			.Add(fDirection2)
+		.End()
+		.AddGlue();
 }
 
 void Renamer_Remove::RenameList(BList *FileList) {

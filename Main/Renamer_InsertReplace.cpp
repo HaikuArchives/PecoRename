@@ -61,7 +61,9 @@ Renamer_InsertReplace::Renamer_InsertReplace() : Renamer() {
 		.End()
 		.AddGroup(B_HORIZONTAL)
 			.Add(fPosition)
-			.Add(fDirection);
+			.Add(fDirection)
+		.End()
+		.AddGlue();
 }
 
 void Renamer_InsertReplace::RenameList(BList *FileList) {

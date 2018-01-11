@@ -108,7 +108,7 @@ MainView::MainView() : BView ("mainView",  B_WILL_DRAW) {
 
 	BLayoutBuilder::Group<>(this, B_VERTICAL)
 		.SetInsets(B_USE_WINDOW_INSETS)
-		.Add(top)
+		.Add(top, 100)
 		.Add(bottom)
 		.AddGroup(B_HORIZONTAL)
 			.Add(statusBar, 100)

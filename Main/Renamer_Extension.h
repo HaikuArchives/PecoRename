@@ -16,7 +16,7 @@
 
 #include <UTF8.h>
 #include <CheckBox.h>
-#include <MenuField.h>
+#include <RadioButton.h>
 
 #include "Renamer.h"
 
@@ -30,7 +30,8 @@ class Renamer_Extension : public Renamer {
 
 	private:
 		BCheckBox			*fReplaceOldCheckBox;
-		BMenuField			*fSelectCaseMenu;
+		BRadioButton		*fLowerCase;
+		BRadioButton		*fUpperCase;
 };
 
 #endif

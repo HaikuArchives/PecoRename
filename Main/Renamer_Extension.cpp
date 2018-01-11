@@ -7,7 +7,7 @@
  * Original Author:
  *              Werner Freytag <freytag@gmx.de>
  */
- 
+
 #include <Catalog.h>
 #include <Mime.h>
 #include <PopUpMenu.h>
@@ -27,28 +27,27 @@
 #define MAX_EXTENSION_LENGTH 5
 
 Renamer_Extension::Renamer_Extension() : Renamer() {
-	fName 		= B_TRANSLATE("Add file extension");
+	fName = B_TRANSLATE("Add file extension");
 
-	fReplaceOldCheckBox = new BCheckBox(NULL, B_TRANSLATE("Replace old extension"), new BMessage(MSG_RENAME_SETTINGS));
+	fReplaceOldCheckBox = new BCheckBox(NULL,
+		B_TRANSLATE("Replace old extension"), new BMessage(MSG_RENAME_SETTINGS));
+	fReplaceOldCheckBox->SetExplicitMaxSize(BSize(B_SIZE_UNLIMITED, B_SIZE_UNSET));
 
-	BPopUpMenu	*myMenu = new BPopUpMenu(B_TRANSLATE("Please select"));
+	fLowerCase = new BRadioButton("lowerCase", B_TRANSLATE("lowercase"),
+		new BMessage(MSG_RENAME_SETTINGS));
+	fLowerCase->SetExplicitMaxSize(BSize(B_SIZE_UNLIMITED, B_SIZE_UNSET));
 
-	BMenuItem	*MenuItem;
-	myMenu->AddItem(MenuItem = new BMenuItem(B_TRANSLATE("Default"), new BMessage(MSG_RENAME_SETTINGS)));
-	MenuItem->SetMarked(true);
-	myMenu->AddItem(new BMenuItem(B_TRANSLATE("lowercase"), new BMessage(MSG_RENAME_SETTINGS)));
-	myMenu->AddItem(new BMenuItem(B_TRANSLATE("UPPERCASE"), new BMessage(MSG_RENAME_SETTINGS)));
-	fSelectCaseMenu = new BMenuField(NULL, B_TRANSLATE("Uppercase / lowercase:"), myMenu);
+	fUpperCase = new BRadioButton("upperCase", B_TRANSLATE("UPPERCASE"),
+		new BMessage(MSG_RENAME_SETTINGS));
+	fUpperCase->SetExplicitMaxSize(BSize(B_SIZE_UNLIMITED, B_SIZE_UNSET));
 
-	BLayoutBuilder::Group<>(this, B_VERTICAL)
+	BLayoutBuilder::Group<>(this, B_VERTICAL, 0)
 		.SetInsets(B_USE_WINDOW_INSETS)
-		.AddGroup(B_HORIZONTAL)
-			.Add(fReplaceOldCheckBox)
-			.AddGlue()
-		.End()
-		.AddGroup(B_HORIZONTAL)
-			.Add(fSelectCaseMenu)
-			.AddGlue();
+		.Add(fReplaceOldCheckBox)
+		.AddStrut(B_USE_SMALL_SPACING)
+		.Add(fLowerCase)
+		.Add(fUpperCase)
+		.AddGlue();
 };
 
 void Renamer_Extension::RenameList(BList *FileList) {
@@ -56,7 +55,7 @@ void Renamer_Extension::RenameList(BList *FileList) {
 	Renamer :: RenameList(FileList);
 
 	const bool 	replaceold = bool(fReplaceOldCheckBox->Value());
-	const int32	upperlower = fSelectCaseMenu->Menu()->IndexOf(fSelectCaseMenu->Menu()->FindMarked());
+	const int32	upperlower = fLowerCase->Value() == B_CONTROL_ON;
 
 	FileListItem	*ListItem;
 	BMessage		msg;
@@ -71,12 +70,13 @@ void Renamer_Extension::RenameList(BList *FileList) {
 			for (int32 j=0; (msg.FindString("extensions", j, &ExtensionString) == B_OK); j++ )
 			 	if (strlen(ExtensionString) < MAX_EXTENSION_LENGTH ) {
 			 		Extension = ExtensionString; Extension.Prepend(".");
-			 		switch (upperlower) {
-			 			case 1: Extension.ToLower(); break;
-			 			case 2: Extension.ToUpper();
-			 		}
+					if (upperlower)
+						Extension.ToLower();
+					else
+						Extension.ToUpper();
+
 					NewName = ListItem->fName;
-			 		if ( (replaceold) && ((OldExtStart = NewName.FindLast(".")) > 0) )
+					if ( (replaceold) && ((OldExtStart = NewName.FindLast(".")) > 0) )
 						ListItem->SetNewName(NewName.Truncate(OldExtStart).Append(Extension));
 					else
 						ListItem->SetNewName(NewName.Append(Extension));
@@ -89,8 +89,7 @@ void Renamer_Extension::RenameList(BList *FileList) {
 void Renamer_Extension::DetachedFromWindow() {
 	BMessage	msg;
 	msg.AddBool("replace", (bool)fReplaceOldCheckBox->Value() );
-	BMenu *menu = fSelectCaseMenu->Menu();
-	msg.AddBool("upperlower", bool(menu->IndexOf(menu->FindMarked())));
+	msg.AddBool("upperlower", (bool)fLowerCase->Value() == B_CONTROL_ON);
 
 	UpdatePreferences("ren_extension", msg);
 }
@@ -98,17 +97,18 @@ void Renamer_Extension::DetachedFromWindow() {
 void Renamer_Extension::AttachedToWindow() {
 	BMessage	msg;
 	ReadPreferences("ren_extension", msg);
-	
-	BMenu *menu = fSelectCaseMenu->Menu();
-	msg.AddBool("upperlower", bool(menu->IndexOf(menu->FindMarked())));
 
-	BString string;
 	bool boolean;
-	if (msg.FindBool("replace", &boolean)==B_OK)
+	if (msg.FindBool("replace", &boolean) == B_OK)
 		fReplaceOldCheckBox->SetValue(boolean);
-	if (msg.FindBool("upperlower", &boolean)==B_OK) {
-		BMenu *menu = fSelectCaseMenu->Menu();
-		for (int i=0; i<2; ++i) menu->ItemAt(i)->SetMarked(i==(int)boolean);
-	}
+	else
+		fReplaceOldCheckBox->SetValue(B_CONTROL_OFF); // default
 
+	if (msg.FindBool("upperlower", &boolean) == B_OK) {
+		if (boolean)
+			fLowerCase->SetValue(B_CONTROL_ON);
+		else
+			fUpperCase->SetValue(B_CONTROL_ON);
+	} else
+		fLowerCase->SetValue(B_CONTROL_ON);	// default
 }
