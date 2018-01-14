@@ -54,7 +54,7 @@ MainView::MainView() : BView ("mainView",  B_WILL_DRAW) {
 
 	BScrollBar* scrollBar = (BScrollBar*)aFileView->FindView("horizontal_scroll_bar");
 
-	BGroupLayout* compoundTitle = BLayoutBuilder::Group<>(B_HORIZONTAL, 2)
+	BGroupLayout* compoundTitle = BLayoutBuilder::Group<>(B_HORIZONTAL, B_USE_SMALL_SPACING)
 		.Add(ChooseButton)
 		.Add(PathString);
 
