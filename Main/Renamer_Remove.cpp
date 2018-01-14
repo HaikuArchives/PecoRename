@@ -102,7 +102,7 @@ void Renamer_Remove::RenameList(BList *FileList) {
 	
 	FileListItem	*ListItem;
 	BString			ResultString, Teil2;
-	int				EndeTeil1, AnfangTeil2;
+	int				EndPart1, StartPart2;
 	
 	int32	UTF_LengthOfFilename, LengthOfFilename;
 		
@@ -115,20 +115,20 @@ void Renamer_Remove::RenameList(BList *FileList) {
 		tempStr[LengthOfFilename] = 0;
 
 		if (FromRight1)
-			EndeTeil1 = (LengthOfFilename >= Position1) ? LengthOfFilename - Position1 : 0;
+			EndPart1 = (LengthOfFilename >= Position1) ? LengthOfFilename - Position1 : 0;
 		else
-			EndeTeil1 = (LengthOfFilename >= Position1) ? Position1 : LengthOfFilename;
+			EndPart1 = (LengthOfFilename >= Position1) ? Position1 : LengthOfFilename;
 
 		if (FromRight2)
-			AnfangTeil2 = (LengthOfFilename >= Position2) ? LengthOfFilename - Position2 : 0;
+			StartPart2 = (LengthOfFilename >= Position2) ? LengthOfFilename - Position2 : 0;
 		else
-			AnfangTeil2 = (LengthOfFilename >= Position2) ? Position2 : LengthOfFilename;
+			StartPart2 = (LengthOfFilename >= Position2) ? Position2 : LengthOfFilename;
 		
-		if (AnfangTeil2<EndeTeil1) AnfangTeil2 = EndeTeil1;
+		if (StartPart2<EndPart1) StartPart2 = EndPart1;
 		
-		ResultString.SetTo(tempStr, EndeTeil1);
+		ResultString.SetTo(tempStr, EndPart1);
 
-		BString(tempStr).CopyInto(Teil2, AnfangTeil2, LengthOfFilename - AnfangTeil2);
+		BString(tempStr).CopyInto(Teil2, StartPart2, LengthOfFilename - StartPart2);
 		ResultString.Append(Teil2);
 
 		LengthOfFilename = ResultString.Length();

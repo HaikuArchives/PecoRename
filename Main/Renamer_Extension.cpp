@@ -23,7 +23,7 @@
 #undef B_TRANSLATION_CONTEXT
 #define B_TRANSLATION_CONTEXT "Renamer_Extension"
 
-// Maximale Länge einer FileExtension
+// Max length for file extensions
 #define MAX_EXTENSION_LENGTH 5
 
 Renamer_Extension::Renamer_Extension() : Renamer() {

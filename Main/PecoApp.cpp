@@ -29,7 +29,7 @@
 
 #include "constants.h"
 #include "functions.h"
-#include "Fenster.h"
+#include "MainWindow.h"
 #include "Renamer_SearchReplace.h"
 #include "Renamer_Extension.h"
 #include "Renamer_Numbering.h"
@@ -38,15 +38,15 @@
 #include "Renamer_Remove.h"
 #include "ReportWindow.h"
 
-static const char kAppSignature[] = "application/x-vnd.pecora-PecoRename";
+static const char kAppsignature[] = "application/x-vnd.pecora-PecoRename";
 
 #undef B_TRANSLATION_CONTEXT
 #define B_TRANSLATION_CONTEXT "PecoApp"
 
-PecoApp::PecoApp() : BApplication(kAppSignature) {
+PecoApp::PecoApp() : BApplication(kAppsignature) {
 
 	fRenameMode	= 0;
-	fPfad		= NULL;
+	fPath		= NULL;
 	fList		= new BList();
 
 	fRenamers[0] = new Renamer_SearchReplace();
@@ -59,7 +59,7 @@ PecoApp::PecoApp() : BApplication(kAppSignature) {
 
 void PecoApp::ReadyToRun() {
 
-	fWindow = new Fenster();
+	fWindow = new MainWindow();
 	fListView	= (FileListView *)fWindow->FindView("fileListView");
 	fStatusBar	= (BStatusBar *)fWindow->FindView("statusBar");
 
@@ -76,7 +76,7 @@ void PecoApp::ReadyToRun() {
 void PecoApp::AboutRequested()
 {
 	BAboutWindow* about = new BAboutWindow(B_TRANSLATE_SYSTEM_NAME("PecoRename"),
-		kAppSignature);
+		kAppsignature);
 	const char* extraCopyrights[] = {
 		"2011 Axel Dörfler",
 		"2014 Diver",
@@ -127,10 +127,10 @@ void PecoApp::RefsReceived ( BMessage* msg ) {
 	time_t		timer;
 	
 	fWindow->Lock();
-	BStringView* 	pfadView 	= (BStringView *)fWindow->FindView("pfadView");
+	BStringView* 	pathView 	= (BStringView *)fWindow->FindView("pathView");
 	fWindow->Unlock();
 	
-	//Pfad finden
+	// Find path
 	for ( int i=0; msg->FindRef("refs", i, &ref) == B_OK; i++ ) if ( ref.device > 1 ) break;
 
 	BVolume volume(ref.device);
@@ -149,13 +149,13 @@ void PecoApp::RefsReceived ( BMessage* msg ) {
 		New();
 
 		aEntry = BEntry(&ref);
-		BPath( &aEntry ).GetParent(&fPfad);
+		BPath( &aEntry ).GetParent(&fPath);
 				
 		fWindow->Lock();
-		pfadView->SetText( fPfad.Path() );
+		pathView->SetText( fPath.Path() );
 		fWindow->Unlock();
 		
-		//zählen
+		// count
 		type_code	typeFound;
 		int32		total = 0;
 		msg->GetInfo("refs", &typeFound, &total);
@@ -176,16 +176,16 @@ void PecoApp::RefsReceived ( BMessage* msg ) {
 			fStatusBar->Update(1);
 			fWindow->Unlock();
 			
-			// Laufwerke ausfiltern
+			// filter out devices
 			if ( ref.device == 1 ) continue;
  			
-			// Dateien mit falschem Pfad ausfiltern
+			// filter out files with wrong path
 			aEntry = BEntry(&ref);
 			aPath = BPath(&aEntry);
 			
 			BPath( &aEntry ).GetParent(&newPath);
 			
-			if ( (strcmp( fPfad.Path(), newPath.Path() ) != 0 ) ) {
+			if ( (strcmp( fPath.Path(), newPath.Path() ) != 0 ) ) {
 				if ( didntshow_msgmultidir ) {
 					BAlert*	myAlert = new BAlert(NULL, B_TRANSLATE("Files from different directories cannot be renamed.\n\nOnly the files in the first found directory will be imported!"), B_TRANSLATE("Ok"));
 					myAlert->Go();
@@ -194,7 +194,7 @@ void PecoApp::RefsReceived ( BMessage* msg ) {
 				continue;
 			}
 			
-			// Werte auslesen
+			// Read values
 			if (aEntry.IsFile()) aEntry.GetSize(&size); 
 			else
 				if (aEntry.IsSymLink()) size = -1;
@@ -226,12 +226,12 @@ void PecoApp::New() {
 	
 	fListView->Clear();
 	
-	BStringView* 	pfadView = (BStringView *)fWindow->FindView("pfadView");
-	pfadView->SetText(NULL);
+	BStringView* 	pathView = (BStringView *)fWindow->FindView("pathView");
+	pathView->SetText(NULL);
 	
 	fWindow->Unlock();
 	
-	fList->MakeEmpty(); // TODO This can be remove is redundance of fListView
+	fList->MakeEmpty(); // TODO This can be removed, it's redundant of fListView
 	
 	UpdateWindowStatus();
 }
@@ -261,8 +261,8 @@ void PecoApp::DoIt() {
 	BButton		*okButton = (BButton *)fWindow->FindView("DoIt");
 	okButton->SetEnabled(false);
 	
-	BStringView* 	pfadView = (BStringView *)fWindow->FindView("pfadView");
-	BString	Pfad(pfadView->Text());
+	BStringView* 	pathView = (BStringView *)fWindow->FindView("pathView");
+	BString	Pfad(pathView->Text());
 	fWindow->Unlock();
 	
 	BString	AlterName, NeuerName;

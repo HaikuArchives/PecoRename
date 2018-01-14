@@ -27,22 +27,22 @@
 #include "constants.h"
 #include "functions.h"
 
-#include "Fenster.h"
+#include "MainWindow.h"
 #include "MainView.h"
 
 #undef B_TRANSLATION_CONTEXT
-#define B_TRANSLATION_CONTEXT "Fenster"
+#define B_TRANSLATION_CONTEXT "MainWindow"
 
-Fenster::Fenster() : BWindow( BRect( 20, 40, 640, 460), B_TRANSLATE_SYSTEM_NAME("PecoRename"),
+MainWindow::MainWindow() : BWindow( BRect( 20, 40, 640, 460), B_TRANSLATE_SYSTEM_NAME("PecoRename"),
 	B_TITLED_WINDOW, B_AUTO_UPDATE_SIZE_LIMITS){
-// Menü
+
 	BMenuBar* MenuBar = new BMenuBar( "MenuBar" );
 
 	BMenu* Menu;
 
 	Menu = new BMenu(B_TRANSLATE("File"));
 	MenuBar->AddItem(Menu);
-	// Maybe in the future...Multy directories support
+	// Maybe in the future...Multi directories support
 	// Menu->AddItem(new BMenuItem(B_TRANSLATE("New"), new BMessage(MSG_MENU_NEW), 'N'));
 
 	Menu->AddItem(new BMenuItem(B_TRANSLATE("Select files" B_UTF8_ELLIPSIS), new BMessage(MSG_SELECT_FILES), 'O'));
@@ -63,7 +63,7 @@ Fenster::Fenster() : BWindow( BRect( 20, 40, 640, 460), B_TRANSLATE_SYSTEM_NAME(
 		.Add(mainView);
 };
 
-void Fenster::Help() {
+void MainWindow::Help() {
 	app_info	myAppInfo;
 	be_app->GetAppInfo(&myAppInfo);
 	
@@ -72,28 +72,28 @@ void Fenster::Help() {
 	HelpFilePath.Append(B_TRANSLATE("documentation/index.html"));
 	
 	entry_ref	ref;
-	char		Signatur[B_MIME_TYPE_LENGTH];
+	char		signature[B_MIME_TYPE_LENGTH];
 
-	BMimeType("text/html").GetPreferredApp(Signatur);
-	BMimeType(Signatur).GetAppHint(&ref);
+	BMimeType("text/html").GetPreferredApp(signature);
+	BMimeType(signature).GetAppHint(&ref);
 	
 	if ( (BPath(&ref).Path()==NULL) || (!BEntry(HelpFilePath.Path()).Exists()) ) {
 		BAlert*	myAlert = new BAlert(NULL, B_TRANSLATE("An error has occurred:\nEither the help file is missing, or an HTML browser can not be found."), B_TRANSLATE("OK"));
 		myAlert->Go(); return;
 	}
 	
-	BString		Befehl(BPath(&ref).Path());
-	Befehl.Append(" file://").Append(HelpFilePath.Path()).Append(" &");
+	BString		Command(BPath(&ref).Path());
+	Command.Append(" file://").Append(HelpFilePath.Path()).Append(" &");
 
-	system(Befehl.String());
+	system(Command.String());
 };
 
 
-bool Fenster::QuitRequested() {
+bool MainWindow::QuitRequested() {
 	return be_app->PostMessage(B_QUIT_REQUESTED);
 };
 
-void Fenster::MessageReceived ( BMessage* msg ) {
+void MainWindow::MessageReceived ( BMessage* msg ) {
 	switch (msg->what) {
 	case MSG_MENU_DOCU:
 		Help(); break;

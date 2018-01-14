@@ -19,7 +19,7 @@
 
 class BFilePanel;
 class BStatusBar;
-class Fenster;
+class MainWindow;
 class Renamer;
 
 class PecoApp : public BApplication {
@@ -35,11 +35,11 @@ class PecoApp : public BApplication {
 		void			New();
 		void			DoIt();
 
-		Fenster			*fWindow;
+		MainWindow			*fWindow;
 		FileListView	*fListView;
 		BList			*fList;
 		BFilePanel		*fFilePanel;
-		BPath			fPfad;
+		BPath			fPath;
 		int32			fRenameMode;
 		BStatusBar		*fStatusBar;
 		Renamer			*fRenamers[MODE_TOTAL];

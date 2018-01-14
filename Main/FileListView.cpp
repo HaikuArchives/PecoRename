@@ -19,7 +19,7 @@
 #include "constants.h"
 #include "functions.h"
 
-#include "Fenster.h"
+#include "MainWindow.h"
 #include "FileListView.h"
 #include "FileListItem.h"
 #include "PecoApp.h"

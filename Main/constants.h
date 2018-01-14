@@ -40,7 +40,7 @@ const uint32 MSG_RENAMER			= 'Ren0';
 const uint32 MSG_RENAME_SETTINGS	= 'Ren1';
 
 //--------------------------------------------------------------------
-//  Andere Konstanten
+//  Other constants
 
 const float WIDTH_ICON			= 16.0;
 const float WIDTH_NAME			= 176.0;

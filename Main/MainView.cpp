@@ -45,7 +45,7 @@ MainView::MainView() : BView ("mainView",  B_WILL_DRAW) {
 		new BMessage(MSG_SELECT_FILES));
 	ChooseButton->SetIcon(folder);
 
-	BStringView* PathString = new BStringView("pfadView", B_TRANSLATE("Choose files and directories"));
+	BStringView* PathString = new BStringView("pathView", B_TRANSLATE("Choose files and directories"));
 	PathString->SetFont(be_bold_font);
 	PathString->SetExplicitMaxSize(BSize(550, 32));
 	PathString->SetTruncation(B_TRUNCATE_MIDDLE);
@@ -103,8 +103,8 @@ MainView::MainView() : BView ("mainView",  B_WILL_DRAW) {
 	statusBar->Hide();
 
 	// Do it! - Button
-	BButton* DoItButton = new BButton( "DoIt", B_TRANSLATE("Rename"), new BMessage(MSG_DO_IT));
-	DoItButton->SetEnabled(false);
+	BButton* RenameButton = new BButton( "DoIt", B_TRANSLATE("Rename"), new BMessage(MSG_DO_IT));
+	RenameButton->SetEnabled(false);
 
 	BLayoutBuilder::Group<>(this, B_VERTICAL)
 		.SetInsets(B_USE_WINDOW_INSETS)
@@ -113,7 +113,7 @@ MainView::MainView() : BView ("mainView",  B_WILL_DRAW) {
 		.AddGroup(B_HORIZONTAL)
 			.Add(statusBar, 100)
 			.AddGlue()
-			.Add(DoItButton, 0); // TODO how does weigth works?
+			.Add(RenameButton, 0); // TODO how does weigth works?
 
 }
 

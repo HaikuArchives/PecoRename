@@ -89,8 +89,8 @@ void Renamer_InsertReplace::RenameList(BList *FileList) {
 	bool FromRight = bool(fDirection->Menu()->IndexOf(fDirection->Menu()->FindMarked()));
 
 	FileListItem	*ListItem;
-	BString			ResultString, Teil2;
-	int				EndeTeil1, AnfangTeil2;
+	BString			ResultString, Part2;
+	int				EndPart1, StartPart2;
 	
 	int32	UTF_LengthOfInsert, LengthOfInsert;
 		
@@ -111,20 +111,20 @@ void Renamer_InsertReplace::RenameList(BList *FileList) {
 		tempStr[LengthOfFilename] = 0;
 
 		if (FromRight)
-			EndeTeil1 = (LengthOfFilename >= Position) ? LengthOfFilename - Position : 0;
+			EndPart1 = (LengthOfFilename >= Position) ? LengthOfFilename - Position : 0;
 		else
-			EndeTeil1 = (LengthOfFilename >= Position) ? Position : LengthOfFilename;
+			EndPart1 = (LengthOfFilename >= Position) ? Position : LengthOfFilename;
 
-		ResultString.SetTo(tempStr, EndeTeil1);
+		ResultString.SetTo(tempStr, EndPart1);
 
 		if (Replace)
-			AnfangTeil2 = (EndeTeil1 + LengthOfInsert <= LengthOfFilename) ? EndeTeil1 + LengthOfInsert : LengthOfFilename;
+			StartPart2 = (EndPart1 + LengthOfInsert <= LengthOfFilename) ? EndPart1 + LengthOfInsert : LengthOfFilename;
 		else			
-			AnfangTeil2 = EndeTeil1;
+			StartPart2 = EndPart1;
 		
-		BString(tempStr).CopyInto(Teil2, AnfangTeil2, LengthOfFilename - AnfangTeil2);
+		BString(tempStr).CopyInto(Part2, StartPart2, LengthOfFilename - StartPart2);
 		ResultString.Append(tempInsertStr);
-		ResultString.Append(Teil2);
+		ResultString.Append(Part2);
 
 		LengthOfFilename = ResultString.Length();
 		UTF_LengthOfFilename = LengthOfFilename * 2;

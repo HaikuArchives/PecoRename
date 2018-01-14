@@ -12,7 +12,7 @@
 #include <MenuBar.h>
 #include <MenuItem.h>
 #include <MessageFormat.h>
-#include "Fenster.h"
+#include "MainWindow.h"
 
 #include "constants.h"
 #include "functions.h"

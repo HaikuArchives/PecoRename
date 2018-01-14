@@ -18,9 +18,9 @@
 #include "MainView.h"
 #include "FileListItem.h"
 
-class Fenster : public BWindow {
+class MainWindow : public BWindow {
 	public:
-				Fenster();
+				MainWindow();
 		bool	QuitRequested();
 		void	MessageReceived( BMessage* msg );
 		void 	RefsReceived(BMessage *msg);
