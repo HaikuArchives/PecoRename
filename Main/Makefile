@@ -34,8 +34,7 @@ APP_MIME_SIG= application/x-vnd.pecora-PecoRename
 #	if two source files with the same name (source.c or source.cpp)
 #	are included from different directories.  Also note that spaces
 #	in folder names do not work well with this makefile.
-SRCS =  About.cpp  \
-        ConsistencyCheck.cpp  \
+SRCS =  ConsistencyCheck.cpp  \
         Fenster.cpp  \
         FileListItem.cpp  \
         FileListView.cpp  \
@@ -57,8 +56,7 @@ SRCS =  About.cpp  \
 
 #	specify the resource definition files to use
 #	full path or a relative path to the resource file can be used.
-RDEFS= About.rdef  \
-       PecoRename.rdef
+RDEFS= PecoRename.rdef
 
 #	specify the resource files to use. 
 #	full path or a relative path to the resource file can be used.
@@ -99,7 +97,9 @@ LIBPATHS=
 #	additional paths to look for system headers
 #	thes use the form: #include <header>
 #	source file directories are NOT auto-included here
-SYSTEM_INCLUDE_PATHS= $(shell findpaths -e B_FIND_PATH_HEADERS_DIRECTORY private/interface)
+
+SYSTEM_INCLUDE_PATHS= /system/develop/headers/private/interface \
+	/system/develop/headers/private/shared/
 
 #	additional paths to look for local headers
 #	thes use the form: #include "header"
@@ -116,7 +116,7 @@ OPTIMIZE= FULL
 # 	locales/en.catkeys file. Use it as template for creating other
 # 	languages catkeys. All localization files must be placed
 # 	in "locales" sub-directory.
-LOCALES= en fr de it
+LOCALES= en de fr it
 
 #	specify any preprocessor symbols to be defined.  The symbols will not
 #	have their values set automatically; you must supply the value (if any)

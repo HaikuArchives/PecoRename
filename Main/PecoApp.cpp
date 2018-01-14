@@ -10,6 +10,7 @@
 
 #include "PecoApp.h"
 
+#include <AboutWindow.h>
 #include <Alert.h>
 #include <Application.h>
 #include <Bitmap.h>
@@ -28,7 +29,6 @@
 
 #include "constants.h"
 #include "functions.h"
-#include "About.h"
 #include "Fenster.h"
 #include "Renamer_SearchReplace.h"
 #include "Renamer_Extension.h"
@@ -38,11 +38,12 @@
 #include "Renamer_Remove.h"
 #include "ReportWindow.h"
 
+static const char kAppSignature[] = "application/x-vnd.pecora-PecoRename";
 
 #undef B_TRANSLATION_CONTEXT
 #define B_TRANSLATION_CONTEXT "PecoApp"
 
-PecoApp::PecoApp() : BApplication("application/x-vnd.pecora-PecoRename") {
+PecoApp::PecoApp() : BApplication(kAppSignature) {
 
 	fRenameMode	= 0;
 	fPfad		= NULL;
@@ -72,17 +73,33 @@ void PecoApp::ReadyToRun() {
 	fWindow->Show();
 };
 
-void PecoApp::AboutRequested() {
-
-	const char	*CopyrightTexte[10];
-	CopyrightTexte[0] = B_TRANSLATE("Copyright ©2000 by Werner Freytag");
-	CopyrightTexte[1] = B_TRANSLATE("This software is freeware.");
-	CopyrightTexte[2] = "";
-	CopyrightTexte[3] = B_TRANSLATE("Special thanks to Sci for his help with the English translation!");
-	CopyrightTexte[4] = NULL;
-	
-	About(B_TRANSLATE("About PecoRename"), B_TRANSLATE_SYSTEM_NAME("PecoRename"), B_TRANSLATE("Release 1.5"), CopyrightTexte, B_TRANSLATE("Thank you"), "http://www.maybe.de/software/pecorename");
+void PecoApp::AboutRequested()
+{
+	BAboutWindow* about = new BAboutWindow(B_TRANSLATE_SYSTEM_NAME("PecoRename"),
+		kAppSignature);
+	const char* extraCopyrights[] = {
+		"2011 Axel Dörfler",
+		"2014 Diver",
+		"2016 Markus Himmel, Hannahyp",
+		"2017-2018 Janus, Humdinger",
+		NULL
+	};
+	const char* authors[] = {
+		B_TRANSLATE("Werner Freytag (original author)"),
+		"Axel Dörfler",
+		"Diver",
+		"Hannahyp",
+		"Humdinger",
+		"Janus",
+		"Markus Himmel",
+		NULL
+	};
+	about->AddCopyright(2000, "Werner Freytag", extraCopyrights);
+	about->AddAuthors(authors);
+	about->Show();
 }
+
+
 
 bool PecoApp::QuitRequested() {
 	return true;
