@@ -56,15 +56,15 @@ Renamer_SearchReplace::Renamer_SearchReplace()
 	BLayoutBuilder::Group<>(this, B_VERTICAL)
 		.SetInsets(B_USE_WINDOW_INSETS)
 		.AddGroup(B_HORIZONTAL)
+			.Add(SearchFor)
+			.Add(ReplaceWith)
+		.End()
+		.AddGroup(B_HORIZONTAL)
 			.Add(MatchCase)
 #if __INTEL__
 			.Add(RegEx)
 #endif
 			.AddGlue()
-		.End()
-		.AddGroup(B_HORIZONTAL)
-			.Add(SearchFor)
-			.Add(ReplaceWith)
 		.End()
 		.AddGlue();
 }

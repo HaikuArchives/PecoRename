@@ -55,18 +55,22 @@ Renamer_Numbering::Renamer_Numbering() : Renamer() {
 		.AddGroup(B_VERTICAL)
 			.Add(fFormat->CreateLabelLayoutItem())
 			.Add(fTextBefore->CreateLabelLayoutItem())
+			.AddGlue()
 		.End()
 		.AddGroup(B_VERTICAL)
 			.Add(fFormat->CreateMenuBarLayoutItem())
 			.Add(fTextBefore->CreateTextViewLayoutItem())
+			.AddGlue()
 		.End()
 		.AddGroup(B_VERTICAL)
 			.Add(fStartWith->CreateLabelLayoutItem())
 			.Add(fTextBehind->CreateLabelLayoutItem())
+			.AddGlue()
 		.End()
 		.AddGroup(B_VERTICAL)
 			.Add(fStartWith->CreateTextViewLayoutItem())
-			.Add(fTextBehind->CreateTextViewLayoutItem());
+			.Add(fTextBehind->CreateTextViewLayoutItem())
+			.AddGlue();
 }
 
 void Renamer_Numbering::RenameList(BList *FileList) {
