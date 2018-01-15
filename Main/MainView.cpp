@@ -41,7 +41,7 @@ MainView::MainView() : BView ("mainView",  B_WILL_DRAW) {
 	BMimeType type("application/x-vnd.Be-directory");
 	type.GetIcon(folder, B_MINI_ICON);
 
-	BButton* ChooseButton = new BButton("selectFiles", B_TRANSLATE(""),
+	BButton* ChooseButton = new BButton("selectFiles", NULL,
 		new BMessage(MSG_SELECT_FILES));
 	ChooseButton->SetIcon(folder);
 

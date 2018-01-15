@@ -34,10 +34,14 @@ FileListView::FileListView()
 		B_FRAME_EVENTS|B_NAVIGABLE) {
 	int32 i = 0;
 	AddColumn(new BBitmapColumn("Icon", 16, 16, 16, B_ALIGN_CENTER), i++);
-	AddColumn(new BStringColumn(B_TRANSLATE("Name"), WIDTH_NAME, 10, 600, 0), i++);
-	AddColumn(new BSizeColumn(B_TRANSLATE("Size"), WIDTH_SIZE, 10, 600), i++);
-	AddColumn(new BDateColumn(B_TRANSLATE("Modified"), WIDTH_DATE, 10, 600), i++);
-	AddColumn(new PreviewColumn(B_TRANSLATE("Preview"), WIDTH_PREVIEW, 10, 600, 0), i++);
+	AddColumn(new BStringColumn(B_TRANSLATE_COMMENT(
+		"Name", "Column title"), WIDTH_NAME, 10, 600, 0), i++);
+	AddColumn(new BSizeColumn(B_TRANSLATE_COMMENT(
+		"Size", "Column title"), WIDTH_SIZE, 10, 600), i++);
+	AddColumn(new BDateColumn(B_TRANSLATE_COMMENT(
+		"Modified", "Column title"), WIDTH_DATE, 10, 600), i++);
+	AddColumn(new PreviewColumn(B_TRANSLATE_COMMENT(
+		"Preview", "Column title"), WIDTH_PREVIEW, 10, 600, 0), i++);
 }
 
 void FileListView::MouseDown(BPoint where) {

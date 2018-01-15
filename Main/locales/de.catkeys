@@ -1,42 +1,31 @@
-1	English	application/x-vnd.pecora-PecoRename	1562902202
-About PecoRename	Fenster		About PecoRename
-An error has occurred:\nEither the help file is missing, or an HTML browser can not be found.	Fenster		Es ist ein Fehler auftetreten:\nEntweder die Hilfedatei fehlt, oder ein Browser, um sie anzuzeigen.
-documentation/index.html	Fenster		Anleitung/index.html
-File	Fenster		Datei
-OK	Fenster		OK
-Quit	Fenster		Beenden
-Select files…	Fenster		Select files…
-Modified	FileListView		Änderungsdatum
-Name	FileListView		Name
-Preview	FileListView		Vorschau
-Size	FileListView		Größe
-{0, plural,=0{no duplicates}=1{1 duplicate}other{# duplicates}}	functions		{0, plural,=0{no duplicates}=1{1 duplicate}other{# duplicates}}
-{0, plural,=0{no items}=1{1 item}other{# items}}	functions		{0, plural,=0{no items}=1{1 item}other{# items}}
-{0, plural,=0{no renames}=1{1 rename}other{# renames}}	functions		{0, plural,=0{no renames}=1{1 rename}other{# renames}}
-	MainView		
-Choose files and directories	MainView		Choose files and directories
-Rename	MainView		Rename
-About PecoRename	PecoApp		Über...PecoRename
+1	German	application/x-vnd.pecora-PecoRename	2663811451
+Modified	FileListView	Column title	Geändert
+Name	FileListView	Column title	Name
+Preview	FileListView	Column title	Vorschau
+Size	FileListView	Column title	Größe
+{0, plural,=0{no duplicates}=1{1 duplicate}other{# duplicates}}	functions		{0, plural,=0{0 Duplikate}=1{1 Duplikat}other{# Duplikate}}
+{0, plural,=0{no items}=1{1 item}other{# items}}	functions		{0, plural,=0{0 Objekte}=1{1 Objekt}other{# Objekte}}
+{0, plural,=0{no renames}=1{1 rename}other{# renames}}	functions		{0, plural,=0{0 Änderungen}=1{1 Änderung}other{# Änderungen}}
+Choose files and directories	MainView		Dateien und Ordner wählen
+Rename	MainView		Umbenennen
+About PecoRename	MainWindow		Über PecoRename
+An error has occurred:\nEither the help file is missing, or an HTML browser can not be found.	MainWindow		Ein Fehler ist aufgetreten:\nEntweder fehlt die Hilfedatei, oder es wurde kein HTML Browser gefunden.
+File	MainWindow		Datei
+OK	MainWindow		OK
+Quit	MainWindow		Beenden
+Select files…	MainWindow		Dateien wählen…
+documentation/index.html	MainWindow	Path to the help file. Only change if a translated file is provided.	documentation/index.html
 Cancel	PecoApp		Abbrechen
-Copyright ©2000 by Werner Freytag	PecoApp		Copyright ©2000 by Werner Freytag
-Create shell script…	PecoApp		Create shell script…
-Files from different directories cannot be renamed.\n\nOnly the files in the first found directory will be imported!	PecoApp		Files from different directories cannot be renamed.\n\nOnly the files in the first found directory will be imported!
-Ok	PecoApp		Ok
+Files from different folders cannot be renamed.\n\nOnly the files of the first found folder will be imported!	PecoApp		Dateien aus unterschiedlichen Ordnern können nicht umbenannt werden.\n\nNur die Dateien aus dem zuerst gefundenen Ordner werden importiert!
 OK	PecoApp		OK
-Release 1.5	PecoApp		Version 1.5
 Select	PecoApp		Wählen
 Select files for renaming	PecoApp		Dateien zum Umbenennen wählen
-Special thanks to Sci for his help with the English translation!	PecoApp		Ein großes Dankeschön an Stéphane und Sci für die Hilfe!
-Thank you	PecoApp		Thank you
-The volume is read only you cannot rename the files	PecoApp		The volume is read only you cannot rename the files
-This software is freeware.	PecoApp		Dieses Programm ist Freeware.
+The volume is read only: files cannot be renamed.	PecoApp		Die Partition ist schreibgeschützt: Dateien können nicht umbenannt werden.
+Werner Freytag (original author)	PecoApp		Werner Freytag (der ursprüngliche Autor)
 Add file extension	Renamer_Extension		Dateiendung hinzufügen
-Default	Renamer_Extension		Vorgabe
 lowercase	Renamer_Extension		kleinbuchstaben
-Please select	Renamer_Extension		Bitte wählen
 Replace old extension	Renamer_Extension		Alte Endung ersetzen
 UPPERCASE	Renamer_Extension		GROSSBUCHSTABEN
-Uppercase / lowercase:	Renamer_Extension		Groß- & Kleinschreibung:
 At position:	Renamer_InsertReplace		An Position:
 from the back (right)	Renamer_InsertReplace		von hinten (rechts)
 from the front (left)	Renamer_InsertReplace		von vorne (links)
@@ -51,29 +40,31 @@ Numbering	Renamer_Numbering		Nummerieren
 Please select	Renamer_Numbering		Bitte wählen
 Start with:	Renamer_Numbering		Starte mit:
 Text before:	Renamer_Numbering		Text davor:
-Text behind:	Renamer_Numbering		Text dahinter:
+Text behind:	Renamer_Numbering		Text danach:
 from the back (right)	Renamer_Remove		von hinten (rechts)
-from the front (left)	Renamer_Remove		von vorne (links)
+from the front (left)	Renamer_Remove		von vorn (links)
 Please select	Renamer_Remove		Bitte wählen
 Remove	Renamer_Remove		Entfernen
-Remove characters from position	Renamer_Remove		Buchstaben entfernen ab Position
+Remove characters from position	Renamer_Remove		Zeichen entfernen ab Position
 to position	Renamer_Remove		bis Position
 Case sensitive	Renamer_SearchReplace		Groß/Kleinschreibung beachten
 Find pattern:	Renamer_SearchReplace		Suchmuster:
 Replace with:	Renamer_SearchReplace		Ersetzen durch:
 Search and replace	Renamer_SearchReplace		Suchen und ersetzen
-Convert to:	Renamer_UpperLower		Convert to:
+Convert to:	Renamer_UpperLower		Umwandeln in:
 lowercase	Renamer_UpperLower		kleinbuchstaben
 Please select	Renamer_UpperLower		Bitte wählen
+Sentence case	Renamer_UpperLower		Anfangsbuchstabe groß geschrieben
+Title Case	Renamer_UpperLower		Jedes Wort Groß Geschrieben
 UPPERCASE	Renamer_UpperLower		GROSSBUCHSTABEN
 Uppercase / lowercase	Renamer_UpperLower		Groß- & Kleinschreibung
-A file with that name already exists	ReportWindow		A file with that name already exists
-Duplicated name	ReportWindow		Duplicated name
-Failed rename to	ReportWindow		Failed rename to
-Name	ReportWindow		Name
+{0, plural,=1{A problem was encountered during processing:  One file couldn't be renamed}other{Problems were encountered during processing:  # files couldn't be renamed}}	ReportWindow		{0, plural,=1{Bei der Verarbeitung trat ein Problem auf:  Eine Datei konnte nicht umbenannt werden}other{Bei der Verarbeitung traten Probleme auf:  # Dateien konnten nicht umbenannt werden}}
+File already exists	ReportWindow		Datei existiert bereits
+File already exists (as in preview)	ReportWindow		Datei existiert bereits (wie in Vorschau)
 OK	ReportWindow		OK
-Problem	ReportWindow		Problem
 Report	ReportWindow		Report
-There were some problems during the renaming	ReportWindow		There were some problems during the renaming
-Unknown error	ReportWindow		Unknown error
+Unknown error	ReportWindow		Unbekannter Fehler
+Original name	ReportWindow	Column title	Originalname
+Problem	ReportWindow	Column title	Problem
+Targetted name	ReportWindow	Column title	Zielname
 PecoRename	System name		PecoRename

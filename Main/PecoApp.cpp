@@ -135,9 +135,11 @@ void PecoApp::RefsReceived ( BMessage* msg ) {
 
 	BVolume volume(ref.device);
 	if (volume.IsReadOnly()) {
-	   BAlert  *myAlert = new BAlert(NULL, B_TRANSLATE("The volume is read only you cannot rename the files"), B_TRANSLATE("OK"));
-	   myAlert->Go();
-	   return;
+		BAlert  *myAlert = new BAlert(NULL, B_TRANSLATE(
+			"The volume is read only: files cannot be renamed."),
+			B_TRANSLATE("OK"));
+		myAlert->Go();
+		return;
 	}
 
 	fWindow->Lock();
@@ -187,7 +189,10 @@ void PecoApp::RefsReceived ( BMessage* msg ) {
 			
 			if ( (strcmp( fPath.Path(), newPath.Path() ) != 0 ) ) {
 				if ( didntshow_msgmultidir ) {
-					BAlert*	myAlert = new BAlert(NULL, B_TRANSLATE("Files from different directories cannot be renamed.\n\nOnly the files in the first found directory will be imported!"), B_TRANSLATE("Ok"));
+					BAlert*	myAlert = new BAlert(NULL, B_TRANSLATE(
+						"Files from different folders cannot be renamed.\n\n"
+						"Only the files of the first found folder will be imported!"),
+						B_TRANSLATE("OK"));
 					myAlert->Go();
 					didntshow_msgmultidir = false;
 				}

@@ -1,42 +1,31 @@
-1	English	application/x-vnd.pecora-PecoRename	1562902202
-About PecoRename	Fenster		About PecoRename
-An error has occurred:\nEither the help file is missing, or an HTML browser can not be found.	Fenster		An error has occurred:\nEither the help file is missing, or an HTML browser can not be found.
-documentation/index.html	Fenster		documentation/index.html
-File	Fenster		File
-OK	Fenster		OK
-Quit	Fenster		Quit
-Select files…	Fenster		Select files…
-Modified	FileListView		Modified
-Name	FileListView		Name
-Preview	FileListView		Preview
-Size	FileListView		Size
+1	English	application/x-vnd.pecora-PecoRename	2663811451
+Modified	FileListView	Column title	Modified
+Name	FileListView	Column title	Name
+Preview	FileListView	Column title	Preview
+Size	FileListView	Column title	Size
 {0, plural,=0{no duplicates}=1{1 duplicate}other{# duplicates}}	functions		{0, plural,=0{no duplicates}=1{1 duplicate}other{# duplicates}}
 {0, plural,=0{no items}=1{1 item}other{# items}}	functions		{0, plural,=0{no items}=1{1 item}other{# items}}
 {0, plural,=0{no renames}=1{1 rename}other{# renames}}	functions		{0, plural,=0{no renames}=1{1 rename}other{# renames}}
-	MainView		
 Choose files and directories	MainView		Choose files and directories
 Rename	MainView		Rename
-About PecoRename	PecoApp		About PecoRename
+About PecoRename	MainWindow		About PecoRename
+An error has occurred:\nEither the help file is missing, or an HTML browser can not be found.	MainWindow		An error has occurred:\nEither the help file is missing, or an HTML browser can not be found.
+File	MainWindow		File
+OK	MainWindow		OK
+Quit	MainWindow		Quit
+Select files…	MainWindow		Select files…
+documentation/index.html	MainWindow	Path to the help file. Only change if a translated file is provided.	documentation/index.html
 Cancel	PecoApp		Cancel
-Copyright ©2000 by Werner Freytag	PecoApp		Copyright ©2000 by Werner Freytag
-Create shell script…	PecoApp		Create shell script…
-Files from different directories cannot be renamed.\n\nOnly the files in the first found directory will be imported!	PecoApp		Files from different directories cannot be renamed.\n\nOnly the files in the first found directory will be imported!
-Ok	PecoApp		Ok
+Files from different folders cannot be renamed.\n\nOnly the files of the first found folder will be imported!	PecoApp		Files from different folders cannot be renamed.\n\nOnly the files of the first found folder will be imported!
 OK	PecoApp		OK
-Release 1.5	PecoApp		Release 1.5
 Select	PecoApp		Select
 Select files for renaming	PecoApp		Select files for renaming
-Special thanks to Sci for his help with the English translation!	PecoApp		Special thanks to Sci for his help with the English translation!
-Thank you	PecoApp		Thank you
-The volume is read only you cannot rename the files	PecoApp		The volume is read only you cannot rename the files
-This software is freeware.	PecoApp		This software is freeware.
+The volume is read only: files cannot be renamed.	PecoApp		The volume is read only: files cannot be renamed.
+Werner Freytag (original author)	PecoApp		Werner Freytag (original author)
 Add file extension	Renamer_Extension		Add file extension
-Default	Renamer_Extension		Default
 lowercase	Renamer_Extension		lowercase
-Please select	Renamer_Extension		Please select
 Replace old extension	Renamer_Extension		Replace old extension
 UPPERCASE	Renamer_Extension		UPPERCASE
-Uppercase / lowercase:	Renamer_Extension		Uppercase / lowercase:
 At position:	Renamer_InsertReplace		At position:
 from the back (right)	Renamer_InsertReplace		from the back (right)
 from the front (left)	Renamer_InsertReplace		from the front (left)
@@ -65,15 +54,17 @@ Search and replace	Renamer_SearchReplace		Search and replace
 Convert to:	Renamer_UpperLower		Convert to:
 lowercase	Renamer_UpperLower		lowercase
 Please select	Renamer_UpperLower		Please select
+Sentence case	Renamer_UpperLower		Sentence case
+Title Case	Renamer_UpperLower		Title Case
 UPPERCASE	Renamer_UpperLower		UPPERCASE
 Uppercase / lowercase	Renamer_UpperLower		Uppercase / lowercase
-A file with that name already exists	ReportWindow		A file with that name already exists
-Duplicated name	ReportWindow		Duplicated name
-Failed rename to	ReportWindow		Failed rename to
-Name	ReportWindow		Name
+{0, plural,=1{A problem was encountered during processing:  One file couldn't be renamed}other{Problems were encountered during processing:  # files couldn't be renamed}}	ReportWindow		{0, plural,=1{A problem was encountered during processing:  One file couldn't be renamed}other{Problems were encountered during processing:  # files couldn't be renamed}}
+File already exists	ReportWindow		File already exists
+File already exists (as in preview)	ReportWindow		File already exists (as in preview)
 OK	ReportWindow		OK
-Problem	ReportWindow		Problem
 Report	ReportWindow		Report
-There were some problems during the renaming	ReportWindow		There were some problems during the renaming
 Unknown error	ReportWindow		Unknown error
+Original name	ReportWindow	Column title	Original name
+Problem	ReportWindow	Column title	Problem
+Targetted name	ReportWindow	Column title	Targetted name
 PecoRename	System name		PecoRename

@@ -1,42 +1,31 @@
-1	English	application/x-vnd.pecora-PecoRename	1562902202
-About PecoRename	Fenster		Informazioni su PecoRename
-An error has occurred:\nEither the help file is missing, or an HTML browser can not be found.	Fenster		Si è verificato un errore:\nNon riesco a trovare il file della guida, oppure non posso trovare un browser HTML.
-documentation/index.html	Fenster		documentation/index.html
-File	Fenster		File
-OK	Fenster		OK
-Quit	Fenster		Esci
-Select files…	Fenster		Seleziona file…
-Modified	FileListView		Modificato
-Name	FileListView		Nome
-Preview	FileListView		Anteprima
-Size	FileListView		Dimensioni
+1	Italian	application/x-vnd.pecora-PecoRename	2663811451
+Modified	FileListView	Column title	Modificato
+Name	FileListView	Column title	Nome
+Preview	FileListView	Column title	Anteprima
+Size	FileListView	Column title	Dimensioni
 {0, plural,=0{no duplicates}=1{1 duplicate}other{# duplicates}}	functions		{0, plural,=0{nessun duplicato}=1{1 duplicato}other{# duplicati}}
 {0, plural,=0{no items}=1{1 item}other{# items}}	functions		{0, plural,=0{nessun elemento}=1{1 elemento}other{# elementi}}
 {0, plural,=0{no renames}=1{1 rename}other{# renames}}	functions		{0, plural,=0{Nessun  rinominato}=1{1 rinaminato}other{# rinominati}}
-	MainView		
 Choose files and directories	MainView		Scegli file e cartelle
 Rename	MainView		Rinomina
-About PecoRename	PecoApp		Informazioni su PecoRename
+About PecoRename	MainWindow		Informazioni su PecoRename
+An error has occurred:\nEither the help file is missing, or an HTML browser can not be found.	MainWindow		Si è verificato un errore:\nNon riesco a trovare il file della guida, oppure non posso trovare un browser HTML.
+File	MainWindow		File
+OK	MainWindow		OK
+Quit	MainWindow		Esci
+Select files…	MainWindow		Seleziona file…
+documentation/index.html	MainWindow	Path to the help file. Only change if a translated file is provided.	documentation/index.html
 Cancel	PecoApp		Annulla
-Copyright ©2000 by Werner Freytag	PecoApp		Copyright ©2000 by Werner Freytag
-Create shell script…	PecoApp		Crea script per la shell…
-Files from different directories cannot be renamed.\n\nOnly the files in the first found directory will be imported!	PecoApp		File provenienti da cartelle diverse non possono essere rinominati.\n\nSolo i file  nella prima cartella trovata saranno importati!
-Ok	PecoApp		Ok
+Files from different folders cannot be renamed.\n\nOnly the files of the first found folder will be imported!	PecoApp		Files from different folders cannot be renamed.\n\nOnly the files of the first found folder will be imported!
 OK	PecoApp		OK
-Release 1.5	PecoApp		Release 1.5
 Select	PecoApp		Seleziona
 Select files for renaming	PecoApp		Seleziona i files da rinominare
-Special thanks to Sci for his help with the English translation!	PecoApp		Grazie a Gian Davide per la traduzione italiana!
-Thank you	PecoApp		Grazie
-The volume is read only you cannot rename the files	PecoApp		Il volume è in sola lettura non è possibile rinominare i file
-This software is freeware.	PecoApp		Questo programma è freeware.
+The volume is read only: files cannot be renamed.	PecoApp		The volume is read only: files cannot be renamed.
+Werner Freytag (original author)	PecoApp		Werner Freytag (original author)
 Add file extension	Renamer_Extension		Aggiungi l'estensione al file
-Default	Renamer_Extension		Predefinito
 lowercase	Renamer_Extension		minuscolo
-Please select	Renamer_Extension		Seleziona
 Replace old extension	Renamer_Extension		Sostituisci la vecchia estensione
 UPPERCASE	Renamer_Extension		MAIUSCOLO
-Uppercase / lowercase:	Renamer_Extension		Maiuscolo / minuscolo:
 At position:	Renamer_InsertReplace		Nella posizione:
 from the back (right)	Renamer_InsertReplace		dalla fine (destra)
 from the front (left)	Renamer_InsertReplace		dall'inizio (sinistra)
@@ -65,17 +54,17 @@ Search and replace	Renamer_SearchReplace		Cerca e sostituisci
 Convert to:	Renamer_UpperLower		Converti in:
 lowercase	Renamer_UpperLower		minuscolo
 Please select	Renamer_UpperLower		Seleziona
+Sentence case	Renamer_UpperLower		Sentence case
+Title Case	Renamer_UpperLower		Title Case
 UPPERCASE	Renamer_UpperLower		MAIUSCOLO
 Uppercase / lowercase	Renamer_UpperLower		Maiuscolo / minuscolo
-A file with that name already exists	ReportWindow		Un file con questo nome già esiste
-Duplicated name	ReportWindow		Nome duplicato
-Failed rename to	ReportWindow		Fallito di rinominare
-Name	ReportWindow		Nome
+{0, plural,=1{A problem was encountered during processing:  One file couldn't be renamed}other{Problems were encountered during processing:  # files couldn't be renamed}}	ReportWindow		{0, plural,=1{A problem was encountered during processing:  One file couldn't be renamed}other{Problems were encountered during processing:  # files couldn't be renamed}}
+File already exists	ReportWindow		File already exists
+File already exists (as in preview)	ReportWindow		File already exists (as in preview)
 OK	ReportWindow		OK
-Problem	ReportWindow		Problema
 Report	ReportWindow		Rapporto
-There were some problems during the renaming	ReportWindow		Ci sono stati dei problemi durante la rinominazione
 Unknown error	ReportWindow		Errore sconosciuto
+Original name	ReportWindow	Column title	Original name
+Problem	ReportWindow	Column title	Problema
+Targetted name	ReportWindow	Column title	Targetted name
 PecoRename	System name		PecoRename
-			
-

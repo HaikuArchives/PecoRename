@@ -69,7 +69,8 @@ void MainWindow::Help() {
 	
 	BPath	HelpFilePath;
 	BPath(&myAppInfo.ref).GetParent(&HelpFilePath);
-	HelpFilePath.Append(B_TRANSLATE("documentation/index.html"));
+	HelpFilePath.Append(B_TRANSLATE_COMMENT("documentation/index.html",
+		"Path to the help file. Only change if a translated file is provided."));
 	
 	entry_ref	ref;
 	char		signature[B_MIME_TYPE_LENGTH];

@@ -5,6 +5,7 @@
 #include <ColumnListView.h>
 #include <ColumnTypes.h>
 #include <LayoutBuilder.h>
+#include <MessageFormat.h>
 #include <StringView.h>
 
 #include <string.h>
@@ -19,22 +20,22 @@
 #define B_TRANSLATION_CONTEXT "ReportWindow"
 
 
-ReportWindow::ReportWindow(BList *filelist) : BWindow( BRect( 60, 80, 600, 280), B_TRANSLATE("Report"),
+ReportWindow::ReportWindow(BList *filelist) : BWindow( BRect( 60, 80, 705, 280), B_TRANSLATE("Report"),
 	 B_TITLED_WINDOW,B_AUTO_UPDATE_SIZE_LIMITS)
 {
-
-	BStringView *messageView = new BStringView("Errors", B_TRANSLATE("There were some problems during the renaming"));
-
-	messageView->SetExplicitMaxSize(BSize(B_SIZE_UNLIMITED, B_SIZE_UNSET));
 	BColumnListView* reportView = new BColumnListView("reportView", B_FRAME_EVENTS|B_NAVIGABLE, B_NO_BORDER);
 
 	//info columns
 	int32 i = 0;
-	reportView->AddColumn(new BStringColumn(B_TRANSLATE("Name"), 165, 10, 600, B_TRUNCATE_END), i++);
-	reportView->AddColumn(new PreviewColumn(B_TRANSLATE("Failed rename to"), 165, 10, 600, B_TRUNCATE_END), i++);
-	reportView->AddColumn(new BStringColumn(B_TRANSLATE("Problem"), 185, 10, 600, B_TRUNCATE_END), i++);
+	reportView->AddColumn(new BStringColumn(B_TRANSLATE_COMMENT(
+		"Original name", "Column title"), 165, 10, 600, B_TRUNCATE_END), i++);
+	reportView->AddColumn(new PreviewColumn(B_TRANSLATE_COMMENT(
+		"Targetted name", "Column title"), 165, 10, 600, B_TRUNCATE_END), i++);
+	reportView->AddColumn(new BStringColumn(B_TRANSLATE_COMMENT(
+		"Problem", "Column title"), 250, 10, 600, B_TRUNCATE_END), i++);
 	
-	FileListItem	*listItem;
+	FileListItem *listItem;
+	int32 errorCount = 0;
 	for (int32 i = 0; (listItem = (FileListItem *)filelist->ItemAt(i)) != NULL; i++ ) {
 		if (listItem->Error() != 0 && listItem->fNewName != "")
 			{
@@ -48,17 +49,35 @@ ReportWindow::ReportWindow(BList *filelist) : BWindow( BRect( 60, 80, 600, 280),
 				switch (listItem->Error()) {
 					case 0 : // this should never happen
 						break; 
-					case 1 : errorMsg = B_TRANSLATE("Duplicated name");
+					case 1 :
+					{	// Problem was already spotted for the preview in the main window
+						// Happens when the existing name was part of the list of files
+						errorMsg = B_TRANSLATE("File already exists (as in preview)");
+						errorCount++;
 						break;
-					case 2 : errorMsg = B_TRANSLATE("A file with that name already exists");
+					}
+					case 2 :
+					{	// Problem only cropped up after clicking "Rename"
+						// Happens when the existing name was NOT part of the list of files
+						errorMsg = B_TRANSLATE("File already exists");
+						errorCount++;
 						break;
+					}
 					default : errorMsg = B_TRANSLATE("Unknown error");
 				}
 				row->SetField(new BStringField(errorMsg), i++);
 				reportView->AddRow(row);
 			}
-	
-	}
+		}
+
+	BString errorString;
+	static BMessageFormat errorMessage(B_TRANSLATE("{0, plural,"
+		"=1{A problem was encountered during processing:  One file couldn't be renamed}"
+		"other{Problems were encountered during processing:  # files couldn't be renamed}}" ));
+	errorMessage.Format(errorString, errorCount);
+
+	BStringView *messageView = new BStringView("Errors", errorString);
+	messageView->SetExplicitMaxSize(BSize(B_SIZE_UNLIMITED, B_SIZE_UNSET));
 
 	BLayoutBuilder::Group<>(this, B_VERTICAL)
 		.SetInsets(B_USE_WINDOW_INSETS)
@@ -68,9 +87,6 @@ ReportWindow::ReportWindow(BList *filelist) : BWindow( BRect( 60, 80, 600, 280),
 			.AddGlue()
 			.Add( new BButton( "OK", B_TRANSLATE("OK"), new BMessage('CLO_'))); 
 };
-
-
-
 
 bool ReportWindow::QuitRequested() {
 	return true;
