@@ -9,6 +9,7 @@
  */
 
 #include <Catalog.h>
+#include <ControlLook.h>
 #include <Mime.h>
 #include <PopUpMenu.h>
 #include <MenuItem.h>
@@ -41,10 +42,12 @@ Renamer_Extension::Renamer_Extension() : Renamer() {
 		new BMessage(MSG_RENAME_SETTINGS));
 	fUpperCase->SetExplicitMaxSize(BSize(B_SIZE_UNLIMITED, B_SIZE_UNSET));
 
+	static const float spacing = be_control_look->DefaultLabelSpacing();
+
 	BLayoutBuilder::Group<>(this, B_VERTICAL, 0)
-		.SetInsets(B_USE_WINDOW_INSETS)
+		.SetInsets(B_USE_ITEM_INSETS, spacing / 2, B_USE_ITEM_INSETS, 0)
 		.Add(fReplaceOldCheckBox)
-		.AddStrut(B_USE_SMALL_SPACING)
+		.AddStrut(spacing)
 		.Add(fLowerCase)
 		.Add(fUpperCase)
 		.AddGlue();

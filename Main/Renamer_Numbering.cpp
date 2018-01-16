@@ -50,27 +50,13 @@ Renamer_Numbering::Renamer_Numbering() : Renamer() {
 	fTextBehind = new BTextControl( NULL, B_TRANSLATE("Text behind:"), NULL, new BMessage(MSG_RENAME_SETTINGS));
 	fTextBehind->SetModificationMessage(new BMessage(MSG_RENAME_SETTINGS));
 
-	BLayoutBuilder::Group<>(this, B_HORIZONTAL)
+	BLayoutBuilder::Grid<>(this)
 		.SetInsets(B_USE_WINDOW_INSETS)
-		.AddGroup(B_VERTICAL)
-			.Add(fFormat->CreateLabelLayoutItem())
-			.Add(fTextBefore->CreateLabelLayoutItem())
-			.AddGlue()
-		.End()
-		.AddGroup(B_VERTICAL)
-			.Add(fFormat->CreateMenuBarLayoutItem())
-			.Add(fTextBefore->CreateTextViewLayoutItem())
-			.AddGlue()
-		.End()
-		.AddGroup(B_VERTICAL)
-			.Add(fStartWith->CreateLabelLayoutItem())
-			.Add(fTextBehind->CreateLabelLayoutItem())
-			.AddGlue()
-		.End()
-		.AddGroup(B_VERTICAL)
-			.Add(fStartWith->CreateTextViewLayoutItem())
-			.Add(fTextBehind->CreateTextViewLayoutItem())
-			.AddGlue();
+		.AddMenuField(fFormat, 0, 0)
+		.AddTextControl(fTextBefore, 0, 1)
+		.AddTextControl(fStartWith, 2, 0)
+		.AddTextControl(fTextBehind, 2, 1)
+		.AddGlue(0, 2);
 }
 
 void Renamer_Numbering::RenameList(BList *FileList) {
