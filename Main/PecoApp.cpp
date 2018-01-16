@@ -59,7 +59,14 @@ PecoApp::PecoApp() : BApplication(kAppsignature) {
 
 void PecoApp::ReadyToRun() {
 
-	fWindow = new MainWindow();
+	BMessage msg;
+	ReadPreferences("mwin_position", msg);
+
+	BRect rect;
+	if (msg.FindRect("pos", &rect) != B_OK)
+		rect = BRect(20, 40, 640, 460);		// default
+
+	fWindow = new MainWindow(rect);
 	fListView	= (FileListView *)fWindow->FindView("fileListView");
 	fStatusBar	= (BStatusBar *)fWindow->FindView("statusBar");
 
@@ -321,9 +328,17 @@ void PecoApp::DoIt() {
 	if (noerror && noerrorDup) MakeList();
 	else {
 		if (!noerror) {
-			ReportWindow *reportWindow = new ReportWindow(fList);
+			BMessage msg;
+			ReadPreferences("rwin_size", msg);
+
+			BRect rect;
+			if (msg.FindRect("size", &rect) != B_OK)
+				rect = BRect(60, 80, 705, 280);		// default size
+
+			rect.OffsetBy(fWindow->Frame().LeftTop() + BPoint(80, 100));
+			
+			ReportWindow *reportWindow = new ReportWindow(rect, fList);
 			reportWindow->Show();
 		}
 	}
-	
 }

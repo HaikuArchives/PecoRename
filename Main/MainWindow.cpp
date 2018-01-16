@@ -33,8 +33,10 @@
 #undef B_TRANSLATION_CONTEXT
 #define B_TRANSLATION_CONTEXT "MainWindow"
 
-MainWindow::MainWindow() : BWindow( BRect( 20, 40, 640, 460), B_TRANSLATE_SYSTEM_NAME("PecoRename"),
-	B_TITLED_WINDOW, B_AUTO_UPDATE_SIZE_LIMITS){
+MainWindow::MainWindow(BRect frame)
+	:
+	BWindow(frame, B_TRANSLATE_SYSTEM_NAME("PecoRename"),
+		B_TITLED_WINDOW, B_AUTO_UPDATE_SIZE_LIMITS){
 
 	BMenuBar* MenuBar = new BMenuBar( "MenuBar" );
 
@@ -91,6 +93,10 @@ void MainWindow::Help() {
 
 
 bool MainWindow::QuitRequested() {
+	BMessage msg;
+	msg.AddRect("pos", Frame());
+	UpdatePreferences("mwin_position", msg);
+
 	return be_app->PostMessage(B_QUIT_REQUESTED);
 };
 

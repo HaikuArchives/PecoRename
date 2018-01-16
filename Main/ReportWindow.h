@@ -14,7 +14,9 @@
 
 class ReportWindow : public BWindow {
 	public:
-				ReportWindow(BList *filelist);
+				ReportWindow(BRect frame, BList *filelist);
+		virtual	~ReportWindow();
+
 		bool	QuitRequested();
 		void	MessageReceived( BMessage* msg );
 		void 	RefsReceived(BMessage *msg);

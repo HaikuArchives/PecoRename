@@ -20,10 +20,13 @@
 #define B_TRANSLATION_CONTEXT "ReportWindow"
 
 
-ReportWindow::ReportWindow(BList *filelist) : BWindow( BRect( 60, 80, 705, 280), B_TRANSLATE("Report"),
-	 B_TITLED_WINDOW,B_AUTO_UPDATE_SIZE_LIMITS)
+ReportWindow::ReportWindow(BRect frame, BList *filelist)
+	:
+	BWindow(frame, B_TRANSLATE("Report"), B_TITLED_WINDOW,
+		B_AUTO_UPDATE_SIZE_LIMITS)
 {
-	BColumnListView* reportView = new BColumnListView("reportView", B_FRAME_EVENTS|B_NAVIGABLE, B_NO_BORDER);
+	BColumnListView* reportView = new BColumnListView("reportView",
+		B_FRAME_EVENTS|B_NAVIGABLE, B_NO_BORDER);
 
 	//info columns
 	int32 i = 0;
@@ -86,6 +89,12 @@ ReportWindow::ReportWindow(BList *filelist) : BWindow( BRect( 60, 80, 705, 280),
 		.AddGroup(B_HORIZONTAL)
 			.AddGlue()
 			.Add( new BButton( "OK", B_TRANSLATE("OK"), new BMessage('CLO_'))); 
+};
+
+ReportWindow::~ReportWindow() {
+	BMessage msg;
+	msg.AddRect("size", Bounds());
+	UpdatePreferences("rwin_size", msg);
 };
 
 bool ReportWindow::QuitRequested() {

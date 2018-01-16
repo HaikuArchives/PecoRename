@@ -20,7 +20,7 @@
 
 class MainWindow : public BWindow {
 	public:
-				MainWindow();
+				MainWindow(BRect frame);
 		bool	QuitRequested();
 		void	MessageReceived( BMessage* msg );
 		void 	RefsReceived(BMessage *msg);
