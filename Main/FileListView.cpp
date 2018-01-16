@@ -42,6 +42,23 @@ FileListView::FileListView()
 		"Modified", "Column title"), WIDTH_DATE, 10, 600), i++);
 	AddColumn(new PreviewColumn(B_TRANSLATE_COMMENT(
 		"Preview", "Column title"), WIDTH_PREVIEW, 10, 600, 0), i++);
+
+	BMessage msg;
+	ReadPreferences("filecol_state", msg);
+
+	BMessage colSettings;
+	if (msg.FindMessage("col", &colSettings) == B_OK)
+		LoadState(&colSettings);
+}
+
+FileListView::~FileListView() {
+	BMessage colSettings;
+	SaveState(&colSettings);
+
+	BMessage msg;
+	msg.AddMessage("col", &colSettings);
+
+	UpdatePreferences("filecol_state", msg);
 }
 
 void FileListView::MouseDown(BPoint where) {

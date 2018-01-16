@@ -95,7 +95,7 @@ void MainWindow::Help() {
 bool MainWindow::QuitRequested() {
 	BMessage msg;
 	msg.AddRect("pos", Frame());
-	UpdatePreferences("mwin_position", msg);
+	UpdatePreferences("main_window", msg);
 
 	return be_app->PostMessage(B_QUIT_REQUESTED);
 };

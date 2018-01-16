@@ -13,15 +13,16 @@
 #include "FileListItem.h"
 
 class ReportWindow : public BWindow {
-	public:
+public:
 				ReportWindow(BRect frame, BList *filelist);
 		virtual	~ReportWindow();
 
 		bool	QuitRequested();
 		void	MessageReceived( BMessage* msg );
 		void 	RefsReceived(BMessage *msg);
-	private:
-		void	Help();
+private:
+		void			Help();
+	BColumnListView* 	fReportView;
 };
 
 #endif

@@ -60,7 +60,7 @@ PecoApp::PecoApp() : BApplication(kAppsignature) {
 void PecoApp::ReadyToRun() {
 
 	BMessage msg;
-	ReadPreferences("mwin_position", msg);
+	ReadPreferences("main_window", msg);
 
 	BRect rect;
 	if (msg.FindRect("pos", &rect) != B_OK)
@@ -329,7 +329,7 @@ void PecoApp::DoIt() {
 	else {
 		if (!noerror) {
 			BMessage msg;
-			ReadPreferences("rwin_size", msg);
+			ReadPreferences("report_window", msg);
 
 			BRect rect;
 			if (msg.FindRect("size", &rect) != B_OK)

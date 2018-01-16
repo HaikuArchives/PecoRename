@@ -25,17 +25,24 @@ ReportWindow::ReportWindow(BRect frame, BList *filelist)
 	BWindow(frame, B_TRANSLATE("Report"), B_TITLED_WINDOW,
 		B_AUTO_UPDATE_SIZE_LIMITS)
 {
-	BColumnListView* reportView = new BColumnListView("reportView",
+	fReportView = new BColumnListView("reportView",
 		B_FRAME_EVENTS|B_NAVIGABLE, B_NO_BORDER);
 
 	//info columns
 	int32 i = 0;
-	reportView->AddColumn(new BStringColumn(B_TRANSLATE_COMMENT(
+	fReportView->AddColumn(new BStringColumn(B_TRANSLATE_COMMENT(
 		"Original name", "Column title"), 165, 10, 600, B_TRUNCATE_END), i++);
-	reportView->AddColumn(new PreviewColumn(B_TRANSLATE_COMMENT(
+	fReportView->AddColumn(new PreviewColumn(B_TRANSLATE_COMMENT(
 		"Targetted name", "Column title"), 165, 10, 600, B_TRUNCATE_END), i++);
-	reportView->AddColumn(new BStringColumn(B_TRANSLATE_COMMENT(
+	fReportView->AddColumn(new BStringColumn(B_TRANSLATE_COMMENT(
 		"Problem", "Column title"), 250, 10, 600, B_TRUNCATE_END), i++);
+
+	BMessage msg;
+	ReadPreferences("report_window", msg);
+
+	BMessage colSettings;
+	if (msg.FindMessage("col", &colSettings) == B_OK)
+		fReportView->LoadState(&colSettings);
 	
 	FileListItem *listItem;
 	int32 errorCount = 0;
@@ -69,7 +76,7 @@ ReportWindow::ReportWindow(BRect frame, BList *filelist)
 					default : errorMsg = B_TRANSLATE("Unknown error");
 				}
 				row->SetField(new BStringField(errorMsg), i++);
-				reportView->AddRow(row);
+				fReportView->AddRow(row);
 			}
 		}
 
@@ -85,7 +92,7 @@ ReportWindow::ReportWindow(BRect frame, BList *filelist)
 	BLayoutBuilder::Group<>(this, B_VERTICAL)
 		.SetInsets(B_USE_WINDOW_INSETS)
 		.Add(messageView)
-		.Add(reportView)
+		.Add(fReportView)
 		.AddGroup(B_HORIZONTAL)
 			.AddGlue()
 			.Add( new BButton( "OK", B_TRANSLATE("OK"), new BMessage('CLO_'))); 
@@ -93,8 +100,12 @@ ReportWindow::ReportWindow(BRect frame, BList *filelist)
 
 ReportWindow::~ReportWindow() {
 	BMessage msg;
+	BMessage colSettings;
+	fReportView->SaveState(&colSettings);
+
+	msg.AddMessage("col", &colSettings);
 	msg.AddRect("size", Bounds());
-	UpdatePreferences("rwin_size", msg);
+	UpdatePreferences("report_window", msg);
 };
 
 bool ReportWindow::QuitRequested() {

@@ -18,6 +18,7 @@ class FileListItem;
 class FileListView : public BColumnListView {
 public:
 					FileListView();
+					~FileListView();
 	virtual void	MouseDown(BPoint where);
 	virtual	void	KeyDown(const char *bytes, int32 numBytes);
 	virtual bool	InitiateDrag(BPoint pt, bool initialySelected);
