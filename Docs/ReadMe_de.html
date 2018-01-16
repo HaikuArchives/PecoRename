@@ -1,0 +1,156 @@
+<html>
+<head>
+<title>PecoRename Dokumentation</title>
+</head>
+<body bgcolor="#eeeeee" link="#284696" vlink="#555555">
+<table cellspacing=3 cellpadding=1 border=0 bgcolor="#ffffff" width=100%>
+<tr><td><img src="gfx/PecoRenameIcon.gif" align="left" hspace=5 vspace=5><img src="gfx/pecora.gif" align=right><i><font face="Dutch801 Rm BT" size=+4>PecoRename</font></i></td></tr>
+<tr><td bgcolor="#284696"><img src="gfx/pixel.gif" height=1></td></tr>
+<tr><td><font face="Arial,Helvetica">
+
+<h2>Einf&uuml;hrung</h2>
+<p>
+PecoRename ist ein Utility, das dabei hilft, mehrere Dateien umzubenennen, die nach einem &auml;hnlichen Schema umbenannt werden sollen.
+<br>Dabei hat man verschiedene M&ouml;glichkeiten: Mit einer Endung oder einem Pr&auml;fix versehen, Nummerieren, Suchen&amp;Ersetzen...
+
+<h2>Rechtliches / Lizenz</h2>
+<p>
+PecoRename ist Freeware, d.h. es kann nach Belieben kostenlos weitergegeben werden.
+<br>Dabei ist jedoch zu beachten, dass es immer mit ALLEN Bestandteilen - insbesondere mit dieser Anleitung - weitergegeben wird.
+<br>PecoRename darf auch nicht ohne Einverst&auml;ndnis des <a href="#Autor">Autors</a> verkauft werden. In der Regel kann es jedoch zum Selbstkostenpreis weitergegeben werden - dazu einfach kurz <a href="#Autor">E-Mail an den Autor</a>!
+<br>Alle <b>grafischen Elemente</b>, insbesondere Icon und Logos, unterliegen dem Copyright des Autors und d&uuml;rfen in keiner Form ohne Einverst&auml;ndnis des Autors genutzt oder weiterverwendet werden.
+
+<h2>Haftungsausschluss</h2>
+<p>
+Es wurde gr&ouml;&szlig;tm&ouml;gliche Sorgfalt auf eine einwandfreie Funktion von PecoRename gelegt. Dennoch lassen sich Fehler nie ausschlie&szlig;en.
+<br>Aus diesem Grunde haftet der Autor in keiner Form f&uuml;r eventuelle, durch die Software entstandenen Sch&auml;den. Ebensowenig garantiert er bestimmte Funktionen.
+
+<h2>Bedienung des Programms</h2>
+<p>
+PecoRename ist eigentlich sehr einfach zu bedienen. Die meisten Funktionen sollten sich von selbst erkl&auml;ren. Deshalb gehe ich auch nicht weiter auf das Men&uuml; ein - die Bezeichnungen sprechen f&uuml;r sich bzw. finden sich in Buttons wieder.
+<p>
+Das Fenster selbst unterteilt sich grob in zwei Bereiche:
+<ul>
+<li>die Dateiansicht im oberen Bereich und
+<li>die Umbenennungsfunktion im unteren Teil.
+</ul>
+
+<h2>Die Dateiansicht</h2>
+<p>
+In der Dateiansicht werden die umzubenennenden Dateien und Verzeichnisse angezeigt.<br>
+PecoRename macht keinen Unterschied zwischen Dateien, Links und Verzeichnissen - nur Laufwerke werden ignoriert. Ausserdem k&ouml;nnen nur Dateien <i>eines</i> Verzeichnisses gew&auml;hlt werden.
+<p>
+Um Dateien in PecoRename zu bringen, hat man zwei M&ouml;glichkeiten:
+<ul>
+<li>zum Einen kann man die Dateien durch ein FilePanel (Dateidialog) w&auml;hlen. Dieses &ouml;ffnet sich, wenn man auf den Button &quot;Bitte w&auml;hlen&quot; (links oben) klickt.
+<br><b>Achtung:</b> Leider hat das FilePanel in der Release 5 einen Bug, so dass das gesamte BeOS abst&uuml;rzt, wenn man mehr als ca. 120 Dateien anw&auml;hlt und &ouml;ffnet!
+<li>Die Zweite - und bequemere - M&ouml;glichkeit: Man selektiert die gew&uuml;nschten Dateien im Tracker und zieht sie in das PecoRename-Fenster. Um Dateien wieder aus der Dateiansicht zu entfernen kann man sie genauso einfach auch wieder herausziehen!
+</ul>
+Befinden sich Dateien in der Liste, so wird deren gemeinsamer Pfad &uuml;ber der Liste angezeigt. Die Dateien k&ouml;nnen nach Name, Gr&ouml;&szlig;e und &Auml;nderungsdatum sortiert werden. Dazu klickt man einfach auf den entsprechenden Listentitel.
+<p>
+In der Spalte &quot;Vorschau&quot; sieht man, welche Dateien wie umbenannt werden. Nur Dateien, an denen Ver&auml;nderungen vorgenommen werden, werden angezeigt. Falls es dabei durch doppelte Namen zu Konflikten kommen w&uuml;rde, werden die betreffenden Dateien rot hervorgehoben.
+
+<h2>Die Umbenennungsfunktionen</h2>
+<p>
+Hat man die gew&uuml;nschten Dateien in der Dateiansicht, geht es darum, sie umzubenennen.
+<br>Dazu gibt es folgende Funktionen (Modi):
+<ul>
+<li><h3>Suchen und ersetzen</h3>
+Wie der Name schon sagt, werden hier in den Namen Zeichenketten gesucht und ersetzt.
+<br>Dabei kann man folgende Parameter einstellen:
+<ul>
+<li><b>Gro&szlig;/Kleinschreibung beachten</b>: Wenn dieses Feld markiert ist, wird bei der Suche die Gro&szlig;/Kleinschreibung beachtet.
+<li><b>Regul&auml;rer Ausdruck</b> (regular expression): Man kann auch mit Hilfe von sog. regul&auml;ren Ausdr&uuml;cken - d.h. Suchmustern - suchen.<br>
+Es w&uuml;rde zu weit f&uuml;hren, diese hier zu beschreiben. Wichtig ist f&uuml;r diejenigen, die sich damit auskennen, dass der <b>gefundene Suchstring</b> im Ergebnisstring durch das Token '\$' eingesetzt werden kann.
+<li><b>Suchmuster</b>: Wonach wird gesucht?
+<li><b>Ersetzen durch</b>: Wodurch soll ersetzt werden?
+</ul>
+<p>
+<li><h3>Einf&uuml;gen / &Uuml;berschreiben</h3>
+Man kann an einer bestimmten Stelle im Dateinamen einen Text einsetzen.
+<br>Hierbei gibt es folgende Optionen:
+<ul>
+<li><b>Einf&uuml;gen oder &uuml;berschreiben</b>: Soll der Text eingef&uuml;gt werden oder den bestehenden Text ab dieser Position &uuml;berschreiben?
+<li><b>Text</b>: Welcher Text soll eingesetzt werden?
+<li><b>Position</b>: An welcher Stelle?
+<li><b>Richtung</b>: Man kann bestimmen, ob von vorne oder hinten die n-te Position gemeint ist.
+<br>Beispiel: Eine Position &quot;3&quot; und eine Richtung &quot;von hinten&quot; bedeutet, dass der Text aber der 3. Stelle von hinten eingesetzt wird.
+</ul>
+<p>
+<li><h3>Entfernen</h3>
+Es werden Buchstaben aus dem Namen entfernt. Dazu stellt man einfach ein, von wo bis wo und damit ist die Sache auch schon erledigt! :-)
+<p>
+<li><h3>Nummerieren</h3>
+Die Dateien werden der Reihe nach durchnummeriert. Entscheidend ist dabei auch die Sortierung (nach Name/Gr&ouml;&szlig;e/&Auml;nderungsdatum) in der Dateiansicht.
+<ul>
+<li><b>Format</b>: Hier w&auml;hlt man, auf wieviele Stellen die Zahl fixiert ist.
+<li><b>Starte mit</b>: Es kann eine Startzahl angegeben werden, mit der die Nummerierung beginnt.
+<li><b>Text davor</b>, <b>Text danach</b>: Hier kann man Text angeben, der vor bzw. nach der Zahl eingesetzt wird.
+</ul>
+<p>
+<li><h3>Dateiendung hinzuf&uuml;gen</h3>
+Es wird versucht, die richtige Dateiendung zu finden, und diese wird dann an den Dateinamen angeh&auml;ngt.
+<p>
+Allerdings wird dies nicht immer wunschgem&auml;&szlig; funktionieren. Daher ist es sinnvoll, die Funktionsweise zu verstehen:
+<p>
+Im BeOS wird jede Datei - wie im Internet - durch einen sog. MIME-Typen gekennzeichnet. Wenn man nun Dateien von einer Nicht-BeOS-Umgebung bekommt, m&uuml;ssen diese
+irgendwie erkannt werden. Dazu verwendet das BeOS verschiedene Erkennungsmechanismen und zuletzt - falls eine Datei anders nicht erkannt werden kann - die Dateiendung.
+<p>
+PecoRename geht den umgekehrten Weg: Zu einem Dateitypen wird die entsprechende Endung gesucht - so, wie sie in Preferences/FileTypes eingestellt ist.
+<p>
+Damit also PecoRename seine Sache gut macht, m&uuml;ssen zwei Voraussetzungen gegeben sein:
+<ol>
+<li><u>Die Datei muss identifiziert sein.</u>
+<br>Wenn man sich nicht sicher ist, ob das BeOS eine Datei schon erkannt hat, kann man dies im Tracker machen: Datei anw&auml;hlen und im Men&uuml; File/Identify w&auml;hlen. Dies funktioniert nur auf BFS-Datentr&auml;gern, nicht mit z.B. FAT32 (Windows)!
+<li><u>Es muss eine Dateiendung f&uuml;r eine Datei dieses Typs gespeichert sein.</u>
+<br>In Preferences/FileTypes lassen sich alle m&ouml;glichen Dateitypen bearbeiten. Dort kann man auch die Endung einstellen.
+<br>PecoRename verwendet immer die erste, gefundene Endung. Hierdurch wird man oft eine nicht ganz wunschgem&auml;&szlig;e Endungen wie ".jpeg" (statt ".jpg") oder ".mp2" (statt ".mp3") bekommen, aber man hat mit PecoRename (Suchen&amp;ersetzen) das Werkzeug in der Hand, um diese Endungen zu korrigieren!
+</ol>
+<p>
+Es gibt folgende Optionen:
+<ul>
+<li><b>Alte Endung ersetzen</b>: Soll die Erweiterung angeh&auml;ngt werden, oder eine evtl. vorhandene alte Erweiterung ersetzen?
+<li><b>Gro&szlig;/Kleinschreibung</b>: Wie soll die Endung geschrieben werden (gross/klein/wie voreingestellt)?
+</ul>
+</ul>
+
+<h2>Los geht's!</h2>
+Wenn alle Einstellungen vorgenommen wurden, braucht man nur noch auf den &quot;Los geht's&quot;-Button zu klicken und alle Dateien werden entsprechend der Vorschau umbenannt!
+
+<a name="Autor"></a>
+<h2>Autor / Kontakt</h2>
+<p>
+Ich hoffe, Dir gef&auml;llt das Programm, und Du kannst es gut nutzen. &Uuml;ber Ideen, Vorschl&auml;ge oder Kritik w&uuml;rde ich mich freuen!
+<p>
+Und bitte <a href="http://www.bebits.com/app/1040">w&auml;hle bei BeBits f&uuml;r PecoRename</a>!
+
+Hier kann man mich erreichen:
+
+<center>
+<table cellpadding=10 cellspacing=0 border=0 bgcolor="#eeeeee">
+<tr>
+	<td valign=top><font face="Arial,Helvetica">Name:</td>
+	<td valign=top><font face="Arial,Helvetica">Werner Freytag</td></tr>
+<tr>
+	<td valign=top><font face="Arial,Helvetica">Postanschrift:</td>
+	<td valign=top><font face="Arial,Helvetica">Neurieder Str. 8
+				<br>82152 Martinsried
+				<br>Deutschland</td>
+</tr>
+<tr>
+	<td valign=top>
+	<font face="Arial,Helvetica">E-Mail:</td>
+	<td valign=top><font face="Arial,Helvetica"><a href="mailto:freytag@gmx.de">freytag@gmx.de</a></td>
+</tr>
+<tr>
+	<td valign=top><font face="Arial,Helvetica">Internetseite:</td>
+	<td valign=top><font face="Arial,Helvetica"><a href="http://www.pecora.de" target="_blank">www.pecora.de</a></td>
+</tr>
+</table>
+</center>
+</font>
+</td>
+</tr>
+</table>
+</body>
+</html>

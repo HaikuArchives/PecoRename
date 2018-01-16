@@ -1,0 +1,160 @@
+<html>
+<head>
+<title>PecoRename Documentation</title>
+</head>
+<body bgcolor="#eeeeee" link="#284696" vlink="#555555">
+<table cellspacing=3 cellpadding=1 border=0 bgcolor="#ffffff" width=100%>
+<tr><td><img src="gfx/PecoRenameIcon.gif" align="left" hspace=5 vspace=5><i><font face="Dutch801 Rm BT" size=+4>PecoRename</font></i><img src="gfx/pecora.gif" align=right></td></tr>
+<tr><td bgcolor="#284696"><img src="gfx/pixel.gif" height=1></td></tr>
+<tr><td><font face="Arial,Helvetica">
+
+<h2>Introduzione</h2>
+<p>
+PecoRename è una utility che consente di rinominare molti files secondo un pattern predefinito.
+<br>Consente di rinominare i files in molti modi: aggiungendo un'estensione, numerando i files in ordine, cercando e sostituendo stringhe, e molto altro...
+
+<h2>Licenza</h2>
+<p>
+PecoRename è freeware. Potete condividerlo con quante persone volete, a patto che il programma sia distribuito in tutte le sue parti, specialmente la documentazione. PecoRename non può essere venduto in nessun caso senza il permesso <a href="#Autor">dell'autore</a>. PecoRename può essere venduto al solo costo del supporto o ad un prezzo ragionevole per coprire i costi di distribuzione (su un CD freeware/shareware per esempio) Contattare <a href="#Autor">l'autore via e-mail</a> prima di fare ciò.
+<br>Tutti i <b>disegni</b>, specialmente l'icona o i marchi sono copyright dell'autore e non possono essere usati in nessuna forma senza il permesso dell'autore.
+
+<h2>Esclusione di responsabilità</h2>
+<p>
+Grande cura è stata posta nell'assicurarsi che PecoRename funzioni senza pecche o errori.
+Nondimeno vi è una piccola possibilità che alcuni errori possano presentarsi.
+<br>L'autore non può ritenersi responsabile per nessun potenziale danno causato da questo software né Egli garantirà nessuna funzione unica o speciale.
+<h2>Uso del software</h2>
+<p>
+PecoRename è molto facile da usare. Molte funzioni sono molto lineari. I nome delle funzioni dei menu sono autoesplicanti e tutti i pulsanti sono chiaramente descritti.
+<p>
+La finestra si divide in due aree:
+<ul>
+<li>l'elenco dei file nell'area superiore e
+<li>le funzioni di ridenominazione.
+</ul>
+
+<h2>L'elenco dei files</h2>
+<p>
+Questo elenco mostra i files e le cartelle che saranno rinominate.
+<br>
+PecoRename non fa differenza fra files, links e cartelle - solo i devices sono ignorati. Solo files che risiedono nella <i>stessa</i> cartella possono essere selezionati.
+<p>
+Ci sono due modi per scegliere i file da rinominare:<ul>
+<li>Potete selezionare i files con un file panel cliccando sul pulsante &quot;Seleziona...&quot; in alto a sinistra.
+<br><b>Attenzione:</b> Purtroppo il file panel standard di BeOS Release 5 (PE) ha un bug che causa un crash quando vengono selezionati più di 120 files!
+<li>La seconda - e più comoda - possibilità: Selezionate i files desiderati direttamente dal Tracker e trascinateli nella finestra di PecoRename. Per rimuovere alcuni files dall'elenco, basta trascinarli via!
+</ul>
+Quando ci sono files in elenco, il percorso comune verrà mostrato sulla lista. I files possono essere ordinati per nome, dimensioni e in base alla data dell'ultima modifica. Per fare ciò basta cliccare sul relativo pulsante in testa all'elenco.
+<p>
+Nella colonna &quot;Anteprima&quot; potete vedere un'anteprima dei files con i relativi nuovi nomi. Solo i files da modificare sono mostrati. Se emergeranno conflitti dovuti a nomi che si ripetono, i relativi files verranno marcati in rosso.
+
+<h2>Le funzioni di ridenominazione</h2>
+<p>
+Quando i files desiderati sono elencati, è possibile rinominarli.
+<br>Per loro sono disponibili le seguenti funzioni(modi):
+<ul>
+<li><h3>Cerca e sostituisci</h3>
+Come dice il nome, questa funzione cerca e sostituisce alcune parti nalla stringa dei nomi.
+<br>Potete regolare i seguenti parametri:
+<ul>
+<li><b>Considera Maiusole/minuscole</b>: Se scegliete questa opzione, le maiuscole e le minuscole non verranno trattate alla stessa maniera.
+<li><b>Espressione regolare </b>: Potete anche cercare e sostituire le stringhe usando espressioni regolari.<br>
+La descrizione delle espressioni regolari va al di la degli scopi di questo manuale. Per coloro i quali desiderano sapere come lavorare con le espressioni regolari, la stringa trovata può essere inserita nella stringa risultante con il token '\$'.
+<li><b>Trova pattern</b>: Cosa state cercando?
+<li><b>Sostituisci con</b>: Con cosa andrebbe sostituito?
+</ul>
+<p>
+<li><h3>Rimuovi</h3>
+Questa funzione rimuove alcuni caratteri dai nomi. Inserite semplicemente il range ed è fatta! :-)
+<p>
+<li><h3>Inserisci / sostituisci</h3>
+Potete inserire un testo in una certa posizione del nome del file.
+<br>Sono valide le seguenti opzioni:
+<ul>
+<li><b>Inserisci o sostituisci</b>: Il testo dovrà essere inserito o dovrà sostituire il testo presente da questa posizione?
+<li><b>Testo</b>: Che testo inserire?
+<li><b>Posizione</b>: In quale posizione?
+<li><b>Direzione</b>: Potete decidere se inserire nella n-esima posizione a partire dalla testa o dalla fine del testo.
+<br>Esempio: Una posizione &quot;3&quot; e una direzione &quot;dalla fine&quot; vuol dire che il testo sarà inserito partendo dalla terza posizione a partie dalla fine.
+</ul>
+<p>
+<li><h3>Numerazione</h3>
+I files verranno numerati in ordine. I files sono numerati a seconda dell'ordine dell'elenco (in base a nome/dimensione/data dell'ultima modifica).
+<ul>
+<li><b>Formato</b>: Scegliete quanti posti occupa il numero.
+<li><b>Comincia con</b>: Indicate con quale numero si desidera partire.
+<li><b>Testo prima</b>, <b>Testo dopo</b>: Potete specificare se il testo sarà aggiunto prima o dopo il numero.
+</ul>
+<p>
+<li><h3>Aggiungi un'estensione</h3>
+PecoRename può trovare la giusta estensione da aggiungere al file.
+<p>
+Non sempre questa funzione darà i risultati attesti. Perciò è necessario capire come funziona:
+<p>
+In BeOS - come in Internet - ogni file viene distinto da un cosiddetto tipo MIME. Se ottenete un file da un ambiente estraneo a BeOS il file deve essere riconosciuto. BeOS per far ciò usa diversi meccanismi tra cui - se il file non può essere riconosciuto in altro modo - l'interpretazione della sua estensione.
+<p>
+PecoRename lavora al contrario: per un dato file viene cercata la relativa estensione - come stabilito in Preferences/File Types.
+<p>
+Affinché PecoRename lavori bene bisogna devono verificarsi due ipotesi:
+<ol>
+<li><u>Il file deve essere identificato.</u>
+<br>Se non siete sicuri che BeOS abbia già riconosciuto il file, potet farlo tramite Tracker: Selezionate il file e scegliete File/Identify dal menu. Questo funziona solo se il file si trova su un disco BFS (non funziona con dischi FAT, HFS o altri filesystem).
+<li><u>Deve esistere un'estensione per un file di quel tipo</u>
+<br>In Preferences/File Types possono essere aggiustati tutti i tipi di file. Potete anche regolare l'estensione del file.
+<br>PecoRename usa sempre la prima estensione trovata. Per questo motivo, avrete un'estensione  come ".jpeg" (invece di ".jpg") o ".mp2" (invece di ".mp3") - con PecoRename (usate Cerca e sostituisci) potrete correggerlo!
+</ol>
+<p>
+Sono valide le seguenti opzioni:
+<ul>
+<li><b>Sostituisci la vecchia estensione</b>: L'estensione sarà accodata o sostituirà la vecchia, se necessario?
+<li><b>Maiuscolo / minuscolo</b>: Come scriveremo l'estensione (maiuscolo/minuscolo/default)?
+</ul>
+<p>
+<li><h3>Maiuscolo / minuscolo</h3>
+Questa funzione è ovvia! Converte tutte le lettere in minuscolo o in maiuscolo.
+</ul>
+
+<h2>Si parte!</h2>
+Quando tutto è impostato, dovete solo premere il pulsante &quot;Si parte!&quot; e tutti i file saranno rinominati secondo l'anteprima!
+
+<h2>Strumenti</h2>
+Nel menu Strumenti avete la possibilità di creare uno script per la shell secondo le impostazioni selezionate. Questo script può essere lanciato con un doppio-click e funziona esattamente come un click sul pulsante &quot;Si parte!&quot;. Potrete creare gli script una volta sola ed eseguirli ancora e ancora - anche senza PecoRename!
+
+<a name="Autor"></a>
+<h2>Contattare l'autore</h2>
+<p>
+Spero che il programma vi piaccia e possiate trarne beneficio. Aspetto le vostre idee, le vostre critiche e i vostri suggerimenti!
+<p>
+E per favore <a href="http://www.bebits.com/app/1040">votate PecoRename su BeBits</a>!
+<p>
+
+Per contattarmi:
+
+<center>
+<table cellpadding=10 cellspacing=0 border=0 bgcolor="#eeeeee">
+<tr>
+	<td valign=top><font face="Arial,Helvetica">Nome:</td>
+	<td valign=top><font face="Arial,Helvetica">Werner Freytag</td></tr>
+<tr>
+	<td valign=top><font face="Arial,Helvetica">Indirizzo:</td>
+	<td valign=top><font face="Arial,Helvetica">Neurieder Str. 8
+				<br>82152 Martinsried
+				<br>Germany</td>
+</tr>
+<tr>
+	<td valign=top>
+	<font face="Arial,Helvetica">E-mail:</td>
+	<td valign=top><font face="Arial,Helvetica"><a href="mailto:freytag@gmx.de">freytag@gmx.de</a></td>
+</tr>
+<tr>
+	<td valign=top><font face="Arial,Helvetica">Homepage:</td>
+	<td valign=top><font face="Arial,Helvetica"><a href="http://www.pecora.de" target="_blank">www.pecora.de</a></td>
+</tr>
+</table>
+</center>
+</font>
+</td>
+</tr>
+</table>
+</body>
+</html>

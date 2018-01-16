@@ -1,0 +1,160 @@
+<html>
+<head>
+<title>Documentation de PecoRename</title>
+</head>
+<body bgcolor="#eeeeee" link="#284696" vlink="#555555">
+<table cellspacing=3 cellpadding=1 border=0 bgcolor="#ffffff" width=100%>
+<tr><td><img src="gfx/PecoRenameIcon.gif" align="left" hspace=5 vspace=5><i><font face="Dutch801 Rm BT" size=+4>PecoRename</font></i><img src="gfx/pecora.gif" align=right></td></tr>
+<tr><td bgcolor="#284696"><img src="gfx/pixel.gif" height=1></td></tr>
+<tr><td><font face="Arial,Helvetica">
+
+<h2>Introduction</h2>
+<p>
+PecoRename est un utilitaire permettant de renommer simultan&eacute;ment plusieurs fichiers qui doivent &ecirc;tre
+renomm&eacute;s de la m&ecirc;me mani&egrave;re.
+<br>Divers techniques de renommage sont disponibles : ajouter une extension, num&eacute;roter les fichiers, remplacer...
+
+<h2>Licence</h2>
+<p>
+PecoRename est un freeware, il peut &ecirc;tre redistribu&eacute; librement.
+<br>Lors d'une redistribution, vous devez veiller &agrave; ce qu'il soit livr&eacute; avec TOUS ses composants - et, en particulier, cette documentation.
+<br>De plus, PecoRename ne peut pas &ecirc;tre vendu sans l'accord de <a href="#Autor">uateur</a>. Seul peut &ecirc;tre factur&eacute; le co&ucirc;t de la redistribution -  contacter rapidement l' <a href="#Autor">auteur via e-mail</a> s'il vous pla&icirc;t!
+<br>Tous les <b>graphiques</b>, en particulier l'icone, et les noms et marques sont soumis aux droits d'auteur et ne peuvent &ecirc;tre utilis&eacute;s sans le consentement de l'auteur.
+
+<h2>Responsabilit&eacute;s</h2>
+<p>
+Le plus grand soin a &eacute;t&eacute; pris lors de la r&eacute;alisation de PecoRename ; cependant la pr&eacute;sence d'erreurs ne peut &ecirc;tre exclue.
+<br>Pour cette raison, l'auteur ne peut &ecirc;tre tenu pour responsable en cas de dommages occasionn&eacute;s par ce logiciel.
+
+<h2>Utilisation du logiciel</h2>
+<p>
+L'utilisation de PecoRename est tr&egrave;s simple. La plupart des fonctionnalit&eacute;s sont intuitives. Pour cette raison, le menu ne sera pas expliqu&eacute; en d&eacute;tail - les noms sont explicites et reprennent les intitul&eacute;s des boutons.
+<p>
+La fen&ecirc;tre est divis&eacute;e en deux parties :
+<ul>
+<li>la liste des fichiers en haut et
+<li>les fonctions de renommage en bas.
+</ul>
+
+<h2>La liste des fichiers s&eacute;lectionn&eacute;s</h2>
+<p>
+Cette liste contient les fichiers et r&eacute;pertoires &agrave; renommer.
+<br>
+PecoRename ne fait pas de diff&eacute;rence entre  les fichiers, les liens et les r&eacute;pertoires - seules les p&eacute;riph&eacute;riques sont ignor&eacute;s. D'autre part, seuls les fichiers d'un m&ecirc;me r&eacute;pertoire peuvent &ecirc;tre s&eacute;lectionn&eacute;s.
+<p>
+Pour s&eacute;lectionner les fichiers et r&eacute;pertoires, vous avez deux possibilit&eacute;s :
+<ul>
+<li>Vous pouvez choisir les fichiers en cliquant sur le bouton  &quot;Selectionner...&quot; en haut &agrave; gauche.
+<br><b>Attention:</b> Malheureusement, la fen&ecirc;tre de s&eacute;lection de fichier de BeOS Release 5 (PE) a un bug qui  fait crasher BeOS quand plus de 120 fichiers sont s&eacute;lectionn&eacute;s et ouverts !
+<li>Vous pouvez aussi - tr&egrave;s facilement - s&eacute;lectionner vos fichiers via le Tracker et les faire glisser dans la fen&ecirc;tre de PecoRename.
+</ul>
+D&egrave;s qu'il y a des fichiers s&eacute;lectionn&eacute;s, le r&eacute;pertoire courant s'affiche au dessus de la liste. Les fichiers peuvent &ecirc;tre tri&eacute;s par nom, taille et date de derni&egrave;re modification. Pour cela, il suffit de cliquer sur le titre de la colonne correspondant au crit&egrave;re de tri souhait&eacute;.
+<p>
+La colonne &quot;Apercu&quot; affiche pourchaque fichier son nouveau nom apr&egrave;s renommage. Seuls les fichiers &agrave; renommer apparaissent dans la liste. Si un conflit est d&eacute;tect&eacute; &agrave; cause d'un doublon dans les noms de fichiers (noms apr&egrave;s renommages et noms des autres fichiers non renomm&eacute;s du r&eacute;pertoire), les fichiers concern&eacute;s apparaissent en rouge.
+
+<h2>Les fonctions de renommage</h2>
+<p>
+Quand tous les fichiers voulus sont s&eacute;lectionn&eacute;s, vous pouvez les renommer.
+<br>Le renommage se fait selon les diff&eacute;rents modes suivants:
+<ul>
+<li><h3>Rechercher / Remplacer</h3>
+Cette option permet de rechercher une cha&icirc;ne de carat&egrave;res dans les noms des fichiers et de la remplacer par une autre.
+<br>Voici les param&egrave;tres possibles:
+<ul>
+<li><b>Diff&eacute;rentiation MAJ/min</b>: Indique, quand la case est coch&eacute;e, qu'on souhaite diff&eacute;rencier les majuscules et les minuscules.
+<li><b>Expression r&eacute;guli&egrave;re</b>: Vous pouvez Rechercher/Remplacer des expressions r&eacute;guli&egrave;res.<br>
+Sans entrer dans le d&eacute;tail des expressions r&eacute;guli&egrave;res, il faut savoir que la cha&icirc;ne recherch&eacute;e est reprise dans la cha&icirc;ne de remplacement grâce &agrave;  '\$'.
+<li><b>Rechercher</b>: La cha&icirc;ne de carat&egrave;res recherch&eacute;e
+<li><b>Remplacer par</b>: La cha&icirc;ne de remplacement
+</ul>
+<p>
+<li><h3>Insertion / Remplacement</h3>
+Vous pouvez ins&eacute;rer du texte &agrave; une certaine position dans le nom de(s) fichier(s).
+<br>Voici les diff&eacute;rentes options :
+<ul>
+<li><b>Insert or replace</b>: Le texte doit-il &ecirc;tre ins&eacute;r&eacute; ou remplace-t-il le texte existant &agrave; la position demand&eacute;e?
+<li><b>Texte</b>: Quel est le texte qui doit &ecirc;tre mis &agrave; cette position?
+<li><b>Position</b>: A quelle position?
+<li><b>Direction</b>: Vous pouvez choisir d'indiquer la position en partant du d&eacute;but (&agrave; gauche) ou de la fin (&agrave; droite) du nom des(s) fichier(s).
+<br>Exemple: La position &quot;3&quot;   &quot;&agrave; partir de la fin&quot; signifie que le texte sera ins&eacute;r&eacute; 3 caract&egrave;res avant la fin du nom de chaque fichier.
+</ul>
+<p>
+<li><h3>Num&eacute;rotation</h3>
+Les fichiers seront num&eacute;rot&eacute;es de facon croissante. 
+L'ordre dans lequel sont tri&eacute;s les fichiers sources (par Nom/Taille/Modifi&eacute; le) d&eacute;termine l'ordre de la num&eacute;rotation.
+<ul>
+<li><b>Format</b>: Vous pouvez choisir ici le nombre de positions pour la num&eacute;rotation (de 1 &agrave; 4 positions).
+<li><b>Commencer par</b>: Indique le premier nombre utilis&eacute; pour la num&eacute;rotation (par d&eacute;faut, la num&eacute;rotation commence &agrave; 0) .
+<li><b>Texte en t&ecirc;te</b>, <b>Texte en fin</b>: Vous pouvez indiquer le texte qui sera ins&eacute;r&eacute; avant ou apr&egrave;s le num&eacute;ro du fichier.
+</ul>
+<p>
+<li><h3>Ajouter une extension</h3>
+Cette option permet de trouver une extension ad&eacute;quate &agrave; un fichier.
+<p>
+Cette fonction ne fournit pas toujours le r&eacute;sultat attendu. C'est pourquoi, il est n&eacute;cessaire de comprendre la mani&egrave;re dont cette fonction est r&eacute;alis&eacute;e :
+<p>
+Dans BeOS - comme sur internet - &agrave; chaque fichier est attribu&eacute; un type appel&eacute; type MIME. Si vous importez des fichiers d'un environnement autre que BeOS, ces fichiers doivent &ecirc;tre identifi&eacute;s. Pour cela, BeOS utilise divers m&eacute;thodes de reconnaissance et, en dernier lieu, utilise l'extension du fichier.
+<p>
+PecoRename r&eacute;alise le travail inverse : pour un fichier donn&eacute; et son type MIME, PecoRename recherche l'extension appropri&eacute;e - telle qu'elle est d&eacute;finie dans Preferences/FileTypes.
+<p>
+Pour que cette fonction PecoRename ait un comportement correct, deux conditions doivent &ecirc;tre remplies :
+<ol>
+<li><u>Le fichier doit &ecirc;tre identifi&eacute;.</u>
+Si vous n'&ecirc;tes pas certain que le fichier a &eacute;t&eacute; identifi&eacute; par BeOS, vous pouvez provoquer cette indentification en s&eacute;lectionnant le fichier dans le Tracker et en choisissant File/Identify (ou Identify dans le menu contextuel du bouton droit de la souris).
+<li><u>Une extension par defaut doit &ecirc;tre attribu&eacute; pour ce type de fichier</u>
+<br>Pour cela, choissez "File Types" dans le menu des pr&eacute;f&eacute;rences. Cette application vous permet d'jouter une extension pour chaque type de fichier.
+<br>PecoRename utilise toujours la premi&egrave;re extension trouv&eacute;e. Vous aurez donc souvent une extension non souhait&eacute;e (".jpeg" au lieu de ".jpg" ou ".mp2" au lieu de ".mp3", mais avec l'option "Rechercher/Remplacer" de PecoRename, vous avez l'outil ideal pour corriger cela.
+</ol>
+<p>
+Les options suivantes sont disponibles :
+<ul>
+<li><b>Remplacer l'ancienne extension</b>: Permet de choisir entre l'ajout ou le remplacement de l'extension.
+<li><b>Majuscule / Minuscule</b>: Permet d'&eacute;crire la nouvelle extension en majuscule ou en minuscule.
+</ul>
+</ul>
+
+<h3>Majuscules / Minuscules</h3>
+Comme son nom l'indique, cette fonction convertit les lettres des noms de fichiers en majuscules ou en minuscules.
+
+<h2>C'est parti !</h2>
+Losque tous les r&eacute;glages du renommages sont faits, il suffit de cliquer sur le bouton "C'est parti !" et toute les fichiers seront renomm&eacute; selon
+l'apercu.
+
+<a name="Autor"></a>
+<h2>Auteur / contact</h2>
+<p>
+J'esp&egrave;re que vous aimerez ce programme et il vous sera utile. Les id&eacute;e, suggestions et critiques sont les bienvenues !
+<p>
+Et, s'il vous plait, <a href="http://www.bebits.com/app/1040">votez pour PecoRename at BeBits</a>!
+<p>
+
+Vous pouvez me contacter &agrave; cette adresse :
+
+<center>
+<table cellpadding=10 cellspacing=0 border=0 bgcolor="#eeeeee">
+<tr>
+	<td valign=top><font face="Arial,Helvetica">Nom :</td>
+	<td valign=top><font face="Arial,Helvetica">Werner Freytag</td></tr>
+<tr>
+	<td valign=top><font face="Arial,Helvetica">Adresse :</td>
+	<td valign=top><font face="Arial,Helvetica">Neurieder Str. 8
+				<br>82152 Martinsried
+				<br>Allemagne</td>
+</tr>
+<tr>
+	<td valign=top>
+	<font face="Arial,Helvetica">E-mail :</td>
+	<td valign=top><font face="Arial,Helvetica"><a href="mailto:freytag@gmx.de">freytag@gmx.de</a></td>
+</tr>
+<tr>
+	<td valign=top><font face="Arial,Helvetica">Web :</td>
+	<td valign=top><font face="Arial,Helvetica"><a href="http://www.pecora.de" target="_blank">www.pecora.de</a></td>
+</tr>
+</table>
+</center>
+</font>
+</td>
+</tr>
+</table>
+</body>
+</html>

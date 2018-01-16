@@ -1,0 +1,157 @@
+<html>
+<head>
+<title>PecoRename Documentation</title>
+</head>
+<body bgcolor="#eeeeee" link="#284696" vlink="#555555">
+<table cellspacing=3 cellpadding=1 border=0 bgcolor="#ffffff" width=100%>
+<tr><td><img src="gfx/PecoRenameIcon.gif" align="left" hspace=5 vspace=5><i><font face="Dutch801 Rm BT" size=+4>PecoRename</font></i><img src="gfx/pecora.gif" align=right></td></tr>
+<tr><td bgcolor="#284696"><img src="gfx/pixel.gif" height=1></td></tr>
+<tr><td><font face="Arial,Helvetica">
+
+<h2>Introduction</h2>
+<p>
+PecoRename is a utility which allows you to rename many files according to a preset pattern.
+<br>It lets you rename your files in many different ways: Add an extension, Number your files in order, Search and replace, and much more...
+
+<h2>License</h2>
+<p>
+PecoRename is freeware. You may share PecoRename with as many people as you like, as long as the program is distributed with all parts, especially documentation, intact. PecoRename may not be sold under any circumstances without the <a href="#Autor">author's</a> permission. As a rule PecoRename can be sold at cost of distrubution (on a freeware/shareware CD for example) Please contact the <a href="#Autor">author quick via e-mail</a> before doing so.
+<br>All <b>graphics</b>, especially the icon or brands are copyrighted by the author and may not be used in any form without the author's consent.
+
+<h2>Exclusion of liability</h2>
+<p>
+Great care was taken to make sure PecoRename functions flawlessly and without fault.
+Nevertheless there is still a slim chance that errors may still occur.
+<br>The author will not be held liable for any potential damage caused by this software nor will he guarantee any unique (or special) functions.
+<h2>Usage of the program</h2>
+<p>
+PecoRename is very easy to use. Most functions are very straightforward. The names of the menu functions speak for themselves and all buttons are clearly labeled.
+<p>
+The window can be divided into two areas:
+<ul>
+<li>the file view in the top area and
+<li>the renaming function in the bottom part.
+</ul>
+
+<h2>The file view</h2>
+<p>
+The file view shows the files and directories which will be renamed.
+<br>
+PecoRename doesn't make a difference between files, links and directories - only devices are ignored. Only files in the <i>same</i> directory can be chosen.
+<p>
+There are two ways to choose which files to rename:<ul>
+<li>You can choose the files with a file panel by clicking on the &quot;Please select...&quot; button on the top left.
+<br><b>Attention:</b> Unfortunately the file panel in BeOS Release 5 (PE) has a bug that causes BeOS to crash when more than about 120 files are chosen and opened!
+<li>The second - and more comfortable - possibility: You can select the files you want in the Tracker and drag them into the PecoRename window. To remove files from the file view, you can drag them out just as easy!
+</ul>
+When there are files in the list, the common path will be shown over the list. The files can be sorted by name, size and modification time. To do this simply click onto the referring list title.
+<p>
+In the column &quot;Preview&quot; you can see which files will be renamed into what names. Only the files to be modified are shown. If conflicts will occur because of double file names, the referring files will be marked in red.
+
+<h2>The renaming functions</h2>
+<p>
+When you have the files you wish in the file view, it's time to rename them.
+<br>For that there are the following functions (modes):
+<ul>
+<li><h3>Search and replace</h3>
+As the name states, this function searches and replaces parts of the names.
+<br>You can adjust the following parameters:
+<ul>
+<li><b>Case sensitive</b>: If you mark this field, upper and lower case will be paid attention to.
+<li><b>Regular expression</b>: You also can search&amp;replace using regular expressions.<br>
+It would be to much to describe regular expressions here. For those who know how to work with regular expressions, the found string can be inserted in the result string with the token '\$'.
+<li><b>Find pattern</b>: What are you looking for?
+<li><b>Replace with</b>: What should it be replaced with?
+</ul>
+<p>
+<li><h3>Remove</h3>
+This function removes characters from the name. You simply have to enter the range - and that was it! :-)
+<p>
+<li><h3>Insert / replace</h3>
+You can put in text at a certain position of the filename.
+<br>Here exist the following options:
+<ul>
+<li><b>Insert or replace</b>: Should the text be inserted or overwrite the existing text starting with this position?
+<li><b>Text</b>: Which Text shall be put in?
+<li><b>Position</b>: At which position?
+<li><b>Direction</b>: You can decide if you mean the n-th position from the left or from the right.
+<br>Example: A position &quot;3&quot; and a direction &quot;from the back&quot; mean, that the text will be put in starting with the 3rd position from the back.
+</ul>
+<p>
+<li><h3>Numbering</h3>
+The files will be numbered in order. Files are numbered depending on the order (by name/size/modification time) of the file view.
+<ul>
+<li><b>Format</b>: Choose how many places the number is fixed to.
+<li><b>Start with</b>: Here you can indicate which number to begin numbering with.
+<li><b>Text before</b>, <b>Text behind</b>: You can specify whether text will be added before or behind the number.
+</ul>
+<p>
+<li><h3>Add file extension</h3>
+PecoRename can try to find the correct file extension to be appended to the filename.
+<p>
+This will not always work as desired. Therefore it is important to understand how it works:
+<p>
+In the BeOS - like in the Internet - every file is marked by a so-called MIME type. If you get a file from a non-BeOS environment the new file's MIME type must be recognized. For this the BeOS uses different recognition mechanisms and as a last resort - if the file can not be recognized in another way - the file extension.
+<p>
+PecoRename goes the reverse way: For a given file type the referring extension will be searched - like it is set in Preferences/File Types.
+<p>
+For PecoRename to do a good job of this, two assumptions must be given:
+<ol>
+<li><u>The file must be identified.</u>
+<br>If you are not sure if the BeOS already has recognized a file, you can do this in the Tracker: Select the file and select File/Identify from the Menu. This only works on BFS formatted devices. (will not work on FAT or HFS or any other filesystem type)
+<li><u>There must be an extension set for a file of that type</u>
+<br>In Preferences/File Types all kinds of file types can be adjusted. You can also set the file extension.
+<br>PecoRename always uses the first extension found. Because of this, you will often have a non-desired extension like ".jpeg" (instead of ".jpg") or ".mp2" (instead of ".mp3") - but with PecoRename (use Search &amp; Replace) you have the tool to correct it!
+</ol>
+<p>
+There are the following options:
+<ul>
+<li><b>Replace old extension</b>: Should the extension be appended or should it replace a old one, if necessary?
+<li><b>Uppercase / lowercase</b>: How should the extension be written (upper/lower case/default)?
+</ul>
+<p>
+<li><h3>Uppercase / lowercase</h3>
+This function should be obvious! It converts all the letters of the filename to uppercase or lowercase.
+</ul>
+
+<h2>Let's do it!</h2>
+When all settings are made, you only have to hit the &quot;Let's do it!&quot; Button and all files will be renamed according the preview!
+
+<a name="Autor"></a>
+<h2>Author / contact</h2>
+<p>
+I hope you like the program and you can benefit from it. I'm looking forward your ideas, suggestions or criticism!
+<p>
+And please <a href="http://www.bebits.com/app/1040">vote at BeBits for PecoRename</a>!
+<p>
+
+Here you can contact me:
+
+<center>
+<table cellpadding=10 cellspacing=0 border=0 bgcolor="#eeeeee">
+<tr>
+	<td valign=top><font face="Arial,Helvetica">Name:</td>
+	<td valign=top><font face="Arial,Helvetica">Werner Freytag</td></tr>
+<tr>
+	<td valign=top><font face="Arial,Helvetica">Address:</td>
+	<td valign=top><font face="Arial,Helvetica">Neurieder Str. 8
+				<br>82152 Martinsried
+				<br>Germany</td>
+</tr>
+<tr>
+	<td valign=top>
+	<font face="Arial,Helvetica">E-mail:</td>
+	<td valign=top><font face="Arial,Helvetica"><a href="mailto:freytag@gmx.de">freytag@gmx.de</a></td>
+</tr>
+<tr>
+	<td valign=top><font face="Arial,Helvetica">Webpage:</td>
+	<td valign=top><font face="Arial,Helvetica"><a href="http://www.pecora.de" target="_blank">www.pecora.de</a></td>
+</tr>
+</table>
+</center>
+</font>
+</td>
+</tr>
+</table>
+</body>
+</html>
