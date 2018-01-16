@@ -23,7 +23,7 @@
 ReportWindow::ReportWindow(BList *filelist) : BWindow( BRect( 60, 80, 705, 280), B_TRANSLATE("Report"),
 	 B_TITLED_WINDOW,B_AUTO_UPDATE_SIZE_LIMITS)
 {
-	BColumnListView* reportView = new BColumnListView("reportView", B_FRAME_EVENTS|B_NAVIGABLE, B_NO_BORDER);
+	BColumnListView* reportView = new BColumnListView("reportView", B_FRAME_EVENTS|B_NAVIGABLE, B_NO_BORDER, true);
 
 	//info columns
 	int32 i = 0;
