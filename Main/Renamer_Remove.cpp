@@ -101,7 +101,7 @@ void Renamer_Remove::RenameList(BList *FileList) {
 
 	
 	FileListItem	*ListItem;
-	BString			ResultString, Teil2;
+	BString			ResultString, Part2;
 	int				EndPart1, StartPart2;
 	
 	int32	UTF_LengthOfFilename, LengthOfFilename;
@@ -128,8 +128,8 @@ void Renamer_Remove::RenameList(BList *FileList) {
 		
 		ResultString.SetTo(tempStr, EndPart1);
 
-		BString(tempStr).CopyInto(Teil2, StartPart2, LengthOfFilename - StartPart2);
-		ResultString.Append(Teil2);
+		BString(tempStr).CopyInto(Part2, StartPart2, LengthOfFilename - StartPart2);
+		ResultString.Append(Part2);
 
 		LengthOfFilename = ResultString.Length();
 		UTF_LengthOfFilename = LengthOfFilename * 2;

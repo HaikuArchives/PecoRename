@@ -270,19 +270,19 @@ void PecoApp::DoIt() {
 	BString	Pfad(pathView->Text());
 	fWindow->Unlock();
 	
-	BString	AlterName, NeuerName;
-	BEntry	Datei;
+	BString	OldName, NewName;
+	BEntry	File;
 	FileListItem    *ListItem;
 	for (int32 i = 0; (ListItem = (FileListItem *)fListView->ItemAt(i)) != NULL; i++ ) {
 		fWindow->Lock();
 		fStatusBar->Update(1);
 		fWindow->Unlock();
 		if (ListItem->fNewName != "" && ListItem->Error() == 0) {
-			AlterName = Pfad; AlterName.Append("/").Append(ListItem->fName);
-			NeuerName = Pfad; NeuerName.Append("/").Append(ListItem->fNewName);
-			Datei.SetTo(AlterName.String());
+			OldName = Pfad; OldName.Append("/").Append(ListItem->fName);
+			NewName = Pfad; NewName.Append("/").Append(ListItem->fNewName);
+			File.SetTo(OldName.String());
 			status_t result;
-			if ( (result = Datei.Rename(NeuerName.String())) != B_OK ) {
+			if ( (result = File.Rename(NewName.String())) != B_OK ) {
 				if (result == B_FILE_EXISTS)
 					ListItem->SetError(2);
 				else
