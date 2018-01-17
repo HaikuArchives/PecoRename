@@ -54,7 +54,7 @@ Convert to:	Renamer_UpperLower		Converti in:
 lowercase	Renamer_UpperLower		minuscolo
 Please select	Renamer_UpperLower		Seleziona
 Sentence case	Renamer_UpperLower		Iniziale maiuscola
-Title Case	Renamer_UpperLower		Iniziale di tutte le parole maiuscole
+Title Case	Renamer_UpperLower		Iniziale di tutte le parole maiuscola
 UPPERCASE	Renamer_UpperLower		MAIUSCOLO
 Uppercase / lowercase	Renamer_UpperLower		Maiuscolo / minuscolo
 {0, plural,=1{A problem was encountered during processing:  One file couldn't be renamed}other{Problems were encountered during processing:  # files couldn't be renamed}}	ReportWindow		{0, plural,=1{Sì è verificato un problema durante l'elaborazione:  non è stato possibile rinominare un file}other{Si sono verificati dei problemi durante l'elaborazione:  non è stato possibile rinominare # file}}
