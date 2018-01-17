@@ -2,10 +2,10 @@
 Modified	FileListView	Column title	Modificato
 Name	FileListView	Column title	Nome
 Preview	FileListView	Column title	Anteprima
-Size	FileListView	Column title	Dimensioni
+Size	FileListView	Column title	Dimensione
 {0, plural,=0{no duplicates}=1{1 duplicate}other{# duplicates}}	functions		{0, plural,=0{nessun duplicato}=1{1 duplicato}other{# duplicati}}
 {0, plural,=0{no items}=1{1 item}other{# items}}	functions		{0, plural,=0{nessun elemento}=1{1 elemento}other{# elementi}}
-{0, plural,=0{no renames}=1{1 rename}other{# renames}}	functions		{0, plural,=0{Nessun  rinominato}=1{1 rinaminato}other{# rinominati}}
+{0, plural,=0{no renames}=1{1 rename}other{# renames}}	functions		{0, plural,=0{nessun  rinominato}=1{1 rinaminato}other{# rinominati}}
 Choose files and directories	MainView		Scegli file e cartelle
 Rename	MainView		Rinomina
 About PecoRename	MainWindow		Informazioni su PecoRename
@@ -16,12 +16,12 @@ Quit	MainWindow		Esci
 Select files…	MainWindow		Seleziona file…
 documentation/index.html	MainWindow	Path to the help file. Only change if a translated file is provided.	documentation/index.html
 Cancel	PecoApp		Annulla
-Files from different folders cannot be renamed.\n\nOnly the files of the first found folder will be imported!	PecoApp		Files from different folders cannot be renamed.\n\nOnly the files of the first found folder will be imported!
+Files from different folders cannot be renamed.\n\nOnly the files of the first found folder will be imported!	PecoApp		File provenienti da cartelle differenti non possono essere rinominati.\n\nSolo i file nella prima cartella trovata verranno importati!
 OK	PecoApp		OK
 Select	PecoApp		Seleziona
 Select files for renaming	PecoApp		Seleziona i files da rinominare
-The volume is read only: files cannot be renamed.	PecoApp		The volume is read only: files cannot be renamed.
-Werner Freytag (original author)	PecoApp		Werner Freytag (original author)
+The volume is read only: files cannot be renamed.	PecoApp		Il volume è in sola lettura: i files non possono essere rinominati.
+Werner Freytag (original author)	PecoApp		Werner Freytag (autore originale)
 Add file extension	Renamer_Extension		Aggiungi l'estensione al file
 lowercase	Renamer_Extension		minuscolo
 Replace old extension	Renamer_Extension		Sostituisci la vecchia estensione
@@ -33,7 +33,7 @@ Insert	Renamer_InsertReplace		Inserisci
 Insert / replace	Renamer_InsertReplace		Inserisci / sostituisci
 Insert or replace:	Renamer_InsertReplace		Inserisci o sostituisci:
 Please select	Renamer_InsertReplace		Seleziona
-Replace with	Renamer_InsertReplace		sostituisci con
+Replace with	Renamer_InsertReplace		Sostituisci con
 Text:	Renamer_InsertReplace		Testo:
 Format:	Renamer_Numbering		Formato:
 Numbering	Renamer_Numbering		Numerazione
@@ -54,17 +54,17 @@ Search and replace	Renamer_SearchReplace		Cerca e sostituisci
 Convert to:	Renamer_UpperLower		Converti in:
 lowercase	Renamer_UpperLower		minuscolo
 Please select	Renamer_UpperLower		Seleziona
-Sentence case	Renamer_UpperLower		Sentence case
-Title Case	Renamer_UpperLower		Title Case
+Sentence case	Renamer_UpperLower		Iniziale maiuscola
+Title Case	Renamer_UpperLower		Iniziale di tutte le parole maiuscole
 UPPERCASE	Renamer_UpperLower		MAIUSCOLO
 Uppercase / lowercase	Renamer_UpperLower		Maiuscolo / minuscolo
-{0, plural,=1{A problem was encountered during processing:  One file couldn't be renamed}other{Problems were encountered during processing:  # files couldn't be renamed}}	ReportWindow		{0, plural,=1{A problem was encountered during processing:  One file couldn't be renamed}other{Problems were encountered during processing:  # files couldn't be renamed}}
-File already exists	ReportWindow		File already exists
-File already exists (as in preview)	ReportWindow		File already exists (as in preview)
+{0, plural,=1{A problem was encountered during processing:  One file couldn't be renamed}other{Problems were encountered during processing:  # files couldn't be renamed}}	ReportWindow		{0, plural,=1{Sì è verificato un problema durante l'elaborazione:  non è stato possibile rinominare un file}other{Si sono verificati dei problemi durante l'elaborazione:  non è stato possibile rinominare # file}}
+File already exists	ReportWindow		Il file esiste già
+File already exists (as in preview)	ReportWindow		Il file esiste già (come riportato in anteprima)
 OK	ReportWindow		OK
 Report	ReportWindow		Rapporto
 Unknown error	ReportWindow		Errore sconosciuto
-Original name	ReportWindow	Column title	Original name
+Original name	ReportWindow	Column title	Nome originale
 Problem	ReportWindow	Column title	Problema
-Targetted name	ReportWindow	Column title	Targetted name
+Targetted name	ReportWindow	Column title	Nome scelto
 PecoRename	System name		PecoRename
