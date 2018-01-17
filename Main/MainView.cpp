@@ -10,6 +10,7 @@
 
 #include <Alert.h>
 #include <Catalog.h>
+#include <ControlLook.h>
 #include <Rect.h>
 #include <Button.h>
 #include <Font.h>
@@ -58,8 +59,10 @@ MainView::MainView() : BView ("mainView",  B_WILL_DRAW) {
 		.Add(ChooseButton)
 		.Add(PathString);
 
+	static const float spacing = be_control_look->DefaultLabelSpacing();
+
 	BGroupLayout *topBox = BLayoutBuilder::Group<>(B_VERTICAL)
-		.SetInsets(B_USE_WINDOW_INSETS)
+		.SetInsets(B_USE_WINDOW_INSETS, spacing / 4, B_USE_WINDOW_INSETS, B_USE_WINDOW_INSETS)
 		.Add(aFileView);
 
 	StatusView* statusView = new StatusView(scrollBar);
@@ -106,8 +109,8 @@ MainView::MainView() : BView ("mainView",  B_WILL_DRAW) {
 	BButton* RenameButton = new BButton( "DoIt", B_TRANSLATE("Rename"), new BMessage(MSG_DO_IT));
 	RenameButton->SetEnabled(false);
 
-	BLayoutBuilder::Group<>(this, B_VERTICAL)
-		.SetInsets(B_USE_WINDOW_INSETS)
+	BLayoutBuilder::Group<>(this, B_VERTICAL, B_USE_SMALL_INSETS)
+		.SetInsets(B_USE_WINDOW_INSETS, spacing / 4, B_USE_WINDOW_INSETS, B_USE_WINDOW_INSETS)
 		.Add(top, 100)
 		.Add(bottom)
 		.AddGroup(B_HORIZONTAL)
