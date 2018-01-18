@@ -35,7 +35,7 @@ Renamer_Numbering::Renamer_Numbering()
 	:
 	Renamer()
 {
-	char* Modi[] = {
+	const char* Modi[] = {
 		"1, 2, 3, " B_UTF8_ELLIPSIS,
 		"01, 02, 03, " B_UTF8_ELLIPSIS,
 		"001, 002, 003, " B_UTF8_ELLIPSIS,
