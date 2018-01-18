@@ -1,13 +1,13 @@
 /*
  * Copyrights (c):
- *     2000 - 2008 , Werner Freytag.
- *     2009, Haiku
+ *		2000 - 2008, Werner Freytag.
+ *		2009, Haiku
+ *		2016, Markus Himmel
  * Distributed under the terms of the MIT License.
  *
- * Original Author:
- *              Werner Freytag <freytag@gmx.de>
+ * Original author:
+ * 		Werner Freytag <freytag@gmx.de>
  */
-
 #ifndef SEARCH_REPLACE_H
 #define SEARCH_REPLACE_H
 
@@ -18,19 +18,20 @@
 class BTextControl;
 
 class Renamer_SearchReplace : public Renamer {
-	public:
+public:
 					Renamer_SearchReplace();
-		void		RenameList(BList *FileList);
+	void			RenameList(BList* FileList);
 
-		void		AttachedToWindow();
-		void		DetachedFromWindow();
+	void			AttachedToWindow();
+	void			DetachedFromWindow();
 
-	private:
-		BCheckBox			*MatchCase;
+private:
+	BCheckBox*		MatchCase;
 #if __INTEL__
-		BCheckBox			*RegEx;
+	BCheckBox*		RegEx;
 #endif
-		BTextControl		*SearchFor, *ReplaceWith;		
+	BTextControl*	SearchFor;
+	BTextControl*	ReplaceWith;
 };
 
-#endif
+#endif // SEARCH_REPLACE_H

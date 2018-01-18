@@ -1,12 +1,14 @@
 /*
  * Copyrights (c):
- *     2000 - 2008 , Werner Freytag.
- *     2009, Haiku
+ *		2000 - 2008, Werner Freytag.
+ *		2009, Haiku
+ *		2016, Markus Himmel
  * Distributed under the terms of the MIT License.
  *
- * Original Author:
- *              Werner Freytag <freytag@gmx.de>
+ * Original author:
+ * 		Werner Freytag <freytag@gmx.de>
  */
+
 
 #include <Box.h>
 
@@ -14,25 +16,31 @@
 #include "FileListItem.h"
 #include "constants.h"
 
-Renamer::Renamer() : BView ("", 0) {
-	
-	fName 		= "";
+Renamer::Renamer()
+	:
+	BView("", 0)
+{
+	fName = "";
+}
 
-};
 
-void Renamer::RenameList(BList *FileList) {
+void
+Renamer::RenameList(BList* FileList)
+{
 	fNumberOfItems = FileList->CountItems();
 	
-	FileListItem	*ListItem;
-	for (int32 i = 0; i < fNumberOfItems; i++ ) {
-		ListItem = (FileListItem *)FileList->ItemAt(i);
+	FileListItem* ListItem;
+	for (int32 i = 0; i < fNumberOfItems; i++) {
+		ListItem = (FileListItem*)FileList->ItemAt(i);
 		ListItem->SetNewName("");	
 	}
-};
+}
 
-void Renamer::Draw(BRect updateRect)  {
 
-	BRect	LittleRect = Bounds().InsetByCopy(1.0, 1.0);
+void
+Renamer::Draw(BRect updateRect)
+{
+	BRect LittleRect = Bounds().InsetByCopy(1.0, 1.0);
 
 	SetHighColor(170, 170, 190);
 	MovePenTo(LittleRect.RightTop());
@@ -44,6 +52,5 @@ void Renamer::Draw(BRect updateRect)  {
 	StrokeLine(LittleRect.RightTop());
 	
 	SetHighColor(60, 80, 150);
-	StrokeRect( Bounds());
-
+	StrokeRect(Bounds());
 }

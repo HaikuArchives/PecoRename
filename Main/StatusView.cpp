@@ -1,11 +1,12 @@
 /*
- * Copyright 2003-2010, Haiku Inc. All rights reserved.
- * Distributed under the terms of the MIT License.
+ * Copyright 2017. All rights reserved.
+ * Distributed under the terms of the MIT license.
  *
  * Authors:
- *		Fernando Francisco de Oliveira
- *		Michael Wilber
- *		Axel Dörfler, axeld@pinc-software.de
+ *		Janus
+ *
+ * Based on StyledEdit and ShowImage StatusView
+ *
  */
 
 
@@ -22,7 +23,7 @@ const float kHorzSpacing = 5.f;
 StatusView::StatusView(BScrollBar* scrollBar)
 	:
 	BView(BRect(), "statusview", B_FOLLOW_BOTTOM | B_FOLLOW_LEFT, B_WILL_DRAW),
-	fScrollBar(scrollBar),
+		fScrollBar(scrollBar),
 	fPreferredSize(0.0, 0.0)
 {
 	memset(fCellWidth, 0, sizeof(fCellWidth));
@@ -85,7 +86,8 @@ StatusView::Draw(BRect updateRect)
 	BRect bounds(Bounds());
 	rgb_color highColor = ui_color(B_PANEL_TEXT_COLOR);
 
-	SetHighColor(tint_color(ui_color(B_PANEL_BACKGROUND_COLOR), B_DARKEN_2_TINT));
+	SetHighColor(tint_color(ui_color(B_PANEL_BACKGROUND_COLOR),
+		B_DARKEN_2_TINT));
 	StrokeLine(bounds.LeftTop(), bounds.RightTop());
 	StrokeLine(bounds.LeftBottom(), bounds.RightBottom());
 	StrokeLine(bounds.LeftTop(), bounds.LeftBottom());
@@ -93,7 +95,7 @@ StatusView::Draw(BRect updateRect)
 	float x = bounds.left;
 	for (size_t i = 0; i < kStatusCellCount - 1; i++) {
 		x += fCellWidth[i];
-		if (fCellWidth[i+1] > 0)
+		if (fCellWidth[i + 1] > 0)
 			StrokeLine(BPoint(x, bounds.top + 3), BPoint(x, bounds.bottom - 3));
 	}
 
@@ -123,8 +125,8 @@ StatusView::MouseDown(BPoint where)
 
 
 void
-StatusView::Update(const BString& text,
-	const BString& pages, const BString& imageType)
+StatusView::Update(const BString& text,	const BString& pages,
+	const BString& imageType)
 {
 
 	_SetItemsNumberText(text);

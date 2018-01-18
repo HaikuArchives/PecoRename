@@ -1,13 +1,14 @@
 /*
  * Copyrights (c):
- *     2000 - 2008 , Werner Freytag.
- *     2009, Haiku
+ *		2000 - 2008, Werner Freytag.
+ *		2009, Haiku
+ *		2016, Markus Himmel, Hannah
+ *		2017 - 2018, Janus, Humdinger
  * Distributed under the terms of the MIT License.
  *
- * Original Author:
- *              Werner Freytag <freytag@gmx.de>
+ * Original author:
+ * 		Werner Freytag <freytag@gmx.de>
  */
-
 #ifndef FILE_LIST_VIEW_H
 #define FILE_LIST_VIEW_H
 
@@ -19,9 +20,11 @@ class FileListView : public BColumnListView {
 public:
 					FileListView();
 					~FileListView();
+
 	virtual void	MouseDown(BPoint where);
-	virtual	void	KeyDown(const char *bytes, int32 numBytes);
+	virtual	void	KeyDown(const char* bytes, int32 numBytes);
 	virtual bool	InitiateDrag(BPoint pt, bool initialySelected);
+
 	FileListItem*	ItemAt(int32 index) const;
 			void	Select(int32 index);
 			void	InvalidateItem(int32 index);
@@ -31,4 +34,4 @@ public:
 			void	MessageDropped(BMessage* message, BPoint point);
 };
 
-#endif
+#endif // FILE_LIST_VIEW_H

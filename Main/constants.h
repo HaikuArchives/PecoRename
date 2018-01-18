@@ -1,13 +1,13 @@
 /*
  * Copyrights (c):
- *     2000 - 2008 , Werner Freytag.
- *     2009, Haiku
+ *		2000 - 2008, Werner Freytag.
+ *		2016, Markus Himmel
+ *		2017 - 2018, Janus, Humdinger
  * Distributed under the terms of the MIT License.
  *
- * Original Author:
- *              Werner Freytag <freytag@gmx.de>
+ * Original author:
+ * 		Werner Freytag <freytag@gmx.de>
  */
-
 #ifndef _constants_h
 #define _constants_h
 
@@ -48,4 +48,4 @@ const float WIDTH_SIZE			= 70.0;
 const float WIDTH_DATE			= 84.0;
 const float WIDTH_PREVIEW		= 176.0;
 
-#endif
+#endif // _constants_h

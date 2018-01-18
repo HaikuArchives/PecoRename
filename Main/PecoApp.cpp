@@ -1,11 +1,13 @@
 /*
  * Copyrights (c):
- *     2000 - 2008 , Werner Freytag.
- *     2009, Haiku
+ *		2000 - 2008, Werner Freytag.
+ *		2009, Haiku
+ *		2016, Markus Himmel, Hannah
+ *		2017 - 2018, Janus, Humdinger
  * Distributed under the terms of the MIT License.
  *
- * Original Author:
- *              Werner Freytag <freytag@gmx.de>
+ * Original author:
+ * 		Werner Freytag <freytag@gmx.de>
  */
 
 #include "PecoApp.h"
@@ -40,11 +42,13 @@
 
 static const char kAppsignature[] = "application/x-vnd.pecora-PecoRename";
 
+
 #undef B_TRANSLATION_CONTEXT
 #define B_TRANSLATION_CONTEXT "PecoApp"
 
-PecoApp::PecoApp() : BApplication(kAppsignature) {
 
+PecoApp::PecoApp() : BApplication(kAppsignature)
+{
 	fRenameMode	= 0;
 	fPath		= NULL;
 	fList		= new BList();
@@ -57,8 +61,10 @@ PecoApp::PecoApp() : BApplication(kAppsignature) {
 	fRenamers[5] = new Renamer_UpperLower();
 };
 
-void PecoApp::ReadyToRun() {
 
+void
+PecoApp::ReadyToRun()
+{
 	BMessage msg;
 	ReadPreferences("main_window", msg);
 
@@ -67,12 +73,13 @@ void PecoApp::ReadyToRun() {
 		rect = BRect(20, 40, 640, 460);		// default
 
 	fWindow = new MainWindow(rect);
-	fListView	= (FileListView *)fWindow->FindView("fileListView");
-	fStatusBar	= (BStatusBar *)fWindow->FindView("statusBar");
+	fListView = (FileListView*)fWindow->FindView("fileListView");
+	fStatusBar = (BStatusBar*)fWindow->FindView("statusBar");
 
 	UpdateWindowStatus();
 
-	fFilePanel = new BFilePanel(B_OPEN_PANEL, NULL, NULL, B_FILE_NODE|B_DIRECTORY_NODE);
+	fFilePanel = new BFilePanel(B_OPEN_PANEL, NULL, NULL,
+		B_FILE_NODE | B_DIRECTORY_NODE);
 	fFilePanel->SetButtonLabel(B_DEFAULT_BUTTON, B_TRANSLATE("Select"));
 	fFilePanel->SetButtonLabel(B_CANCEL_BUTTON, B_TRANSLATE("Cancel"));
 	fFilePanel->Window()->SetTitle(B_TRANSLATE("Select files for renaming"));
@@ -80,10 +87,11 @@ void PecoApp::ReadyToRun() {
 	fWindow->Show();
 };
 
+
 void PecoApp::AboutRequested()
 {
-	BAboutWindow* about = new BAboutWindow(B_TRANSLATE_SYSTEM_NAME("PecoRename"),
-		kAppsignature);
+	BAboutWindow* about = new BAboutWindow(
+		B_TRANSLATE_SYSTEM_NAME("PecoRename"), kAppsignature);
 	const char* extraCopyrights[] = {
 		"2011 Axel Dörfler",
 		"2014 Diver",
@@ -107,42 +115,60 @@ void PecoApp::AboutRequested()
 }
 
 
-
-bool PecoApp::QuitRequested() {
+bool
+PecoApp::QuitRequested()
+{
 	return true;
 }
 
-void PecoApp::MessageReceived(BMessage *msg) {
-	switch( msg->what ) {
-		case B_SIMPLE_DATA:			RefsReceived (msg); break;
-		case MSG_MENU_NEW:			New(); break;
-		case MSG_SELECT_FILES: 		fFilePanel->Show(); break;
-		case MSG_DO_IT: 			DoIt(); break; // Use the current List
-		case MSG_RENAME_SETTINGS:	MakeList(); break;
+
+void
+PecoApp::MessageReceived(BMessage* msg)
+{
+	switch (msg->what) {
+		case B_SIMPLE_DATA:
+			RefsReceived (msg);
+			break;
+		case MSG_MENU_NEW:
+			New();
+			break;
+		case MSG_SELECT_FILES:
+			fFilePanel->Show();
+			break;
+		case MSG_DO_IT:
+			DoIt();
+			break; // Use the current List
+		case MSG_RENAME_SETTINGS:
+			MakeList();
+			break;
 
 	   	default:
 	   		BApplication::MessageReceived(msg);
 	}
-};
+}
 
-void PecoApp::RefsReceived ( BMessage* msg ) {
 
-	entry_ref	ref;
-	BPath		aPath;
-	BEntry		aEntry;
-	off_t		size;
-	time_t		timer;
+void
+PecoApp::RefsReceived (BMessage* msg)
+{
+	entry_ref ref;
+	BPath aPath;
+	BEntry aEntry;
+	off_t size;
+	time_t timer;
 	
 	fWindow->Lock();
-	BStringView* 	pathView 	= (BStringView *)fWindow->FindView("pathView");
+	BStringView* pathView = (BStringView*)fWindow->FindView("pathView");
 	fWindow->Unlock();
 	
 	// Find path
-	for ( int i=0; msg->FindRef("refs", i, &ref) == B_OK; i++ ) if ( ref.device > 1 ) break;
+	for (int i = 0; msg->FindRef("refs", i, &ref) == B_OK; i++)
+		if (ref.device > 1)
+			break;
 
 	BVolume volume(ref.device);
 	if (volume.IsReadOnly()) {
-		BAlert  *myAlert = new BAlert(NULL, B_TRANSLATE(
+		BAlert* myAlert = new BAlert(NULL, B_TRANSLATE(
 			"The volume is read only: files cannot be renamed."),
 			B_TRANSLATE("OK"));
 		myAlert->Go();
@@ -150,18 +176,18 @@ void PecoApp::RefsReceived ( BMessage* msg ) {
 	}
 
 	fWindow->Lock();
-	BButton* ChooseButton = (BButton *) fWindow->FindView("selectFiles");
+	BButton* ChooseButton = (BButton*) fWindow->FindView("selectFiles");
 	ChooseButton->SetFlat(true);
 	fWindow->Unlock();
 
-	if ( ref.device > 1 ) {
+	if (ref.device > 1) {
 		New();
 
 		aEntry = BEntry(&ref);
-		BPath( &aEntry ).GetParent(&fPath);
+		BPath(&aEntry).GetParent(&fPath);
 				
 		fWindow->Lock();
-		pathView->SetText( fPath.Path() );
+		pathView->SetText(fPath.Path());
 		fWindow->Unlock();
 		
 		// count
@@ -172,34 +198,32 @@ void PecoApp::RefsReceived ( BMessage* msg ) {
 		fWindow->Lock();
 		fStatusBar->SetText("");
 		fStatusBar->Show();
-		fStatusBar->SetMaxValue( total );
+		fStatusBar->SetMaxValue(total);
 		fWindow->Unlock();
 		
 		BPath	newPath;
-		
 		bool	didntshow_msgmultidir = true;
 		
-		for ( int i=0; msg->FindRef("refs", i, &ref) == B_OK; i++ ) {
-			
+		for (int i = 0; msg->FindRef("refs", i, &ref) == B_OK; i++) {
 			fWindow->Lock();
 			fStatusBar->Update(1);
 			fWindow->Unlock();
 			
 			// filter out devices
-			if ( ref.device == 1 ) continue;
+			if (ref.device == 1) continue;
  			
 			// filter out files with wrong path
 			aEntry = BEntry(&ref);
 			aPath = BPath(&aEntry);
 			
-			BPath( &aEntry ).GetParent(&newPath);
+			BPath(&aEntry).GetParent(&newPath);
 			
-			if ( (strcmp( fPath.Path(), newPath.Path() ) != 0 ) ) {
-				if ( didntshow_msgmultidir ) {
+			if ((strcmp(fPath.Path(), newPath.Path()) != 0)) {
+				if (didntshow_msgmultidir) {
 					BAlert*	myAlert = new BAlert(NULL, B_TRANSLATE(
 						"Files from different folders cannot be renamed.\n\n"
-						"Only the files of the first found folder will be imported!"),
-						B_TRANSLATE("OK"));
+						"Only the files of the first found folder will be "
+						"imported!"), B_TRANSLATE("OK"));
 					myAlert->Go();
 					didntshow_msgmultidir = false;
 				}
@@ -207,16 +231,17 @@ void PecoApp::RefsReceived ( BMessage* msg ) {
 			}
 			
 			// Read values
-			if (aEntry.IsFile()) aEntry.GetSize(&size); 
+			if (aEntry.IsFile())
+				aEntry.GetSize(&size); 
+			else if (aEntry.IsSymLink())
+				size = -1;
+			else if (aEntry.IsDirectory())
+				size = -2;
 			else
-				if (aEntry.IsSymLink()) size = -1;
-				else
-					if (aEntry.IsDirectory()) size = -2;
-					else continue;
+				continue;
 			
 			aEntry.GetModificationTime(&timer);
 			fList->AddItem(new FileListItem(aPath.Leaf(), size, timer, &ref));
-			
 		}
 		
 		fWindow->Lock();
@@ -232,13 +257,14 @@ void PecoApp::RefsReceived ( BMessage* msg ) {
 	UpdateWindowStatus();
 }
 
-void PecoApp::New() {
-	
-	fWindow->Lock();
-	
+
+void
+PecoApp::New()
+{	
+	fWindow->Lock();	
 	fListView->Clear();
 	
-	BStringView* 	pathView = (BStringView *)fWindow->FindView("pathView");
+	BStringView* pathView = (BStringView*)fWindow->FindView("pathView");
 	pathView->SetText(NULL);
 	
 	fWindow->Unlock();
@@ -248,48 +274,57 @@ void PecoApp::New() {
 	UpdateWindowStatus();
 }
 
-bool PecoApp::NothingToDo() {
 
-	FileListItem	*ListItem;
-	
+bool
+PecoApp::NothingToDo()
+{
+	FileListItem* ListItem;
 	bool nothing_to_do = true;
 
-	for (int32 i = 0; (ListItem = (FileListItem *)fListView->ItemAt(i)) != NULL; i++ )
-		if (ListItem->fNewName.Length() > 0 ) { nothing_to_do = false; break; }
+	for (int32 i = 0; (ListItem = (FileListItem*)fListView->ItemAt(i))
+			!= NULL; i++)
+		if (ListItem->fNewName.Length() > 0) {
+			nothing_to_do = false;
+			break;
+		}
 
-	return	nothing_to_do;
-
+	return nothing_to_do;
 }
 
-void PecoApp::DoIt() {
 
-	if (NothingToDo()) return;
+void
+PecoApp::DoIt()
+{
+	if (NothingToDo())
+		return;
 
 	fWindow->Lock();
 	fStatusBar->SetText("");
 	fStatusBar->Show();
 	fStatusBar->SetMaxValue(fList->CountItems());
 
-	BButton		*okButton = (BButton *)fWindow->FindView("DoIt");
+	BButton* okButton = (BButton*)fWindow->FindView("DoIt");
 	okButton->SetEnabled(false);
 	
-	BStringView* 	pathView = (BStringView *)fWindow->FindView("pathView");
-	BString	Pfad(pathView->Text());
+	BStringView* pathView = (BStringView*)fWindow->FindView("pathView");
+	BString	Path(pathView->Text());
 	fWindow->Unlock();
 	
 	BString	OldName, NewName;
 	BEntry	File;
-	FileListItem    *ListItem;
-	for (int32 i = 0; (ListItem = (FileListItem *)fListView->ItemAt(i)) != NULL; i++ ) {
+	FileListItem* ListItem;
+
+	for (int32 i = 0; (ListItem = (FileListItem*)fListView->ItemAt(i))
+			!= NULL; i++) {
 		fWindow->Lock();
 		fStatusBar->Update(1);
 		fWindow->Unlock();
 		if (ListItem->fNewName != "" && ListItem->Error() == 0) {
-			OldName = Pfad; OldName.Append("/").Append(ListItem->fName);
-			NewName = Pfad; NewName.Append("/").Append(ListItem->fNewName);
+			OldName = Path; OldName.Append("/").Append(ListItem->fName);
+			NewName = Path; NewName.Append("/").Append(ListItem->fNewName);
 			File.SetTo(OldName.String());
 			status_t result;
-			if ( (result = File.Rename(NewName.String())) != B_OK ) {
+			if ((result = File.Rename(NewName.String())) != B_OK) {
 				if (result == B_FILE_EXISTS)
 					ListItem->SetError(2);
 				else
@@ -303,7 +338,6 @@ void PecoApp::DoIt() {
 				ListItem->SetNewName("");
 				fListView->InvalidateItem(i);
 				fWindow->Unlock();
-
 			}
 		}
 	}
@@ -316,16 +350,17 @@ void PecoApp::DoIt() {
 	bool noerror = true;
 	bool noerrorDup = true;
 
-	for (int32 i = 0; (ListItem = (FileListItem *)fListView->ItemAt(i)) != NULL; i++ ) {
+	for (int32 i = 0; (ListItem = (FileListItem*)fListView->ItemAt(i))
+			!= NULL; i++) {
 		if (ListItem->fErrorStatus > 1) {
-				noerror = false;
-				break;
-		} else if (ListItem->fErrorStatus > 0) {
-				noerrorDup = false;
-		}
+			noerror = false;
+			break;
+		} else if (ListItem->fErrorStatus > 0)
+			noerrorDup = false;
 	}
 
-	if (noerror && noerrorDup) MakeList();
+	if (noerror && noerrorDup)
+		MakeList();
 	else {
 		if (!noerror) {
 			BMessage msg;
@@ -337,7 +372,7 @@ void PecoApp::DoIt() {
 
 			rect.OffsetBy(fWindow->Frame().LeftTop() + BPoint(80, 100));
 			
-			ReportWindow *reportWindow = new ReportWindow(rect, fList);
+			ReportWindow* reportWindow = new ReportWindow(rect, fList);
 			reportWindow->Show();
 		}
 	}

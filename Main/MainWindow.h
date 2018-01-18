@@ -1,31 +1,33 @@
 /*
  * Copyrights (c):
- *     2000 - 2008 , Werner Freytag.
- *     2009, Haiku
+ *		2000 - 2008, Werner Freytag.
+ *		2009, Haiku
+ *		2018, Humdinger
  * Distributed under the terms of the MIT License.
  *
- * Original Author:
- *              Werner Freytag <freytag@gmx.de>
+ * Original author:
+ * 		Werner Freytag <freytag@gmx.de>
  */
-
 #ifndef FENSTER_H
 #define FENSTER_H
 
-#include <Window.h>
-#include <Path.h>
 #include <ListView.h>
+#include <Path.h>
+#include <Window.h>
 
 #include "MainView.h"
 #include "FileListItem.h"
 
 class MainWindow : public BWindow {
-	public:
+public:
 				MainWindow(BRect frame);
+
 		bool	QuitRequested();
-		void	MessageReceived( BMessage* msg );
-		void 	RefsReceived(BMessage *msg);
-	private:
+		void	MessageReceived(BMessage* msg);
+		void 	RefsReceived(BMessage* msg);
+
+private:
 		void	Help();
 };
 
-#endif
+#endif // FENSTER_H
