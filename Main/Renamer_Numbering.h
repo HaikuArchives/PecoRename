@@ -1,13 +1,14 @@
 /*
  * Copyrights (c):
- *     2000 - 2008 , Werner Freytag.
- *     2009, Haiku
+ *		2000 - 2008, Werner Freytag.
+ *		2009, Haiku
+ *		2016, Markus Himmel
+ *		2017, Janus
  * Distributed under the terms of the MIT License.
  *
- * Original Author:
- *              Werner Freytag <freytag@gmx.de>
+ * Original author:
+ * 		Werner Freytag <freytag@gmx.de>
  */
-
 #ifndef NUMBERING_H
 #define NUMBERING_H
 
@@ -18,16 +19,18 @@
 class BTextControl;
 
 class Renamer_Numbering : public Renamer {
-	public:
-					Renamer_Numbering();
-		void		RenameList(BList *FileList);
+public:
+				Renamer_Numbering();
+	void		RenameList(BList* FileList);
 
-		void		AttachedToWindow();
-		void		DetachedFromWindow();
+	void		AttachedToWindow();
+	void		DetachedFromWindow();
 
-	private:
-		BTextControl		*fTextBefore, *fTextBehind, *fStartWith;
-		BMenuField			*fFormat;
+private:
+	BTextControl*	fTextBefore;
+	BTextControl*	fTextBehind;
+	BTextControl*	fStartWith;
+	BMenuField*		fFormat;
 };
 
-#endif
+#endif // NUMBERING_H

@@ -1,13 +1,14 @@
 /*
  * Copyrights (c):
- *     2000 - 2008 , Werner Freytag.
- *     2009, Haiku
+ *		2000 - 2008, Werner Freytag.
+ *		2009, Haiku
+ *		2016, Markus Himmel
+ *		2017, Janus
  * Distributed under the terms of the MIT License.
  *
- * Original Author:
- *              Werner Freytag <freytag@gmx.de>
+ * Original author:
+ * 		Werner Freytag <freytag@gmx.de>
  */
-
 #ifndef REMOVE_H
 #define REMOVE_H
 
@@ -18,16 +19,18 @@
 class BTextControl;
 
 class Renamer_Remove : public Renamer {
-	public:
-				Renamer_Remove();
-		void	RenameList(BList *FileList);
+public:
+					Renamer_Remove();
+	void			RenameList(BList* FileList);
 
-		void	DetachedFromWindow();
-		void	AttachedToWindow();
+	void			DetachedFromWindow();
+	void			AttachedToWindow();
 
-	private:
-		BTextControl		*fPosition1, *fPosition2;
-		BMenuField			*fDirection1, *fDirection2;
+private:
+	BTextControl*	fPosition1;
+	BTextControl*	fPosition2;
+	BMenuField*		fDirection1;
+	BMenuField*		fDirection2;
 };
 
-#endif
+#endif // REMOVE_H

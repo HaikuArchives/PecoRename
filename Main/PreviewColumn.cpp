@@ -1,3 +1,12 @@
+/*
+ * Copyright 2017. All rights reserved.
+ * Distributed under the terms of the MIT license.
+ *
+ * Authors:
+ *		Janus
+ */
+
+
 #include "PreviewColumn.h"
 
 
@@ -38,19 +47,20 @@ void
 PreviewColumn::DrawField(BField* _field, BRect rect, BView* parent)
 {
 	PreviewField* field = static_cast<PreviewField*>(_field);
-    rgb_color color = parent->HighColor();
-    if (field->Error()) {
-    	rgb_color red = ui_color(B_FAILURE_COLOR); // make_color(255,0,0,0);
-    	parent->SetHighColor(red);
-    }
-    BStringColumn::DrawField(_field, rect, parent);
-    parent->SetHighColor(color);
+	rgb_color color = parent->HighColor();
+
+	if (field->Error()) {
+		rgb_color red = ui_color(B_FAILURE_COLOR);
+		parent->SetHighColor(red);
+		}
+
+	BStringColumn::DrawField(_field, rect, parent);
+	parent->SetHighColor(color);
 }
 
 
 bool
-PreviewColumn::AcceptsField(const BField *field) const
+PreviewColumn::AcceptsField(const BField* field) const
 {
 	return static_cast<bool>(dynamic_cast<const PreviewField*>(field));
 }
-

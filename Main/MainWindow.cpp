@@ -1,12 +1,14 @@
 /*
  * Copyrights (c):
- *     2000 - 2008 , Werner Freytag.
- *     2009, Haiku
+ *		2000 - 2008, Werner Freytag.
+ *		2009, Haiku
+ *		2018, Humdinger
  * Distributed under the terms of the MIT License.
  *
- * Original Author:
- *              Werner Freytag <freytag@gmx.de>
+ * Original author:
+ * 		Werner Freytag <freytag@gmx.de>
  */
+
 
 #include <Alert.h>
 #include <Application.h>
@@ -30,33 +32,39 @@
 #include "MainWindow.h"
 #include "MainView.h"
 
+
 #undef B_TRANSLATION_CONTEXT
 #define B_TRANSLATION_CONTEXT "MainWindow"
+
 
 MainWindow::MainWindow(BRect frame)
 	:
 	BWindow(frame, B_TRANSLATE_SYSTEM_NAME("PecoRename"),
-		B_TITLED_WINDOW, B_AUTO_UPDATE_SIZE_LIMITS){
+		B_TITLED_WINDOW, B_AUTO_UPDATE_SIZE_LIMITS) {
 
-	BMenuBar* MenuBar = new BMenuBar( "MenuBar" );
-
+	BMenuBar* MenuBar = new BMenuBar("MenuBar");
 	BMenu* Menu;
 
 	Menu = new BMenu(B_TRANSLATE("File"));
 	MenuBar->AddItem(Menu);
-	// Maybe in the future...Multi directories support
-	// Menu->AddItem(new BMenuItem(B_TRANSLATE("New"), new BMessage(MSG_MENU_NEW), 'N'));
+//	Maybe in the future...Multi directories support
+//	Menu->AddItem(new BMenuItem(B_TRANSLATE("New"),
+//		new BMessage(MSG_MENU_NEW), 'N'));
 
-	Menu->AddItem(new BMenuItem(B_TRANSLATE("Select files" B_UTF8_ELLIPSIS), new BMessage(MSG_SELECT_FILES), 'O'));
+	Menu->AddItem(new BMenuItem(B_TRANSLATE("Select files" B_UTF8_ELLIPSIS),
+		new BMessage(MSG_SELECT_FILES), 'O'));
 	Menu->AddSeparatorItem();
-	Menu->AddItem(new BMenuItem(B_TRANSLATE("About PecoRename"), new BMessage(B_ABOUT_REQUESTED)));
+	Menu->AddItem(new BMenuItem(B_TRANSLATE("About PecoRename"),
+		new BMessage(B_ABOUT_REQUESTED)));
 	Menu->AddSeparatorItem();
-	Menu->AddItem(new BMenuItem(B_TRANSLATE("Quit"), new BMessage(B_QUIT_REQUESTED), 'Q'));
+	Menu->AddItem(new BMenuItem(B_TRANSLATE("Quit"),
+		new BMessage(B_QUIT_REQUESTED), 'Q'));
 
 //	Menu = new BMenu(B_TRANSLATE("Help"));
 //	MenuBar->AddItem(Menu);
 
-//	Menu->AddItem(new BMenuItem(B_TRANSLATE("Documentation"), new BMessage(MSG_MENU_DOCU)));
+//	Menu->AddItem(new BMenuItem(B_TRANSLATE("Documentation"),
+//	new BMessage(MSG_MENU_DOCU)));
 
 	MainView* mainView = new MainView();
 
@@ -65,34 +73,43 @@ MainWindow::MainWindow(BRect frame)
 		.Add(mainView);
 };
 
-void MainWindow::Help() {
-	app_info	myAppInfo;
+
+void
+MainWindow::Help()
+{
+	app_info myAppInfo;
 	be_app->GetAppInfo(&myAppInfo);
 	
-	BPath	HelpFilePath;
+	BPath HelpFilePath;
 	BPath(&myAppInfo.ref).GetParent(&HelpFilePath);
 	HelpFilePath.Append(B_TRANSLATE_COMMENT("documentation/index.html",
-		"Path to the help file. Only change if a translated file is provided."));
+		"Path to the help file. Only change if a translated file is "
+		"provided."));
 	
-	entry_ref	ref;
-	char		signature[B_MIME_TYPE_LENGTH];
+	entry_ref ref;
+	char signature[B_MIME_TYPE_LENGTH];
 
 	BMimeType("text/html").GetPreferredApp(signature);
 	BMimeType(signature).GetAppHint(&ref);
 	
-	if ( (BPath(&ref).Path()==NULL) || (!BEntry(HelpFilePath.Path()).Exists()) ) {
-		BAlert*	myAlert = new BAlert(NULL, B_TRANSLATE("An error has occurred:\nEither the help file is missing, or an HTML browser can not be found."), B_TRANSLATE("OK"));
+	if ((BPath(&ref).Path() == NULL)
+			|| (!BEntry(HelpFilePath.Path()).Exists())) {
+		BAlert*	myAlert = new BAlert(NULL, B_TRANSLATE(
+			"An error has occurred:\nEither the help file is missing, "
+			"or an HTML browser can not be found."), B_TRANSLATE("OK"));
 		myAlert->Go(); return;
 	}
 	
-	BString		Command(BPath(&ref).Path());
+	BString Command(BPath(&ref).Path());
 	Command.Append(" file://").Append(HelpFilePath.Path()).Append(" &");
 
 	system(Command.String());
 };
 
 
-bool MainWindow::QuitRequested() {
+bool
+MainWindow::QuitRequested()
+{
 	BMessage msg;
 	msg.AddRect("pos", Frame());
 	UpdatePreferences("main_window", msg);
@@ -100,13 +117,18 @@ bool MainWindow::QuitRequested() {
 	return be_app->PostMessage(B_QUIT_REQUESTED);
 };
 
-void MainWindow::MessageReceived ( BMessage* msg ) {
+
+void
+MainWindow::MessageReceived (BMessage* msg)
+{
 	switch (msg->what) {
-	case MSG_MENU_DOCU:
-		Help(); break;
-	case B_COLORS_UPDATED:
-		break;
-	default:
-		be_app->PostMessage(msg);
+		case MSG_MENU_DOCU:
+			Help();
+			break;
+		case B_COLORS_UPDATED:
+			break;
+
+		default:
+			be_app->PostMessage(msg);
 	}
 }
