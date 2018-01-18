@@ -20,6 +20,7 @@
 
 #include "constants.h"
 #include "functions.h"
+
 #include "PreviewColumn.h"
 #include "ReportWindow.h"
 

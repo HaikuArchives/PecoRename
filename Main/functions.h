@@ -20,11 +20,12 @@
 #include <String.h>
 #include <View.h>
 
+#include "constants.h"
+
 #include "FileListItem.h"
 #include "PecoApp.h"
 #include "Renamer.h"
 
-#include "constants.h"
 
 void	MakeList();
 void	UpdateWindowStatus();

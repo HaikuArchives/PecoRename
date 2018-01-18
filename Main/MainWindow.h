@@ -8,26 +8,26 @@
  * Original author:
  * 		Werner Freytag <freytag@gmx.de>
  */
-#ifndef FENSTER_H
-#define FENSTER_H
+#ifndef MAINWINDOW_H
+#define MAINWINDOW_H
 
 #include <ListView.h>
 #include <Path.h>
 #include <Window.h>
 
-#include "MainView.h"
 #include "FileListItem.h"
+#include "MainView.h"
 
 class MainWindow : public BWindow {
 public:
-				MainWindow(BRect frame);
+			MainWindow(BRect frame);
 
-		bool	QuitRequested();
-		void	MessageReceived(BMessage* msg);
-		void 	RefsReceived(BMessage* msg);
+	bool	QuitRequested();
+	void	MessageReceived(BMessage* msg);
+	void 	RefsReceived(BMessage* msg);
 
 private:
-		void	Help();
+	void	Help();
 };
 
-#endif // FENSTER_H
+#endif // MAINWINDOW_H

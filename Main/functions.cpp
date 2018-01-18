@@ -11,6 +11,7 @@
  * 		Werner Freytag <freytag@gmx.de>
  */
 
+
 #include <Catalog.h>
 #include <FindDirectory.h>
 #include <MenuBar.h>
@@ -20,12 +21,14 @@
 
 #include "constants.h"
 #include "functions.h"
+
 #include "ConsistencyCheck.h"
 
 #undef B_TRANSLATION_CONTEXT
 #define B_TRANSLATION_CONTEXT "functions"
 
 #define PREFS_FILENAME "PecoRename_settings"
+
 
 void
 MakeList()

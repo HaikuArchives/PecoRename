@@ -13,6 +13,7 @@
 #define MAIN_VIEW_H
 
 #include <View.h>
+
 #include "StatusView.h"
 
 class BMessage;
@@ -24,8 +25,8 @@ class MainView : public BView {
 public:
 					MainView();
 
-		void		MessageReceived(BMessage* message);
-		void		AttachedToWindow();
+			void	MessageReceived(BMessage* message);
+			void	AttachedToWindow();
 
 private:
 	BCardLayout* 	fCards;

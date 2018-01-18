@@ -29,9 +29,8 @@
 #include "constants.h"
 #include "functions.h"
 
-#include "MainWindow.h"
 #include "MainView.h"
-
+#include "MainWindow.h"
 
 #undef B_TRANSLATION_CONTEXT
 #define B_TRANSLATION_CONTEXT "MainWindow"

@@ -26,8 +26,9 @@
 #include <string.h>
 
 #include "constants.h"
-#include "FileListItem.h"
 #include "functions.h"
+
+#include "FileListItem.h"
 
 #undef B_TRANSLATION_CONTEXT
 #define B_TRANSLATION_CONTEXT "Renamer_SearchReplace"

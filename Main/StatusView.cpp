@@ -10,12 +10,12 @@
  */
 
 
-#include "StatusView.h"
-
 #include <ControlLook.h>
 #include <Entry.h>
 #include <Path.h>
 #include <ScrollView.h>
+
+#include "StatusView.h"
 
 const float kHorzSpacing = 5.f;
 

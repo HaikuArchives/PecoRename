@@ -16,33 +16,33 @@
 #include <malloc.h>
 
 #include <Bitmap.h>
-#include <String.h>
 #include <Mime.h>
+#include <String.h>
 
 #include "PecoApp.h"
 
 class FileListItem : public BRow {
-friend void 	PecoApp::DoIt();
-friend bool 	PecoApp::NothingToDo();
+	friend void 	PecoApp::DoIt();
+	friend bool 	PecoApp::NothingToDo();
 
 public: 
-				FileListItem( const char* name, int64 size, time_t timer,
+					FileListItem( const char* name, int64 size, time_t timer,
 						const entry_ref* ref ); 
-				~FileListItem();
+					~FileListItem();
 
-	void		SetNewName(BString myNewName);
-	void 		SetName(BString name);
-	bool		CompareWith(FileListItem* CompareItem);
+			void	SetNewName(BString myNewName);
+			void 	SetName(BString name);
+			bool	CompareWith(FileListItem* CompareItem);
 
-	BString		fName;
-	char		fMimeType[B_MIME_TYPE_LENGTH];
-	BString		fNewName;
-	void		SetError(char err);
-	char		Error() { return fErrorStatus; };
+		BString		fName;
+			char	fMimeType[B_MIME_TYPE_LENGTH];
+		BString		fNewName;
+			void	SetError(char err);
+			char	Error() { return fErrorStatus; };
 
 private: 
-	char		fErrorStatus;
-	BBitmap*	fIcon;
+			char	fErrorStatus;
+		BBitmap*	fIcon;
 };
 
 #endif // FILE_LIST_ITEM_H
