@@ -13,6 +13,7 @@
 #define REMOVE_H
 
 #include <MenuField.h>
+#include <Spinner.h>
 
 #include "Renamer.h"
 
@@ -27,8 +28,8 @@ public:
 			void	AttachedToWindow();
 
 private:
-	BTextControl*	fPosition1;
-	BTextControl*	fPosition2;
+	BSpinner*	fPosition1;
+	BSpinner*	fPosition2;
 	BMenuField*		fDirection1;
 	BMenuField*		fDirection2;
 };

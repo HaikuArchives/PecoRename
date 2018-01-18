@@ -49,12 +49,13 @@ Renamer_InsertReplace::Renamer_InsertReplace()
 	fInsertOrReplace = new BMenuField(B_TRANSLATE("Insert or replace:"),
 		myMenu);
 
-	fText = new BTextControl( NULL, B_TRANSLATE("Text:"), NULL,
+	fText = new BTextControl(NULL, B_TRANSLATE("Text:"), NULL,
 		new BMessage(MSG_RENAME_SETTINGS));
 	fText->SetModificationMessage(new BMessage(MSG_RENAME_SETTINGS));
-	fPosition = new BTextControl( NULL, B_TRANSLATE("At position:"), "0",
-		new BMessage(MSG_RENAME_SETTINGS));
-	fPosition->SetModificationMessage(new BMessage(MSG_RENAME_SETTINGS));
+	fPosition = new BSpinner(NULL, B_TRANSLATE("At position:"),
+		new BMessage(MSG_RENAME_SETTINGS));;
+	fPosition->SetMinValue(0);
+	fPosition->SetValue(0);
 
 	myMenu = new BPopUpMenu(B_TRANSLATE("Please select"));
 	myMenu->AddItem(new BMenuItem(B_TRANSLATE("from the front (left)"),
@@ -64,7 +65,7 @@ Renamer_InsertReplace::Renamer_InsertReplace()
 
 	myMenu->ItemAt(0)->SetMarked(true);
 
-	fDirection = new BMenuField( NULL, NULL, myMenu);
+	fDirection = new BMenuField(NULL, NULL, myMenu);
 
 	BLayoutBuilder::Group<>(this, B_VERTICAL)
 		.SetInsets(B_USE_WINDOW_INSETS)
@@ -87,20 +88,6 @@ Renamer_InsertReplace::RenameList(BList* FileList)
 
 	bool Replace = bool(fInsertOrReplace->Menu()
 		->IndexOf(fInsertOrReplace->Menu()->FindMarked()));
-	BString Text = fText->Text();
-
-	int Position;
-	std::strstream iStream, oStream;
-	
-	do {
-		iStream << fPosition->Text(); iStream >> Position;
-		if ((Position<0) || (strlen(fPosition->Text()) == 0)) {
-			Position = 0;
-			oStream << Position; oStream.put(0);
-//			fPosition->SetText(oStream.str());
-			break;
-		}
-	} while (false);
 	
 	bool FromRight = bool(fDirection->Menu()
 		->IndexOf(fDirection->Menu()->FindMarked()));
@@ -108,9 +95,9 @@ Renamer_InsertReplace::RenameList(BList* FileList)
 	FileListItem* ListItem;
 	BString ResultString, Part2;
 	int EndPart1, StartPart2;
-	
 	int32 UTF_LengthOfInsert, LengthOfInsert;
-		
+
+	BString Text = fText->Text();
 	UTF_LengthOfInsert = LengthOfInsert = Text.Length();
 	char	*tempInsertStr = new char[UTF_LengthOfInsert + 1];
 
@@ -118,11 +105,17 @@ Renamer_InsertReplace::RenameList(BList* FileList)
 		tempInsertStr, &LengthOfInsert, 0);
 	tempInsertStr[LengthOfInsert] = 0;
 
+	int32 Position = fPosition->Value();
+	int32 positionMaxValue = 0;
 	int32 UTF_LengthOfFilename, LengthOfFilename;
-		
+
 	for (int i = 0; i < fNumberOfItems; i++) {
 		ListItem = (FileListItem*)FileList->ItemAt(i);
 		UTF_LengthOfFilename = LengthOfFilename = ListItem->fName.Length();
+
+		if (LengthOfFilename > positionMaxValue)
+			positionMaxValue = LengthOfFilename;
+
 		char* tempStr = new char[UTF_LengthOfFilename + 1];
 
 		convert_from_utf8(B_ISO1_CONVERSION, ListItem->fName.String(),
@@ -158,7 +151,9 @@ Renamer_InsertReplace::RenameList(BList* FileList)
 			&LengthOfFilename, utf_String, &UTF_LengthOfFilename, 0);
 		utf_String[UTF_LengthOfFilename] = 0;
 
-		ListItem->SetNewName( utf_String );
+		ListItem->SetNewName(utf_String );
+
+		fPosition->SetMaxValue(positionMaxValue);
 	}
 };
 
@@ -170,7 +165,7 @@ Renamer_InsertReplace::DetachedFromWindow()
 	BMenu* menu = fInsertOrReplace->Menu();
 	msg.AddBool("replace", bool(menu->IndexOf(menu->FindMarked())));
 	msg.AddString("text", fText->Text());
-	msg.AddString("position", fPosition->Text() );
+	msg.AddInt32("position", fPosition->Value());
 	menu = fDirection->Menu();
 	msg.AddBool("fromright", bool(menu->IndexOf(menu->FindMarked())));
 	
@@ -184,17 +179,18 @@ Renamer_InsertReplace::AttachedToWindow()
 	BMessage msg;
 	ReadPreferences("ren_insertreplace", msg);
 	
-	BString string;
-	bool boolean;
+	BString string ="";
+	int32 integer = 0;
+	bool boolean = 0;
 	if (msg.FindBool("replace", &boolean) == B_OK) {
 		BMenu* menu = fInsertOrReplace->Menu();
-		for (int i = 0; i<2; ++i)
+		for (int i = 0; i < 2; ++i)
 			menu->ItemAt(i)->SetMarked(i == (int)boolean);
 	}
 	if (msg.FindString("text", &string) == B_OK)
 		fText->SetText(string.String());
-	if (msg.FindString("position", &string) == B_OK)
-		fPosition->SetText(string.String());
+	if (msg.FindInt32("position", &integer) == B_OK)
+		fPosition->SetValue(integer);
 	if (msg.FindBool("fromright", &boolean) == B_OK) {
 		BMenu* menu = fDirection->Menu();
 		for (int i = 0; i < 2; ++i)

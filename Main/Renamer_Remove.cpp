@@ -38,10 +38,10 @@ Renamer_Remove::Renamer_Remove()
 {
 	fName = B_TRANSLATE("Remove");
 
-	fPosition1 = new BTextControl(NULL,
-		B_TRANSLATE("Remove characters from position"), "0",
+	fPosition1 = new BSpinner(NULL,	B_TRANSLATE("Remove from position"),
 		new BMessage(MSG_RENAME_SETTINGS));
-	fPosition1->SetModificationMessage(new BMessage(MSG_RENAME_SETTINGS));
+	fPosition1->SetMinValue(0);
+	fPosition1->SetValue(0);
 
 	BPopUpMenu* myMenu;
 	myMenu = new BPopUpMenu(B_TRANSLATE("Please select"));
@@ -54,9 +54,10 @@ Renamer_Remove::Renamer_Remove()
 
 	fDirection1 = new BMenuField(NULL, NULL, myMenu);
 
-	fPosition2 = new BTextControl(NULL, B_TRANSLATE("to position"), "0",
+	fPosition2 = new BSpinner(NULL, B_TRANSLATE("To position"),
 		new BMessage(MSG_RENAME_SETTINGS));
-	fPosition2->SetModificationMessage(new BMessage(MSG_RENAME_SETTINGS));
+	fPosition2->SetMinValue(0);
+	fPosition2->SetValue(0);
 
 	myMenu = new BPopUpMenu(B_TRANSLATE("Please select"));
 	myMenu->AddItem(new BMenuItem(B_TRANSLATE("from the front (left)"),
@@ -87,31 +88,6 @@ Renamer_Remove::RenameList(BList* FileList)
 {
 	Renamer::RenameList(FileList);
 
-	int Position1, Position2;
-	std::strstream iStream, oStream;
-	
-	do {
-		iStream << fPosition1->Text(); iStream >> Position1;
-		if ((Position1 < 0) || (strlen(fPosition1->Text()) == 0)) {
-			Position1 = 0;
-			oStream << Position1;
-			oStream.put(0);
-//			fPosition1->SetText(oStream.str());
-			break;
-		}
-	} while (false);
-
-	do {
-		iStream << fPosition2->Text(); iStream >> Position2;
-		if ((Position2 < 0) || (strlen(fPosition2->Text()) == 0)) {
-			Position2 = 0;
-			oStream << Position2;
-			oStream.put(0);
-//			fPosition2->SetText(oStream.str());
-			break;
-		}
-	} while (false);
-
 	bool FromRight1 = bool(fDirection1->Menu()
 		->IndexOf(fDirection1->Menu()->FindMarked()));
 	bool FromRight2 = bool(fDirection2->Menu()
@@ -120,12 +96,19 @@ Renamer_Remove::RenameList(BList* FileList)
 	FileListItem* ListItem;
 	BString ResultString, Part2;
 	int EndPart1, StartPart2;
-	
+
+	int32 Position1 = fPosition1->Value();
+	int32 Position2 = fPosition2->Value();	
+	int32 positionMaxValue = 0;
 	int32 UTF_LengthOfFilename, LengthOfFilename;
 		
 	for (int i = 0; i < fNumberOfItems; i++) {
 		ListItem = (FileListItem* )FileList->ItemAt(i);
 		UTF_LengthOfFilename = LengthOfFilename = ListItem->fName.Length();
+
+		if (LengthOfFilename > positionMaxValue)
+			positionMaxValue = LengthOfFilename;
+
 		char* tempStr = new char[UTF_LengthOfFilename + 1];
 
 		convert_from_utf8(B_ISO1_CONVERSION, ListItem->fName.String(),
@@ -166,6 +149,10 @@ Renamer_Remove::RenameList(BList* FileList)
 		utf_String[UTF_LengthOfFilename] = 0;
 
 		ListItem->SetNewName(utf_String);
+
+		fPosition1->SetMaxValue(positionMaxValue);
+		fPosition2->SetMaxValue(positionMaxValue);
+
 	}
 }
 
@@ -174,8 +161,8 @@ void
 Renamer_Remove::DetachedFromWindow()
 {
 	BMessage msg;
-	msg.AddString("pos1", fPosition1->Text());
-	msg.AddString("pos2", fPosition2->Text());
+	msg.AddInt32("pos1", fPosition1->Value());
+	msg.AddInt32("pos2", fPosition2->Value());
 
 	BMenu* menu = fDirection1->Menu();
 	msg.AddBool("direction1", bool(menu->IndexOf(menu->FindMarked())));
@@ -192,12 +179,13 @@ Renamer_Remove::AttachedToWindow()
 	BMessage msg;
 	ReadPreferences("ren_remove", msg);
 	
-	BString string;
-	bool boolean;
-	if (msg.FindString("pos1", &string) == B_OK)
-		fPosition1->SetText(string.String());
-	if (msg.FindString("pos2", &string) == B_OK)
-		fPosition2->SetText(string.String());
+	BString string = "";
+	int32 integer = 0;
+	bool boolean = 0;
+	if (msg.FindInt32("pos1", &integer) == B_OK)
+		fPosition1->SetValue(integer);
+	if (msg.FindInt32("pos2", &integer) == B_OK)
+		fPosition2->SetValue(integer);
 	if (msg.FindBool("direction1", &boolean) == B_OK) {
 		BMenu* menu = fDirection1->Menu();
 		for (int i = 0; i < 2; ++i)
