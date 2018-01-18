@@ -24,9 +24,9 @@
 #include "constants.h"
 #include "functions.h"
 
-#include "MainWindow.h"
 #include "FileListView.h"
 #include "FileListItem.h"
+#include "MainWindow.h"
 #include "PecoApp.h"
 #include "PreviewColumn.h"
 

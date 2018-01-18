@@ -18,8 +18,9 @@
 #include <PopUpMenu.h>
 #include <TextControl.h>
 
-#include "FileListItem.h"
 #include "functions.h"
+
+#include "FileListItem.h"
 #include "PecoApp.h"
 #include "Renamer_Extension.h"
 

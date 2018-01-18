@@ -22,10 +22,10 @@
 class Renamer_Extension : public Renamer {
 public:
 					Renamer_Extension();
-	void			RenameList(BList* FileList);
+			void	RenameList(BList* FileList);
 
-	void			AttachedToWindow();
-	void			DetachedFromWindow();
+			void	AttachedToWindow();
+			void	DetachedFromWindow();
 
 private:
 	BCheckBox*		fReplaceOldCheckBox;

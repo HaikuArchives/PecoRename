@@ -17,11 +17,11 @@
 #include <NodeInfo.h>
 #include <Node.h>
 
-#include "FileListItem.h"
-#include "PreviewColumn.h"
-
 #include "constants.h"
 #include "functions.h"
+
+#include "FileListItem.h"
+#include "PreviewColumn.h"
 
 
 FileListItem::FileListItem(const char* name, int64 size, time_t timer,

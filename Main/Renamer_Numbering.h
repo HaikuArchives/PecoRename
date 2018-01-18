@@ -20,11 +20,11 @@ class BTextControl;
 
 class Renamer_Numbering : public Renamer {
 public:
-				Renamer_Numbering();
-	void		RenameList(BList* FileList);
+					Renamer_Numbering();
+			void	RenameList(BList* FileList);
 
-	void		AttachedToWindow();
-	void		DetachedFromWindow();
+			void	AttachedToWindow();
+			void	DetachedFromWindow();
 
 private:
 	BTextControl*	fTextBefore;

@@ -31,17 +31,17 @@
 
 #include "constants.h"
 #include "functions.h"
+
 #include "MainWindow.h"
-#include "Renamer_SearchReplace.h"
 #include "Renamer_Extension.h"
-#include "Renamer_Numbering.h"
 #include "Renamer_InsertReplace.h"
-#include "Renamer_UpperLower.h"
+#include "Renamer_Numbering.h"
 #include "Renamer_Remove.h"
+#include "Renamer_SearchReplace.h"
+#include "Renamer_UpperLower.h"
 #include "ReportWindow.h"
 
 static const char kAppsignature[] = "application/x-vnd.pecora-PecoRename";
-
 
 #undef B_TRANSLATION_CONTEXT
 #define B_TRANSLATION_CONTEXT "PecoApp"

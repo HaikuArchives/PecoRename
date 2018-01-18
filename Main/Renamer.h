@@ -21,10 +21,11 @@ class Renamer : public BView {
 public:
 						Renamer();
 	virtual void		RenameList(BList* FileList);
-	void				Draw(BRect updateRect);
+
+			void		Draw(BRect updateRect);
 
 	const char*			fName;
-	int32				fNumberOfItems;
+			int32		fNumberOfItems;
 };
 
 #endif // RENAMER_H

@@ -12,19 +12,20 @@
 #include <Path.h>
 #include <Window.h>
 
-#include "MainView.h"
 #include "FileListItem.h"
+#include "MainView.h"
 
 class ReportWindow : public BWindow {
 public:
 						ReportWindow(BRect frame, BList* filelist);
-	virtual				~ReportWindow();
+		virtual			~ReportWindow();
 
-		bool			QuitRequested();
-		void			MessageReceived(BMessage* msg);
-		void 			RefsReceived(BMessage* msg);
+			bool		QuitRequested();
+			void		MessageReceived(BMessage* msg);
+			void 		RefsReceived(BMessage* msg);
+
 private:
-		void			Help();
+			void		Help();
 	BColumnListView* 	fReportView;
 };
 

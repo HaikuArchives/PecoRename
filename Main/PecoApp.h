@@ -17,6 +17,7 @@
 #include <Path.h>
 
 #include "constants.h"
+
 #include "FileListView.h"
 
 class BFilePanel;
@@ -34,9 +35,9 @@ public:
 	virtual void	ReadyToRun();
 	virtual	void	AboutRequested();
 
-	bool			NothingToDo();
-	void			New();
-	void			DoIt();
+			bool	NothingToDo();
+			void	New();
+			void	DoIt();
 
 	MainWindow*		fWindow;
 	FileListView*	fListView;

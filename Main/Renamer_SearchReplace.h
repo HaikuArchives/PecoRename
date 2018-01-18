@@ -20,10 +20,10 @@ class BTextControl;
 class Renamer_SearchReplace : public Renamer {
 public:
 					Renamer_SearchReplace();
-	void			RenameList(BList* FileList);
+			void	RenameList(BList* FileList);
 
-	void			AttachedToWindow();
-	void			DetachedFromWindow();
+			void	AttachedToWindow();
+			void	DetachedFromWindow();
 
 private:
 	BCheckBox*		MatchCase;

@@ -12,9 +12,11 @@
 
 #include <Box.h>
 
-#include "Renamer.h"
-#include "FileListItem.h"
 #include "constants.h"
+
+#include "FileListItem.h"
+#include "Renamer.h"
+
 
 Renamer::Renamer()
 	:

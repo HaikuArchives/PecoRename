@@ -22,8 +22,9 @@
 #include <UnicodeChar.h>
 
 #include "constants.h"
-#include "FileListItem.h"
 #include "functions.h"
+
+#include "FileListItem.h"
 #include "Renamer_UpperLower.h"
 
 

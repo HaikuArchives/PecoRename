@@ -21,10 +21,10 @@ class BTextControl;
 class Renamer_Remove : public Renamer {
 public:
 					Renamer_Remove();
-	void			RenameList(BList* FileList);
+			void	RenameList(BList* FileList);
 
-	void			DetachedFromWindow();
-	void			AttachedToWindow();
+			void	DetachedFromWindow();
+			void	AttachedToWindow();
 
 private:
 	BTextControl*	fPosition1;
