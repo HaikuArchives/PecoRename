@@ -1,4 +1,4 @@
-1	German	application/x-vnd.pecora-PecoRename	2663811451
+1	Deutsch	application/x-vnd.pecora-PecoRename	1182965546
 Modified	FileListView	Column title	Geändert
 Name	FileListView	Column title	Name
 Preview	FileListView	Column title	Vorschau
@@ -31,7 +31,6 @@ from the back (right)	Renamer_InsertReplace		von hinten (rechts)
 from the front (left)	Renamer_InsertReplace		von vorne (links)
 Insert	Renamer_InsertReplace		Einfügen
 Insert / replace	Renamer_InsertReplace		Einfügen / überschreiben
-Insert or replace:	Renamer_InsertReplace		Einfügen oder überschreiben:
 Please select	Renamer_InsertReplace		Bitte wählen
 Replace with	Renamer_InsertReplace		Überschreiben mit
 Text:	Renamer_InsertReplace		Text:
@@ -45,8 +44,8 @@ from the back (right)	Renamer_Remove		von hinten (rechts)
 from the front (left)	Renamer_Remove		von vorn (links)
 Please select	Renamer_Remove		Bitte wählen
 Remove	Renamer_Remove		Entfernen
-Remove characters from position	Renamer_Remove		Zeichen entfernen ab Position
-to position	Renamer_Remove		bis Position
+Remove from position	Renamer_Remove		Entfernen ab Position
+To position	Renamer_Remove		Bis Position
 Case sensitive	Renamer_SearchReplace		Groß/Kleinschreibung beachten
 Find pattern:	Renamer_SearchReplace		Suchmuster:
 Replace with:	Renamer_SearchReplace		Ersetzen durch:

@@ -46,14 +46,13 @@ Renamer_InsertReplace::Renamer_InsertReplace()
 
 	myMenu->ItemAt(0)->SetMarked(true);
 
-	fInsertOrReplace = new BMenuField(B_TRANSLATE("Insert or replace:"),
-		myMenu);
+	fInsertOrReplace = new BMenuField(NULL,	myMenu);
 
 	fText = new BTextControl(NULL, B_TRANSLATE("Text:"), NULL,
 		new BMessage(MSG_RENAME_SETTINGS));
 	fText->SetModificationMessage(new BMessage(MSG_RENAME_SETTINGS));
 	fPosition = new BSpinner(NULL, B_TRANSLATE("At position:"),
-		new BMessage(MSG_RENAME_SETTINGS));;
+		new BMessage(MSG_RENAME_SETTINGS));
 	fPosition->SetMinValue(0);
 	fPosition->SetValue(0);
 

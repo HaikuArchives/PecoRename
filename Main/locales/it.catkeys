@@ -1,4 +1,4 @@
-1	Italian	application/x-vnd.pecora-PecoRename	2663811451
+1	Italian	application/x-vnd.pecora-PecoRename	1182965546
 Modified	FileListView	Column title	Modificato
 Name	FileListView	Column title	Nome
 Preview	FileListView	Column title	Anteprima
@@ -31,7 +31,6 @@ from the back (right)	Renamer_InsertReplace		dalla fine (destra)
 from the front (left)	Renamer_InsertReplace		dall'inizio (sinistra)
 Insert	Renamer_InsertReplace		Inserisci
 Insert / replace	Renamer_InsertReplace		Inserisci / sostituisci
-Insert or replace:	Renamer_InsertReplace		Inserisci o sostituisci:
 Please select	Renamer_InsertReplace		Seleziona
 Replace with	Renamer_InsertReplace		Sostituisci con
 Text:	Renamer_InsertReplace		Testo:
@@ -45,8 +44,8 @@ from the back (right)	Renamer_Remove		dalla fine (destra)
 from the front (left)	Renamer_Remove		dall'inizio (sinistra)
 Please select	Renamer_Remove		Seleziona
 Remove	Renamer_Remove		Rimuovi
-Remove characters from position	Renamer_Remove		Rimuovi i caratteri dalla posizione
-to position	Renamer_Remove		alla posizione
+Remove from position	Renamer_Remove		Rimuovi dalla posizione
+To position	Renamer_Remove		Alla posizione
 Case sensitive	Renamer_SearchReplace		Considera maiuscole/minuscole
 Find pattern:	Renamer_SearchReplace		Trova pattern:
 Replace with:	Renamer_SearchReplace		Sostituisci con:
@@ -68,4 +67,3 @@ Original name	ReportWindow	Column title	Nome originale
 Problem	ReportWindow	Column title	Problema
 Targetted name	ReportWindow	Column title	Nome scelto
 PecoRename	System name		PecoRename
-
