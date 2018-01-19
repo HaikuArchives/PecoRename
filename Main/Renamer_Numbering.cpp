@@ -39,7 +39,8 @@ Renamer_Numbering::Renamer_Numbering()
 		"1, 2, 3, " B_UTF8_ELLIPSIS,
 		"01, 02, 03, " B_UTF8_ELLIPSIS,
 		"001, 002, 003, " B_UTF8_ELLIPSIS,
-		"0001, 0002, 0003, " B_UTF8_ELLIPSIS
+		"0001, 0002, 0003, " B_UTF8_ELLIPSIS,
+		"00001, 00002, 00003, " B_UTF8_ELLIPSIS
 	};
 
 	fName = B_TRANSLATE("Numbering");
@@ -53,9 +54,10 @@ Renamer_Numbering::Renamer_Numbering()
 
 	fFormat = new BMenuField( NULL, B_TRANSLATE("Format:"), myMenu);
 
-	fStartWith = new BTextControl( NULL, B_TRANSLATE("Start with:"), "0",
+	fStartWith = new BSpinner( NULL, B_TRANSLATE("Start with:"),
 		new BMessage(MSG_RENAME_SETTINGS));
-	fStartWith->SetModificationMessage(new BMessage(MSG_RENAME_SETTINGS));
+	fStartWith->SetMinValue(0);
+	fStartWith->SetValue(0);
 
 	fTextBefore = new BTextControl( NULL, B_TRANSLATE("Text before:"), NULL,
 		new BMessage(MSG_RENAME_SETTINGS));
@@ -68,9 +70,10 @@ Renamer_Numbering::Renamer_Numbering()
 		.SetInsets(B_USE_WINDOW_INSETS)
 		.AddMenuField(fFormat, 0, 0)
 		.AddTextControl(fTextBefore, 0, 1)
-		.AddTextControl(fStartWith, 2, 0)
+		.Add(fStartWith->CreateLabelLayoutItem(), 2, 0, 1, 1)
+		.Add(fStartWith->CreateTextViewLayoutItem(), 3, 0, 1, 1)
 		.AddTextControl(fTextBehind, 2, 1)
-		.AddGlue(0, 2);
+		.AddGlue(0, 4);
 }
 
 
@@ -79,25 +82,9 @@ Renamer_Numbering::RenameList(BList* FileList)
 {
 	Renamer::RenameList(FileList);
 
-	int	Startzahl;
-	std::strstream iStream, oStream;
+	int32 StartNumber = fStartWith->Value();
 	
-	if (strlen(fStartWith->Text()) == 0) {
-		Startzahl = 0;
-		oStream << Startzahl;
-		oStream.put(0);
-		fStartWith->SetText(oStream.str());
-	} else {
-		iStream << fStartWith->Text();
-		iStream >> Startzahl;
-		if ((Startzahl < 0)) {
-			Startzahl = 0;
-			oStream << Startzahl; oStream.put(0);
-//			fStartWith->SetText(oStream.str());
-		}
-	}
-	
-	int MinAnzStellen = fFormat->Menu()
+	int MinDigits = fFormat->Menu()
 		->IndexOf(fFormat->Menu()->FindMarked()) + 1;
 
 	BString TextBefore = fTextBefore->Text();
@@ -110,17 +97,18 @@ Renamer_Numbering::RenameList(BList* FileList)
 		ListItem = (FileListItem*)FileList->ItemAt(i);
 
 		std::strstream oStream;
-		BString NummerString;
+		BString NumberString;
 		
-		oStream << i + Startzahl; oStream.put(0);
-		NummerString = oStream.str();
+		oStream << i + StartNumber;
+		oStream.put(0);
+		NumberString = oStream.str();
 
-		if (NummerString.Length() < MinAnzStellen)
-			NummerString.Prepend(BString("000").Truncate(MinAnzStellen
-				- NummerString.Length()));
+		if (NumberString.Length() < MinDigits)
+			NumberString.Prepend(BString("000").Truncate(MinDigits
+				- NumberString.Length()));
 		
 		BString ResultString = TextBefore;
-		ResultString.Append(NummerString);
+		ResultString.Append(NumberString);
 		ResultString.Append(TextBehind);
 		ListItem->SetNewName( ResultString );
 	}
@@ -130,9 +118,9 @@ Renamer_Numbering::RenameList(BList* FileList)
 void
 Renamer_Numbering::DetachedFromWindow()
 {
-	BMessage	msg;
+	BMessage msg;
 
-	msg.AddString("start_with", fStartWith->Text());
+	msg.AddInt32("start_with", fStartWith->Value());
 	BMenu* menu = fFormat->Menu();
 	msg.AddInt8("positions", menu->IndexOf(menu->FindMarked()));
 	msg.AddString("text_before", fTextBefore->Text());
@@ -147,12 +135,13 @@ Renamer_Numbering::AttachedToWindow()
 {
 	BMessage msg;
 	ReadPreferences("ren_numbering", msg);
-	
+
 	BString string;
+	int32 start;
 	int8 number;
 
-	if (msg.FindString("start_with", &string) == B_OK)
-		fStartWith->SetText(string.String());
+	if (msg.FindInt32("start_with", &start) == B_OK)
+		fStartWith->SetValue(start);
 
 	if (msg.FindInt8("positions", &number) == B_OK) {
 		BMenu* menu = fFormat->Menu();

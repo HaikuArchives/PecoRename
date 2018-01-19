@@ -4,6 +4,7 @@
  *		2009, Haiku
  *		2016, Markus Himmel
  *		2017, Janus
+ *		2018, Humdinger
  * Distributed under the terms of the MIT License.
  *
  * Original author:
@@ -13,6 +14,7 @@
 #define NUMBERING_H
 
 #include <MenuField.h>
+#include <Spinner.h>
 
 #include "Renamer.h"
 
@@ -29,7 +31,7 @@ public:
 private:
 	BTextControl*	fTextBefore;
 	BTextControl*	fTextBehind;
-	BTextControl*	fStartWith;
+	BSpinner*		fStartWith;
 	BMenuField*		fFormat;
 };
 
