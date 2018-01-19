@@ -35,6 +35,7 @@ APP_MIME_SIG= application/x-vnd.pecora-PecoRename
 #	are included from different directories.  Also note that spaces
 #	in folder names do not work well with this makefile.
 SRCS =  ConsistencyCheck.cpp  \
+		ContextPopUp.cpp  \
         FileListItem.cpp  \
         FileListView.cpp  \
         functions.cpp  \

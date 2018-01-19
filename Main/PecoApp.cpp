@@ -143,7 +143,52 @@ PecoApp::MessageReceived(BMessage* msg)
 		case MSG_RENAME_SETTINGS:
 			MakeList();
 			break;
+		case MSG_OPEN:
+		{
+			int32 index;
+			if (msg->FindInt32("index", &index) != B_OK)
+				break;
 
+			bool location;
+			if (msg->FindBool("location", &location) != B_OK)
+				location = false;
+
+			BPath path;
+			if (fWindow->Lock()) {
+				BStringView* pathView = (BStringView*)fWindow->FindView("pathView");
+				path.SetTo(pathView->Text());
+			}
+			fWindow->Unlock();
+
+			BPath parentPath = path;
+			FileListItem* ListItem = (FileListItem*)fListView->ItemAt(index);
+			path.Append(ListItem->fName.String());
+
+			entry_ref fileRef;
+			entry_ref parentRef;
+			status_t status = get_ref_for_path(path.Path(), &fileRef);
+			status = get_ref_for_path(parentPath.Path(), &parentRef);
+
+			if (status == B_OK) {
+				BMessenger msgr("application/x-vnd.Be-TRAK");
+				BMessage refMsg(B_REFS_RECEIVED);
+
+				if (location)
+					refMsg.AddRef("refs", &parentRef);
+				else
+					refMsg.AddRef("refs", &fileRef);
+
+				msgr.SendMessage(&refMsg);
+
+				if (location) {
+					BMessage selectMsg('Tsel');
+					selectMsg.AddRef("refs", &fileRef);
+					snooze(300000);	// wait 0.3 sec to give Tracker time to populate
+					msgr.SendMessage(&selectMsg);
+				}
+			}
+			break;
+		}
 		default:
 			BApplication::MessageReceived(msg);
 	}

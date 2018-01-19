@@ -39,6 +39,12 @@ const uint32 MSG_SORT_BY_DATE	= 'SDat';
 const uint32 MSG_RENAMER			= 'Ren0';
 const uint32 MSG_RENAME_SETTINGS	= 'Ren1';
 
+const uint32 MSG_OPEN				= 'Copn';
+const uint32 MSG_REMOVE				= 'Crem';
+const uint32 MSG_ROW_SELECTED		= 'Csel';
+const uint32 MSG_POPCLOSED			= 'Cclo';
+
+
 //--------------------------------------------------------------------
 //  Other constants
 
