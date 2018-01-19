@@ -31,7 +31,7 @@ ConsistencyCheck::ConsistencyCheck(BList* namesList)
 
 ConsistencyCheck::~ConsistencyCheck()
 {
-	for( int i = 0; i < fNames.CountItems(); i++)
+	for(int i = 0; i < fNames.CountItems(); i++)
 		delete (NameToCheck*)fNames.ItemAt(i);
 
 	fNames.MakeEmpty();
