@@ -4,6 +4,7 @@
  *		2009, Haiku
  *		2016, Markus Himmel
  *		2017, Janus
+ *		2018, Humdinger
  * Distributed under the terms of the MIT License.
  *
  * Original author:
@@ -29,8 +30,12 @@ public:
 			void	AttachedToWindow();
 
 private:
+			void	_ShowPopUpMenu(BPoint screen);
+
 	BCardLayout* 	fCards;
 	BPopUpMenu* 	fRenamers;
+	FileListView* 	fFileView;
+			bool	fShowingPopUpMenu;
 };
 
 #endif // MAIN_VIEW_H

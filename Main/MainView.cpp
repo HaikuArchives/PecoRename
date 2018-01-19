@@ -31,7 +31,11 @@
 #include "constants.h"
 #include "functions.h"
 
+#include "ContextPopUp.h"
+#include "FileListItem.h"
 #include "MainView.h"
+#include "MainWindow.h"
+#include "PecoApp.h"
 
 
 #undef B_TRANSLATION_CONTEXT
@@ -39,7 +43,8 @@
 
 MainView::MainView()
 	:
-	BView("mainView", B_WILL_DRAW)
+	BView("mainView", B_WILL_DRAW),
+	fShowingPopUpMenu(false)
 {
 	SetViewUIColor(B_PANEL_BACKGROUND_COLOR);
 
@@ -59,10 +64,12 @@ MainView::MainView()
 	PathString->SetExplicitMaxSize(BSize(550, 32));
 	PathString->SetTruncation(B_TRUNCATE_MIDDLE);
 
-	FileListView* aFileView = new FileListView();
+	fFileView = new FileListView();
+	fFileView->SetSelectionMessage(new BMessage(MSG_ROW_SELECTED));
+	fFileView->SetInvocationMessage(new BMessage(MSG_OPEN));
 
 	BScrollBar* scrollBar
-		= (BScrollBar*)aFileView->FindView("horizontal_scroll_bar");
+		= (BScrollBar*)fFileView->FindView("horizontal_scroll_bar");
 
 	BGroupLayout* compoundTitle = BLayoutBuilder::Group<>(B_HORIZONTAL,
 			B_USE_SMALL_SPACING)
@@ -74,10 +81,10 @@ MainView::MainView()
 	BGroupLayout* topBox = BLayoutBuilder::Group<>(B_VERTICAL)
 		.SetInsets(B_USE_WINDOW_INSETS, spacing / 4,
 			B_USE_WINDOW_INSETS, B_USE_WINDOW_INSETS)
-		.Add(aFileView);
+		.Add(fFileView);
 
 	StatusView* statusView = new StatusView(scrollBar);
-	aFileView->AddStatusView(statusView);
+	fFileView->AddStatusView(statusView);
 
 	BBox* top = new BBox("top");
 	top->SetLabel(B_TRANSLATE("Choose files and directories"));
@@ -143,7 +150,47 @@ MainView::MessageReceived(BMessage* message)
 			MakeList();
 			break;
 		}
+		case MSG_ROW_SELECTED: {
+			BPoint where;
+			uint32 buttons;
+			fFileView->GetMouse(&where, &buttons);
+			where.x += 2; // to prevent occasional select
 
+			if (buttons & B_SECONDARY_MOUSE_BUTTON)
+				_ShowPopUpMenu(fFileView->ConvertToScreen(where));
+			break;
+		}
+		case MSG_REMOVE:
+		{
+			int32 index;
+			if (message->FindInt32("index", &index) == B_OK) {
+				((PecoApp* )be_app)->fWindow->Lock();
+
+				FileListItem* Item = (FileListItem*) fFileView->ItemAt(index);
+				if (Item == NULL)
+					break;
+
+				fFileView->RemoveItem(Item);
+				((PecoApp* )be_app)->fList->RemoveItem(index);
+				((PecoApp* )be_app)->fWindow->Unlock();
+				MakeList();
+			}
+			break;
+		}
+		case MSG_OPEN: // relay the InvocationMessage of fFileView
+		{
+			int32 selection = fFileView->IndexOf(fFileView->CurrentSelection());
+			message->AddInt32("index", selection);
+			message->AddBool("location", false);
+			BMessenger messenger((PecoApp* )be_app);
+			messenger.SendMessage(message);
+			break;
+		}
+		case MSG_POPCLOSED:
+		{
+			fShowingPopUpMenu = false;
+			break;
+		}
 		default:
 			BView::MessageReceived(message);
 			break;
@@ -158,5 +205,41 @@ MainView::AttachedToWindow()
 	for (int32 i = 0; i < num; i++) {
 		fRenamers->ItemAt(i)->SetTarget(this);
 	}
+	fFileView->SetTarget(this);
 }
 
+
+void
+MainView::_ShowPopUpMenu(BPoint screen)
+{
+	if (fShowingPopUpMenu)
+		return;
+
+	int32 selection = fFileView->IndexOf(fFileView->CurrentSelection());
+
+	ContextPopUp* menu = new ContextPopUp("PopUpMenu", this);
+	BMessage* msg = NULL;
+
+	msg = new BMessage(MSG_REMOVE);
+	msg->AddInt32("index", selection);
+	BMenuItem* item = new BMenuItem(B_TRANSLATE("Remove"), msg);
+	item->SetTarget(this);
+	menu->AddItem(item);
+
+	msg = new BMessage(MSG_OPEN);
+	msg->AddInt32("index", selection);
+	msg->AddBool("location", false);
+	item = new BMenuItem(B_TRANSLATE("Open"), msg, 'O');
+	item->SetTarget(be_app);
+	menu->AddItem(item);
+
+	msg = new BMessage(MSG_OPEN);
+	msg->AddInt32("index", selection);
+	msg->AddBool("location", true);
+	item = new BMenuItem(B_TRANSLATE("Open location"), msg, 'L');
+	item->SetTarget(be_app);
+	menu->AddItem(item);
+
+	menu->Go(screen, true, true, true);
+	fShowingPopUpMenu = true;
+}
