@@ -115,6 +115,8 @@ Renamer_InsertReplace::RenameList(BList* FileList)
 		if (LengthOfFilename > positionMaxValue)
 			positionMaxValue = LengthOfFilename;
 
+		fPosition->SetMaxValue(positionMaxValue);
+
 		char* tempStr = new char[UTF_LengthOfFilename + 1];
 
 		convert_from_utf8(B_ISO1_CONVERSION, ListItem->fName.String(),
@@ -144,15 +146,13 @@ Renamer_InsertReplace::RenameList(BList* FileList)
 
 		LengthOfFilename = ResultString.Length();
 		UTF_LengthOfFilename = LengthOfFilename * 2;
-		char	*utf_String = new char[UTF_LengthOfFilename + 1];
+		char *utf_String = new char[UTF_LengthOfFilename + 1];
 		
 		convert_to_utf8(B_ISO1_CONVERSION, ResultString.String(),
 			&LengthOfFilename, utf_String, &UTF_LengthOfFilename, 0);
 		utf_String[UTF_LengthOfFilename] = 0;
 
 		ListItem->SetNewName(utf_String );
-
-		fPosition->SetMaxValue(positionMaxValue);
 	}
 };
 

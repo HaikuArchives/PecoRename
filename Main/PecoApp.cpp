@@ -47,11 +47,13 @@ static const char kAppsignature[] = "application/x-vnd.pecora-PecoRename";
 #define B_TRANSLATION_CONTEXT "PecoApp"
 
 
-PecoApp::PecoApp() : BApplication(kAppsignature)
+PecoApp::PecoApp()
+	:
+	BApplication(kAppsignature)
 {
 	fRenameMode	= 0;
-	fPath		= NULL;
-	fList		= new BList();
+	fPath = NULL;
+	fList = new BList();
 
 	fRenamers[0] = new Renamer_SearchReplace();
 	fRenamers[1] = new Renamer_InsertReplace();
@@ -142,8 +144,8 @@ PecoApp::MessageReceived(BMessage* msg)
 			MakeList();
 			break;
 
-	   	default:
-	   		BApplication::MessageReceived(msg);
+		default:
+			BApplication::MessageReceived(msg);
 	}
 }
 
@@ -191,8 +193,8 @@ PecoApp::RefsReceived (BMessage* msg)
 		fWindow->Unlock();
 		
 		// count
-		type_code	typeFound;
-		int32		total = 0;
+		type_code typeFound;
+		int32 total = 0;
 		msg->GetInfo("refs", &typeFound, &total);
 		
 		fWindow->Lock();
@@ -201,8 +203,8 @@ PecoApp::RefsReceived (BMessage* msg)
 		fStatusBar->SetMaxValue(total);
 		fWindow->Unlock();
 		
-		BPath	newPath;
-		bool	didntshow_msgmultidir = true;
+		BPath newPath;
+		bool didntshow_msgmultidir = true;
 		
 		for (int i = 0; msg->FindRef("refs", i, &ref) == B_OK; i++) {
 			fWindow->Lock();

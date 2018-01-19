@@ -26,7 +26,7 @@ class FileListItem : public BRow {
 	friend bool 	PecoApp::NothingToDo();
 
 public: 
-					FileListItem( const char* name, int64 size, time_t timer,
+					FileListItem(const char* name, int64 size, time_t timer,
 						const entry_ref* ref ); 
 					~FileListItem();
 

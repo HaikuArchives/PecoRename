@@ -109,6 +109,9 @@ Renamer_Remove::RenameList(BList* FileList)
 		if (LengthOfFilename > positionMaxValue)
 			positionMaxValue = LengthOfFilename;
 
+		fPosition1->SetMaxValue(positionMaxValue);
+		fPosition2->SetMaxValue(positionMaxValue);
+
 		char* tempStr = new char[UTF_LengthOfFilename + 1];
 
 		convert_from_utf8(B_ISO1_CONVERSION, ListItem->fName.String(),
@@ -149,10 +152,6 @@ Renamer_Remove::RenameList(BList* FileList)
 		utf_String[UTF_LengthOfFilename] = 0;
 
 		ListItem->SetNewName(utf_String);
-
-		fPosition1->SetMaxValue(positionMaxValue);
-		fPosition2->SetMaxValue(positionMaxValue);
-
 	}
 }
 
@@ -194,6 +193,6 @@ Renamer_Remove::AttachedToWindow()
 	if (msg.FindBool("direction2", &boolean) == B_OK) {
 		BMenu* menu = fDirection2->Menu();
 		for (int i = 0; i < 2; ++i)
-			menu->ItemAt(i)->SetMarked(i==(int)boolean);
+			menu->ItemAt(i)->SetMarked(i == (int)boolean);
 	}
 }

@@ -94,7 +94,7 @@ MainView::MainView()
 	BCardView* cards = new BCardView();
 	fCards = cards->CardLayout();
 
-	for (int i = 0; i<MODE_TOTAL; i++) {
+	for (int i = 0; i < MODE_TOTAL; i++) {
 		BMenuItem* item = new BMenuItem(((PecoApp* )be_app)->fRenamers[i]->fName,
 			new BMessage(MSG_RENAMER));
 		if (i == 0 || i == activeRenamer)
