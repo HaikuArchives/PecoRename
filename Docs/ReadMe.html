@@ -1,157 +1,300 @@
-<html>
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
 <head>
-<title>PecoRename Documentation</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta http-equiv="Content-Style-Type" content="text/css" />
+	<meta name="robots" content="all" />
+	<title>PecoRename Documentation</title>
+
+<style type="text/css">
+
+body {
+    font-size: 0.9em;
+	font-family: "Noto Sans",Arial,Helvetica,sans-serif;
+	line-height: 1.5;
+	margin: 40px;
+	min-width: 45em;
+	max-width: 70em;
+}
+/* link colors and text decoration */
+
+a:link {
+	font-weight: bold;
+	text-decoration: none;
+	color: #dc3c01;
+}
+a:visited {
+	font-weight: bold;
+	text-decoration: none;
+	color: #892601;
+}
+a:hover, a:active {
+	text-decoration: underline;
+	color: #ff4500;
+}
+
+hr {
+	border: dotted thin #e0e0e0;
+}
+h1 {
+	font-size: 1.3em;
+	border-bottom: dotted thin #e0e0e0;
+	margin-bottom: 45px;
+}
+h2 {
+	font-size: 1.2em;
+	border-bottom: dotted thin #e0e0e0;
+	margin-top: 40px;
+}
+h3 {
+	font-size: 1em;
+	border-bottom: none;
+	margin-bottom: 0px;
+}
+.key {				/* Shortcut (separate with &#160; */
+	-webkit-border-radius: 3px;
+	-khtml-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	border-color: #c7c7c7;
+	border-style: solid;
+	border-width: 1px;
+	padding: 0px 2px 0px 2px;
+	background-color: #e8e8e8;
+    font-family: sans;
+	font-variant: small-caps;
+	font-size: 1em;
+}
+.menu {				/* Menu */
+    font-size: 1.0em;
+    font-family: serif;
+    font-style: italic;
+	color: #24225e;
+}
+.button {			/* Button */
+    font-size: 1.0em;
+    font-family: serif;
+    font-style: italic;
+	color: #33583c;
+}
+.path {				/* File path */
+    background-color: #e8e8e8;
+    font-size: 0.9em;
+    font-family: monospace;
+}
+/* Rounded corner boxes */
+/* Common declarations */
+.box-info, .box-stop, .box-warning {
+	-webkit-border-radius: 10px;
+	-khtml-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	border-style: dotted;
+	border-width: thin;
+	border-color: #dcdcdc;
+	padding: 10px 15px 10px 80px;
+	margin-bottom: 15px;
+	margin-top: 15px;
+	margin-left: 40px;
+	margin-right: 40px;
+	min-height: 42px;
+}
+.box-info {
+	background: #e4ffde url(./images/alert_info_32.png) 15px 15px no-repeat;
+}
+.box-warning {
+	background: #fffbc6 url(./images/alert_warning_32.png) 15px 15px no-repeat;
+}
+.box-stop {
+	background: #ffeae6 url(./images/alert_stop_32.png) 15px 15px no-repeat;
+}
+</style>
+
+<script>
+var switchImage = function(image)
+{
+var pathname = image.src
+var leafname= pathname.split('\\').pop().split('/').pop();
+
+	if (leafname == "renamer_search-replace.png") {
+        image.src = "./images/en/renamer_insert-overwrite-1.png";
+        image.alt = "Rename mode 'Insert / overwrite' - inserting";
+    } else if (leafname == "renamer_insert-replace-1.png") {
+        image.src = "./images/en/renamer_insert-replace-2.png";
+        image.alt = "Rename mode 'Insert / overwrite' - overwriting";
+    } else if (leafname == "renamer_insert-overwrite-2.png") {
+        image.src = "./images/en/renamer_remove.png";
+        image.alt = "Rename mode 'Remove'";
+    } else if (leafname == "renamer_remove.png") {
+        image.src = "./images/en/renamer_numbering.png";
+        image.alt = "Rename mode 'Numbering'";
+    } else if (leafname == "renamer_numbering.png") {
+        image.src = "./images/en/renamer_extension.png";
+        image.alt = "Rename mode 'Add file extension'";
+    } else if (leafname == "renamer_extension.png") {
+        image.src = "./images/en/renamer_upper-lower.png";
+        image.alt = "Rename mode 'Uppercase / lowercase'";
+    } else {
+        image.src = "./images/en/renamer_search-replace.png";
+        image.alt = "Rename mode 'Search / replace'";
+    }
+}
+</script>
+
 </head>
-<body bgcolor="#eeeeee" link="#284696" vlink="#555555">
-<table cellspacing=3 cellpadding=1 border=0 bgcolor="#ffffff" width=100%>
-<tr><td><img src="gfx/PecoRenameIcon.gif" align="left" hspace=5 vspace=5><i><font face="Dutch801 Rm BT" size=+4>PecoRename</font></i><img src="gfx/pecora.gif" align=right></td></tr>
-<tr><td bgcolor="#284696"><img src="gfx/pixel.gif" height=1></td></tr>
-<tr><td><font face="Arial,Helvetica">
+<body>
+<div align="center">
+<img width="64" height="64" src="./images/pecorename_icon_64.png" alt="PecoRename icon" />
+<p><span style="font-size: 1.5em; font-weight:bold">PecoRename</span><br />
+for <a href="http://www.haiku-os.org">Haiku</a></p>
+<hr />
+<p id="index"><a href="#usage">Using PecoRename</a> ‒ <a href="#conflict">Conflicting Renames</a> ‒ <a href="#modes">Renamimg Modes</a><br />
+<a href="#tips">Tips &amp; Tricks</a> ‒ <a href="#download">Download</a>  ‒ <a href="#bugs_feedback">Bugreports &amp; Feedback</a>  ‒ <a href="#thanks">Thanks</a>  ‒ <a href="#history">History</a></p>
+</div>
+<hr />
+<p><br /></p>
+<p>PecoRename is a utility to rename a batch of files according to a customized pattern. It renames files in many different ways: Add a file extension, number files in order, search and replace, and more…</p>
 
-<h2>Introduction</h2>
-<p>
-PecoRename is a utility which allows you to rename many files according to a preset pattern.
-<br>It lets you rename your files in many different ways: Add an extension, Number your files in order, Search and replace, and much more...
+<h2>
+<a href="#"><img src="./images/up.png" style="border:none;float:right" alt="index" /></a>
+<a id="usage" name="usage">Using PecoRename</a></h2>
+<p>Renaming can be initiated in two ways: Either the accompanying Tracker add-on is invoked on the selection of files that are to be renamed. Or PecoRename is launched and the files drag &amp; dropped onto it or added from a file dialog by clicking on the folder icon.</p>
+<p>PecoRename currently only works on files that are in the same folder.</p>
 
-<h2>License</h2>
-<p>
-PecoRename is freeware. You may share PecoRename with as many people as you like, as long as the program is distributed with all parts, especially documentation, intact. PecoRename may not be sold under any circumstances without the <a href="#Autor">author's</a> permission. As a rule PecoRename can be sold at cost of distrubution (on a freeware/shareware CD for example) Please contact the <a href="#Autor">author quick via e-mail</a> before doing so.
-<br>All <b>graphics</b>, especially the icon or brands are copyrighted by the author and may not be used in any form without the author's consent.
+<div align="center">
+<table><tr><td align="center">
+<img src="./images/en/start.png" alt="PecoRename and its add-on" /></td></tr><tr><td><hr /></td></tr>
+<tr><td align="center"><i>Four selected files are opened in PecoRename via the Tracker add-on. There, "Main" is inserted at the start of each file name.</i></td></tr>
+<tr><td><hr /></td></tr>
+</table>
+</div>
 
-<h2>Exclusion of liability</h2>
-<p>
-Great care was taken to make sure PecoRename functions flawlessly and without fault.
-Nevertheless there is still a slim chance that errors may still occur.
-<br>The author will not be held liable for any potential damage caused by this software nor will he guarantee any unique (or special) functions.
-<h2>Usage of the program</h2>
-<p>
-PecoRename is very easy to use. Most functions are very straightforward. The names of the menu functions speak for themselves and all buttons are clearly labeled.
-<p>
-The window can be divided into two areas:
-<ul>
-<li>the file view in the top area and
-<li>the renaming function in the bottom part.
-</ul>
+<p>Then the mode of renaming is chosen from the pop-up menu below the list of files. More on the available renaming modes below.</p>
 
-<h2>The file view</h2>
-<p>
-The file view shows the files and directories which will be renamed.
-<br>
-PecoRename doesn't make a difference between files, links and directories - only devices are ignored. Only files in the <i>same</i> directory can be chosen.
-<p>
-There are two ways to choose which files to rename:<ul>
-<li>You can choose the files with a file panel by clicking on the &quot;Please select...&quot; button on the top left.
-<br><b>Attention:</b> Unfortunately the file panel in BeOS Release 5 (PE) has a bug that causes BeOS to crash when more than about 120 files are chosen and opened!
-<li>The second - and more comfortable - possibility: You can select the files you want in the Tracker and drag them into the PecoRename window. To remove files from the file view, you can drag them out just as easy!
-</ul>
-When there are files in the list, the common path will be shown over the list. The files can be sorted by name, size and modification time. To do this simply click onto the referring list title.
-<p>
-In the column &quot;Preview&quot; you can see which files will be renamed into what names. Only the files to be modified are shown. If conflicts will occur because of double file names, the referring files will be marked in red.
+<p> The <span class="menu">Preview</span> column of the file list will display the new file names while you create and tweak the renaming pattern with the various widgets of the chosen rename mode. If the preview of a file is empty, it means it doesn't fit the pattern and therefore isn't renamed.</p>
 
-<h2>The renaming functions</h2>
-<p>
-When you have the files you wish in the file view, it's time to rename them.
-<br>For that there are the following functions (modes):
-<ul>
-<li><h3>Search and replace</h3>
-As the name states, this function searches and replaces parts of the names.
-<br>You can adjust the following parameters:
-<ul>
-<li><b>Case sensitive</b>: If you mark this field, upper and lower case will be paid attention to.
-<li><b>Regular expression</b>: You also can search&amp;replace using regular expressions.<br>
-It would be to much to describe regular expressions here. For those who know how to work with regular expressions, the found string can be inserted in the result string with the token '\$'.
-<li><b>Find pattern</b>: What are you looking for?
-<li><b>Replace with</b>: What should it be replaced with?
-</ul>
-<p>
-<li><h3>Remove</h3>
-This function removes characters from the name. You simply have to enter the range - and that was it! :-)
-<p>
-<li><h3>Insert / replace</h3>
-You can put in text at a certain position of the filename.
-<br>Here exist the following options:
-<ul>
-<li><b>Insert or replace</b>: Should the text be inserted or overwrite the existing text starting with this position?
-<li><b>Text</b>: Which Text shall be put in?
-<li><b>Position</b>: At which position?
-<li><b>Direction</b>: You can decide if you mean the n-th position from the left or from the right.
-<br>Example: A position &quot;3&quot; and a direction &quot;from the back&quot; mean, that the text will be put in starting with the 3rd position from the back.
-</ul>
-<p>
-<li><h3>Numbering</h3>
-The files will be numbered in order. Files are numbered depending on the order (by name/size/modification time) of the file view.
-<ul>
-<li><b>Format</b>: Choose how many places the number is fixed to.
-<li><b>Start with</b>: Here you can indicate which number to begin numbering with.
-<li><b>Text before</b>, <b>Text behind</b>: You can specify whether text will be added before or behind the number.
-</ul>
-<p>
-<li><h3>Add file extension</h3>
-PecoRename can try to find the correct file extension to be appended to the filename.
-<p>
-This will not always work as desired. Therefore it is important to understand how it works:
-<p>
-In the BeOS - like in the Internet - every file is marked by a so-called MIME type. If you get a file from a non-BeOS environment the new file's MIME type must be recognized. For this the BeOS uses different recognition mechanisms and as a last resort - if the file can not be recognized in another way - the file extension.
-<p>
-PecoRename goes the reverse way: For a given file type the referring extension will be searched - like it is set in Preferences/File Types.
-<p>
-For PecoRename to do a good job of this, two assumptions must be given:
+<div class="box-warning">The <span class="button">Rename</span> button will immediately start renaming <b>ALL files in the list</b>!<br />
+If you decide that some of them should not be renamed, you have to remove them from the list first. Either by right-clicking and choosing <span class="menu">Remove</span> or selecting a file and pressing <span class="key">DEL</span>.
+</div>
+
+
+<h2>
+<a href="#"><img src="./images/up.png" style="border:none;float:right" alt="index" /></a>
+<a id="conflict" name="conflict">Conflicting Renames</a></h2>
+
+<div align="center">
+<table><tr><td align="center">
+<img src="./images/en/conflict.png" alt="Conflicting renames" /></td></tr><tr><td><hr /></td></tr>
+<tr><td align="center"><i>Replacing "View" with "Window" would create duplicates of the already existing "Window.cpp" and "Window.h".</i></td></tr>
+<tr><td><hr /></td></tr>
+</table>
+</div>
+
+<p>Conflicts arise if the renaming pattern would result in new file names that would clash with each other. In that case, the proposed new file name in the preview column is displayed in red and you see a count of <span class="menu">duplicates</span> in the status box at the bottom left of the file list. </p>
+<p>These conflicting renames won't be performed, of course.</p>
+<p><br /></p>
+<p>There's another possibility of conflict:<br />
+There may already exist files with the same names as the targeted new file names that were not selected to be processed by PecoRename.</p>
+<p>Those won't be shown as red in the preview, because PecoRename will encounter them only during processing after pressing <span class="menu">Rename</span>. Instead, a <span class="menu">Report</span> window will pop up, after all possible renamings are finished:</p>
+
+<div align="center">
+<table><tr><td align="center">
+<img src="./images/en/report.png" alt="Conflicting report" /></td></tr><tr><td><hr /></td></tr>
+<tr><td><i>"MainWindow.cpp" and "MainWindow.h" were already present in the folder: 2 files couldn't be renamed.</i></td></tr>
+<tr><td><hr /></td></tr>
+</table>
+</div>
+
+<p>These conflicting renames haven't been performed, of course.</p>
+
+<h2>
+<a href="#"><img src="./images/up.png" style="border:none;float:right" alt="index" /></a>
+<a id="settings" name="modes">Renaming Modes</a></h2>
+<p>The renaming modes are all pretty much self-explanatory. But see further down for some background on the <span class="menu">Add&nbsp;file&nbsp;extension</span> mode.</p>
+<p>Basically, you construct your pattern like you would read a sentence, choosing options and entering text for the variables that define the new file names. The preview always shows if you're still on the right track.</p>
+<p>Click on the screenshot below, to click through examples for every renaming mode.</p>
+
+<div align="center">
+<table><tr><td align="center">
+<img src="./images/en/renamer_search-replace.png" alt="Rename mode 'Search / replace'" onclick="switchImage(this)" /></td></tr><tr><td><hr /></td></tr>
+<tr><td align="center"><i>Click on the image to see the next example.</i></td></tr>
+<tr><td><hr /></td></tr>
+</table>
+<noscript><b>Your browser doesn't support JavaScript, or it's disabled.</b><br />
+You won't be able to click on the screenshot to see these examples:<br />
+<a href="./images/en/renamer_insert-overwrite-1.png">Insert</a> ‒ 
+<a href="./images/en/renamer_insert-overwrite-2.png">Replace</a> ‒ 
+<a href="./images/en/renamer_remove.png">Remove</a> ‒ 
+<a href="./images/en/renamer_numbering.png">Numbering</a> ‒ 
+<a href="./images/en/renamer_extension.png">Add&nbsp;file&nbsp;extension</a> ‒ 
+<a href="./images/en/renamer_upper.png">Uppercase/lowercase</a></noscript>
+</div>
+
+<h3>Add file extension</h3>
+
+<p>In this rename mode, PecoRename tries to find the correct file extension to append to each file. This will not always work as desired, however so it's important to understand how it works:</p>
+<p>Haiku marks every file with a so-called MIME type. If you get a file from a non-Haiku environment the new file's MIME type has to be identified. For this, Haiku uses different recognition mechanisms and ‒ as a last resort ‒ the file extension.</p>
+<p>PecoRename goes the reverse way: For the given MIME type of a file, it fetches the corresponding extension. Those are set in Haiku's <a href="https://www.haiku-os.org/docs/userguide/en/preferences/filetypes.html">FileTypes</a> preferences.</p>
+<p>For PecoRename to do a good job at this, two conditions have to be met:</p>
 <ol>
-<li><u>The file must be identified.</u>
-<br>If you are not sure if the BeOS already has recognized a file, you can do this in the Tracker: Select the file and select File/Identify from the Menu. This only works on BFS formatted devices. (will not work on FAT or HFS or any other filesystem type)
-<li><u>There must be an extension set for a file of that type</u>
-<br>In Preferences/File Types all kinds of file types can be adjusted. You can also set the file extension.
-<br>PecoRename always uses the first extension found. Because of this, you will often have a non-desired extension like ".jpeg" (instead of ".jpg") or ".mp2" (instead of ".mp3") - but with PecoRename (use Search &amp; Replace) you have the tool to correct it!
+<li><p><i>The file must have its MIME type set</i></p>
+<p>If you are not sure if Haiku has already recognized a file, you can do this in Tracker: Right-click the file and choose <span class="menu">Identify</span>. This only works on BFS formatted devices.</p></li>
+<li><p><i>There must be an extension set for the file's MIME type</i></p>
+<p>You can set and adjust the file extensions in Haiku's FileTypes preferences.<br />
+PecoRename always uses the first extension found. Because of this, you may get a non-desired extension like "<tt>.jpeg</tt>" instead of "<tt>.jpg"</tt>, or "<tt>.mp2</tt>" instead of "<tt>.mp3</tt>" until you change the order.</p></li>
 </ol>
-<p>
-There are the following options:
+
+
+<h2>
+<a href="#"><img src="./images/up.png" style="border:none;float:right" alt="index" /></a>
+<a id="tips" name="tips">Tips &amp; Tricks</a></h2>
 <ul>
-<li><b>Replace old extension</b>: Should the extension be appended or should it replace a old one, if necessary?
-<li><b>Uppercase / lowercase</b>: How should the extension be written (upper/lower case/default)?
+<li><p>You can remove a file from the list, by selecting it and pressing <span class="key">DEL</span>. Or by right-clicking and choosing <span class="menu">Remove</span> from the context menu.</p></li>
+<li><p>The context menu let's you also <span class="menu">Open</span> the file with its preferred application, or with <span class="menu">Open location</span> show its parent folder.</p></li> 
+<li><p>If you're dealing with a crowded folder when you select the files to rename, it helps to "<a href="https://www.haiku-os.org/docs/userguide/en/tracker.html#tracker-preferences">Enable type-ahead filtering</a>" in the Tracker preferences, if you haven't already. That can often filter out much of the chaff.</p></li>
+<li><p>Another often overlooked Tracker feature is the <span class="menu">Select…</span> item under <span class="menu">Window:</span><br />
+It let's you choose different modes of selection, like starts/ends/contains, wildcard expressions and even regular expressions. A mighty tool if you know how to wield it!</p>
+<div align="center">
+<img src="./images/en/tracker-select.png" alt="Tracker's Select… window" />
+</div></li>
 </ul>
-<p>
-<li><h3>Uppercase / lowercase</h3>
-This function should be obvious! It converts all the letters of the filename to uppercase or lowercase.
+
+<h2>
+<a href="#"><img src="./images/up.png" style="border:none;float:right" alt="index" /></a>
+<a id="download" name="download">Download</a></h2>
+<p>PecoRename is directly available through HaikuDepot from the HaikuPorts repository. You can also build it yourself using <a href="https://github.com/haikuports">Haikuporter</a>. The source is hosted at <a href="https://github.com/HaikuArchives/PecoRename">GitHub</a>.</p>
+
+<h2>
+<a href="#"><img src="./images/up.png" style="border:none;float:right" alt="index" /></a>
+<a id="bugs_feedback" name="bugs_feedback">Bugreports &amp; Feedback</a></h2>
+<p>Please use PecoRename's <a href="https://github.com/HaikuArchives/PecoRename/issues">issue tracker</a> at GitHub if you experience unusual difficulties.<br />
+Also create enhancement tickets there if you'd like to provide more localizations.</p>
+
+<h2>
+<a href="#"><img src="./images/up.png" style="border:none;float:right" alt="index" /></a>
+<a id="thanks" name="thanks">Thanks</a></h2>
+<p>PecoRename was originally coded for the BeOS by Werner Freytag ("Pecora") and was released under a MIT license in 2009.<br />
+Thanks to everyone contributing code, translations and feedback.</p>
+
+<h2>
+<a href="#"><img src="./images/up.png" style="border:none;float:right" alt="index" /></a>
+<a id="history" name="history">History</a></h2>
+
+<p><b>1.1</b> - <i>30-12-2016:</i></p>
+<ul>
+<li></li>
 </ul>
 
-<h2>Let's do it!</h2>
-When all settings are made, you only have to hit the &quot;Let's do it!&quot; Button and all files will be renamed according the preview!
+<p><b>1.0</b> - <i>28-11-2016:</i></p>
+<ul>
+<li></li>
+</ul>
 
-<a name="Autor"></a>
-<h2>Author / contact</h2>
-<p>
-I hope you like the program and you can benefit from it. I'm looking forward your ideas, suggestions or criticism!
-<p>
-And please <a href="http://www.bebits.com/app/1040">vote at BeBits for PecoRename</a>!
-<p>
-
-Here you can contact me:
-
-<center>
-<table cellpadding=10 cellspacing=0 border=0 bgcolor="#eeeeee">
-<tr>
-	<td valign=top><font face="Arial,Helvetica">Name:</td>
-	<td valign=top><font face="Arial,Helvetica">Werner Freytag</td></tr>
-<tr>
-	<td valign=top><font face="Arial,Helvetica">Address:</td>
-	<td valign=top><font face="Arial,Helvetica">Neurieder Str. 8
-				<br>82152 Martinsried
-				<br>Germany</td>
-</tr>
-<tr>
-	<td valign=top>
-	<font face="Arial,Helvetica">E-mail:</td>
-	<td valign=top><font face="Arial,Helvetica"><a href="mailto:freytag@gmx.de">freytag@gmx.de</a></td>
-</tr>
-<tr>
-	<td valign=top><font face="Arial,Helvetica">Webpage:</td>
-	<td valign=top><font face="Arial,Helvetica"><a href="http://www.pecora.de" target="_blank">www.pecora.de</a></td>
-</tr>
-</table>
-</center>
-</font>
-</td>
-</tr>
-</table>
+<p><b>0.9</b> - <i>30-06-2015:</i></p>
+<ul>
+<li>Initial release.</li>
+</ul>
 </body>
 </html>
