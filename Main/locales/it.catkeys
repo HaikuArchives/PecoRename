@@ -1,4 +1,4 @@
-1	Italian	application/x-vnd.pecora-PecoRename	1398936896
+1	Italian	application/x-vnd.pecora-PecoRename	608970634
 Modified	FileListView	Column title	Modificato
 Name	FileListView	Column title	Nome
 Preview	FileListView	Column title	Anteprima
@@ -6,7 +6,7 @@ Size	FileListView	Column title	Dimensione
 {0, plural,=0{no duplicates}=1{1 duplicate}other{# duplicates}}	functions		{0, plural,=0{nessun duplicato}=1{1 duplicato}other{# duplicati}}
 {0, plural,=0{no items}=1{1 item}other{# items}}	functions		{0, plural,=0{nessun elemento}=1{1 elemento}other{# elementi}}
 {0, plural,=0{no renames}=1{1 rename}other{# renames}}	functions		{0, plural,=0{nessun  rinominato}=1{1 rinaminato}other{# rinominati}}
-Choose files and directories	MainView		Scegli file e cartelle
+Choose files and folders	MainView		Scegli file e cartelle
 Open	MainView		Open
 Open location	MainView		Open location
 Remove	MainView		Remove
