@@ -67,6 +67,7 @@ MainView::MainView()
 	fFileView = new FileListView();
 	fFileView->SetSelectionMessage(new BMessage(MSG_ROW_SELECTED));
 	fFileView->SetInvocationMessage(new BMessage(MSG_OPEN));
+	fFileView->SetSelectionMode(B_SINGLE_SELECTION_LIST);
 
 	BScrollBar* scrollBar
 		= (BScrollBar*)fFileView->FindView("horizontal_scroll_bar");
