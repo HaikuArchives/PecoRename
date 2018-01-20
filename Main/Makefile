@@ -46,7 +46,7 @@ SRCS =  ConsistencyCheck.cpp  \
         PreviewColumn.cpp  \
         Renamer.cpp  \
         Renamer_Extension.cpp  \
-        Renamer_InsertReplace.cpp  \
+        Renamer_InsertOverwrite.cpp  \
         Renamer_Numbering.cpp  \
         Renamer_Remove.cpp  \
         Renamer_SearchReplace.cpp  \

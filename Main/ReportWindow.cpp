@@ -41,7 +41,7 @@ ReportWindow::ReportWindow(BRect frame, BList* filelist)
 	fReportView->AddColumn(new BStringColumn(B_TRANSLATE_COMMENT(
 		"Original name", "Column title"), 165, 10, 600, B_TRUNCATE_END), i++);
 	fReportView->AddColumn(new PreviewColumn(B_TRANSLATE_COMMENT(
-		"Targetted name", "Column title"), 165, 10, 600, B_TRUNCATE_END), i++);
+		"Targeted name", "Column title"), 165, 10, 600, B_TRUNCATE_END), i++);
 	fReportView->AddColumn(new BStringColumn(B_TRANSLATE_COMMENT(
 		"Problem", "Column title"), 250, 10, 600, B_TRUNCATE_END), i++);
 

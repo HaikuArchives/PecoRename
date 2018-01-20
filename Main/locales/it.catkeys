@@ -1,4 +1,4 @@
-1	Italian	application/x-vnd.pecora-PecoRename	1182965546
+1	Italian	application/x-vnd.pecora-PecoRename	1398936896
 Modified	FileListView	Column title	Modificato
 Name	FileListView	Column title	Nome
 Preview	FileListView	Column title	Anteprima
@@ -7,6 +7,9 @@ Size	FileListView	Column title	Dimensione
 {0, plural,=0{no items}=1{1 item}other{# items}}	functions		{0, plural,=0{nessun elemento}=1{1 elemento}other{# elementi}}
 {0, plural,=0{no renames}=1{1 rename}other{# renames}}	functions		{0, plural,=0{nessun  rinominato}=1{1 rinaminato}other{# rinominati}}
 Choose files and directories	MainView		Scegli file e cartelle
+Open	MainView		Open
+Open location	MainView		Open location
+Remove	MainView		Remove
 Rename	MainView		Rinomina
 About PecoRename	MainWindow		Informazioni su PecoRename
 An error has occurred:\nEither the help file is missing, or an HTML browser can not be found.	MainWindow		Si è verificato un errore:\nNon riesco a trovare il file della guida, oppure non posso trovare un browser HTML.
@@ -26,14 +29,14 @@ Add file extension	Renamer_Extension		Aggiungi l'estensione al file
 lowercase	Renamer_Extension		minuscolo
 Replace old extension	Renamer_Extension		Sostituisci la vecchia estensione
 UPPERCASE	Renamer_Extension		MAIUSCOLO
-At position:	Renamer_InsertReplace		Nella posizione:
-from the back (right)	Renamer_InsertReplace		dalla fine (destra)
-from the front (left)	Renamer_InsertReplace		dall'inizio (sinistra)
-Insert	Renamer_InsertReplace		Inserisci
-Insert / replace	Renamer_InsertReplace		Inserisci / sostituisci
-Please select	Renamer_InsertReplace		Seleziona
-Replace with	Renamer_InsertReplace		Sostituisci con
-Text:	Renamer_InsertReplace		Testo:
+At position:	Renamer_InsertOverwrite		Nella posizione:
+from the back (right)	Renamer_InsertOverwrite		dalla fine (destra)
+from the front (left)	Renamer_InsertOverwrite		dall'inizio (sinistra)
+Insert	Renamer_InsertOverwrite		Inserisci
+Insert / overwrite	Renamer_InsertOverwrite		Insert / overwrite
+Overwrite with	Renamer_InsertOverwrite		Overwrite with
+Please select	Renamer_InsertOverwrite		Seleziona
+Text:	Renamer_InsertOverwrite		Testo:
 Format:	Renamer_Numbering		Formato:
 Numbering	Renamer_Numbering		Numerazione
 Please select	Renamer_Numbering		Seleziona
@@ -65,5 +68,5 @@ Report	ReportWindow		Rapporto
 Unknown error	ReportWindow		Errore sconosciuto
 Original name	ReportWindow	Column title	Nome originale
 Problem	ReportWindow	Column title	Problema
-Targetted name	ReportWindow	Column title	Nome scelto
+Targeted name	ReportWindow	Column title	Nome scelto
 PecoRename	System name		PecoRename

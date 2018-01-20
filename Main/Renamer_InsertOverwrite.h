@@ -10,8 +10,8 @@
  * Original author:
  * 		Werner Freytag <freytag@gmx.de>
  */
-#ifndef INSERTREPLACE_H
-#define INSERTREPLACE_H
+#ifndef INSERTOVERWRITE_H
+#define INSERTOVERWRITE_H
 
 #include <MenuField.h>
 #include <Spinner.h>
@@ -20,9 +20,9 @@
 
 class BTextControl;
 
-class Renamer_InsertReplace : public Renamer {
+class Renamer_InsertOverwrite : public Renamer {
 public:
-					Renamer_InsertReplace();
+					Renamer_InsertOverwrite();
 			void	RenameList(BList* FileList);
 
 			void	AttachedToWindow();
@@ -31,8 +31,8 @@ public:
 private:
 	BTextControl*	fText;
 	BSpinner*		fPosition;
-	BMenuField*		fInsertOrReplace;
+	BMenuField*		fInsertOrOverwrite;
 	BMenuField*		fDirection;
 };
 
-#endif // INSERTREPLACE_H
+#endif // INSERTOVERWRITE_H

@@ -26,27 +26,27 @@
 #include "functions.h"
 
 #include "FileListItem.h"
-#include "Renamer_InsertReplace.h"
+#include "Renamer_InsertOverwrite.h"
 
 #undef B_TRANSLATION_CONTEXT
-#define B_TRANSLATION_CONTEXT "Renamer_InsertReplace"
+#define B_TRANSLATION_CONTEXT "Renamer_InsertOverwrite"
 
 
-Renamer_InsertReplace::Renamer_InsertReplace()
+Renamer_InsertOverwrite::Renamer_InsertOverwrite()
 	:
 	Renamer()
 {
-	fName = B_TRANSLATE("Insert / replace");
+	fName = B_TRANSLATE("Insert / overwrite");
 
 	BPopUpMenu* myMenu = new BPopUpMenu(B_TRANSLATE("Please select"));
 	myMenu->AddItem(new BMenuItem(B_TRANSLATE("Insert"),
 		new BMessage(MSG_RENAME_SETTINGS)));
-	myMenu->AddItem(new BMenuItem(B_TRANSLATE("Replace with"),
+	myMenu->AddItem(new BMenuItem(B_TRANSLATE("Overwrite with"),
 		new BMessage(MSG_RENAME_SETTINGS)));
 
 	myMenu->ItemAt(0)->SetMarked(true);
 
-	fInsertOrReplace = new BMenuField(NULL,	myMenu);
+	fInsertOrOverwrite = new BMenuField(NULL,	myMenu);
 
 	fText = new BTextControl(NULL, B_TRANSLATE("Text:"), NULL,
 		new BMessage(MSG_RENAME_SETTINGS));
@@ -69,7 +69,7 @@ Renamer_InsertReplace::Renamer_InsertReplace()
 	BLayoutBuilder::Group<>(this, B_VERTICAL)
 		.SetInsets(B_USE_WINDOW_INSETS)
 		.AddGroup(B_HORIZONTAL)
-			.Add(fInsertOrReplace)
+			.Add(fInsertOrOverwrite)
 			.Add(fText)
 		.End()
 		.AddGroup(B_HORIZONTAL)
@@ -81,12 +81,12 @@ Renamer_InsertReplace::Renamer_InsertReplace()
 
 
 void
-Renamer_InsertReplace::RenameList(BList* FileList)
+Renamer_InsertOverwrite::RenameList(BList* FileList)
 {
 	Renamer::RenameList(FileList);
 
-	bool Replace = bool(fInsertOrReplace->Menu()
-		->IndexOf(fInsertOrReplace->Menu()->FindMarked()));
+	bool Overwrite = bool(fInsertOrOverwrite->Menu()
+		->IndexOf(fInsertOrOverwrite->Menu()->FindMarked()));
 	
 	bool FromRight = bool(fDirection->Menu()
 		->IndexOf(fDirection->Menu()->FindMarked()));
@@ -133,7 +133,7 @@ Renamer_InsertReplace::RenameList(BList* FileList)
 
 		ResultString.SetTo(tempStr, EndPart1);
 
-		if (Replace) {
+		if (Overwrite) {
 			StartPart2 = (EndPart1 + LengthOfInsert <= LengthOfFilename)
 				? EndPart1 + LengthOfInsert : LengthOfFilename;
 		} else		
@@ -158,31 +158,31 @@ Renamer_InsertReplace::RenameList(BList* FileList)
 
 
 void
-Renamer_InsertReplace::DetachedFromWindow()
+Renamer_InsertOverwrite::DetachedFromWindow()
 {
 	BMessage msg;
-	BMenu* menu = fInsertOrReplace->Menu();
-	msg.AddBool("replace", bool(menu->IndexOf(menu->FindMarked())));
+	BMenu* menu = fInsertOrOverwrite->Menu();
+	msg.AddBool("overwrite", bool(menu->IndexOf(menu->FindMarked())));
 	msg.AddString("text", fText->Text());
 	msg.AddInt32("position", fPosition->Value());
 	menu = fDirection->Menu();
 	msg.AddBool("fromright", bool(menu->IndexOf(menu->FindMarked())));
 	
-	UpdatePreferences("ren_insertreplace", msg);
+	UpdatePreferences("ren_insertoverwrite", msg);
 }
 
 
 void
-Renamer_InsertReplace::AttachedToWindow()
+Renamer_InsertOverwrite::AttachedToWindow()
 {
 	BMessage msg;
-	ReadPreferences("ren_insertreplace", msg);
+	ReadPreferences("ren_insertoverwrite", msg);
 	
 	BString string ="";
 	int32 integer = 0;
 	bool boolean = 0;
-	if (msg.FindBool("replace", &boolean) == B_OK) {
-		BMenu* menu = fInsertOrReplace->Menu();
+	if (msg.FindBool("overwrite", &boolean) == B_OK) {
+		BMenu* menu = fInsertOrOverwrite->Menu();
 		for (int i = 0; i < 2; ++i)
 			menu->ItemAt(i)->SetMarked(i == (int)boolean);
 	}

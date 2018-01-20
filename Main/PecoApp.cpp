@@ -34,7 +34,7 @@
 
 #include "MainWindow.h"
 #include "Renamer_Extension.h"
-#include "Renamer_InsertReplace.h"
+#include "Renamer_InsertOverwrite.h"
 #include "Renamer_Numbering.h"
 #include "Renamer_Remove.h"
 #include "Renamer_SearchReplace.h"
@@ -56,7 +56,7 @@ PecoApp::PecoApp()
 	fList = new BList();
 
 	fRenamers[0] = new Renamer_SearchReplace();
-	fRenamers[1] = new Renamer_InsertReplace();
+	fRenamers[1] = new Renamer_InsertOverwrite();
 	fRenamers[2] = new Renamer_Remove();
 	fRenamers[3] = new Renamer_Numbering();
 	fRenamers[4] = new Renamer_Extension();

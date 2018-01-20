@@ -1,4 +1,4 @@
-1	English	application/x-vnd.pecora-PecoRename	1182965546
+1	English	application/x-vnd.pecora-PecoRename	1398936896
 Modified	FileListView	Column title	Modified
 Name	FileListView	Column title	Name
 Preview	FileListView	Column title	Preview
@@ -7,6 +7,9 @@ Size	FileListView	Column title	Size
 {0, plural,=0{no items}=1{1 item}other{# items}}	functions		{0, plural,=0{no items}=1{1 item}other{# items}}
 {0, plural,=0{no renames}=1{1 rename}other{# renames}}	functions		{0, plural,=0{no renames}=1{1 rename}other{# renames}}
 Choose files and directories	MainView		Choose files and directories
+Open	MainView		Open
+Open location	MainView		Open location
+Remove	MainView		Remove
 Rename	MainView		Rename
 About PecoRename	MainWindow		About PecoRename
 An error has occurred:\nEither the help file is missing, or an HTML browser can not be found.	MainWindow		An error has occurred:\nEither the help file is missing, or an HTML browser can not be found.
@@ -26,14 +29,14 @@ Add file extension	Renamer_Extension		Add file extension
 lowercase	Renamer_Extension		lowercase
 Replace old extension	Renamer_Extension		Replace old extension
 UPPERCASE	Renamer_Extension		UPPERCASE
-At position:	Renamer_InsertReplace		At position:
-from the back (right)	Renamer_InsertReplace		from the back (right)
-from the front (left)	Renamer_InsertReplace		from the front (left)
-Insert	Renamer_InsertReplace		Insert
-Insert / replace	Renamer_InsertReplace		Insert / replace
-Please select	Renamer_InsertReplace		Please select
-Replace with	Renamer_InsertReplace		Replace with
-Text:	Renamer_InsertReplace		Text:
+At position:	Renamer_InsertOverwrite		At position:
+from the back (right)	Renamer_InsertOverwrite		from the back (right)
+from the front (left)	Renamer_InsertOverwrite		from the front (left)
+Insert	Renamer_InsertOverwrite		Insert
+Insert / overwrite	Renamer_InsertOverwrite		Insert / overwrite
+Overwrite with	Renamer_InsertOverwrite		Overwrite with
+Please select	Renamer_InsertOverwrite		Please select
+Text:	Renamer_InsertOverwrite		Text:
 Format:	Renamer_Numbering		Format:
 Numbering	Renamer_Numbering		Numbering
 Please select	Renamer_Numbering		Please select
@@ -65,5 +68,5 @@ Report	ReportWindow		Report
 Unknown error	ReportWindow		Unknown error
 Original name	ReportWindow	Column title	Original name
 Problem	ReportWindow	Column title	Problem
-Targetted name	ReportWindow	Column title	Targetted name
+Targeted name	ReportWindow	Column title	Targeted name
 PecoRename	System name		PecoRename

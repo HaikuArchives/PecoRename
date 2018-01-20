@@ -1,4 +1,4 @@
-1	Deutsch	application/x-vnd.pecora-PecoRename	1182965546
+1	German	application/x-vnd.pecora-PecoRename	1398936896
 Modified	FileListView	Column title	Geändert
 Name	FileListView	Column title	Name
 Preview	FileListView	Column title	Vorschau
@@ -7,6 +7,9 @@ Size	FileListView	Column title	Größe
 {0, plural,=0{no items}=1{1 item}other{# items}}	functions		{0, plural,=0{0 Objekte}=1{1 Objekt}other{# Objekte}}
 {0, plural,=0{no renames}=1{1 rename}other{# renames}}	functions		{0, plural,=0{0 Änderungen}=1{1 Änderung}other{# Änderungen}}
 Choose files and directories	MainView		Dateien und Ordner wählen
+Open	MainView		Öffnen
+Open location	MainView		Speicherort öffnen
+Remove	MainView		Entfernen
 Rename	MainView		Umbenennen
 About PecoRename	MainWindow		Über PecoRename
 An error has occurred:\nEither the help file is missing, or an HTML browser can not be found.	MainWindow		Ein Fehler ist aufgetreten:\nEntweder fehlt die Hilfedatei, oder es wurde kein HTML Browser gefunden.
@@ -24,16 +27,16 @@ The volume is read only: files cannot be renamed.	PecoApp		Die Partition ist sch
 Werner Freytag (original author)	PecoApp		Werner Freytag (der ursprüngliche Autor)
 Add file extension	Renamer_Extension		Dateiendung hinzufügen
 lowercase	Renamer_Extension		kleinbuchstaben
-Replace old extension	Renamer_Extension		Alte Endung ersetzen
+Replace old extension	Renamer_Extension		Alte Dateiendung ersetzen
 UPPERCASE	Renamer_Extension		GROSSBUCHSTABEN
-At position:	Renamer_InsertReplace		An Position:
-from the back (right)	Renamer_InsertReplace		von hinten (rechts)
-from the front (left)	Renamer_InsertReplace		von vorne (links)
-Insert	Renamer_InsertReplace		Einfügen
-Insert / replace	Renamer_InsertReplace		Einfügen / überschreiben
-Please select	Renamer_InsertReplace		Bitte wählen
-Replace with	Renamer_InsertReplace		Überschreiben mit
-Text:	Renamer_InsertReplace		Text:
+At position:	Renamer_InsertOverwrite		An Position:
+from the back (right)	Renamer_InsertOverwrite		von hinten (rechts)
+from the front (left)	Renamer_InsertOverwrite		von vorn (links)
+Insert	Renamer_InsertOverwrite		Einfügen
+Insert / overwrite	Renamer_InsertOverwrite		Einfügen / Überschreiben
+Overwrite with	Renamer_InsertOverwrite		Überschreiben mit
+Please select	Renamer_InsertOverwrite		Bitte wählen
+Text:	Renamer_InsertOverwrite		Text:
 Format:	Renamer_Numbering		Format:
 Numbering	Renamer_Numbering		Nummerieren
 Please select	Renamer_Numbering		Bitte wählen
@@ -57,7 +60,7 @@ Sentence case	Renamer_UpperLower		Anfangsbuchstabe groß geschrieben
 Title Case	Renamer_UpperLower		Jedes Wort Groß Geschrieben
 UPPERCASE	Renamer_UpperLower		GROSSBUCHSTABEN
 Uppercase / lowercase	Renamer_UpperLower		Groß- & Kleinschreibung
-{0, plural,=1{A problem was encountered during processing:  One file couldn't be renamed}other{Problems were encountered during processing:  # files couldn't be renamed}}	ReportWindow		{0, plural,=1{Bei der Verarbeitung trat ein Problem auf:  Eine Datei konnte nicht umbenannt werden}other{Bei der Verarbeitung traten Probleme auf:  # Dateien konnten nicht umbenannt werden}}
+{0, plural,=1{A problem was encountered during processing:  One file couldn't be renamed}other{Problems were encountered during processing:  # files couldn't be renamed}}	ReportWindow		{0, plural,=1{Es ist ein Problem aufgetreten:  Eine Datei konnte nicht umbenannt werden}other{Es sind Probleme aufgetreten:  # Dateien konnten nicht umbenannt werden}}
 File already exists	ReportWindow		Datei existiert bereits
 File already exists (as in preview)	ReportWindow		Datei existiert bereits (wie in Vorschau)
 OK	ReportWindow		OK
@@ -65,5 +68,5 @@ Report	ReportWindow		Report
 Unknown error	ReportWindow		Unbekannter Fehler
 Original name	ReportWindow	Column title	Originalname
 Problem	ReportWindow	Column title	Problem
-Targetted name	ReportWindow	Column title	Zielname
+Targeted name	ReportWindow	Column title	Zielname
 PecoRename	System name		PecoRename
