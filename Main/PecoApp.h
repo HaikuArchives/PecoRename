@@ -29,15 +29,15 @@ class PecoApp : public BApplication {
 public:
 					PecoApp();
 
-	virtual bool	QuitRequested();
-	virtual void	MessageReceived(BMessage* msg);
-	virtual void	RefsReceived(BMessage* msg);
-	virtual void	ReadyToRun();
 	virtual	void	AboutRequested();
+	virtual void	MessageReceived(BMessage* msg);
+	virtual bool	QuitRequested();
+	virtual void	ReadyToRun();
+	virtual void	RefsReceived(BMessage* msg);
 
-			bool	NothingToDo();
-			void	New();
 			void	DoIt();
+			void	New();
+			bool	NothingToDo();
 
 	MainWindow*		fWindow;
 	FileListView*	fListView;

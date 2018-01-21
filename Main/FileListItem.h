@@ -27,12 +27,12 @@ class FileListItem : public BRow {
 
 public: 
 					FileListItem(const char* name, int64 size, time_t timer,
-						const entry_ref* ref ); 
+						const entry_ref* ref);
 					~FileListItem();
 
-			void	SetNewName(BString myNewName);
-			void 	SetName(BString name);
 			bool	CompareWith(FileListItem* CompareItem);
+			void 	SetName(BString name);
+			void	SetNewName(BString myNewName);
 
 		BString		fName;
 			char	fMimeType[B_MIME_TYPE_LENGTH];

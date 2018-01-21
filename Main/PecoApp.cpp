@@ -61,33 +61,7 @@ PecoApp::PecoApp()
 	fRenamers[3] = new Renamer_Numbering();
 	fRenamers[4] = new Renamer_Extension();
 	fRenamers[5] = new Renamer_UpperLower();
-};
-
-
-void
-PecoApp::ReadyToRun()
-{
-	BMessage msg;
-	ReadPreferences("main_window", msg);
-
-	BRect rect;
-	if (msg.FindRect("pos", &rect) != B_OK)
-		rect = BRect(20, 40, 640, 460);		// default
-
-	fWindow = new MainWindow(rect);
-	fListView = (FileListView*)fWindow->FindView("fileListView");
-	fStatusBar = (BStatusBar*)fWindow->FindView("statusBar");
-
-	UpdateWindowStatus();
-
-	fFilePanel = new BFilePanel(B_OPEN_PANEL, NULL, NULL,
-		B_FILE_NODE | B_DIRECTORY_NODE);
-	fFilePanel->SetButtonLabel(B_DEFAULT_BUTTON, B_TRANSLATE("Select"));
-	fFilePanel->SetButtonLabel(B_CANCEL_BUTTON, B_TRANSLATE("Cancel"));
-	fFilePanel->Window()->SetTitle(B_TRANSLATE("Select files for renaming"));
-
-	fWindow->Show();
-};
+}
 
 
 void PecoApp::AboutRequested()
@@ -114,13 +88,6 @@ void PecoApp::AboutRequested()
 	about->AddCopyright(2000, "Werner Freytag", extraCopyrights);
 	about->AddAuthors(authors);
 	about->Show();
-}
-
-
-bool
-PecoApp::QuitRequested()
-{
-	return true;
 }
 
 
@@ -192,6 +159,39 @@ PecoApp::MessageReceived(BMessage* msg)
 		default:
 			BApplication::MessageReceived(msg);
 	}
+}
+
+
+bool
+PecoApp::QuitRequested()
+{
+	return true;
+}
+
+
+void
+PecoApp::ReadyToRun()
+{
+	BMessage msg;
+	ReadPreferences("main_window", msg);
+
+	BRect rect;
+	if (msg.FindRect("pos", &rect) != B_OK)
+		rect = BRect(20, 40, 640, 460);		// default
+
+	fWindow = new MainWindow(rect);
+	fListView = (FileListView*)fWindow->FindView("fileListView");
+	fStatusBar = (BStatusBar*)fWindow->FindView("statusBar");
+
+	UpdateWindowStatus();
+
+	fFilePanel = new BFilePanel(B_OPEN_PANEL, NULL, NULL,
+		B_FILE_NODE | B_DIRECTORY_NODE);
+	fFilePanel->SetButtonLabel(B_DEFAULT_BUTTON, B_TRANSLATE("Select"));
+	fFilePanel->SetButtonLabel(B_CANCEL_BUTTON, B_TRANSLATE("Cancel"));
+	fFilePanel->Window()->SetTitle(B_TRANSLATE("Select files for renaming"));
+
+	fWindow->Show();
 }
 
 
@@ -305,38 +305,7 @@ PecoApp::RefsReceived (BMessage* msg)
 }
 
 
-void
-PecoApp::New()
-{	
-	fWindow->Lock();	
-	fListView->Clear();
-	
-	BStringView* pathView = (BStringView*)fWindow->FindView("pathView");
-	pathView->SetText(NULL);
-	
-	fWindow->Unlock();
-	
-	fList->MakeEmpty(); // TODO This can be removed, it's redundant of fListView
-	
-	UpdateWindowStatus();
-}
-
-
-bool
-PecoApp::NothingToDo()
-{
-	FileListItem* ListItem;
-	bool nothing_to_do = true;
-
-	for (int32 i = 0; (ListItem = (FileListItem*)fListView->ItemAt(i))
-			!= NULL; i++)
-		if (ListItem->fNewName.Length() > 0) {
-			nothing_to_do = false;
-			break;
-		}
-
-	return nothing_to_do;
-}
+#pragma mark -- Public Methods --
 
 
 void
@@ -423,4 +392,39 @@ PecoApp::DoIt()
 			reportWindow->Show();
 		}
 	}
+}
+
+
+void
+PecoApp::New()
+{
+	fWindow->Lock();
+	fListView->Clear();
+
+	BStringView* pathView = (BStringView*)fWindow->FindView("pathView");
+	pathView->SetText(NULL);
+
+	fWindow->Unlock();
+
+	// TODO This can be removed, it's redundant of fListView
+	fList->MakeEmpty();
+
+	UpdateWindowStatus();
+}
+
+
+bool
+PecoApp::NothingToDo()
+{
+	FileListItem* ListItem;
+	bool nothing_to_do = true;
+
+	for (int32 i = 0; (ListItem = (FileListItem*)fListView->ItemAt(i))
+			!= NULL; i++)
+		if (ListItem->fNewName.Length() > 0) {
+			nothing_to_do = false;
+			break;
+		}
+
+	return nothing_to_do;
 }

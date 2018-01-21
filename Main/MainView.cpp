@@ -140,6 +140,17 @@ MainView::MainView()
 
 
 void
+MainView::AttachedToWindow()
+{
+	int32 num = fRenamers->CountItems();
+	for (int32 i = 0; i < num; i++) {
+		fRenamers->ItemAt(i)->SetTarget(this);
+	}
+	fFileView->SetTarget(this);
+}
+
+
+void
 MainView::MessageReceived(BMessage* message)
 {
 	switch (message->what) {
@@ -198,15 +209,7 @@ MainView::MessageReceived(BMessage* message)
 }
 
 
-void
-MainView::AttachedToWindow()
-{
-	int32 num = fRenamers->CountItems();
-	for (int32 i = 0; i < num; i++) {
-		fRenamers->ItemAt(i)->SetTarget(this);
-	}
-	fFileView->SetTarget(this);
-}
+#pragma mark -- Private Methods --
 
 
 void

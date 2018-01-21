@@ -24,12 +24,12 @@ public:
 					Renamer_Remove();
 			void	RenameList(BList* FileList);
 
-			void	DetachedFromWindow();
 			void	AttachedToWindow();
+			void	DetachedFromWindow();
 
 private:
-	BSpinner*	fPosition1;
-	BSpinner*	fPosition2;
+		BSpinner*	fPosition1;
+		BSpinner*	fPosition2;
 	BMenuField*		fDirection1;
 	BMenuField*		fDirection2;
 };

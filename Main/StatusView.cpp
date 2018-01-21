@@ -43,32 +43,6 @@ StatusView::AttachedToWindow()
 
 
 void
-StatusView::GetPreferredSize(float* _width, float* _height)
-{
-	_ValidatePreferredSize();
-
-	if (_width)
-		*_width = fPreferredSize.width;
-
-	if (_height)
-		*_height = fPreferredSize.height;
-}
-
-
-void
-StatusView::ResizeToPreferred()
-{
-	float width, height;
-	GetPreferredSize(&width, &height);
-
-	if (Bounds().Width() > width)
-		width = Bounds().Width();
-
-	BView::ResizeTo(width, height);
-}
-
-
-void
 StatusView::Draw(BRect updateRect)
 {
 	if (fPreferredSize.width <= 0)
@@ -119,6 +93,32 @@ StatusView::Draw(BRect updateRect)
 
 
 void
+StatusView::GetPreferredSize(float* _width, float* _height)
+{
+	_ValidatePreferredSize();
+
+	if (_width)
+		*_width = fPreferredSize.width;
+
+	if (_height)
+		*_height = fPreferredSize.height;
+}
+
+
+void
+StatusView::ResizeToPreferred()
+{
+	float width, height;
+	GetPreferredSize(&width, &height);
+
+	if (Bounds().Width() > width)
+		width = Bounds().Width();
+
+	BView::ResizeTo(width, height);
+}
+
+
+void
 StatusView::MouseDown(BPoint where)
 {
 }
@@ -128,7 +128,6 @@ void
 StatusView::Update(const BString& text,	const BString& pages,
 	const BString& imageType)
 {
-
 	_SetItemsNumberText(text);
 	_SetRenamesNumberText(pages);
 	_SetDuplicatesNumberText(imageType);
@@ -136,6 +135,9 @@ StatusView::Update(const BString& text,	const BString& pages,
 	_ValidatePreferredSize();
 	Invalidate();
 }
+
+
+#pragma mark -- Private Methods --
 
 
 void
@@ -146,16 +148,16 @@ StatusView::_SetItemsNumberText(const BString& numItems)
 
 
 void
-StatusView::_SetRenamesNumberText(const BString& numItems)
+StatusView::_SetDuplicatesNumberText(const BString& numItems)
 {
-	fCellText[kItemsRenameCell] = numItems;
+	fCellText[kItemsDuplicateItemCell] = numItems;
 }
 
 
 void
-StatusView::_SetDuplicatesNumberText(const BString& numItems)
+StatusView::_SetRenamesNumberText(const BString& numItems)
 {
-	fCellText[kItemsDuplicateItemCell] = numItems;
+	fCellText[kItemsRenameCell] = numItems;
 }
 
 

@@ -10,8 +10,7 @@
  * 		Werner Freytag <freytag@gmx.de>
  */
 
-
-#include <strstream>
+#include <stdio.h>
 
 #include <Alert.h>
 #include <Beep.h>
@@ -93,15 +92,13 @@ Renamer_Numbering::RenameList(BList* FileList)
 	FileListItem* ListItem;
 	BString	Nummer;
 		
-	for (int64 i = 0; i < fNumberOfItems; i++ ) {
+	for (int64 i = 0; i < fNumberOfItems; i++) {
 		ListItem = (FileListItem*)FileList->ItemAt(i);
 
-		std::strstream oStream;
 		BString NumberString;
-		
-		oStream << i + StartNumber;
-		oStream.put(0);
-		NumberString = oStream.str();
+		char start[B_PATH_NAME_LENGTH + 1];
+		snprintf(start, sizeof(start), "%" B_PRId32, StartNumber + i);
+		NumberString.Append(start);
 
 		if (NumberString.Length() < MinDigits)
 			NumberString.Prepend(BString("000").Truncate(MinDigits
@@ -110,7 +107,7 @@ Renamer_Numbering::RenameList(BList* FileList)
 		BString ResultString = TextBefore;
 		ResultString.Append(NumberString);
 		ResultString.Append(TextBehind);
-		ListItem->SetNewName( ResultString );
+		ListItem->SetNewName(ResultString);
 	}
 }
 

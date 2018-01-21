@@ -11,8 +11,6 @@
  */
 
 
-#include <strstream>
-
 #include <Alert.h>
 #include <Beep.h>
 #include <Catalog.h>
@@ -46,7 +44,7 @@ Renamer_InsertOverwrite::Renamer_InsertOverwrite()
 
 	myMenu->ItemAt(0)->SetMarked(true);
 
-	fInsertOrOverwrite = new BMenuField(NULL,	myMenu);
+	fInsertOrOverwrite = new BMenuField(NULL, myMenu);
 
 	fText = new BTextControl(NULL, B_TRANSLATE("Text:"), NULL,
 		new BMessage(MSG_RENAME_SETTINGS));
@@ -98,7 +96,7 @@ Renamer_InsertOverwrite::RenameList(BList* FileList)
 
 	BString Text = fText->Text();
 	UTF_LengthOfInsert = LengthOfInsert = Text.Length();
-	char	*tempInsertStr = new char[UTF_LengthOfInsert + 1];
+	char* tempInsertStr = new char[UTF_LengthOfInsert + 1];
 
 	convert_from_utf8(B_ISO1_CONVERSION, Text.String(), &UTF_LengthOfInsert,
 		tempInsertStr, &LengthOfInsert, 0);
@@ -146,15 +144,15 @@ Renamer_InsertOverwrite::RenameList(BList* FileList)
 
 		LengthOfFilename = ResultString.Length();
 		UTF_LengthOfFilename = LengthOfFilename * 2;
-		char *utf_String = new char[UTF_LengthOfFilename + 1];
+		char* utf_String = new char[UTF_LengthOfFilename + 1];
 		
 		convert_to_utf8(B_ISO1_CONVERSION, ResultString.String(),
 			&LengthOfFilename, utf_String, &UTF_LengthOfFilename, 0);
 		utf_String[UTF_LengthOfFilename] = 0;
 
-		ListItem->SetNewName(utf_String );
+		ListItem->SetNewName(utf_String);
 	}
-};
+}
 
 
 void

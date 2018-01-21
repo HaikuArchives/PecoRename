@@ -24,10 +24,9 @@ public:
 
 	bool	QuitRequested();
 	void	MessageReceived(BMessage* msg);
-	void 	RefsReceived(BMessage* msg);
 
 private:
-	void	Help();
+	void	_Help();
 };
 
 #endif // MAINWINDOW_H

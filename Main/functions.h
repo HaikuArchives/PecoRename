@@ -30,7 +30,7 @@
 void	MakeList();
 void	UpdateWindowStatus();
 
-void 	UpdatePreferences(const char* identifier, BMessage& msg );
-void 	ReadPreferences(const char* identifier, BMessage& msg );
+void 	UpdatePreferences(const char* identifier, BMessage& msg);
+void 	ReadPreferences(const char* identifier, BMessage& msg);
 
 #endif // FUNCTIONS_H

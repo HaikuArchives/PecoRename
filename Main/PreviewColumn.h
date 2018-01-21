@@ -14,8 +14,8 @@ class PreviewField : public BStringField {
 public:
 			PreviewField(const char* string);
 
-	void 	SetError(bool error);
 	bool	Error() const;
+	void 	SetError(bool error);
 
 private:
 	bool 	fError;
@@ -28,8 +28,8 @@ public:
 						float minWidth, float maxWidth, uint32 truncate,
 						alignment align = B_ALIGN_LEFT);
 
-	virtual	void	DrawField(BField* field, BRect rect, BView* parent);
 	virtual	bool	AcceptsField(const BField* field) const;
+	virtual	void	DrawField(BField* field, BRect rect, BView* parent);
 };
 
 #endif	// PREVIEW_COLUMN_H

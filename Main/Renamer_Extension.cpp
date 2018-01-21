@@ -75,13 +75,13 @@ Renamer_Extension::RenameList(BList* FileList)
 	BString Extension, NewName;
 	int	OldExtStart;
 	
-	for (int32 i = 0; i < fNumberOfItems; i++ ) {
+	for (int32 i = 0; i < fNumberOfItems; i++) {
 		ListItem = (FileListItem*)FileList->ItemAt(i);
 
 		if (BMimeType((char*)&ListItem->fMimeType).GetFileExtensions(&msg)
-				== B_OK )
+				== B_OK) {
 			for (int32 j = 0; (msg.FindString("extensions", j, &ExtensionString)
-					== B_OK); j++ )
+					== B_OK); j++) {
 				if (strlen(ExtensionString) < MAX_EXTENSION_LENGTH) {
 					Extension = ExtensionString; Extension.Prepend(".");
 					if (upperlower)
@@ -98,6 +98,8 @@ Renamer_Extension::RenameList(BList* FileList)
 						ListItem->SetNewName(NewName.Append(Extension));
 					break;
 				}
+			}
+		}
 	}
 };
 

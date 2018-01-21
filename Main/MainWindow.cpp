@@ -70,11 +70,41 @@ MainWindow::MainWindow(BRect frame)
 	BLayoutBuilder::Group<>(this, B_VERTICAL, 0)
 		.Add(MenuBar)
 		.Add(mainView);
+}
+
+
+bool
+MainWindow::QuitRequested()
+{
+	BMessage msg;
+	msg.AddRect("pos", Frame());
+	UpdatePreferences("main_window", msg);
+
+	return be_app->PostMessage(B_QUIT_REQUESTED);
 };
 
 
 void
-MainWindow::Help()
+MainWindow::MessageReceived (BMessage* msg)
+{
+	switch (msg->what) {
+		case MSG_MENU_DOCU:
+			_Help();
+			break;
+		case B_COLORS_UPDATED:
+			break;
+
+		default:
+			be_app->PostMessage(msg);
+	}
+}
+
+
+#pragma mark -- Private Methods --
+
+
+void
+MainWindow::_Help()
 {
 	app_info myAppInfo;
 	be_app->GetAppInfo(&myAppInfo);
@@ -103,31 +133,4 @@ MainWindow::Help()
 	Command.Append(" file://").Append(HelpFilePath.Path()).Append(" &");
 
 	system(Command.String());
-};
-
-
-bool
-MainWindow::QuitRequested()
-{
-	BMessage msg;
-	msg.AddRect("pos", Frame());
-	UpdatePreferences("main_window", msg);
-
-	return be_app->PostMessage(B_QUIT_REQUESTED);
-};
-
-
-void
-MainWindow::MessageReceived (BMessage* msg)
-{
-	switch (msg->what) {
-		case MSG_MENU_DOCU:
-			Help();
-			break;
-		case B_COLORS_UPDATED:
-			break;
-
-		default:
-			be_app->PostMessage(msg);
-	}
 }

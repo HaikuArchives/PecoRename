@@ -60,6 +60,32 @@ FileListItem::~FileListItem()
 }
 
 
+#pragma mark -- Public Methods --
+
+
+bool
+FileListItem::CompareWith(FileListItem* CompareItem)
+{
+	fErrorStatus = 0;
+	if (CompareItem == this)
+		return false;
+	if (fNewName == "")
+		return true;
+
+	BString* CompareString;
+	if (CompareItem->fNewName != "")
+		CompareString = &CompareItem->fNewName;
+	else CompareString = &CompareItem->fName;
+
+	if (fNewName == *CompareString) {
+		fErrorStatus = 1;
+		CompareItem->fErrorStatus = 1;
+		return true;
+	} else
+		return false;
+}
+
+
 void
 FileListItem::SetNewName(BString myNewName)
 {
@@ -86,26 +112,3 @@ FileListItem::SetError(char error)
 	((PreviewField*)GetField(4))->SetError(error > 0);
 	fErrorStatus = error;
 }
-
-
-bool
-FileListItem::CompareWith(FileListItem* CompareItem)
-{
-	fErrorStatus = 0;
-	if (CompareItem == this)
-		return false;
-	if (fNewName == "")
-		return true;
-	
-	BString* CompareString;
-	if (CompareItem->fNewName != "")
-		CompareString = &CompareItem->fNewName;
-	else CompareString = &CompareItem->fName;
-	
-	if (fNewName == *CompareString) {
-		fErrorStatus = 1;
-		CompareItem->fErrorStatus = 1;
-		return true;
-	} else
-		return false;
-};

@@ -9,6 +9,8 @@
 
 #include "PreviewColumn.h"
 
+// #pragma mark - PreviewField
+
 
 PreviewField::PreviewField(const char* string)
 	:
@@ -18,17 +20,17 @@ PreviewField::PreviewField(const char* string)
 }
 
 
-void
-PreviewField::SetError(bool error)
-{
-	fError = error;
-}
-
-
 bool
 PreviewField::Error() const
 {
 	return fError;
+}
+
+
+void
+PreviewField::SetError(bool error)
+{
+	fError = error;
 }
 
 
@@ -40,6 +42,13 @@ PreviewColumn::PreviewColumn(const char* title, float width, float minWidth,
 	:
 	BStringColumn(title, width, minWidth, maxWidth, align)
 {
+}
+
+
+bool
+PreviewColumn::AcceptsField(const BField* field) const
+{
+	return static_cast<bool>(dynamic_cast<const PreviewField*>(field));
 }
 
 
@@ -56,11 +65,4 @@ PreviewColumn::DrawField(BField* _field, BRect rect, BView* parent)
 
 	BStringColumn::DrawField(_field, rect, parent);
 	parent->SetHighColor(color);
-}
-
-
-bool
-PreviewColumn::AcceptsField(const BField* field) const
-{
-	return static_cast<bool>(dynamic_cast<const PreviewField*>(field));
 }

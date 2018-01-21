@@ -12,8 +12,6 @@
  */
 
 
-#include <strstream>
-
 #include <Alert.h>
 #include <Beep.h>
 #include <Catalog.h>
@@ -157,22 +155,6 @@ Renamer_Remove::RenameList(BList* FileList)
 
 
 void
-Renamer_Remove::DetachedFromWindow()
-{
-	BMessage msg;
-	msg.AddInt32("pos1", fPosition1->Value());
-	msg.AddInt32("pos2", fPosition2->Value());
-
-	BMenu* menu = fDirection1->Menu();
-	msg.AddBool("direction1", bool(menu->IndexOf(menu->FindMarked())));
-	menu = fDirection2->Menu();
-	msg.AddBool("direction2", bool(menu->IndexOf(menu->FindMarked())));
-
-	UpdatePreferences("ren_remove", msg);
-}
-
-
-void
 Renamer_Remove::AttachedToWindow()
 {
 	BMessage msg;
@@ -195,4 +177,20 @@ Renamer_Remove::AttachedToWindow()
 		for (int i = 0; i < 2; ++i)
 			menu->ItemAt(i)->SetMarked(i == (int)boolean);
 	}
+}
+
+
+void
+Renamer_Remove::DetachedFromWindow()
+{
+	BMessage msg;
+	msg.AddInt32("pos1", fPosition1->Value());
+	msg.AddInt32("pos2", fPosition2->Value());
+
+	BMenu* menu = fDirection1->Menu();
+	msg.AddBool("direction1", bool(menu->IndexOf(menu->FindMarked())));
+	menu = fDirection2->Menu();
+	msg.AddBool("direction2", bool(menu->IndexOf(menu->FindMarked())));
+
+	UpdatePreferences("ren_remove", msg);
 }

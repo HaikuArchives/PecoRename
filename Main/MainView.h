@@ -26,8 +26,8 @@ class MainView : public BView {
 public:
 					MainView();
 
-			void	MessageReceived(BMessage* message);
 			void	AttachedToWindow();
+			void	MessageReceived(BMessage* message);
 
 private:
 			void	_ShowPopUpMenu(BPoint screen);
