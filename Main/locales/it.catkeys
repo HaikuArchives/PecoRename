@@ -7,15 +7,15 @@ Size	FileListView	Column title	Dimensione
 {0, plural,=0{no items}=1{1 item}other{# items}}	functions		{0, plural,=0{nessun elemento}=1{1 elemento}other{# elementi}}
 {0, plural,=0{no renames}=1{1 rename}other{# renames}}	functions		{0, plural,=0{nessun  rinominato}=1{1 rinaminato}other{# rinominati}}
 Choose files and folders	MainView		Scegli file e cartelle
-Open	MainView		Open
-Open location	MainView		Open location
-Remove	MainView		Remove
+Open	MainView		Apri
+Open location	MainView		Apri posizione
+Remove	MainView		Rimuovi
 Rename	MainView		Rinomina
 About PecoRename	MainWindow		Informazioni su PecoRename
 File	MainWindow		File
 Quit	MainWindow		Esci
 Select files…	MainWindow		Seleziona file…
-Show documentation	MainWindow		Show documentation
+Show documentation	MainWindow		Mostra documentazione
 ReadMe.html	MainWindow	Path to the help file. Only change if a translated file is provided.	ReadMe.html
 Cancel	PecoApp		Annulla
 Files from different folders cannot be renamed.\n\nOnly the files of the first found folder will be imported!	PecoApp		File provenienti da cartelle differenti non possono essere rinominati.\n\nSolo i file nella prima cartella trovata verranno importati!
@@ -32,8 +32,8 @@ At position:	Renamer_InsertOverwrite		Nella posizione:
 from the back (right)	Renamer_InsertOverwrite		dalla fine (destra)
 from the front (left)	Renamer_InsertOverwrite		dall'inizio (sinistra)
 Insert	Renamer_InsertOverwrite		Inserisci
-Insert / overwrite	Renamer_InsertOverwrite		Insert / overwrite
-Overwrite with	Renamer_InsertOverwrite		Overwrite with
+Insert / overwrite	Renamer_InsertOverwrite		Inserisci / sovrascrivi
+Overwrite with	Renamer_InsertOverwrite		Sovrascrivi con
 Please select	Renamer_InsertOverwrite		Seleziona
 Text:	Renamer_InsertOverwrite		Testo:
 Format:	Renamer_Numbering		Formato:
