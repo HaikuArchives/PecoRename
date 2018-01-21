@@ -26,7 +26,7 @@ public:
 	void	MessageReceived(BMessage* msg);
 
 private:
-	void	_Help();
+	void	_ShowDocumentation();
 };
 
 #endif // MAINWINDOW_H

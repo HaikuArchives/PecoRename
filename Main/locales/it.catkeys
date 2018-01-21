@@ -1,4 +1,4 @@
-1	Italian	application/x-vnd.pecora-PecoRename	3894030117
+1	Italian	application/x-vnd.pecora-PecoRename	4063603093
 Modified	FileListView	Column title	Modificato
 Name	FileListView	Column title	Nome
 Preview	FileListView	Column title	Anteprima
@@ -12,12 +12,11 @@ Open location	MainView		Open location
 Remove	MainView		Remove
 Rename	MainView		Rinomina
 About PecoRename	MainWindow		Informazioni su PecoRename
-An error has occurred:\nEither the help file is missing, or an HTML browser can not be found.	MainWindow		Si è verificato un errore:\nNon riesco a trovare il file della guida, oppure non posso trovare un browser HTML.
 File	MainWindow		File
-OK	MainWindow		OK
 Quit	MainWindow		Esci
 Select files…	MainWindow		Seleziona file…
-documentation/index.html	MainWindow	Path to the help file. Only change if a translated file is provided.	documentation/index.html
+Show documentation	MainWindow		Show documentation
+ReadMe.html	MainWindow	Path to the help file. Only change if a translated file is provided.	ReadMe.html
 Cancel	PecoApp		Annulla
 Files from different folders cannot be renamed.\n\nOnly the files of the first found folder will be imported!	PecoApp		File provenienti da cartelle differenti non possono essere rinominati.\n\nSolo i file nella prima cartella trovata verranno importati!
 OK	PecoApp		OK
