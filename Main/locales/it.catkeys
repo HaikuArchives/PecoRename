@@ -1,4 +1,4 @@
-1	Italian	application/x-vnd.pecora-PecoRename	608970634
+1	Italian	application/x-vnd.pecora-PecoRename	3894030117
 Modified	FileListView	Column title	Modificato
 Name	FileListView	Column title	Nome
 Preview	FileListView	Column title	Anteprima
@@ -68,5 +68,5 @@ Report	ReportWindow		Rapporto
 Unknown error	ReportWindow		Errore sconosciuto
 Original name	ReportWindow	Column title	Nome originale
 Problem	ReportWindow	Column title	Problema
-Targeted name	ReportWindow	Column title	Nome scelto
+Target name	ReportWindow	Column title	Nome scelto
 PecoRename	System name		PecoRename
