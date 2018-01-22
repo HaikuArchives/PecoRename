@@ -6,9 +6,11 @@
  *		Janus
  */
 
+
 /*
 	Based on Tracker Modified Column
 */
+
 
 #include <DateFormat.h>
 #include <DateTimeFormat.h>
@@ -20,18 +22,19 @@
 #define kTEXT_MARGIN	8
 
 
-DateColumn::DateColumn	(const char* title,
-								 float width,
-								 float minWidth,
-								 float maxWidth,
-								 alignment align ):
-		BDateColumn(title,width,minWidth,maxWidth,align){}
+DateColumn::DateColumn	(const char* title, float width, float minWidth,
+	float maxWidth, alignment align)
+	:
+	BDateColumn(title, width, minWidth, maxWidth, align)
+{
+}
 								
 void
 DateColumn::DrawField(BField* _field, BRect rect, BView* parent)
 {
-	time_t value=(int)((BDateField*)_field)->UnixTime();
-	if(value<=0) return;
+	time_t value = (int)((BDateField*)_field)->UnixTime();
+	if (value <= 0)
+		return;
 
 	float width = rect.Width() - (2 * kTEXT_MARGIN);
 	BDateField* field = (BDateField*)_field;
