@@ -92,9 +92,9 @@ MainView::MainView()
 	top->SetLabel(compoundTitle->View());
 
 	BMessage prefs;
-	ReadPreferences("renamer", prefs);
-	int8 activeRenamer;
-	if (prefs.FindInt8("renamer", &activeRenamer) != B_OK)
+	ReadPreferences("renamer_last", prefs);
+	int32 activeRenamer;
+	if (prefs.FindInt32("index", &activeRenamer) != B_OK)
 		activeRenamer = 0;
 
 	fRenamers = new BPopUpMenu("");
@@ -136,6 +136,16 @@ MainView::MainView()
 			.Add(statusBar, 100)
 			.AddGlue()
 			.Add(RenameButton, 0); // TODO how does weight work?
+}
+
+
+MainView::~MainView()
+{
+	int32 activeRenamer = fCards->VisibleIndex();
+	BMessage msg;
+	msg.AddInt32("index", activeRenamer);
+
+	UpdatePreferences("renamer_last", msg);
 }
 
 
