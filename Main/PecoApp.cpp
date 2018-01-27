@@ -390,6 +390,7 @@ PecoApp::DoIt()
 			
 			ReportWindow* reportWindow = new ReportWindow(rect, fList);
 			reportWindow->Show();
+			UpdateWindowStatus();
 		}
 	}
 }
