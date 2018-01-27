@@ -25,6 +25,7 @@ class BTextView;
 class MainView : public BView {
 public:
 					MainView();
+					~MainView();
 
 			void	AttachedToWindow();
 			void	MessageReceived(BMessage* message);
