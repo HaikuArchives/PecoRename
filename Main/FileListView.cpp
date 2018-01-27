@@ -22,8 +22,8 @@
 #include <Window.h>
 
 #include "constants.h"
+#include "DateColumn.h"
 #include "functions.h"
-
 #include "FileListView.h"
 #include "FileListItem.h"
 #include "MainWindow.h"
@@ -43,7 +43,7 @@ FileListView::FileListView()
 		"Name", "Column title"), WIDTH_NAME, 10, 600, 0), i++);
 	AddColumn(new BSizeColumn(B_TRANSLATE_COMMENT(
 		"Size", "Column title"), WIDTH_SIZE, 10, 600), i++);
-	AddColumn(new BDateColumn(B_TRANSLATE_COMMENT(
+	AddColumn(new DateColumn(B_TRANSLATE_COMMENT(
 		"Modified", "Column title"), WIDTH_DATE, 10, 600), i++);
 	AddColumn(new PreviewColumn(B_TRANSLATE_COMMENT(
 		"Preview", "Column title"), WIDTH_PREVIEW, 10, 600, 0), i++);
