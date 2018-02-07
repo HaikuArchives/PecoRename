@@ -110,7 +110,7 @@ MainView::MainView()
 		fCards->AddView(((PecoApp* )be_app)->fRenamers[i]);
 	}
 
-	((PecoApp* )be_app)->fRenameMode = 0;
+	((PecoApp* )be_app)->fRenameMode = activeRenamer;
 	fCards->SetVisibleItem((int32)activeRenamer);
 
 	BMenuField* menuField = new BMenuField("selectMode", "", fRenamers);
