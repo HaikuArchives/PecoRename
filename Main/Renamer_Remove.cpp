@@ -21,6 +21,8 @@
 #include <TextControl.h>
 #include <UTF8.h>
 
+#include <algorithm>
+
 #include "constants.h"
 #include "functions.h"
 
@@ -133,8 +135,8 @@ Renamer_Remove::RenameList(BList* FileList)
 		}
 
 		if (StartPart2 < EndPart1)
-			StartPart2 = EndPart1;
-		
+			std::swap(StartPart2, EndPart1);
+
 		ResultString.SetTo(tempStr, EndPart1);
 
 		BString(tempStr).CopyInto(Part2, StartPart2,
