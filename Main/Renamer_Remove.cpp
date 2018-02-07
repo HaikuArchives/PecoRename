@@ -109,9 +109,6 @@ Renamer_Remove::RenameList(BList* FileList)
 		if (LengthOfFilename > positionMaxValue)
 			positionMaxValue = LengthOfFilename;
 
-		fPosition1->SetMaxValue(positionMaxValue);
-		fPosition2->SetMaxValue(positionMaxValue);
-
 		char* tempStr = new char[UTF_LengthOfFilename + 1];
 
 		convert_from_utf8(B_ISO1_CONVERSION, ListItem->fName.String(),
@@ -153,6 +150,8 @@ Renamer_Remove::RenameList(BList* FileList)
 
 		ListItem->SetNewName(utf_String);
 	}
+	fPosition1->SetMaxValue(positionMaxValue);
+	fPosition2->SetMaxValue(positionMaxValue);
 }
 
 
