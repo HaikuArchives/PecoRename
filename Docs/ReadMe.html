@@ -53,36 +53,75 @@ h3 {
 	border-bottom: none;
 	margin-bottom: 0px;
 }
-.key {				/* Shortcut (separate with &#160; */
+tt {
+	background-color: #e2e2e2;
+	font-size: 1.0em;
+	font-family: monospace;
+}
+pre {
+	border-color: #0c3762;
+	border-style: dotted;
+	border-width: thin;
+	margin: 0em;
+	padding: 1.5em;
+	background-color: #f0f0f0;
+}
+pre.terminal {			/* Terminal output*/
+	border-color: #ffb11f;
+	border-style: dotted;
+	border-width: thin;
+	margin: 0em;
+	padding: 1.5em;
+	background-color: #3a3a3a;
+	color: #ffb11f;
+}
+
+.app {				/* GUI application name */
+	font-size: 1.0em;
+	font-family: serif;
+	font-style: italic;
+	color: #5e1c1c;
+}
+.button {			/* Button */
 	-webkit-border-radius: 3px;
 	-khtml-border-radius: 3px;
 	-moz-border-radius: 3px;
 	border-radius: 3px;
-	border-color: #c7c7c7;
-	border-style: solid;
-	border-width: 1px;
+	border: 1px solid #c7c7c7;
+	border-bottom: 1px solid #aaa;
+	border-right: 1px solid #aaa;
+	padding: 1px 15px 1px 15px;
+	background-color: #e8e8e8;
+	font-size: 0.8em;
+	margin: 0 3px 0 3px;
+}
+.cli {				/* Shell command or file */
+	background-color: #e8e8e8;
+	font-size: 0.9em;
+	font-family: monospace;
+}
+.key {				/* Shortcut (separate with &nbsp; */
+	-webkit-border-radius: 4px;
+	-khtml-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	border: 1px solid #c7c7c7;
 	padding: 0px 2px 0px 2px;
 	background-color: #e8e8e8;
-    font-family: sans;
+	font-family: serif;
 	font-variant: small-caps;
-	font-size: 1em;
+	font-size: 0.8em;
 }
 .menu {				/* Menu */
-    font-size: 1.0em;
-    font-family: serif;
-    font-style: italic;
+	font-size: 1.0em;
+	font-family: serif;
+	font-style: italic;
 	color: #24225e;
 }
-.button {			/* Button */
-    font-size: 1.0em;
-    font-family: serif;
-    font-style: italic;
-	color: #33583c;
-}
 .path {				/* File path */
-    background-color: #e8e8e8;
-    font-size: 0.9em;
-    font-family: monospace;
+	background-color: #e8e8e8;
+	font-size: 0.9em;
+	font-family: monospace;
 }
 /* Rounded corner boxes */
 /* Common declarations */
@@ -177,7 +216,7 @@ for <a href="http://www.haiku-os.org">Haiku</a></p>
 
 <p>At the bottom left of the file list is a status area that shows the total number of "<i>items</i>" in the list, how many of them fit the pattern ("<i>renames</i>"), and only when applicable, the number of conflicting renames ("<i>duplicates</i>"), see "Conflicting Renames" below".</p>
 
-<div class="box-warning">The <span class="button">Rename</span> button will immediately start renaming <b>ALL files in the list</b>!<br />
+<div class="box-warning">Clicking <span class="button">Rename</span> will immediately start renaming <b>ALL files in the list</b>!<br />
 If you decide that some of them should not be renamed, you have to remove them from the list first. Either by right-clicking and choosing <span class="menu">Remove</span> or selecting a file and pressing <span class="key">DEL</span>.
 </div>
 
@@ -227,7 +266,7 @@ There may already exist files with the same names as the targeted new file names
 <noscript><b>Your browser doesn't support JavaScript, or it's disabled.</b><br />
 You won't be able to click on the screenshot to see these examples:<br />
 <a href="./images/en/renamer_insert-overwrite-1.png">Insert</a> ‒ 
-<a href="./images/en/renamer_insert-overwrite-2.png">Replace</a> ‒ 
+<a href="./images/en/renamer_insert-overwrite-2.png">Overwrite</a> ‒
 <a href="./images/en/renamer_remove.png">Remove</a> ‒ 
 <a href="./images/en/renamer_numbering.png">Numbering</a> ‒ 
 <a href="./images/en/renamer_extension.png">Add&nbsp;file&nbsp;extension</a> ‒ 
@@ -245,7 +284,7 @@ You won't be able to click on the screenshot to see these examples:<br />
 <p>If you are not sure if Haiku has already recognized a file, you can do this in Tracker: Right-click the file and choose <span class="menu">Identify</span>. This only works on BFS formatted devices.</p></li>
 <li><p><i>There must be an extension set for the file's MIME type</i></p>
 <p>You can set and adjust the file extensions in Haiku's FileTypes preferences.<br />
-PecoRename always uses the first extension found. Because of this, you may get a non-desired extension like "<tt>.jpeg</tt>" instead of "<tt>.jpg"</tt>, or "<tt>.mp2</tt>" instead of "<tt>.mp3</tt>" until you change the order.</p></li>
+PecoRename always uses the first extension found. Because of this, you may get a non-desired extension like <tt>.jpeg</tt> instead of <tt>.jpg</tt>, or <tt>.mp2</tt> instead of <tt>.mp3</tt> until you change the order.</p></li>
 </ol>
 
 
@@ -272,7 +311,7 @@ It let's you choose different modes of selection, like starts/ends/contains, wil
 <a href="#"><img src="./images/up.png" style="border:none;float:right" alt="index" /></a>
 <a id="bugs_feedback" name="bugs_feedback">Bugreports &amp; Feedback</a></h2>
 <p>Please use PecoRename's <a href="https://github.com/HaikuArchives/PecoRename/issues">issue tracker</a> at GitHub if you experience unusual difficulties.<br />
-Also create enhancement tickets there if you'd like to provide more localizations.</p>
+If you'd like to contribute translations, please do so by logging into the <a href="https://i18n.kacperkasper.pl">Polyglot</a> site with your GitHub account.</p>
 
 <h2>
 <a href="#"><img src="./images/up.png" style="border:none;float:right" alt="index" /></a>
@@ -284,19 +323,30 @@ Thanks to everyone contributing code, translations and feedback.</p>
 <a href="#"><img src="./images/up.png" style="border:none;float:right" alt="index" /></a>
 <a id="history" name="history">History</a></h2>
 
-<p><b>1.1</b> - <i>30-12-2016:</i></p>
+<p><b>2.0</b> - <i>2018-03-18:</i></p>
 <ul>
-<li></li>
+<li>Checking for and marking renamings that would create duplicates</li>
+<li>Many small improvements to the GUI</li>
+<li>Added status view</li>
+<li>Added context menu to the file list</li>
+<li>Added documentation</li>
+<li>Localization</li>
+<li>Save/restore state of window, columns, last used renamer and parameters</li>
+<li>"Upper/lowercase" renamer: fix UTF8 usage, add "Sentence case" and "Title case"</li>
+<li>"Remove" renamer: now works with all possible parameter settings</li>
+<li>Remove the useless script file panel</li>
 </ul>
 
-<p><b>1.0</b> - <i>28-11-2016:</i></p>
+<p><b>1.5</b> - <i>2016-03-15:</i></p>
 <ul>
-<li></li>
+<li>Use a layout-aware, sortable file list</li>
+<li>Added vector icon</li>
+<li>No more limit on the number of input characters</li>
 </ul>
 
-<p><b>0.9</b> - <i>30-06-2015:</i></p>
+<p><b>0.9</b> - <i>BeOS era:</i></p>
 <ul>
-<li>Initial release.</li>
+<li>Historic release.</li>
 </ul>
 </body>
 </html>
