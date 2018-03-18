@@ -1,0 +1,71 @@
+1	Swedish	application/x-vnd.pecora-PecoRename	4063603093
+Modified	FileListView	Column title	Modifierad
+Name	FileListView	Column title	Namn
+Preview	FileListView	Column title	Förhandsvisning
+Size	FileListView	Column title	Storlek
+{0, plural,=0{no duplicates}=1{1 duplicate}other{# duplicates}}	functions		{0, plural,=0{inga dubbletter}=1{1 dubblett}other{# dubbletter}}
+{0, plural,=0{no items}=1{1 item}other{# items}}	functions		{0, plural,=0{inga poster}=1{1 post}other{# poster}}
+{0, plural,=0{no renames}=1{1 rename}other{# renames}}	functions		{0, plural,=0{inga namnändringar}=1{1 namnändring}other{# namnändringar}}
+Choose files and folders	MainView		Välj filer och mappar
+Open	MainView		Öppna
+Open location	MainView		Öppna plats
+Remove	MainView		Ta bort
+Rename	MainView		Ändra namn
+About PecoRename	MainWindow		Om PecoRename
+File	MainWindow		Arkiv
+Quit	MainWindow		Avsluta
+Select files…	MainWindow		Välj filer…
+Show documentation	MainWindow		Visa dokumentation
+ReadMe.html	MainWindow	Path to the help file. Only change if a translated file is provided.	ReadMe.html
+Cancel	PecoApp		Avbryt
+Files from different folders cannot be renamed.\n\nOnly the files of the first found folder will be imported!	PecoApp		Det går inte att ändra namn på filer från olika mappar.\n\nBara filerna i den först hittade mappen kommer bli importerade!
+OK	PecoApp		OK
+Select	PecoApp		Välj
+Select files for renaming	PecoApp		Välj filer för namnändring
+The volume is read only: files cannot be renamed.	PecoApp		Volymen är satt till endast läsning: filer kan inte byta namn.
+Werner Freytag (original author)	PecoApp		Werner Freytag (den ursprungliga upphovsmannen)
+Add file extension	Renamer_Extension		Lägg till filändelse
+lowercase	Renamer_Extension		gemener
+Replace old extension	Renamer_Extension		Ersätt äldre filändelse
+UPPERCASE	Renamer_Extension		VERSALER
+At position:	Renamer_InsertOverwrite		Vid placering:
+from the back (right)	Renamer_InsertOverwrite		bakifrån (höger)
+from the front (left)	Renamer_InsertOverwrite		framifrån (vänster)
+Insert	Renamer_InsertOverwrite		Infoga
+Insert / overwrite	Renamer_InsertOverwrite		Infoga / skriv över
+Overwrite with	Renamer_InsertOverwrite		Skriv över med
+Please select	Renamer_InsertOverwrite		Välj
+Text:	Renamer_InsertOverwrite		Text:
+Format:	Renamer_Numbering		Format:
+Numbering	Renamer_Numbering		Numrering
+Please select	Renamer_Numbering		Välj
+Start with:	Renamer_Numbering		Starta med:
+Text before:	Renamer_Numbering		Text före:
+Text behind:	Renamer_Numbering		Text bakom:
+from the back (right)	Renamer_Remove		bakifrån (höger)
+from the front (left)	Renamer_Remove		framifrån (vänster)
+Please select	Renamer_Remove		Välj
+Remove	Renamer_Remove		Ta bort
+Remove from position	Renamer_Remove		Ta bort från position
+To position	Renamer_Remove		Till position
+Case sensitive	Renamer_SearchReplace		Skiftlägeskänslig
+Find pattern:	Renamer_SearchReplace		Hitta mönster:
+Replace with:	Renamer_SearchReplace		Ersätt med:
+Search and replace	Renamer_SearchReplace		Sök och ersätt
+Convert to:	Renamer_UpperLower		Konvertera till:
+lowercase	Renamer_UpperLower		gemener
+Please select	Renamer_UpperLower		Välj
+Sentence case	Renamer_UpperLower		Meningens skiftläge
+Title Case	Renamer_UpperLower		Titelns skiftläge
+UPPERCASE	Renamer_UpperLower		VERSALER
+Uppercase / lowercase	Renamer_UpperLower		Versaler / gemener
+{0, plural,=1{A problem was encountered during processing:  One file couldn't be renamed}other{Problems were encountered during processing:  # files couldn't be renamed}}	ReportWindow		{0, plural,=1{Ett fel inträffade under bearbetningen: Det gick inte att ändra namn på en fil}other{Flera fel inträffade under berarbetningen:  # filer gick inte att ändra namn på}}
+File already exists	ReportWindow		Filen finns redan
+File already exists (as in preview)	ReportWindow		Filen finns redan (som en förhandsvisning)
+OK	ReportWindow		OK
+Report	ReportWindow		Rapport
+Unknown error	ReportWindow		Okänt fel
+Original name	ReportWindow	Column title	Ursprungligt namn
+Problem	ReportWindow	Column title	Problem
+Target name	ReportWindow	Column title	Målnamn
+PecoRename	System name		PecoRename

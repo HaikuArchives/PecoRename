@@ -1,0 +1,71 @@
+1	Spanish	application/x-vnd.pecora-PecoRename	4063603093
+Modified	FileListView	Column title	Modificado
+Name	FileListView	Column title	Nombre
+Preview	FileListView	Column title	Previsualización
+Size	FileListView	Column title	Tamaño
+{0, plural,=0{no duplicates}=1{1 duplicate}other{# duplicates}}	functions		{0, plural,=0{sin duplicados}=1{1 duplicado}other{# duplicados}}
+{0, plural,=0{no items}=1{1 item}other{# items}}	functions		{0, plural,=0{sin items}=1{1 item}other{# items}}
+{0, plural,=0{no renames}=1{1 rename}other{# renames}}	functions		{0, plural,=0{sin renombrados}=1{1 renombrado}other{# renombrados}}
+Choose files and folders	MainView		Choose files and folders
+Open	MainView		Abrir
+Open location	MainView		Abrir ubicación
+Remove	MainView		Eliminar
+Rename	MainView		Renombrar
+About PecoRename	MainWindow		Acerca de PecoRename
+File	MainWindow		Archivo
+Quit	MainWindow		Salir
+Select files…	MainWindow		Seleccionar archivos…
+Show documentation	MainWindow		Mostrar documentación
+ReadMe.html	MainWindow	Path to the help file. Only change if a translated file is provided.	ReadMe.html
+Cancel	PecoApp		Cancelar
+Files from different folders cannot be renamed.\n\nOnly the files of the first found folder will be imported!	PecoApp		Archivos de distintas carpetas no pueden ser renombrados.\n\nSólo los archivos de la primer carpeta encontrada serán importados.
+OK	PecoApp		Aceptar
+Select	PecoApp		Select
+Select files for renaming	PecoApp		Select files for renaming
+The volume is read only: files cannot be renamed.	PecoApp		El volumen es de sólo lectura: los archivos no pueden ser renombrados.
+Werner Freytag (original author)	PecoApp		Werner Freytag (autor original)
+Add file extension	Renamer_Extension		Agregar extensión de archivo
+lowercase	Renamer_Extension		minúsculas
+Replace old extension	Renamer_Extension		Reemplazar extensión vieja
+UPPERCASE	Renamer_Extension		MAYÚSCULAS
+At position:	Renamer_InsertOverwrite		En posición:
+from the back (right)	Renamer_InsertOverwrite		from the back (right)
+from the front (left)	Renamer_InsertOverwrite		from the front (left)
+Insert	Renamer_InsertOverwrite		Insert
+Insert / overwrite	Renamer_InsertOverwrite		Insertar / sobreescribir
+Overwrite with	Renamer_InsertOverwrite		Sobreescribir con
+Please select	Renamer_InsertOverwrite		Por favor seleccione
+Text:	Renamer_InsertOverwrite		Texto:
+Format:	Renamer_Numbering		Formato:
+Numbering	Renamer_Numbering		Numeración
+Please select	Renamer_Numbering		Por favor seleccione
+Start with:	Renamer_Numbering		Comenzar con:
+Text before:	Renamer_Numbering		Text before:
+Text behind:	Renamer_Numbering		Text behind:
+from the back (right)	Renamer_Remove		desde el final (derecha)
+from the front (left)	Renamer_Remove		desde el comienzo (izquierda)
+Please select	Renamer_Remove		Por favor seleccione
+Remove	Renamer_Remove		Remove
+Remove from position	Renamer_Remove		Remove from position
+To position	Renamer_Remove		To position
+Case sensitive	Renamer_SearchReplace		Case sensitive
+Find pattern:	Renamer_SearchReplace		Find pattern:
+Replace with:	Renamer_SearchReplace		Replace with:
+Search and replace	Renamer_SearchReplace		Search and replace
+Convert to:	Renamer_UpperLower		Convertir a:
+lowercase	Renamer_UpperLower		minúsculas
+Please select	Renamer_UpperLower		Please select
+Sentence case	Renamer_UpperLower		Sentence case
+Title Case	Renamer_UpperLower		Title Case
+UPPERCASE	Renamer_UpperLower		UPPERCASE
+Uppercase / lowercase	Renamer_UpperLower		Uppercase / lowercase
+{0, plural,=1{A problem was encountered during processing:  One file couldn't be renamed}other{Problems were encountered during processing:  # files couldn't be renamed}}	ReportWindow		{0, plural,=1{A problem was encountered during processing:  One file couldn't be renamed}other{Problems were encountered during processing:  # files couldn't be renamed}}
+File already exists	ReportWindow		File already exists
+File already exists (as in preview)	ReportWindow		File already exists (as in preview)
+OK	ReportWindow		OK
+Report	ReportWindow		Report
+Unknown error	ReportWindow		Unknown error
+Original name	ReportWindow	Column title	Original name
+Problem	ReportWindow	Column title	Problem
+Target name	ReportWindow	Column title	Target name
+PecoRename	System name		PecoRename

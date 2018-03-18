@@ -1,0 +1,71 @@
+1	Romanian	application/x-vnd.pecora-PecoRename	4063603093
+Modified	FileListView	Column title	Modificat
+Name	FileListView	Column title	Nume
+Preview	FileListView	Column title	Previzualizare
+Size	FileListView	Column title	Dimensiune
+{0, plural,=0{no duplicates}=1{1 duplicate}other{# duplicates}}	functions		{0, plural,=0{no duplicates}=1{1 duplicate}other{# duplicates}}
+{0, plural,=0{no items}=1{1 item}other{# items}}	functions		{0, plural,=0{no items}=1{1 item}other{# items}}
+{0, plural,=0{no renames}=1{1 rename}other{# renames}}	functions		{0, plural,=0{no renames}=1{1 rename}other{# renames}}
+Choose files and folders	MainView		Choose files and folders
+Open	MainView		Deschide
+Open location	MainView		Deschide locația
+Remove	MainView		Elimină
+Rename	MainView		Redenumire
+About PecoRename	MainWindow		Despre PecoRename
+File	MainWindow		Fișier
+Quit	MainWindow		Ieșire
+Select files…	MainWindow		Selectează fișiere...
+Show documentation	MainWindow		Afișează documentația
+ReadMe.html	MainWindow	Path to the help file. Only change if a translated file is provided.	ReadMe.html
+Cancel	PecoApp		Anulează
+Files from different folders cannot be renamed.\n\nOnly the files of the first found folder will be imported!	PecoApp		Files from different folders cannot be renamed.\n\nOnly the files of the first found folder will be imported!
+OK	PecoApp		OK
+Select	PecoApp		Selectează
+Select files for renaming	PecoApp		Select files for renaming
+The volume is read only: files cannot be renamed.	PecoApp		The volume is read only: files cannot be renamed.
+Werner Freytag (original author)	PecoApp		Werner Freytag (original author)
+Add file extension	Renamer_Extension		Add file extension
+lowercase	Renamer_Extension		lowercase
+Replace old extension	Renamer_Extension		Replace old extension
+UPPERCASE	Renamer_Extension		UPPERCASE
+At position:	Renamer_InsertOverwrite		At position:
+from the back (right)	Renamer_InsertOverwrite		from the back (right)
+from the front (left)	Renamer_InsertOverwrite		from the front (left)
+Insert	Renamer_InsertOverwrite		Insert
+Insert / overwrite	Renamer_InsertOverwrite		Insert / overwrite
+Overwrite with	Renamer_InsertOverwrite		Overwrite with
+Please select	Renamer_InsertOverwrite		Please select
+Text:	Renamer_InsertOverwrite		Text:
+Format:	Renamer_Numbering		Format:
+Numbering	Renamer_Numbering		Numbering
+Please select	Renamer_Numbering		Please select
+Start with:	Renamer_Numbering		Start with:
+Text before:	Renamer_Numbering		Text before:
+Text behind:	Renamer_Numbering		Text behind:
+from the back (right)	Renamer_Remove		from the back (right)
+from the front (left)	Renamer_Remove		from the front (left)
+Please select	Renamer_Remove		Please select
+Remove	Renamer_Remove		Elimină
+Remove from position	Renamer_Remove		Remove from position
+To position	Renamer_Remove		To position
+Case sensitive	Renamer_SearchReplace		Case sensitive
+Find pattern:	Renamer_SearchReplace		Find pattern:
+Replace with:	Renamer_SearchReplace		Replace with:
+Search and replace	Renamer_SearchReplace		Search and replace
+Convert to:	Renamer_UpperLower		Convert to:
+lowercase	Renamer_UpperLower		lowercase
+Please select	Renamer_UpperLower		Please select
+Sentence case	Renamer_UpperLower		Sentence case
+Title Case	Renamer_UpperLower		Title Case
+UPPERCASE	Renamer_UpperLower		UPPERCASE
+Uppercase / lowercase	Renamer_UpperLower		Uppercase / lowercase
+{0, plural,=1{A problem was encountered during processing:  One file couldn't be renamed}other{Problems were encountered during processing:  # files couldn't be renamed}}	ReportWindow		{0, plural,=1{A problem was encountered during processing:  One file couldn't be renamed}other{Problems were encountered during processing:  # files couldn't be renamed}}
+File already exists	ReportWindow		Fișierul există deja
+File already exists (as in preview)	ReportWindow		File already exists (as in preview)
+OK	ReportWindow		OK
+Report	ReportWindow		Report
+Unknown error	ReportWindow		Eroare necunoscută
+Original name	ReportWindow	Column title	Original name
+Problem	ReportWindow	Column title	Problem
+Target name	ReportWindow	Column title	Target name
+PecoRename	System name		PecoRename
