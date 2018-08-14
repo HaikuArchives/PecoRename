@@ -12,7 +12,7 @@
 #include <ColumnListView.h>
 #include <ColumnTypes.h>
 #include <LayoutBuilder.h>
-#include <MessageFormat.h>
+#include <StringFormat.h>
 #include <StringView.h>
 
 #include <string.h>
@@ -51,7 +51,7 @@ ReportWindow::ReportWindow(BRect frame, BList* filelist)
 	BMessage colSettings;
 	if (msg.FindMessage("col", &colSettings) == B_OK)
 		fReportView->LoadState(&colSettings);
-	
+
 	FileListItem* listItem;
 	int32 errorCount = 0;
 	for (int32 i = 0; (listItem = (FileListItem*)filelist->ItemAt(i))
@@ -68,7 +68,7 @@ ReportWindow::ReportWindow(BRect frame, BList* filelist)
 				BString errorMsg;
 				switch (listItem->Error()) {
 					case 0 : // this should never happen
-						break; 
+						break;
 					case 1 :
 					{	// Problem was already spotted for the preview in the
 						// main window. Happens when the existing name was part
@@ -94,7 +94,7 @@ ReportWindow::ReportWindow(BRect frame, BList* filelist)
 		}
 
 	BString errorString;
-	static BMessageFormat errorMessage(B_TRANSLATE("{0, plural,"
+	static BStringFormat errorMessage(B_TRANSLATE("{0, plural,"
 		"=1{A problem was encountered during processing:  "
 			"One file couldn't be renamed}"
 		"other{Problems were encountered during processing:  "
@@ -111,7 +111,7 @@ ReportWindow::ReportWindow(BRect frame, BList* filelist)
 		.AddGroup(B_HORIZONTAL)
 			.AddGlue()
 			.Add(new BButton("OK", B_TRANSLATE("OK"), new BMessage('CLO_')))
-		.End(); 
+		.End();
 }
 
 

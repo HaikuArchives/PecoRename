@@ -16,7 +16,7 @@
 #include <FindDirectory.h>
 #include <MenuBar.h>
 #include <MenuItem.h>
-#include <MessageFormat.h>
+#include <StringFormat.h>
 #include "MainWindow.h"
 
 #include "constants.h"
@@ -75,7 +75,7 @@ UpdateWindowStatus()
 	BString duplicatesNumber;
 
 	BList* fileList = ((PecoApp*)be_app)->fList;
-	static BMessageFormat formatItems(B_TRANSLATE("{0, plural,"
+	static BStringFormat formatItems(B_TRANSLATE("{0, plural,"
 		"=0{no items}"
 		"=1{1 item}"
 		"other{# items}}"));
@@ -92,14 +92,14 @@ UpdateWindowStatus()
 		}
 	}
 	if (renames > 0) {
-		static BMessageFormat formatRenamed(B_TRANSLATE("{0, plural,"
+		static BStringFormat formatRenamed(B_TRANSLATE("{0, plural,"
 		"=0{no renames}"
 		"=1{1 rename}"
 		"other{# renames}}"));
 		formatRenamed.Format(renamesNumber, renames);
 	}
 	if (duplicates > 0) {
-		static BMessageFormat formatDuplicated(B_TRANSLATE("{0, plural,"
+		static BStringFormat formatDuplicated(B_TRANSLATE("{0, plural,"
 		"=0{no duplicates}"
 		"=1{1 duplicate}"
 		"other{# duplicates}}"));
