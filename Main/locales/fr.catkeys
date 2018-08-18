@@ -3,27 +3,27 @@ Modified	FileListView	Column title	Modifié le
 Name	FileListView	Column title	Nom
 Preview	FileListView	Column title	Aperçu
 Size	FileListView	Column title	Taille
-{0, plural,=0{no duplicates}=1{1 duplicate}other{# duplicates}}	functions		{0, plural,=0{no duplicates}=1{1 duplicate}other{# duplicates}}
-{0, plural,=0{no items}=1{1 item}other{# items}}	functions		{0, plural,=0{no items}=1{1 item}other{# items}}
-{0, plural,=0{no renames}=1{1 rename}other{# renames}}	functions		{0, plural,=0{no renames}=1{1 rename}other{# renames}}
-Choose files and folders	MainView		Choose files and folders
-Open	MainView		Open
-Open location	MainView		Open location
-Remove	MainView		Remove
-Rename	MainView		Rename
-About PecoRename	MainWindow		About PecoRename
-File	MainWindow		File
-Quit	MainWindow		Quit
-Select files…	MainWindow		Select files…
-Show documentation	MainWindow		Show documentation
+{0, plural,=0{no duplicates}=1{1 duplicate}other{# duplicates}}	functions		{0, plural,=0{aucun doublon}=1{1 doublon}other{# doublons}}
+{0, plural,=0{no items}=1{1 item}other{# items}}	functions		{0, plural,=0{aucun élément}=1{1 élément}other{# éléments}}
+{0, plural,=0{no renames}=1{1 rename}other{# renames}}	functions		{0, plural,=0{aucun renommé}=1{1 renommé}other{# renommés}}
+Choose files and folders	MainView		Choisir fichiers et dossiers
+Open	MainView		Ouvrir
+Open location	MainView		Ouvrir l'emplacement
+Remove	MainView		Supprimer
+Rename	MainView		Renommer
+About PecoRename	MainWindow		À propos de PecoRename
+File	MainWindow		Fichier
+Quit	MainWindow		Quitter
+Select files…	MainWindow		Sélectionnez les fichiers...
+Show documentation	MainWindow		Afficher la documentation
 ReadMe.html	MainWindow	Path to the help file. Only change if a translated file is provided.	ReadMe.html
 Cancel	PecoApp		Annuler
-Files from different folders cannot be renamed.\n\nOnly the files of the first found folder will be imported!	PecoApp		Files from different folders cannot be renamed.\n\nOnly the files of the first found folder will be imported!
+Files from different folders cannot be renamed.\n\nOnly the files of the first found folder will be imported!	PecoApp		Il n'est pas possible de renommer des fichiers situés dans des dossiers multiples.\n\nSeulement les fichiers du premier dossier trouvé seront importés !
 OK	PecoApp		OK
-Select	PecoApp		Séletionner
-Select files for renaming	PecoApp		Sélection des fichiers à renommer
-The volume is read only: files cannot be renamed.	PecoApp		The volume is read only: files cannot be renamed.
-Werner Freytag (original author)	PecoApp		Werner Freytag (original author)
+Select	PecoApp		Sélectionner
+Select files for renaming	PecoApp		Sélectionnez les fichiers à renommer
+The volume is read only: files cannot be renamed.	PecoApp		Le volume est en lecture seule : Les fichiers ne peuvent pas être renommés.
+Werner Freytag (original author)	PecoApp		Werner Freytag (auteur originel)
 Add file extension	Renamer_Extension		Ajouter une extension de fichier
 lowercase	Renamer_Extension		Minuscule
 Replace old extension	Renamer_Extension		Remplacer l'ancienne extension
@@ -32,40 +32,40 @@ At position:	Renamer_InsertOverwrite		Position :
 from the back (right)	Renamer_InsertOverwrite		en fin (à droite)
 from the front (left)	Renamer_InsertOverwrite		en tête (à gauche)
 Insert	Renamer_InsertOverwrite		Insérer
-Insert / overwrite	Renamer_InsertOverwrite		Insert / overwrite
-Overwrite with	Renamer_InsertOverwrite		Overwrite with
+Insert / overwrite	Renamer_InsertOverwrite		Insérer / remplacer
+Overwrite with	Renamer_InsertOverwrite		Remplacer par
 Please select	Renamer_InsertOverwrite		Sélectionner
 Text:	Renamer_InsertOverwrite		Texte :
-Format:	Renamer_Numbering		Format : 
+Format:	Renamer_Numbering		Format :
 Numbering	Renamer_Numbering		Numérotation
 Please select	Renamer_Numbering		Sélectionner
-Start with:	Renamer_Numbering		Commencer à : 
-Text before:	Renamer_Numbering		Texte en tête
-Text behind:	Renamer_Numbering		Texte en fin
+Start with:	Renamer_Numbering		Commencer à :
+Text before:	Renamer_Numbering		Texte en tête :
+Text behind:	Renamer_Numbering		Texte en fin :
 from the back (right)	Renamer_Remove		en fin (à droite)
 from the front (left)	Renamer_Remove		en tête (à gauche)
 Please select	Renamer_Remove		Sélectionner
 Remove	Renamer_Remove		Supprimer
-Remove from position	Renamer_Remove		Remove from position
-To position	Renamer_Remove		To position
+Remove from position	Renamer_Remove		Supprimer depuis la position
+To position	Renamer_Remove		à la position
 Case sensitive	Renamer_SearchReplace		Différentiation MAJ/min
 Find pattern:	Renamer_SearchReplace		Rechercher :
 Replace with:	Renamer_SearchReplace		Remplacer par :
 Search and replace	Renamer_SearchReplace		Rechercher / Remplacer
-Convert to:	Renamer_UpperLower		Convert to:
-lowercase	Renamer_UpperLower		Minuscule
+Convert to:	Renamer_UpperLower		Convertir en :
+lowercase	Renamer_UpperLower		minuscule
 Please select	Renamer_UpperLower		Sélectionner
-Sentence case	Renamer_UpperLower		Sentence case
-Title Case	Renamer_UpperLower		Title Case
+Sentence case	Renamer_UpperLower		Comme une phrase
+Title Case	Renamer_UpperLower		Comme Un Titre
 UPPERCASE	Renamer_UpperLower		MAJUSCULE
 Uppercase / lowercase	Renamer_UpperLower		Majuscule / Minuscule
-{0, plural,=1{A problem was encountered during processing:  One file couldn't be renamed}other{Problems were encountered during processing:  # files couldn't be renamed}}	ReportWindow		{0, plural,=1{A problem was encountered during processing:  One file couldn't be renamed}other{Problems were encountered during processing:  # files couldn't be renamed}}
-File already exists	ReportWindow		File already exists
-File already exists (as in preview)	ReportWindow		File already exists (as in preview)
+{0, plural,=1{A problem was encountered during processing:  One file couldn't be renamed}other{Problems were encountered during processing:  # files couldn't be renamed}}	ReportWindow		{0, plural,=1{Un problème a été rencontré durant l'exécution :  Un fichier n'a pas pu être renommé}other{Des problèmes ont été rencontrés durant l'exécution :  # fichiers n'ont pu être renommés}}
+File already exists	ReportWindow		Le fichier existe déjà
+File already exists (as in preview)	ReportWindow		Le fichier existe déjà (comme dans l'aperçu)
 OK	ReportWindow		OK
-Report	ReportWindow		Report
-Unknown error	ReportWindow		Unknown error
-Original name	ReportWindow	Column title	Original name
-Problem	ReportWindow	Column title	Problem
-Target name	ReportWindow	Column title	Targetted name
+Report	ReportWindow		Compte rendu
+Unknown error	ReportWindow		Erreur inconnue
+Original name	ReportWindow	Column title	Nom d'origine
+Problem	ReportWindow	Column title	Problème
+Target name	ReportWindow	Column title	Nom souhaité
 PecoRename	System name		PecoRename

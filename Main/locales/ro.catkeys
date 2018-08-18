@@ -3,10 +3,10 @@ Modified	FileListView	Column title	Modificat
 Name	FileListView	Column title	Nume
 Preview	FileListView	Column title	Previzualizare
 Size	FileListView	Column title	Dimensiune
-{0, plural,=0{no duplicates}=1{1 duplicate}other{# duplicates}}	functions		{0, plural,=0{no duplicates}=1{1 duplicate}other{# duplicates}}
-{0, plural,=0{no items}=1{1 item}other{# items}}	functions		{0, plural,=0{no items}=1{1 item}other{# items}}
-{0, plural,=0{no renames}=1{1 rename}other{# renames}}	functions		{0, plural,=0{no renames}=1{1 rename}other{# renames}}
-Choose files and folders	MainView		Choose files and folders
+{0, plural,=0{no duplicates}=1{1 duplicate}other{# duplicates}}	functions		{0, plural,=0{fără duplicate}=1{1 duplicat}other{# duplicate}}
+{0, plural,=0{no items}=1{1 item}other{# items}}	functions		{0, plural,=0{fără elemente}=1{1 element}other{# elemente}}
+{0, plural,=0{no renames}=1{1 rename}other{# renames}}	functions		{0, plural,=0{fără redenumiri}=1{1 redenumire}other{# redenumiri}}
+Choose files and folders	MainView		Alege fișiere și dosare
 Open	MainView		Deschide
 Open location	MainView		Deschide locația
 Remove	MainView		Elimină
@@ -18,54 +18,54 @@ Select files…	MainWindow		Selectează fișiere...
 Show documentation	MainWindow		Afișează documentația
 ReadMe.html	MainWindow	Path to the help file. Only change if a translated file is provided.	ReadMe.html
 Cancel	PecoApp		Anulează
-Files from different folders cannot be renamed.\n\nOnly the files of the first found folder will be imported!	PecoApp		Files from different folders cannot be renamed.\n\nOnly the files of the first found folder will be imported!
+Files from different folders cannot be renamed.\n\nOnly the files of the first found folder will be imported!	PecoApp		Fișierele din dosare diferite nu pot fi redenumite.\n\nDoar fișierele din primul dosar găsit vor fi importate!
 OK	PecoApp		OK
 Select	PecoApp		Selectează
-Select files for renaming	PecoApp		Select files for renaming
-The volume is read only: files cannot be renamed.	PecoApp		The volume is read only: files cannot be renamed.
-Werner Freytag (original author)	PecoApp		Werner Freytag (original author)
-Add file extension	Renamer_Extension		Add file extension
-lowercase	Renamer_Extension		lowercase
-Replace old extension	Renamer_Extension		Replace old extension
-UPPERCASE	Renamer_Extension		UPPERCASE
-At position:	Renamer_InsertOverwrite		At position:
-from the back (right)	Renamer_InsertOverwrite		from the back (right)
-from the front (left)	Renamer_InsertOverwrite		from the front (left)
-Insert	Renamer_InsertOverwrite		Insert
-Insert / overwrite	Renamer_InsertOverwrite		Insert / overwrite
-Overwrite with	Renamer_InsertOverwrite		Overwrite with
-Please select	Renamer_InsertOverwrite		Please select
+Select files for renaming	PecoApp		Selectează fișiere pentru redenumire
+The volume is read only: files cannot be renamed.	PecoApp		Volumul este protejat la scriere: fișierele nu pot fi redenumite.
+Werner Freytag (original author)	PecoApp		Werner Freytag (autor original)
+Add file extension	Renamer_Extension		Adaugă extensie de fișier
+lowercase	Renamer_Extension		minuscule
+Replace old extension	Renamer_Extension		Înlocuiește extensia veche
+UPPERCASE	Renamer_Extension		MAJUSCULE
+At position:	Renamer_InsertOverwrite		La poziția:
+from the back (right)	Renamer_InsertOverwrite		de la sfârșit (dreapta)
+from the front (left)	Renamer_InsertOverwrite		de la început (stânga)
+Insert	Renamer_InsertOverwrite		Inserare
+Insert / overwrite	Renamer_InsertOverwrite		Inserare / Suprascriere
+Overwrite with	Renamer_InsertOverwrite		Suprascrie cu
+Please select	Renamer_InsertOverwrite		Selectați
 Text:	Renamer_InsertOverwrite		Text:
 Format:	Renamer_Numbering		Format:
-Numbering	Renamer_Numbering		Numbering
-Please select	Renamer_Numbering		Please select
-Start with:	Renamer_Numbering		Start with:
-Text before:	Renamer_Numbering		Text before:
-Text behind:	Renamer_Numbering		Text behind:
-from the back (right)	Renamer_Remove		from the back (right)
-from the front (left)	Renamer_Remove		from the front (left)
-Please select	Renamer_Remove		Please select
+Numbering	Renamer_Numbering		Numerotare
+Please select	Renamer_Numbering		Selectați
+Start with:	Renamer_Numbering		Începe cu:
+Text before:	Renamer_Numbering		Text înainte:
+Text behind:	Renamer_Numbering		Text după:
+from the back (right)	Renamer_Remove		de la sfârșit (dreapta)
+from the front (left)	Renamer_Remove		de la început (stânga)
+Please select	Renamer_Remove		Selectați
 Remove	Renamer_Remove		Elimină
-Remove from position	Renamer_Remove		Remove from position
-To position	Renamer_Remove		To position
-Case sensitive	Renamer_SearchReplace		Case sensitive
-Find pattern:	Renamer_SearchReplace		Find pattern:
-Replace with:	Renamer_SearchReplace		Replace with:
-Search and replace	Renamer_SearchReplace		Search and replace
-Convert to:	Renamer_UpperLower		Convert to:
-lowercase	Renamer_UpperLower		lowercase
-Please select	Renamer_UpperLower		Please select
-Sentence case	Renamer_UpperLower		Sentence case
-Title Case	Renamer_UpperLower		Title Case
-UPPERCASE	Renamer_UpperLower		UPPERCASE
-Uppercase / lowercase	Renamer_UpperLower		Uppercase / lowercase
-{0, plural,=1{A problem was encountered during processing:  One file couldn't be renamed}other{Problems were encountered during processing:  # files couldn't be renamed}}	ReportWindow		{0, plural,=1{A problem was encountered during processing:  One file couldn't be renamed}other{Problems were encountered during processing:  # files couldn't be renamed}}
+Remove from position	Renamer_Remove		Elimină din poziție
+To position	Renamer_Remove		Către poziția
+Case sensitive	Renamer_SearchReplace		Cu majuscule semnificative
+Find pattern:	Renamer_SearchReplace		Caută model:
+Replace with:	Renamer_SearchReplace		Înlocuiește cu:
+Search and replace	Renamer_SearchReplace		Căutare și înlocuire
+Convert to:	Renamer_UpperLower		Convertește la:
+lowercase	Renamer_UpperLower		minuscule
+Please select	Renamer_UpperLower		Selectați
+Sentence case	Renamer_UpperLower		Majuscule de propoziție
+Title Case	Renamer_UpperLower		Majuscule De Titlu
+UPPERCASE	Renamer_UpperLower		MAJUSCULE
+Uppercase / lowercase	Renamer_UpperLower		Majuscule / minuscule
+{0, plural,=1{A problem was encountered during processing:  One file couldn't be renamed}other{Problems were encountered during processing:  # files couldn't be renamed}}	ReportWindow		{0, plural,=1{A fost întâlnită o problemă în timpul procesării:  Un fișier nu a putut fi redenumit}other{Au fost întâlnite probleme în timpul procesării:  # fișiere nu au putut fi redenumite}}
 File already exists	ReportWindow		Fișierul există deja
-File already exists (as in preview)	ReportWindow		File already exists (as in preview)
+File already exists (as in preview)	ReportWindow		Fișierul există deja (ca în previzualizare)
 OK	ReportWindow		OK
-Report	ReportWindow		Report
+Report	ReportWindow		Raport
 Unknown error	ReportWindow		Eroare necunoscută
-Original name	ReportWindow	Column title	Original name
-Problem	ReportWindow	Column title	Problem
-Target name	ReportWindow	Column title	Target name
+Original name	ReportWindow	Column title	Nume original
+Problem	ReportWindow	Column title	Problemă
+Target name	ReportWindow	Column title	Nume țintă
 PecoRename	System name		PecoRename
