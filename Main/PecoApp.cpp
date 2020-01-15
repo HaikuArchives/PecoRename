@@ -96,6 +96,7 @@ PecoApp::MessageReceived(BMessage* msg)
 {
 	switch (msg->what) {
 		case B_SIMPLE_DATA:
+			msg->AddBool("drag&drop", true);
 			RefsReceived (msg);
 			break;
 		case MSG_MENU_NEW:
@@ -139,6 +140,7 @@ PecoApp::MessageReceived(BMessage* msg)
 			if (status == B_OK) {
 				BMessenger msgr("application/x-vnd.Be-TRAK");
 				BMessage refMsg(B_REFS_RECEIVED);
+				refMsg.AddBool("drag&drop", false);
 
 				if (location)
 					refMsg.AddRef("refs", &parentRef);
@@ -228,7 +230,11 @@ PecoApp::RefsReceived (BMessage* msg)
 	fWindow->Unlock();
 
 	if (ref.device > 1) {
-		New();
+		bool dragAndDrop;
+		msg->FindBool("drag&drop", &dragAndDrop);
+		if (!dragAndDrop)
+			New();
+		fList->MakeEmpty();
 
 		aEntry = BEntry(&ref);
 		BPath(&aEntry).GetParent(&fPath);
@@ -406,9 +412,6 @@ PecoApp::New()
 	pathView->SetText(NULL);
 
 	fWindow->Unlock();
-
-	// TODO This can be removed, it's redundant of fListView
-	fList->MakeEmpty();
 
 	UpdateWindowStatus();
 }
