@@ -234,7 +234,6 @@ PecoApp::RefsReceived (BMessage* msg)
 		msg->FindBool("drag&drop", &dragAndDrop);
 		if (!dragAndDrop)
 			New();
-		fList->MakeEmpty();
 
 		aEntry = BEntry(&ref);
 		BPath(&aEntry).GetParent(&fPath);
@@ -248,6 +247,8 @@ PecoApp::RefsReceived (BMessage* msg)
 		int32 total = 0;
 		msg->GetInfo("refs", &typeFound, &total);
 		
+		BList* tempList = new BList();
+
 		fWindow->Lock();
 		fStatusBar->SetText("");
 		fStatusBar->Show();
@@ -292,18 +293,21 @@ PecoApp::RefsReceived (BMessage* msg)
 				size = -2;
 			else
 				continue;
-			
+
 			aEntry.GetModificationTime(&timer);
-			fList->AddItem(new FileListItem(aPath.Leaf(), size, timer, &ref));
+			tempList->AddItem(new FileListItem(aPath.Leaf(), size, timer, &ref));
 		}
 		
 		fWindow->Lock();
-		fListView->AddList(fList);
+		fList->AddList(tempList);
+		fListView->AddList(tempList);
 		fStatusBar->Hide();
-		fStatusBar->SetMaxValue(fList->CountItems());
+		fStatusBar->SetMaxValue(tempList->CountItems());
 		fStatusBar->Reset("");
 		fWindow->Unlock();
-		
+
+		delete tempList;
+
 		MakeList();
 	}
 	fWindow->Activate();
@@ -412,6 +416,8 @@ PecoApp::New()
 	pathView->SetText(NULL);
 
 	fWindow->Unlock();
+
+	fList->MakeEmpty();
 
 	UpdateWindowStatus();
 }
