@@ -96,6 +96,7 @@ PecoApp::MessageReceived(BMessage* msg)
 {
 	switch (msg->what) {
 		case B_SIMPLE_DATA:
+			msg->AddBool("drag&drop", true);
 			RefsReceived (msg);
 			break;
 		case MSG_MENU_NEW:
@@ -139,6 +140,7 @@ PecoApp::MessageReceived(BMessage* msg)
 			if (status == B_OK) {
 				BMessenger msgr("application/x-vnd.Be-TRAK");
 				BMessage refMsg(B_REFS_RECEIVED);
+				refMsg.AddBool("drag&drop", false);
 
 				if (location)
 					refMsg.AddRef("refs", &parentRef);
@@ -228,7 +230,10 @@ PecoApp::RefsReceived (BMessage* msg)
 	fWindow->Unlock();
 
 	if (ref.device > 1) {
-		New();
+		bool dragAndDrop;
+		msg->FindBool("drag&drop", &dragAndDrop);
+		if (!dragAndDrop)
+			New();
 
 		aEntry = BEntry(&ref);
 		BPath(&aEntry).GetParent(&fPath);
@@ -242,6 +247,8 @@ PecoApp::RefsReceived (BMessage* msg)
 		int32 total = 0;
 		msg->GetInfo("refs", &typeFound, &total);
 		
+		BList* tempList = new BList();
+
 		fWindow->Lock();
 		fStatusBar->SetText("");
 		fStatusBar->Show();
@@ -286,18 +293,21 @@ PecoApp::RefsReceived (BMessage* msg)
 				size = -2;
 			else
 				continue;
-			
+
 			aEntry.GetModificationTime(&timer);
-			fList->AddItem(new FileListItem(aPath.Leaf(), size, timer, &ref));
+			tempList->AddItem(new FileListItem(aPath.Leaf(), size, timer, &ref));
 		}
 		
 		fWindow->Lock();
-		fListView->AddList(fList);
+		fList->AddList(tempList);
+		fListView->AddList(tempList);
 		fStatusBar->Hide();
-		fStatusBar->SetMaxValue(fList->CountItems());
+		fStatusBar->SetMaxValue(tempList->CountItems());
 		fStatusBar->Reset("");
 		fWindow->Unlock();
-		
+
+		delete tempList;
+
 		MakeList();
 	}
 	fWindow->Activate();
@@ -407,7 +417,6 @@ PecoApp::New()
 
 	fWindow->Unlock();
 
-	// TODO This can be removed, it's redundant of fListView
 	fList->MakeEmpty();
 
 	UpdateWindowStatus();
