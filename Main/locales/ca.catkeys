@@ -1,0 +1,71 @@
+1	Catalan	application/x-vnd.pecora-PecoRename	4063603093
+{0, plural,=0{no duplicates}=1{1 duplicate}other{# duplicates}}	functions		{0, plural,=0{cap duplicat}=1{1 duplicat}other{# duplicats}}
+{0, plural,=0{no items}=1{1 item}other{# items}}	functions		{0, plural,=0{cap element}=1{1 element}other{# elements}}
+{0, plural,=0{no renames}=1{1 rename}other{# renames}}	functions		{0, plural,=0{cap canvi}=1{1 canvi}other{# canvis}}
+{0, plural,=1{A problem was encountered during processing:  One file couldn't be renamed}other{Problems were encountered during processing:  # files couldn't be renamed}}	ReportWindow		{0, plural,=1{Hi ha hagut un problema durant el processament: no s'ha pogut canviar el nom d'un fitxer}other{Hi ha hagut problemes durant el processament: no s'ha pogut canviar el nom de # fitxers}}
+File already exists	ReportWindow		El fitxer ja existeix.
+File already exists (as in preview)	ReportWindow		El fitxer ja existeix (com a previsualització)
+OK	ReportWindow		D'acord
+Original name	ReportWindow	Column title	Nom original
+Problem	ReportWindow	Column title	Problema
+Report	ReportWindow		Informeu-ne
+Target name	ReportWindow	Column title	Nom de destinació
+Unknown error	ReportWindow		Error desconegut
+About PecoRename	MainWindow		Quant al PecoRename
+File	MainWindow		Fitxer
+Quit	MainWindow		Surt
+ReadMe.html	MainWindow	Path to the help file. Only change if a translated file is provided.	ReadMe.html
+Select files…	MainWindow		Seleccioneu fitxers...
+Show documentation	MainWindow		Mostra'n la documentació
+Add file extension	Renamer_Extension		Afegeix l'extensió del fitxer
+lowercase	Renamer_Extension		minúscules
+Replace old extension	Renamer_Extension		Reemplaça'n l'extensió anterior
+UPPERCASE	Renamer_Extension		MAJÚSCULES
+At position:	Renamer_InsertOverwrite		A la posició:
+from the back (right)	Renamer_InsertOverwrite		de la part posterior (dreta)
+from the front (left)	Renamer_InsertOverwrite		des de la part frontal (esquerra)
+Insert	Renamer_InsertOverwrite		Insereix
+Insert / overwrite	Renamer_InsertOverwrite		Insereix / sobreescriu
+Overwrite with	Renamer_InsertOverwrite		Sobreescriu amb
+Please select	Renamer_InsertOverwrite		Si us plau, seleccioneu-ho.
+Text:	Renamer_InsertOverwrite		Text:
+Cancel	PecoApp		Cancel·la
+Files from different folders cannot be renamed.\n\nOnly the files of the first found folder will be imported!	PecoApp		No es poden canviar els noms de fitxers de carpetes diferents.\n\nNomés s’importaran els fitxers de la primera carpeta trobada.
+OK	PecoApp		D'acord
+Select	PecoApp		Selecciona
+Select files for renaming	PecoApp		Seleccioneu fitxers per canviar-ne el nom.
+The volume is read only: files cannot be renamed.	PecoApp		El volum només és de lectura: els fitxers no es poden canviar de nom.
+Werner Freytag (original author)	PecoApp		Werner Freytag (autor original)
+Case sensitive	Renamer_SearchReplace		Distingeix majúscules
+Find pattern:	Renamer_SearchReplace		Troba el patró:
+Replace with:	Renamer_SearchReplace		Reemplaça per:
+Search and replace	Renamer_SearchReplace		Cerca i reemplaça
+Choose files and folders	MainView		Trieu fitxers i carpetes
+Open	MainView		Obre
+Open location	MainView		Obre una ubicació
+Remove	MainView		Suprimeix
+Rename	MainView		Canvia'n el nom
+Convert to:	Renamer_UpperLower		Converteix a:
+lowercase	Renamer_UpperLower		minúscules
+Please select	Renamer_UpperLower		Si us plau, seleccioneu-ho.
+Sentence case	Renamer_UpperLower		Caixa de la frase
+Title Case	Renamer_UpperLower		Caixa del títol
+UPPERCASE	Renamer_UpperLower		MAJÚSCULES
+Uppercase / lowercase	Renamer_UpperLower		Majúscules / minúscules
+Format:	Renamer_Numbering		Format:
+Numbering	Renamer_Numbering		Numeració
+Please select	Renamer_Numbering		Si us plau, seleccioneu-ho.
+Start with:	Renamer_Numbering		Comença amb:
+Text before:	Renamer_Numbering		Text davant:
+Text behind:	Renamer_Numbering		Text darrere:
+from the back (right)	Renamer_Remove		de la part posterior (dreta)
+from the front (left)	Renamer_Remove		des de la part frontal (esquerra)
+Please select	Renamer_Remove		Si us plau, seleccioneu-ho.
+Remove	Renamer_Remove		Suprimeix
+Remove from position	Renamer_Remove		Suprimeix de la posició
+To position	Renamer_Remove		A la posició
+Modified	FileListView	Column title	Modificat
+Name	FileListView	Column title	Nom
+Preview	FileListView	Column title	Previsualització
+Size	FileListView	Column title	Mida
+PecoRename	System name		PecoRename

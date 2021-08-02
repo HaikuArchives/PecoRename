@@ -1,0 +1,71 @@
+1	Friulian	application/x-vnd.pecora-PecoRename	4063603093
+{0, plural,=0{no duplicates}=1{1 duplicate}other{# duplicates}}	functions		{0, plural,=0{nissun doplon}=1{1 doplon}other{# doplons}}
+{0, plural,=0{no items}=1{1 item}other{# items}}	functions		{0, plural,=0{nissun element}=1{1 element}other{# elements}}
+{0, plural,=0{no renames}=1{1 rename}other{# renames}}	functions		{0, plural,=0{nissun cambi di non}=1{1 cambi di non}other{# cambis di non}}
+{0, plural,=1{A problem was encountered during processing:  One file couldn't be renamed}other{Problems were encountered during processing:  # files couldn't be renamed}}	ReportWindow		{0, plural,=1{Si è verificât un probleme dilunc la elaborazion:  nol è stât pussibil cambiâ non a un file}other{Si son verificâts plui problemis dilunc la elaborazion:  nol è stât pussibil cambiâ non a # file}}
+File already exists	ReportWindow		Il file al esist za
+File already exists (as in preview)	ReportWindow		Il file al esist za (come te anteprime)
+OK	ReportWindow		Va ben
+Original name	ReportWindow	Column title	Non origjinâl
+Problem	ReportWindow	Column title	Probleme
+Report	ReportWindow		Segnale
+Target name	ReportWindow	Column title	Non obietîf
+Unknown error	ReportWindow		Erôr no cognossût
+About PecoRename	MainWindow		Informazions su PecoRename
+File	MainWindow		File
+Quit	MainWindow		Jes
+ReadMe.html	MainWindow	Path to the help file. Only change if a translated file is provided.	ReadMe.html
+Select files…	MainWindow		Selezione i file…
+Show documentation	MainWindow		Mostre documentazion
+Add file extension	Renamer_Extension		Zonte estension file
+lowercase	Renamer_Extension		minusculis
+Replace old extension	Renamer_Extension		Sostituìs estension vecje
+UPPERCASE	Renamer_Extension		MAIUSCULIS
+At position:	Renamer_InsertOverwrite		Ae posizion:
+from the back (right)	Renamer_InsertOverwrite		de fin (diestre)
+from the front (left)	Renamer_InsertOverwrite		dal inizi (çampe)
+Insert	Renamer_InsertOverwrite		Inserìs
+Insert / overwrite	Renamer_InsertOverwrite		Inserìs / sorescrîf
+Overwrite with	Renamer_InsertOverwrite		Sorescrîf cun
+Please select	Renamer_InsertOverwrite		Par plasê selezione
+Text:	Renamer_InsertOverwrite		Test:
+Cancel	PecoApp		Anule
+Files from different folders cannot be renamed.\n\nOnly the files of the first found folder will be imported!	PecoApp		No si pues cambiâ i nons dai file di cartelis diferentis.\n\nA vignaran impuartâts dome i file de prime cartele cjatade!
+OK	PecoApp		Va ben
+Select	PecoApp		Selezione
+Select files for renaming	PecoApp		Selezione i file par cambiâur il non
+The volume is read only: files cannot be renamed.	PecoApp		Il volum al è in dome-leture: no si pues cambiâ il non dai file.
+Werner Freytag (original author)	PecoApp		Werner Freytag (autôr origjinâl)
+Case sensitive	Renamer_SearchReplace		Distinzion maiusculis/minusculis
+Find pattern:	Renamer_SearchReplace		Cjate model:
+Replace with:	Renamer_SearchReplace		Sostituìs cun:
+Search and replace	Renamer_SearchReplace		Cîr e sostituìs
+Choose files and folders	MainView		Sielç file e cartelis
+Open	MainView		Vierç
+Open location	MainView		Vierç posizion
+Remove	MainView		Gjave
+Rename	MainView		Cambie non
+Convert to:	Renamer_UpperLower		Convertìs a:
+lowercase	Renamer_UpperLower		minusculis
+Please select	Renamer_UpperLower		Par plasê selezione
+Sentence case	Renamer_UpperLower		Maiuscule de frase
+Title Case	Renamer_UpperLower		Maiuscule dal titul
+UPPERCASE	Renamer_UpperLower		MAIUSCULIS
+Uppercase / lowercase	Renamer_UpperLower		Maiusculis / minusculis
+Format:	Renamer_Numbering		Formât:
+Numbering	Renamer_Numbering		Numerazion
+Please select	Renamer_Numbering		Par plasê selezione
+Start with:	Renamer_Numbering		Tache cun:
+Text before:	Renamer_Numbering		Test prime:
+Text behind:	Renamer_Numbering		Test daûr:
+from the back (right)	Renamer_Remove		de fin (diestre)
+from the front (left)	Renamer_Remove		dal inizi (çampe)
+Please select	Renamer_Remove		Par plasê selezione
+Remove	Renamer_Remove		Gjave
+Remove from position	Renamer_Remove		Gjave de posizion
+To position	Renamer_Remove		Ae posizion
+Modified	FileListView	Column title	Modificât
+Name	FileListView	Column title	Non
+Preview	FileListView	Column title	Anteprime
+Size	FileListView	Column title	Dimension
+PecoRename	System name		PecoRename

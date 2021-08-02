@@ -1,0 +1,71 @@
+1	Czech	application/x-vnd.pecora-PecoRename	4063603093
+{0, plural,=0{no duplicates}=1{1 duplicate}other{# duplicates}}	functions		{0, plural,=0{žádné duplikáty}=1{1 duplikát}few{# duplikáty}other{# duplikátů}}
+{0, plural,=0{no items}=1{1 item}other{# items}}	functions		{0, plural,=0{žádné položky}=1{1 položka}few{# položky}other{# položek}}
+{0, plural,=0{no renames}=1{1 rename}other{# renames}}	functions		{0, plural,=0{žádné změny}=1{1 změna}few{# změny}other{# změn}}
+{0, plural,=1{A problem was encountered during processing:  One file couldn't be renamed}other{Problems were encountered during processing:  # files couldn't be renamed}}	ReportWindow		{0, plural,=1{Během zpracování nastal problém: jeden soubor nelze přejmenovat}few{Během zpracování nastaly problémy: # soubory nelze přejmenovat}other{Během zpracování nastaly problémy: # souborů nelze přejmenovat}}
+File already exists	ReportWindow		Soubor už existuje
+File already exists (as in preview)	ReportWindow		Soubor už existuje (jako v náhledu)
+OK	ReportWindow		OK
+Original name	ReportWindow	Column title	Původní název
+Problem	ReportWindow	Column title	Problém
+Report	ReportWindow		Hlášení
+Target name	ReportWindow	Column title	Název cíle
+Unknown error	ReportWindow		Neznámá chyba
+About PecoRename	MainWindow		O aplikaci PecoPřejmenovač
+File	MainWindow		Soubor
+Quit	MainWindow		Ukončit
+ReadMe.html	MainWindow	Path to the help file. Only change if a translated file is provided.	ReadMe.html
+Select files…	MainWindow		Vybrat soubory…
+Show documentation	MainWindow		Zobrazit dokumentaci
+Add file extension	Renamer_Extension		Přidat příponu souboru
+lowercase	Renamer_Extension		malá písmena
+Replace old extension	Renamer_Extension		Přepsat původní příponu souboru
+UPPERCASE	Renamer_Extension		VELKÁ PÍSMENA
+At position:	Renamer_InsertOverwrite		Na pozici:
+from the back (right)	Renamer_InsertOverwrite		zezadu (vpravo)
+from the front (left)	Renamer_InsertOverwrite		zepředu (vlevo)
+Insert	Renamer_InsertOverwrite		Vložit
+Insert / overwrite	Renamer_InsertOverwrite		Vložit a přepsat
+Overwrite with	Renamer_InsertOverwrite		Přepsat s
+Please select	Renamer_InsertOverwrite		Prosím vyberte
+Text:	Renamer_InsertOverwrite		Text:
+Cancel	PecoApp		Zrušit
+Files from different folders cannot be renamed.\n\nOnly the files of the first found folder will be imported!	PecoApp		Soubory z různých adresářů nemohou být přejmenovány.\n\nImportují se pouze soubory z prvního nalezeného adresáře!
+OK	PecoApp		OK
+Select	PecoApp		Vybrat
+Select files for renaming	PecoApp		Vybrat soubory k přejmenování
+The volume is read only: files cannot be renamed.	PecoApp		Systém souborů je jen pro čtení: soubory nelze přejmenovat.
+Werner Freytag (original author)	PecoApp		Werner Freytag (původní autor)
+Case sensitive	Renamer_SearchReplace		Velká i malá písmena
+Find pattern:	Renamer_SearchReplace		Hledat vzor:
+Replace with:	Renamer_SearchReplace		Nahradit s:
+Search and replace	Renamer_SearchReplace		Hledat a nahradit
+Choose files and folders	MainView		Zvolte soubory a adresáře
+Open	MainView		Otevřít
+Open location	MainView		Otevřít umístění
+Remove	MainView		Odebrat
+Rename	MainView		Přejmenovat
+Convert to:	Renamer_UpperLower		Převést na:
+lowercase	Renamer_UpperLower		malá písmena
+Please select	Renamer_UpperLower		Prosím vyberte
+Sentence case	Renamer_UpperLower		Velká písmena na začátku vět
+Title Case	Renamer_UpperLower		Velká písmena na začátku slov
+UPPERCASE	Renamer_UpperLower		VELKÁ PÍSMENA
+Uppercase / lowercase	Renamer_UpperLower		VELKÁ/malá písmena
+Format:	Renamer_Numbering		Formát:
+Numbering	Renamer_Numbering		Číslování
+Please select	Renamer_Numbering		Prosím vyberte
+Start with:	Renamer_Numbering		Začít s:
+Text before:	Renamer_Numbering		Text před:
+Text behind:	Renamer_Numbering		Text za:
+from the back (right)	Renamer_Remove		zezadu (vpravo)
+from the front (left)	Renamer_Remove		zepředu (vlevo)
+Please select	Renamer_Remove		Prosím vyberte
+Remove	Renamer_Remove		Odebrat
+Remove from position	Renamer_Remove		Odebrat na pozici
+To position	Renamer_Remove		Do pozice
+Modified	FileListView	Column title	Změněno
+Name	FileListView	Column title	Název
+Preview	FileListView	Column title	Náhled
+Size	FileListView	Column title	Velikost
+PecoRename	System name		PecoPřejmenovač

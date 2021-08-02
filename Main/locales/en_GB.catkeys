@@ -1,29 +1,22 @@
 1	English (British)	application/x-vnd.pecora-PecoRename	4063603093
-Modified	FileListView	Column title	Modified
-Name	FileListView	Column title	Name
-Preview	FileListView	Column title	Preview
-Size	FileListView	Column title	Size
 {0, plural,=0{no duplicates}=1{1 duplicate}other{# duplicates}}	functions		{0, plural,=0{no duplicates}=1{1 duplicate}other{# duplicates}}
 {0, plural,=0{no items}=1{1 item}other{# items}}	functions		{0, plural,=0{no items}=1{1 item}other{# items}}
 {0, plural,=0{no renames}=1{1 rename}other{# renames}}	functions		{0, plural,=0{no renames}=1{1 rename}other{# renames}}
-Choose files and folders	MainView		Choose files and folders
-Open	MainView		Open
-Open location	MainView		Open location
-Remove	MainView		Remove
-Rename	MainView		Rename
+{0, plural,=1{A problem was encountered during processing:  One file couldn't be renamed}other{Problems were encountered during processing:  # files couldn't be renamed}}	ReportWindow		{0, plural,=1{A problem was encountered during processing:  One file couldn't be renamed}other{Problems were encountered during processing:  # files couldn't be renamed}}
+File already exists	ReportWindow		File already exists
+File already exists (as in preview)	ReportWindow		File already exists (as in preview)
+OK	ReportWindow		Alright
+Original name	ReportWindow	Column title	Original name
+Problem	ReportWindow	Column title	Problem
+Report	ReportWindow		Report
+Target name	ReportWindow	Column title	Target name
+Unknown error	ReportWindow		Unknown error
 About PecoRename	MainWindow		About PecoRename
 File	MainWindow		File
 Quit	MainWindow		Quit
+ReadMe.html	MainWindow	Path to the help file. Only change if a translated file is provided.	ReadMe.html
 Select files…	MainWindow		Select files…
 Show documentation	MainWindow		Show documentation
-ReadMe.html	MainWindow	Path to the help file. Only change if a translated file is provided.	ReadMe.html
-Cancel	PecoApp		Cancel
-Files from different folders cannot be renamed.\n\nOnly the files of the first found folder will be imported!	PecoApp		Files from different folders cannot be renamed.\n\nOnly the files of the first found folder will be imported!
-OK	PecoApp		Alright
-Select	PecoApp		Select
-Select files for renaming	PecoApp		Select files for renaming
-The volume is read only: files cannot be renamed.	PecoApp		The volume is read only: files cannot be renamed.
-Werner Freytag (original author)	PecoApp		Werner Freytag (original author)
 Add file extension	Renamer_Extension		Add file extension
 lowercase	Renamer_Extension		lowercase
 Replace old extension	Renamer_Extension		Replace old extension
@@ -36,6 +29,29 @@ Insert / overwrite	Renamer_InsertOverwrite		Insert / overwrite
 Overwrite with	Renamer_InsertOverwrite		Overwrite with
 Please select	Renamer_InsertOverwrite		Please select
 Text:	Renamer_InsertOverwrite		Text:
+Cancel	PecoApp		Cancel
+Files from different folders cannot be renamed.\n\nOnly the files of the first found folder will be imported!	PecoApp		Files from different folders cannot be renamed.\n\nOnly the files of the first found folder will be imported!
+OK	PecoApp		Alright
+Select	PecoApp		Select
+Select files for renaming	PecoApp		Select files for renaming
+The volume is read only: files cannot be renamed.	PecoApp		The volume is read only: files cannot be renamed.
+Werner Freytag (original author)	PecoApp		Werner Freytag (original author)
+Case sensitive	Renamer_SearchReplace		Case sensitive
+Find pattern:	Renamer_SearchReplace		Find pattern:
+Replace with:	Renamer_SearchReplace		Replace with:
+Search and replace	Renamer_SearchReplace		Search and replace
+Choose files and folders	MainView		Choose files and folders
+Open	MainView		Open
+Open location	MainView		Open location
+Remove	MainView		Remove
+Rename	MainView		Rename
+Convert to:	Renamer_UpperLower		Convert to:
+lowercase	Renamer_UpperLower		lowercase
+Please select	Renamer_UpperLower		Please select
+Sentence case	Renamer_UpperLower		Sentence case
+Title Case	Renamer_UpperLower		Title Case
+UPPERCASE	Renamer_UpperLower		UPPERCASE
+Uppercase / lowercase	Renamer_UpperLower		Uppercase / lowercase
 Format:	Renamer_Numbering		Format:
 Numbering	Renamer_Numbering		Numbering
 Please select	Renamer_Numbering		Please select
@@ -48,24 +64,8 @@ Please select	Renamer_Remove		Please select
 Remove	Renamer_Remove		Remove
 Remove from position	Renamer_Remove		Remove from position
 To position	Renamer_Remove		To position
-Case sensitive	Renamer_SearchReplace		Case sensitive
-Find pattern:	Renamer_SearchReplace		Find pattern:
-Replace with:	Renamer_SearchReplace		Replace with:
-Search and replace	Renamer_SearchReplace		Search and replace
-Convert to:	Renamer_UpperLower		Convert to:
-lowercase	Renamer_UpperLower		lowercase
-Please select	Renamer_UpperLower		Please select
-Sentence case	Renamer_UpperLower		Sentence case
-Title Case	Renamer_UpperLower		Title Case
-UPPERCASE	Renamer_UpperLower		UPPERCASE
-Uppercase / lowercase	Renamer_UpperLower		Uppercase / lowercase
-{0, plural,=1{A problem was encountered during processing:  One file couldn't be renamed}other{Problems were encountered during processing:  # files couldn't be renamed}}	ReportWindow		{0, plural,=1{A problem was encountered during processing:  One file couldn't be renamed}other{Problems were encountered during processing:  # files couldn't be renamed}}
-File already exists	ReportWindow		File already exists
-File already exists (as in preview)	ReportWindow		File already exists (as in preview)
-OK	ReportWindow		Alright
-Report	ReportWindow		Report
-Unknown error	ReportWindow		Unknown error
-Original name	ReportWindow	Column title	Original name
-Problem	ReportWindow	Column title	Problem
-Target name	ReportWindow	Column title	Target name
+Modified	FileListView	Column title	Modified
+Name	FileListView	Column title	Name
+Preview	FileListView	Column title	Preview
+Size	FileListView	Column title	Size
 PecoRename	System name		PecoRename

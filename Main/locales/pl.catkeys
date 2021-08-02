@@ -1,29 +1,22 @@
 1	Polish	application/x-vnd.pecora-PecoRename	4063603093
-Modified	FileListView	Column title	Zmodyfikowany
-Name	FileListView	Column title	Nazwa
-Preview	FileListView	Column title	Podgląd
-Size	FileListView	Column title	Rozmiar
 {0, plural,=0{no duplicates}=1{1 duplicate}other{# duplicates}}	functions		{0, plural,=0{brak duplikatów}=1{1 duplikat}few{# duplikaty}many{# duplikatów}other{# duplikatu}}
 {0, plural,=0{no items}=1{1 item}other{# items}}	functions		{0, plural,=0{brak elementów}=1{1 element}few{# elementy}many{# elementów}other{# elementu}}
 {0, plural,=0{no renames}=1{1 rename}other{# renames}}	functions		{0, plural,=0{brak zmian nazwy}=1{1 zmiana nazwy}few{# zmiany nazwy}many{# zmian nazwy}other{# zmiany nazwy}}
-Choose files and folders	MainView		Wybierz pliki i katalogi
-Open	MainView		Otwórz
-Open location	MainView		Otwórz lokację
-Remove	MainView		Usuń
-Rename	MainView		Zmień nazwy
+{0, plural,=1{A problem was encountered during processing:  One file couldn't be renamed}other{Problems were encountered during processing:  # files couldn't be renamed}}	ReportWindow		{0, plural,=1{Wystąpił problem podczas przetwarzania:  nazwa jednego pliku nie została zmieniona}few{Wystąpiły problemy podczas przetwarzania:  nazwa # plików nie została zmieniona}many{Wystąpiły problemy podczas przetwarzania:  nazwa # plików nie została zmieniona}other{Wystąpiły problemy podczas przetwarzania:  nazwa # pliku nie została zmieniona}}
+File already exists	ReportWindow		Plik już istnieje
+File already exists (as in preview)	ReportWindow		Plik już istnieje (jak w podglądzie)
+OK	ReportWindow		OK
+Original name	ReportWindow	Column title	Pierwotna nazwa
+Problem	ReportWindow	Column title	Problem
+Report	ReportWindow		Raport
+Target name	ReportWindow	Column title	Docelowa nazwa
+Unknown error	ReportWindow		Nieznany błąd
 About PecoRename	MainWindow		O PecoRename
 File	MainWindow		Plik
 Quit	MainWindow		Zakończ
+ReadMe.html	MainWindow	Path to the help file. Only change if a translated file is provided.	ReadMe.html
 Select files…	MainWindow		Wybierz pliki…
 Show documentation	MainWindow		Pokaż dokumentację
-ReadMe.html	MainWindow	Path to the help file. Only change if a translated file is provided.	ReadMe.html
-Cancel	PecoApp		Anuluj
-Files from different folders cannot be renamed.\n\nOnly the files of the first found folder will be imported!	PecoApp		Nazwy plików z różnych katalogów nie mogą być zmieniane.\n\nTylko pliki z pierwszego odnalezionego katalogu zostaną zaimportowane!
-OK	PecoApp		OK
-Select	PecoApp		Wybierz
-Select files for renaming	PecoApp		Wybierz pliki do zmiany nazwy
-The volume is read only: files cannot be renamed.	PecoApp		Partycja jest tylko do odczytu: nazwy plików nie mogą zostać zmienione.
-Werner Freytag (original author)	PecoApp		Werner Freytag (pierwotny autor)
 Add file extension	Renamer_Extension		Dodaj rozszerzenie pliku
 lowercase	Renamer_Extension		małe litery
 Replace old extension	Renamer_Extension		Zastąp stare rozszerzenie
@@ -36,6 +29,29 @@ Insert / overwrite	Renamer_InsertOverwrite		Wstaw/nadpisz
 Overwrite with	Renamer_InsertOverwrite		Nadpisz używając
 Please select	Renamer_InsertOverwrite		Proszę wybrać
 Text:	Renamer_InsertOverwrite		Tekst:
+Cancel	PecoApp		Anuluj
+Files from different folders cannot be renamed.\n\nOnly the files of the first found folder will be imported!	PecoApp		Nazwy plików z różnych katalogów nie mogą być zmieniane.\n\nTylko pliki z pierwszego odnalezionego katalogu zostaną zaimportowane!
+OK	PecoApp		OK
+Select	PecoApp		Wybierz
+Select files for renaming	PecoApp		Wybierz pliki do zmiany nazwy
+The volume is read only: files cannot be renamed.	PecoApp		Partycja jest tylko do odczytu: nazwy plików nie mogą zostać zmienione.
+Werner Freytag (original author)	PecoApp		Werner Freytag (pierwotny autor)
+Case sensitive	Renamer_SearchReplace		Wielkość znaków ma znaczenie
+Find pattern:	Renamer_SearchReplace		Znajdź wzór:
+Replace with:	Renamer_SearchReplace		Zastąp:
+Search and replace	Renamer_SearchReplace		Znajdź i zastąp
+Choose files and folders	MainView		Wybierz pliki i katalogi
+Open	MainView		Otwórz
+Open location	MainView		Otwórz lokację
+Remove	MainView		Usuń
+Rename	MainView		Zmień nazwy
+Convert to:	Renamer_UpperLower		Konwertuj na:
+lowercase	Renamer_UpperLower		małe litery
+Please select	Renamer_UpperLower		Proszę wybrać
+Sentence case	Renamer_UpperLower		Jak w zdaniu
+Title Case	Renamer_UpperLower		Jak W Tytule
+UPPERCASE	Renamer_UpperLower		WIELKIE LITERY
+Uppercase / lowercase	Renamer_UpperLower		Wielkie/małe litery
 Format:	Renamer_Numbering		Format:
 Numbering	Renamer_Numbering		Numerowanie
 Please select	Renamer_Numbering		Proszę wybrać
@@ -48,24 +64,8 @@ Please select	Renamer_Remove		Proszę wybrać
 Remove	Renamer_Remove		Usuń
 Remove from position	Renamer_Remove		Usuń od pozycji
 To position	Renamer_Remove		Do pozycji
-Case sensitive	Renamer_SearchReplace		Wielkość znaków ma znaczenie
-Find pattern:	Renamer_SearchReplace		Znajdź wzór:
-Replace with:	Renamer_SearchReplace		Zastąp:
-Search and replace	Renamer_SearchReplace		Znajdź i zastąp
-Convert to:	Renamer_UpperLower		Konwertuj na:
-lowercase	Renamer_UpperLower		małe litery
-Please select	Renamer_UpperLower		Proszę wybrać
-Sentence case	Renamer_UpperLower		Jak w zdaniu
-Title Case	Renamer_UpperLower		Jak W Tytule
-UPPERCASE	Renamer_UpperLower		WIELKIE LITERY
-Uppercase / lowercase	Renamer_UpperLower		Wielkie/małe litery
-{0, plural,=1{A problem was encountered during processing:  One file couldn't be renamed}other{Problems were encountered during processing:  # files couldn't be renamed}}	ReportWindow		{0, plural,=1{Wystąpił problem podczas przetwarzania:  nazwa jednego pliku nie została zmieniona}few{Wystąpiły problemy podczas przetwarzania:  nazwa # plików nie została zmieniona}many{Wystąpiły problemy podczas przetwarzania:  nazwa # plików nie została zmieniona}other{Wystąpiły problemy podczas przetwarzania:  nazwa # pliku nie została zmieniona}}
-File already exists	ReportWindow		Plik już istnieje
-File already exists (as in preview)	ReportWindow		Plik już istnieje (jak w podglądzie)
-OK	ReportWindow		OK
-Report	ReportWindow		Raport
-Unknown error	ReportWindow		Nieznany błąd
-Original name	ReportWindow	Column title	Pierwotna nazwa
-Problem	ReportWindow	Column title	Problem
-Target name	ReportWindow	Column title	Docelowa nazwa
+Modified	FileListView	Column title	Zmodyfikowany
+Name	FileListView	Column title	Nazwa
+Preview	FileListView	Column title	Podgląd
+Size	FileListView	Column title	Rozmiar
 PecoRename	System name		PecoRename

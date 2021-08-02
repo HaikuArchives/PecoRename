@@ -1,71 +1,71 @@
 1	Russian	application/x-vnd.pecora-PecoRename	4063603093
+{0, plural,=0{no duplicates}=1{1 duplicate}other{# duplicates}}	functions		{0, plural,=0{нет дубликатов}=1{1 дубликат}other{# дубликата}}
+{0, plural,=0{no items}=1{1 item}other{# items}}	functions		{0, plural,=0{пусто}=1{1 объект}other{# объектов}}
+{0, plural,=0{no renames}=1{1 rename}other{# renames}}	functions		{0, plural,=0{нет переименований}=1{1 переименование}other{# переименований}}
+{0, plural,=1{A problem was encountered during processing:  One file couldn't be renamed}other{Problems were encountered during processing:  # files couldn't be renamed}}	ReportWindow		{0, plural,=1{При обработке возникла проблема:  Не удалось переименовать один файл}other{При обработке возникли проблемы:  Не удалось переименовать # файлов}}
+File already exists	ReportWindow		Файл уже существует
+File already exists (as in preview)	ReportWindow		Файл уже существует (как в предпросмотре)
+OK	ReportWindow		OK
+Original name	ReportWindow	Column title	Изначальное имя
+Problem	ReportWindow	Column title	Проблема
+Report	ReportWindow		Сообщение
+Target name	ReportWindow	Column title	Целевое имя
+Unknown error	ReportWindow		Неизвестная ошибка
+About PecoRename	MainWindow		О программе
+File	MainWindow		Файл
+Quit	MainWindow		Выйти
+ReadMe.html	MainWindow	Path to the help file. Only change if a translated file is provided.	ReadMe.html
+Select files…	MainWindow		Выбрать файлы…
+Show documentation	MainWindow		Показать документацию
+Add file extension	Renamer_Extension		Добавить расширение файла
+lowercase	Renamer_Extension		нижний регистр
+Replace old extension	Renamer_Extension		Заменить старое расширение
+UPPERCASE	Renamer_Extension		ВЕРХНИЙ РЕГИСТР
+At position:	Renamer_InsertOverwrite		На позиции:
+from the back (right)	Renamer_InsertOverwrite		сзади (справа)
+from the front (left)	Renamer_InsertOverwrite		спереди (слева)
+Insert	Renamer_InsertOverwrite		Вставить
+Insert / overwrite	Renamer_InsertOverwrite		Вставить / перезаписать
+Overwrite with	Renamer_InsertOverwrite		Перезаписать
+Please select	Renamer_InsertOverwrite		Пожалуйста, выберите
+Text:	Renamer_InsertOverwrite		Текст:
+Cancel	PecoApp		Отмена
+Files from different folders cannot be renamed.\n\nOnly the files of the first found folder will be imported!	PecoApp		Невозможно переименовать файлы из разных папок.\n\nБудут импортированы только файлы из первой найденной папки!
+OK	PecoApp		OK
+Select	PecoApp		Выбрать
+Select files for renaming	PecoApp		Выберите файлы для переименования
+The volume is read only: files cannot be renamed.	PecoApp		Том подключен только для чтения: невозможно переименовать файлы.
+Werner Freytag (original author)	PecoApp		Werner Freytag (автор)
+Case sensitive	Renamer_SearchReplace		С учетом регистра
+Find pattern:	Renamer_SearchReplace		Найти:
+Replace with:	Renamer_SearchReplace		Заменить на:
+Search and replace	Renamer_SearchReplace		Найти и заменить
+Choose files and folders	MainView		Выбрать файлы и папки
+Open	MainView		Открыть
+Open location	MainView		Открыть папку
+Remove	MainView		Удалить
+Rename	MainView		Переименовать
+Convert to:	Renamer_UpperLower		Изменить на:
+lowercase	Renamer_UpperLower		нижний регистр
+Please select	Renamer_UpperLower		Пожалуйста, выберите
+Sentence case	Renamer_UpperLower		Как в предложении
+Title Case	Renamer_UpperLower		Все С Заглавной
+UPPERCASE	Renamer_UpperLower		ВЕРХНИЙ РЕГИСТР
+Uppercase / lowercase	Renamer_UpperLower		Верхний / нижний регистр
+Format:	Renamer_Numbering		Формат:
+Numbering	Renamer_Numbering		Нумерация
+Please select	Renamer_Numbering		Пожалуйста, выберите
+Start with:	Renamer_Numbering		Начиная с:
+Text before:	Renamer_Numbering		Текст впереди:
+Text behind:	Renamer_Numbering		Текст позади:
+from the back (right)	Renamer_Remove		сзади (справа)
+from the front (left)	Renamer_Remove		спереди (слева)
+Please select	Renamer_Remove		Пожалуйста, выберите
+Remove	Renamer_Remove		Удалить
+Remove from position	Renamer_Remove		Удалить от позиции
+To position	Renamer_Remove		До позиции
 Modified	FileListView	Column title	Изменен
 Name	FileListView	Column title	Имя
 Preview	FileListView	Column title	Предпросмотр
 Size	FileListView	Column title	Размер
-{0, plural,=0{no duplicates}=1{1 duplicate}other{# duplicates}}	functions		{0, plural,=0{нет дубликатов}=1{1 дубликат}other{# дубликата}}
-{0, plural,=0{no items}=1{1 item}other{# items}}	functions		{0, plural,=0{no items}=1{1 item}other{# items}}
-{0, plural,=0{no renames}=1{1 rename}other{# renames}}	functions		{0, plural,=0{no renames}=1{1 rename}other{# renames}}
-Choose files and folders	MainView		Choose files and folders
-Open	MainView		Открыть
-Open location	MainView		Open location
-Remove	MainView		Удалить
-Rename	MainView		Переименовать
-About PecoRename	MainWindow		About PecoRename
-File	MainWindow		Файл
-Quit	MainWindow		Выйти
-Select files…	MainWindow		Выбрать файлы…
-Show documentation	MainWindow		Show documentation
-ReadMe.html	MainWindow	Path to the help file. Only change if a translated file is provided.	ReadMe.html
-Cancel	PecoApp		Cancel
-Files from different folders cannot be renamed.\n\nOnly the files of the first found folder will be imported!	PecoApp		Files from different folders cannot be renamed.\n\nOnly the files of the first found folder will be imported!
-OK	PecoApp		OK
-Select	PecoApp		Select
-Select files for renaming	PecoApp		Select files for renaming
-The volume is read only: files cannot be renamed.	PecoApp		The volume is read only: files cannot be renamed.
-Werner Freytag (original author)	PecoApp		Werner Freytag (original author)
-Add file extension	Renamer_Extension		Add file extension
-lowercase	Renamer_Extension		lowercase
-Replace old extension	Renamer_Extension		Replace old extension
-UPPERCASE	Renamer_Extension		UPPERCASE
-At position:	Renamer_InsertOverwrite		At position:
-from the back (right)	Renamer_InsertOverwrite		from the back (right)
-from the front (left)	Renamer_InsertOverwrite		from the front (left)
-Insert	Renamer_InsertOverwrite		Insert
-Insert / overwrite	Renamer_InsertOverwrite		Insert / overwrite
-Overwrite with	Renamer_InsertOverwrite		Overwrite with
-Please select	Renamer_InsertOverwrite		Please select
-Text:	Renamer_InsertOverwrite		Text:
-Format:	Renamer_Numbering		Format:
-Numbering	Renamer_Numbering		Numbering
-Please select	Renamer_Numbering		Please select
-Start with:	Renamer_Numbering		Start with:
-Text before:	Renamer_Numbering		Text before:
-Text behind:	Renamer_Numbering		Text behind:
-from the back (right)	Renamer_Remove		from the back (right)
-from the front (left)	Renamer_Remove		from the front (left)
-Please select	Renamer_Remove		Please select
-Remove	Renamer_Remove		Remove
-Remove from position	Renamer_Remove		Remove from position
-To position	Renamer_Remove		To position
-Case sensitive	Renamer_SearchReplace		Case sensitive
-Find pattern:	Renamer_SearchReplace		Find pattern:
-Replace with:	Renamer_SearchReplace		Replace with:
-Search and replace	Renamer_SearchReplace		Search and replace
-Convert to:	Renamer_UpperLower		Convert to:
-lowercase	Renamer_UpperLower		lowercase
-Please select	Renamer_UpperLower		Please select
-Sentence case	Renamer_UpperLower		Sentence case
-Title Case	Renamer_UpperLower		Title Case
-UPPERCASE	Renamer_UpperLower		UPPERCASE
-Uppercase / lowercase	Renamer_UpperLower		Uppercase / lowercase
-{0, plural,=1{A problem was encountered during processing:  One file couldn't be renamed}other{Problems were encountered during processing:  # files couldn't be renamed}}	ReportWindow		{0, plural,=1{A problem was encountered during processing:  One file couldn't be renamed}other{Problems were encountered during processing:  # files couldn't be renamed}}
-File already exists	ReportWindow		File already exists
-File already exists (as in preview)	ReportWindow		File already exists (as in preview)
-OK	ReportWindow		OK
-Report	ReportWindow		Report
-Unknown error	ReportWindow		Unknown error
-Original name	ReportWindow	Column title	Original name
-Problem	ReportWindow	Column title	Problem
-Target name	ReportWindow	Column title	Target name
 PecoRename	System name		PecoRename

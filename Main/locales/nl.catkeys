@@ -1,29 +1,22 @@
 1	Dutch	application/x-vnd.pecora-PecoRename	4063603093
-Modified	FileListView	Column title	Veranderd
-Name	FileListView	Column title	Naam
-Preview	FileListView	Column title	Voorbeeld
-Size	FileListView	Column title	Grootte
 {0, plural,=0{no duplicates}=1{1 duplicate}other{# duplicates}}	functions		{0, plural,=0{geen duplicaten}=1{1 duplicaat}meer{# duplicaten}}
 {0, plural,=0{no items}=1{1 item}other{# items}}	functions		{0, plural,=0{geen items}=1{1 item}meer{# items}}
 {0, plural,=0{no renames}=1{1 rename}other{# renames}}	functions		{0, plural,=0{geen hernoeming}=1{1 hernoem}meer{# hernoemen}}
-Choose files and folders	MainView		Kies bestanden en mappen
-Open	MainView		Open
-Open location	MainView		Open locatie
-Remove	MainView		Verwijder
-Rename	MainView		Hernoem
+{0, plural,=1{A problem was encountered during processing:  One file couldn't be renamed}other{Problems were encountered during processing:  # files couldn't be renamed}}	ReportWindow		{0, plural,=1{Er is een probleem opgelopen tijdens het process:  Een bestand kon niet hernoemd worden}meer{Problemen vastgesteld tijdens het process:  # bestanden konden niet hernoemd worden}}
+File already exists	ReportWindow		Bestand bestaat reedss
+File already exists (as in preview)	ReportWindow		Bestand bestaat reeds (als in voorbeeld)
+OK	ReportWindow		OK
+Original name	ReportWindow	Column title	Originele naam
+Problem	ReportWindow	Column title	Probleem
+Report	ReportWindow		Raporteer
+Target name	ReportWindow	Column title	Doel naam
+Unknown error	ReportWindow		Onbekende fout
 About PecoRename	MainWindow		Over PecoRename
 File	MainWindow		Bestand
 Quit	MainWindow		Afsluiten
+ReadMe.html	MainWindow	Path to the help file. Only change if a translated file is provided.	ReadMe.html
 Select files…	MainWindow		Selecteer bestanden…
 Show documentation	MainWindow		Toon documentatie
-ReadMe.html	MainWindow	Path to the help file. Only change if a translated file is provided.	ReadMe.html
-Cancel	PecoApp		Annuleer
-Files from different folders cannot be renamed.\n\nOnly the files of the first found folder will be imported!	PecoApp		Bestanden van verschillende mapper kunnen niet hernoemd worden.\n\nEnkel de bestanden van de eerste map worden geïmporteerd!
-OK	PecoApp		OK
-Select	PecoApp		Selecteer
-Select files for renaming	PecoApp		Selecteer bestanden voor hernoeming
-The volume is read only: files cannot be renamed.	PecoApp		Het volume is enkel lezen: bestanden kunnen niet hernoemd worden.
-Werner Freytag (original author)	PecoApp		Werner Freytag (originele autheur)
 Add file extension	Renamer_Extension		Bestands extentie toevoegen
 lowercase	Renamer_Extension		kleine letters
 Replace old extension	Renamer_Extension		Vervang oude extentie
@@ -36,6 +29,29 @@ Insert / overwrite	Renamer_InsertOverwrite		Invoegen / Overschrijven
 Overwrite with	Renamer_InsertOverwrite		Overschrijf met
 Please select	Renamer_InsertOverwrite		Selecteer aub
 Text:	Renamer_InsertOverwrite		Tekst:
+Cancel	PecoApp		Annuleer
+Files from different folders cannot be renamed.\n\nOnly the files of the first found folder will be imported!	PecoApp		Bestanden van verschillende mapper kunnen niet hernoemd worden.\n\nEnkel de bestanden van de eerste map worden geïmporteerd!
+OK	PecoApp		OK
+Select	PecoApp		Selecteer
+Select files for renaming	PecoApp		Selecteer bestanden voor hernoeming
+The volume is read only: files cannot be renamed.	PecoApp		Het volume is enkel lezen: bestanden kunnen niet hernoemd worden.
+Werner Freytag (original author)	PecoApp		Werner Freytag (originele autheur)
+Case sensitive	Renamer_SearchReplace		Hoofdletter gevoelig
+Find pattern:	Renamer_SearchReplace		Zoek patroon:
+Replace with:	Renamer_SearchReplace		Vervang met:
+Search and replace	Renamer_SearchReplace		Zoek en vervang
+Choose files and folders	MainView		Kies bestanden en mappen
+Open	MainView		Open
+Open location	MainView		Open locatie
+Remove	MainView		Verwijder
+Rename	MainView		Hernoem
+Convert to:	Renamer_UpperLower		Converteer tot:
+lowercase	Renamer_UpperLower		kleine letters
+Please select	Renamer_UpperLower		Selecteer aub
+Sentence case	Renamer_UpperLower		Zins gevoelig
+Title Case	Renamer_UpperLower		Titel Gevoelig
+UPPERCASE	Renamer_UpperLower		HOOFDLETTERS
+Uppercase / lowercase	Renamer_UpperLower		Hoofdletters / kleine letters
 Format:	Renamer_Numbering		Formaat:
 Numbering	Renamer_Numbering		Nummering
 Please select	Renamer_Numbering		Selecteer aub
@@ -48,24 +64,8 @@ Please select	Renamer_Remove		Selecteer aub
 Remove	Renamer_Remove		Verwijder
 Remove from position	Renamer_Remove		Verwijder vanaf positie
 To position	Renamer_Remove		Tot positie
-Case sensitive	Renamer_SearchReplace		Hoofdletter gevoelig
-Find pattern:	Renamer_SearchReplace		Zoek patroon:
-Replace with:	Renamer_SearchReplace		Vervang met:
-Search and replace	Renamer_SearchReplace		Zoek en vervang
-Convert to:	Renamer_UpperLower		Converteer tot:
-lowercase	Renamer_UpperLower		kleine letters
-Please select	Renamer_UpperLower		Selecteer aub
-Sentence case	Renamer_UpperLower		Zins gevoelig
-Title Case	Renamer_UpperLower		Titel Gevoelig
-UPPERCASE	Renamer_UpperLower		HOOFDLETTERS
-Uppercase / lowercase	Renamer_UpperLower		Hoofdletters / kleine letters
-{0, plural,=1{A problem was encountered during processing:  One file couldn't be renamed}other{Problems were encountered during processing:  # files couldn't be renamed}}	ReportWindow		{0, plural,=1{Er is een probleem opgelopen tijdens het process:  Een bestand kon niet hernoemd worden}meer{Problemen vastgesteld tijdens het process:  # bestanden konden niet hernoemd worden}}
-File already exists	ReportWindow		Bestand bestaat reedss
-File already exists (as in preview)	ReportWindow		Bestand bestaat reeds (als in voorbeeld)
-OK	ReportWindow		OK
-Report	ReportWindow		Raporteer
-Unknown error	ReportWindow		Onbekende fout
-Original name	ReportWindow	Column title	Originele naam
-Problem	ReportWindow	Column title	Probleem
-Target name	ReportWindow	Column title	Doel naam
+Modified	FileListView	Column title	Veranderd
+Name	FileListView	Column title	Naam
+Preview	FileListView	Column title	Voorbeeld
+Size	FileListView	Column title	Grootte
 PecoRename	System name		PecoRename

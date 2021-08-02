@@ -1,0 +1,71 @@
+1	Ukrainian	application/x-vnd.pecora-PecoRename	4063603093
+{0, plural,=0{no duplicates}=1{1 duplicate}other{# duplicates}}	functions		{0, plural,=0{немає дублікатів}=1{1 дублікат}other{# дублікатів}}
+{0, plural,=0{no items}=1{1 item}other{# items}}	functions		{0, plural,=0{немає елементів}=1{1 елемент}other{# елементів}}
+{0, plural,=0{no renames}=1{1 rename}other{# renames}}	functions		{0, plural,=0{немає перейменувань}=1{1 перейменування}other{# перейменувань}}
+{0, plural,=1{A problem was encountered during processing:  One file couldn't be renamed}other{Problems were encountered during processing:  # files couldn't be renamed}}	ReportWindow		{0, plural,=1{При обробці виникла проблема:  Не вдалося перейменувати один файл}other{При обробці виникли проблеми:  Не вдалося перейменувати # файлів}}
+File already exists	ReportWindow		Файл вже існує
+File already exists (as in preview)	ReportWindow		Файл вже існує (як в передперегляді)
+OK	ReportWindow		OK
+Original name	ReportWindow	Column title	Початкове ім'я
+Problem	ReportWindow	Column title	Проблема
+Report	ReportWindow		Звіт
+Target name	ReportWindow	Column title	Кінцеве ім'я
+Unknown error	ReportWindow		Невідома помилка
+About PecoRename	MainWindow		Про програму
+File	MainWindow		Файл
+Quit	MainWindow		Вийти
+ReadMe.html	MainWindow	Path to the help file. Only change if a translated file is provided.	ReadMe.html
+Select files…	MainWindow		Вибрати файли…
+Show documentation	MainWindow		Показати документацію
+Add file extension	Renamer_Extension		Додати розширення файлу
+lowercase	Renamer_Extension		нижній регістр
+Replace old extension	Renamer_Extension		Замінити старе розширення
+UPPERCASE	Renamer_Extension		ВЕРХНІЙ РЕГІСТР
+At position:	Renamer_InsertOverwrite		На позиції:
+from the back (right)	Renamer_InsertOverwrite		ззаду (праворуч)
+from the front (left)	Renamer_InsertOverwrite		спереду (ліворуч)
+Insert	Renamer_InsertOverwrite		Вставити
+Insert / overwrite	Renamer_InsertOverwrite		Вставити / перезаписати
+Overwrite with	Renamer_InsertOverwrite		Перезаписати
+Please select	Renamer_InsertOverwrite		Будь ласка, виберіть
+Text:	Renamer_InsertOverwrite		Текст:
+Cancel	PecoApp		Скасувати
+Files from different folders cannot be renamed.\n\nOnly the files of the first found folder will be imported!	PecoApp		Неможливо перейменувати файли з різних папок.\n\nБудуть імпортовані лише файли з першої знайденої папки!
+OK	PecoApp		OK
+Select	PecoApp		Вибрати
+Select files for renaming	PecoApp		Виберіть файли для перейменування
+The volume is read only: files cannot be renamed.	PecoApp		Том підключений лише для читання: неможливо перейменувати файли.
+Werner Freytag (original author)	PecoApp		Werner Freytag (автор)
+Case sensitive	Renamer_SearchReplace		Враховувати регістр
+Find pattern:	Renamer_SearchReplace		Знайти:
+Replace with:	Renamer_SearchReplace		Замінити на:
+Search and replace	Renamer_SearchReplace		Знайти і замінити
+Choose files and folders	MainView		Вибрати файли і папки
+Open	MainView		Відкрити
+Open location	MainView		Відкрити папку
+Remove	MainView		Видалити
+Rename	MainView		Перейменувати
+Convert to:	Renamer_UpperLower		Перетворити в:
+lowercase	Renamer_UpperLower		нижній регістр
+Please select	Renamer_UpperLower		Будь ласка, виберіть
+Sentence case	Renamer_UpperLower		Як в реченні
+Title Case	Renamer_UpperLower		Усі З Великої
+UPPERCASE	Renamer_UpperLower		ВЕРХНІЙ РЕГІСТР
+Uppercase / lowercase	Renamer_UpperLower		Верхній / нижній регістр
+Format:	Renamer_Numbering		Формат:
+Numbering	Renamer_Numbering		Нумерація
+Please select	Renamer_Numbering		Будь ласка, виберіть
+Start with:	Renamer_Numbering		Починаючи з:
+Text before:	Renamer_Numbering		Текст перед:
+Text behind:	Renamer_Numbering		Текст після:
+from the back (right)	Renamer_Remove		ззаду (праворуч)
+from the front (left)	Renamer_Remove		спереду (ліворуч)
+Please select	Renamer_Remove		Будь ласка, виберіть
+Remove	Renamer_Remove		Видалити
+Remove from position	Renamer_Remove		Видалити від позиції
+To position	Renamer_Remove		До позиції
+Modified	FileListView	Column title	Змінений
+Name	FileListView	Column title	Ім'я
+Preview	FileListView	Column title	Передперегляд
+Size	FileListView	Column title	Розмір
+PecoRename	System name		PecoRename

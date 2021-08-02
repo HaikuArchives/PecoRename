@@ -1,0 +1,71 @@
+1	Turkish	application/x-vnd.pecora-PecoRename	4063603093
+{0, plural,=0{no duplicates}=1{1 duplicate}other{# duplicates}}	functions		{0, plural,=0{yinelenen yok}=1{1 yinelenen}other{# yinelenen}}
+{0, plural,=0{no items}=1{1 item}other{# items}}	functions		{0, plural,=0{öge yok}=1{1 öge}other{# öge}}
+{0, plural,=0{no renames}=1{1 rename}other{# renames}}	functions		{0, plural,=0{yeniden adlandırma yok}=1{1 yeniden adlandırma}other{# yeniden adlandırma}}
+{0, plural,=1{A problem was encountered during processing:  One file couldn't be renamed}other{Problems were encountered during processing:  # files couldn't be renamed}}	ReportWindow		{0, plural,=1{İşleme sırasında bir sorunla karşılaşıldı:  1 adet dosya yeniden adlandırılamadı}other{İşleme sırasında sorunlarla karşılaşıldı: # dosya yeniden adlandırılamadı}}
+File already exists	ReportWindow		Dosya halihazırda mevcut
+File already exists (as in preview)	ReportWindow		Dosya halihazırda mevcut (önizlemede olduğu gibi)
+OK	ReportWindow		Tamam
+Original name	ReportWindow	Column title	Orijinal adı
+Problem	ReportWindow	Column title	Sorun
+Report	ReportWindow		Rapor
+Target name	ReportWindow	Column title	Hedef adı
+Unknown error	ReportWindow		Bilinmeyen hata
+About PecoRename	MainWindow		PecoRename hakkında
+File	MainWindow		Dosya
+Quit	MainWindow		Çık
+ReadMe.html	MainWindow	Path to the help file. Only change if a translated file is provided.	ReadMe.html
+Select files…	MainWindow		Dosyalar seç…
+Show documentation	MainWindow		Belgelendirmeyi göster
+Add file extension	Renamer_Extension		Dosya uzantısı ekle
+lowercase	Renamer_Extension		küçük harf
+Replace old extension	Renamer_Extension		Eski uzantıyı değiştir
+UPPERCASE	Renamer_Extension		BÜYÜK harf
+At position:	Renamer_InsertOverwrite		Şu konumda:
+from the back (right)	Renamer_InsertOverwrite		arkadan (sağ)
+from the front (left)	Renamer_InsertOverwrite		önden (sol)
+Insert	Renamer_InsertOverwrite		Ekle
+Insert / overwrite	Renamer_InsertOverwrite		Ekle/Üzerine yaz
+Overwrite with	Renamer_InsertOverwrite		Şununla üzerine yaz
+Please select	Renamer_InsertOverwrite		Lütfen seçin
+Text:	Renamer_InsertOverwrite		Metin:
+Cancel	PecoApp		İptal
+Files from different folders cannot be renamed.\n\nOnly the files of the first found folder will be imported!	PecoApp		Başka klasörlerden olan dosyalar yeniden adlandırılamıyor.\n\nYalnızca ilk bulunan klasörün dosyaları içe aktarılacaktır!
+OK	PecoApp		Tamam
+Select	PecoApp		Seç
+Select files for renaming	PecoApp		Yeniden adlandırılacak dosyaları seçin
+The volume is read only: files cannot be renamed.	PecoApp		Bu disk bölümü saltokunur; dosyalar yeniden adlandırılamıyor.
+Werner Freytag (original author)	PecoApp		Werner Freytag (ilk yazan)
+Case sensitive	Renamer_SearchReplace		BÜYÜK/küçük harf duyarlı
+Find pattern:	Renamer_SearchReplace		Dizgi bul:
+Replace with:	Renamer_SearchReplace		Şununla değiştir:
+Search and replace	Renamer_SearchReplace		Ara ve değiştir
+Choose files and folders	MainView		Dosya ve klasörler seçin
+Open	MainView		Aç
+Open location	MainView		Konum aç
+Remove	MainView		Kaldır
+Rename	MainView		Yeniden adlandır
+Convert to:	Renamer_UpperLower		Şuna dönüştür:
+lowercase	Renamer_UpperLower		küçük harf
+Please select	Renamer_UpperLower		Lütfen seçin
+Sentence case	Renamer_UpperLower		Tümce BÜYÜK/küçük harf
+Title Case	Renamer_UpperLower		Başlık BÜYÜK/küçük harf
+UPPERCASE	Renamer_UpperLower		BÜYÜK harf
+Uppercase / lowercase	Renamer_UpperLower		BÜYÜK / küçük harf
+Format:	Renamer_Numbering		Biçim:
+Numbering	Renamer_Numbering		Numaralandırma
+Please select	Renamer_Numbering		Lütfen seçin
+Start with:	Renamer_Numbering		Şununla başla:
+Text before:	Renamer_Numbering		Öncesindeki metin:
+Text behind:	Renamer_Numbering		Arkasındaki metin:
+from the back (right)	Renamer_Remove		arkadan (sağ)
+from the front (left)	Renamer_Remove		önden (sol)
+Please select	Renamer_Remove		Lütfen seçin
+Remove	Renamer_Remove		Kaldır
+Remove from position	Renamer_Remove		Konumdan kaldır
+To position	Renamer_Remove		Konuma
+Modified	FileListView	Column title	Değiştirilme
+Name	FileListView	Column title	Ad
+Preview	FileListView	Column title	Önizleme
+Size	FileListView	Column title	Boyut
+PecoRename	System name		PecoRename
