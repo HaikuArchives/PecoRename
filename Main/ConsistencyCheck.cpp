@@ -80,6 +80,7 @@ ConsistencyCheck::CheckForDuplicates()
 	if (fNames.CountItems() < 2)
 		return false;
 
+	bool duplicateFound = false;
 	for (int i = 0; i < fNames.CountItems() - 1; i++)
 	{
 		NameToCheck* name1 = (NameToCheck*)fNames.ItemAt(i);
@@ -88,6 +89,8 @@ ConsistencyCheck::CheckForDuplicates()
 		if (name1->Name().Compare(name2->Name()) == 0) {
 			name1->SetDuplicate();
 			name2->SetDuplicate();
+			duplicateFound = true;
 		}
 	}
+	return duplicateFound;
 }
