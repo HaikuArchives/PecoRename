@@ -31,6 +31,7 @@ public:
 					case item_new_name:	return fFileListItem->fNewName;
 					case item_disk_name: return fName;
 				}
+				abort();
 			}
 	void 	SetDuplicate() {
 				if (fType == item_new_name)
