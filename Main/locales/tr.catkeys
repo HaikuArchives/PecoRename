@@ -15,7 +15,7 @@ About PecoRename	MainWindow		PecoRename hakkında
 File	MainWindow		Dosya
 Quit	MainWindow		Çık
 ReadMe.html	MainWindow	Path to the help file. Only change if a translated file is provided.	ReadMe.html
-Select files…	MainWindow		Dosyalar seç…
+Select files…	MainWindow		Dosya seç…
 Show documentation	MainWindow		Belgelendirmeyi göster
 Add file extension	Renamer_Extension		Dosya uzantısı ekle
 lowercase	Renamer_Extension		küçük harf
@@ -40,7 +40,7 @@ Case sensitive	Renamer_SearchReplace		BÜYÜK/küçük harf duyarlı
 Find pattern:	Renamer_SearchReplace		Dizgi bul:
 Replace with:	Renamer_SearchReplace		Şununla değiştir:
 Search and replace	Renamer_SearchReplace		Ara ve değiştir
-Choose files and folders	MainView		Dosya ve klasörler seçin
+Choose files and folders	MainView		Dosya ve klasör seçin
 Open	MainView		Aç
 Open location	MainView		Konum aç
 Remove	MainView		Kaldır
@@ -48,8 +48,8 @@ Rename	MainView		Yeniden adlandır
 Convert to:	Renamer_UpperLower		Şuna dönüştür:
 lowercase	Renamer_UpperLower		küçük harf
 Please select	Renamer_UpperLower		Lütfen seçin
-Sentence case	Renamer_UpperLower		Tümce BÜYÜK/küçük harf
-Title Case	Renamer_UpperLower		Başlık BÜYÜK/küçük harf
+Sentence case	Renamer_UpperLower		Tümce biçimi
+Title Case	Renamer_UpperLower		Başlık biçimi
 UPPERCASE	Renamer_UpperLower		BÜYÜK harf
 Uppercase / lowercase	Renamer_UpperLower		BÜYÜK / küçük harf
 Format:	Renamer_Numbering		Biçim:
