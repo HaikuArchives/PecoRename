@@ -30,13 +30,13 @@ Overwrite with	Renamer_InsertOverwrite		Sovrascrivi con
 Please select	Renamer_InsertOverwrite		Seleziona
 Text:	Renamer_InsertOverwrite		Testo:
 Cancel	PecoApp		Annulla
-Files from different folders cannot be renamed.\n\nOnly the files of the first found folder will be imported!	PecoApp		File provenienti da cartelle differenti non possono essere rinominati.\n\nSolo i file nella prima cartella trovata verranno importati!
+Files from different folders cannot be renamed.\n\nOnly the files of the first found folder will be imported!	PecoApp		Non possono essere rinominati file provenienti da cartelle differenti.\n\nVerranno importati solo i file della prima cartella trovata !
 OK	PecoApp		OK
 Select	PecoApp		Seleziona
 Select files for renaming	PecoApp		Seleziona i files da rinominare
 The volume is read only: files cannot be renamed.	PecoApp		Il volume è in sola lettura: i file non possono essere rinominati.
 Werner Freytag (original author)	PecoApp		Werner Freytag (autore originale)
-Case sensitive	Renamer_SearchReplace		Considera maiuscole/minuscole
+Case sensitive	Renamer_SearchReplace		Discrimina tra maiuscole e minuscole
 Find pattern:	Renamer_SearchReplace		Trova pattern:
 Replace with:	Renamer_SearchReplace		Sostituisci con:
 Search and replace	Renamer_SearchReplace		Cerca e sostituisci
