@@ -49,6 +49,7 @@ SRCS =  ConsistencyCheck.cpp  \
         Renamer_Extension.cpp  \
         Renamer_InsertOverwrite.cpp  \
         Renamer_Numbering.cpp  \
+		Renamer_Random.cpp \
         Renamer_Remove.cpp  \
         Renamer_SearchReplace.cpp  \
         Renamer_UpperLower.cpp  \
