@@ -1,4 +1,4 @@
-1	English	application/x-vnd.pecora-PecoRename	2231444257
+1	English	application/x-vnd.pecora-PecoRename	737301785
 from the front (left)	Renamer_Remove		from the front (left)
 Remove	Renamer_Remove		Remove
 Upper case	Renamer_InsertOverwrite		Upper case
@@ -6,6 +6,7 @@ Please select	Renamer_Numbering		Please select
 Convert to:	Renamer_UpperLower		Convert to:
 Select	PecoApp		Select
 Overwrite with	Renamer_InsertOverwrite		Overwrite with
+Text after:	Renamer_Numbering		Text after:
 Remove from position	Renamer_Remove		Remove from position
 Cancel	PecoApp		Cancel
 Target name	ReportWindow	Column title	Target name
@@ -14,7 +15,6 @@ About PecoRename	MainWindow		About PecoRename
 Please select	Renamer_InsertOverwrite		Please select
 File already exists (as in preview)	ReportWindow		File already exists (as in preview)
 Problem	ReportWindow	Column title	Problem
-Text behind:	Renamer_Numbering		Text behind:
 File already exists	ReportWindow		File already exists
 Find pattern:	Renamer_SearchReplace		Find pattern:
 Search and replace	Renamer_SearchReplace		Search and replace

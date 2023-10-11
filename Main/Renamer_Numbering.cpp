@@ -61,7 +61,7 @@ Renamer_Numbering::Renamer_Numbering()
 	fTextBefore = new BTextControl( NULL, B_TRANSLATE("Text before:"), NULL,
 		new BMessage(MSG_RENAME_SETTINGS));
 	fTextBefore->SetModificationMessage(new BMessage(MSG_RENAME_SETTINGS));
-	fTextBehind = new BTextControl( NULL, B_TRANSLATE("Text behind:"), NULL,
+	fTextBehind = new BTextControl( NULL, B_TRANSLATE("Text after:"), NULL,
 		new BMessage(MSG_RENAME_SETTINGS));
 	fTextBehind->SetModificationMessage(new BMessage(MSG_RENAME_SETTINGS));
 
