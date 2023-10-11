@@ -75,7 +75,12 @@ MainView::MainView()
 	BGroupLayout* compoundTitle = BLayoutBuilder::Group<>(B_HORIZONTAL,
 			B_USE_SMALL_SPACING)
 		.Add(ChooseButton)
-		.Add(PathString);
+		.AddGroup(B_VERTICAL)
+			.AddGlue()
+			.Add(PathString)
+			.AddGlue()
+			.End()
+		.AddStrut(B_USE_SMALL_SPACING);
 
 	static const float spacing = be_control_look->DefaultLabelSpacing();
 
