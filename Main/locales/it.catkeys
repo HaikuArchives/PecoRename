@@ -1,4 +1,4 @@
-1	Italian	application/x-vnd.pecora-PecoRename	4063603093
+1	Italian	application/x-vnd.pecora-PecoRename	737301785
 {0, plural,=0{no duplicates}=1{1 duplicate}other{# duplicates}}	functions		{0, plural,=0{nessun duplicato}=1{1 duplicato}other{# duplicati}}
 {0, plural,=0{no items}=1{1 item}other{# items}}	functions		{0, plural,=0{nessun elemento}=1{1 elemento}other{# elementi}}
 {0, plural,=0{no renames}=1{1 rename}other{# renames}}	functions		{0, plural,=0{nessun  rinominato}=1{1 rinaminato}other{# rinominati}}
@@ -22,13 +22,21 @@ lowercase	Renamer_Extension		minuscolo
 Replace old extension	Renamer_Extension		Sostituisci la vecchia estensione
 UPPERCASE	Renamer_Extension		MAIUSCOLO
 At position:	Renamer_InsertOverwrite		Nella posizione:
+Count:	Renamer_InsertOverwrite		Count:
+Custom set of characters	Renamer_InsertOverwrite		Insieme personalizzato di caratteri
+Custom:	Renamer_InsertOverwrite		Personalizzato:
 from the back (right)	Renamer_InsertOverwrite		dalla fine (destra)
 from the front (left)	Renamer_InsertOverwrite		dall'inizio (sinistra)
 Insert	Renamer_InsertOverwrite		Inserisci
 Insert / overwrite	Renamer_InsertOverwrite		Inserisci / sovrascrivi
+Lower case	Renamer_InsertOverwrite		Minuscole
+Numbers	Renamer_InsertOverwrite		Numeri
 Overwrite with	Renamer_InsertOverwrite		Sovrascrivi con
 Please select	Renamer_InsertOverwrite		Seleziona
+Random symbols	Renamer_InsertOverwrite		Simboli casuali
+Symbols	Renamer_InsertOverwrite		Simboli
 Text:	Renamer_InsertOverwrite		Testo:
+Upper case	Renamer_InsertOverwrite		Maiuscole
 Cancel	PecoApp		Annulla
 Files from different folders cannot be renamed.\n\nOnly the files of the first found folder will be imported!	PecoApp		Non possono essere rinominati file provenienti da cartelle differenti.\n\nVerranno importati solo i file della prima cartella trovata !
 OK	PecoApp		OK
@@ -56,8 +64,8 @@ Format:	Renamer_Numbering		Formato:
 Numbering	Renamer_Numbering		Numerazione
 Please select	Renamer_Numbering		Seleziona
 Start with:	Renamer_Numbering		Comincia con:
+Text after:	Renamer_Numbering		Testo dopo:
 Text before:	Renamer_Numbering		Testo prima:
-Text behind:	Renamer_Numbering		Testo dopo:
 from the back (right)	Renamer_Remove		dalla fine (destra)
 from the front (left)	Renamer_Remove		dall'inizio (sinistra)
 Please select	Renamer_Remove		Seleziona

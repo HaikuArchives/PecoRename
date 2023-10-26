@@ -1,4 +1,4 @@
-1	Polish	application/x-vnd.pecora-PecoRename	4063603093
+1	Polish	application/x-vnd.pecora-PecoRename	737301785
 {0, plural,=0{no duplicates}=1{1 duplicate}other{# duplicates}}	functions		{0, plural,=0{brak duplikatów}=1{1 duplikat}few{# duplikaty}many{# duplikatów}other{# duplikatu}}
 {0, plural,=0{no items}=1{1 item}other{# items}}	functions		{0, plural,=0{brak elementów}=1{1 element}few{# elementy}many{# elementów}other{# elementu}}
 {0, plural,=0{no renames}=1{1 rename}other{# renames}}	functions		{0, plural,=0{brak zmian nazwy}=1{1 zmiana nazwy}few{# zmiany nazwy}many{# zmian nazwy}other{# zmiany nazwy}}
@@ -22,13 +22,21 @@ lowercase	Renamer_Extension		małe litery
 Replace old extension	Renamer_Extension		Zastąp stare rozszerzenie
 UPPERCASE	Renamer_Extension		WIELKIE LITERY
 At position:	Renamer_InsertOverwrite		Na pozycji:
+Count:	Renamer_InsertOverwrite		Count:
+Custom set of characters	Renamer_InsertOverwrite		Custom set of characters
+Custom:	Renamer_InsertOverwrite		Custom:
 from the back (right)	Renamer_InsertOverwrite		od tyłu (prawej)
 from the front (left)	Renamer_InsertOverwrite		od przodu (lewej)
 Insert	Renamer_InsertOverwrite		Wstaw
 Insert / overwrite	Renamer_InsertOverwrite		Wstaw/nadpisz
+Lower case	Renamer_InsertOverwrite		Lower case
+Numbers	Renamer_InsertOverwrite		Numbers
 Overwrite with	Renamer_InsertOverwrite		Nadpisz używając
 Please select	Renamer_InsertOverwrite		Proszę wybrać
+Random symbols	Renamer_InsertOverwrite		Random symbols
+Symbols	Renamer_InsertOverwrite		Symbols
 Text:	Renamer_InsertOverwrite		Tekst:
+Upper case	Renamer_InsertOverwrite		Upper case
 Cancel	PecoApp		Anuluj
 Files from different folders cannot be renamed.\n\nOnly the files of the first found folder will be imported!	PecoApp		Nazwy plików z różnych katalogów nie mogą być zmieniane.\n\nTylko pliki z pierwszego odnalezionego katalogu zostaną zaimportowane!
 OK	PecoApp		OK
@@ -56,8 +64,8 @@ Format:	Renamer_Numbering		Format:
 Numbering	Renamer_Numbering		Numerowanie
 Please select	Renamer_Numbering		Proszę wybrać
 Start with:	Renamer_Numbering		Zacznij od:
+Text after:	Renamer_Numbering		Tekst po:
 Text before:	Renamer_Numbering		Tekst przed:
-Text behind:	Renamer_Numbering		Tekst po:
 from the back (right)	Renamer_Remove		od tyłu (prawej)
 from the front (left)	Renamer_Remove		od przodu (lewej)
 Please select	Renamer_Remove		Proszę wybrać

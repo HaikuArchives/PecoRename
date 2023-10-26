@@ -1,4 +1,4 @@
-1	Ukrainian	application/x-vnd.pecora-PecoRename	4063603093
+1	Ukrainian	application/x-vnd.pecora-PecoRename	737301785
 {0, plural,=0{no duplicates}=1{1 duplicate}other{# duplicates}}	functions		{0, plural,=0{немає дублікатів}=1{1 дублікат}other{# дублікатів}}
 {0, plural,=0{no items}=1{1 item}other{# items}}	functions		{0, plural,=0{немає елементів}=1{1 елемент}other{# елементів}}
 {0, plural,=0{no renames}=1{1 rename}other{# renames}}	functions		{0, plural,=0{немає перейменувань}=1{1 перейменування}other{# перейменувань}}
@@ -22,13 +22,21 @@ lowercase	Renamer_Extension		нижній регістр
 Replace old extension	Renamer_Extension		Замінити старе розширення
 UPPERCASE	Renamer_Extension		ВЕРХНІЙ РЕГІСТР
 At position:	Renamer_InsertOverwrite		На позиції:
+Count:	Renamer_InsertOverwrite		Count:
+Custom set of characters	Renamer_InsertOverwrite		Custom set of characters
+Custom:	Renamer_InsertOverwrite		Custom:
 from the back (right)	Renamer_InsertOverwrite		ззаду (праворуч)
 from the front (left)	Renamer_InsertOverwrite		спереду (ліворуч)
 Insert	Renamer_InsertOverwrite		Вставити
 Insert / overwrite	Renamer_InsertOverwrite		Вставити / перезаписати
+Lower case	Renamer_InsertOverwrite		Lower case
+Numbers	Renamer_InsertOverwrite		Numbers
 Overwrite with	Renamer_InsertOverwrite		Перезаписати
 Please select	Renamer_InsertOverwrite		Будь ласка, виберіть
+Random symbols	Renamer_InsertOverwrite		Random symbols
+Symbols	Renamer_InsertOverwrite		Symbols
 Text:	Renamer_InsertOverwrite		Текст:
+Upper case	Renamer_InsertOverwrite		Upper case
 Cancel	PecoApp		Скасувати
 Files from different folders cannot be renamed.\n\nOnly the files of the first found folder will be imported!	PecoApp		Неможливо перейменувати файли з різних папок.\n\nБудуть імпортовані лише файли з першої знайденої папки!
 OK	PecoApp		OK
@@ -56,8 +64,8 @@ Format:	Renamer_Numbering		Формат:
 Numbering	Renamer_Numbering		Нумерація
 Please select	Renamer_Numbering		Будь ласка, виберіть
 Start with:	Renamer_Numbering		Починаючи з:
+Text after:	Renamer_Numbering		Текст після:
 Text before:	Renamer_Numbering		Текст перед:
-Text behind:	Renamer_Numbering		Текст після:
 from the back (right)	Renamer_Remove		ззаду (праворуч)
 from the front (left)	Renamer_Remove		спереду (ліворуч)
 Please select	Renamer_Remove		Будь ласка, виберіть

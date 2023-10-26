@@ -1,4 +1,4 @@
-1	Czech	application/x-vnd.pecora-PecoRename	4063603093
+1	Czech	application/x-vnd.pecora-PecoRename	737301785
 {0, plural,=0{no duplicates}=1{1 duplicate}other{# duplicates}}	functions		{0, plural,=0{žádné duplikáty}=1{1 duplikát}few{# duplikáty}other{# duplikátů}}
 {0, plural,=0{no items}=1{1 item}other{# items}}	functions		{0, plural,=0{žádné položky}=1{1 položka}few{# položky}other{# položek}}
 {0, plural,=0{no renames}=1{1 rename}other{# renames}}	functions		{0, plural,=0{žádné změny}=1{1 změna}few{# změny}other{# změn}}
@@ -22,13 +22,21 @@ lowercase	Renamer_Extension		malá písmena
 Replace old extension	Renamer_Extension		Přepsat původní příponu souboru
 UPPERCASE	Renamer_Extension		VELKÁ PÍSMENA
 At position:	Renamer_InsertOverwrite		Na pozici:
+Count:	Renamer_InsertOverwrite		Count:
+Custom set of characters	Renamer_InsertOverwrite		Custom set of characters
+Custom:	Renamer_InsertOverwrite		Custom:
 from the back (right)	Renamer_InsertOverwrite		zezadu (vpravo)
 from the front (left)	Renamer_InsertOverwrite		zepředu (vlevo)
 Insert	Renamer_InsertOverwrite		Vložit
 Insert / overwrite	Renamer_InsertOverwrite		Vložit a přepsat
+Lower case	Renamer_InsertOverwrite		Lower case
+Numbers	Renamer_InsertOverwrite		Numbers
 Overwrite with	Renamer_InsertOverwrite		Přepsat s
 Please select	Renamer_InsertOverwrite		Prosím vyberte
+Random symbols	Renamer_InsertOverwrite		Random symbols
+Symbols	Renamer_InsertOverwrite		Symbols
 Text:	Renamer_InsertOverwrite		Text:
+Upper case	Renamer_InsertOverwrite		Upper case
 Cancel	PecoApp		Zrušit
 Files from different folders cannot be renamed.\n\nOnly the files of the first found folder will be imported!	PecoApp		Soubory z různých adresářů nemohou být přejmenovány.\n\nImportují se pouze soubory z prvního nalezeného adresáře!
 OK	PecoApp		OK
@@ -56,8 +64,8 @@ Format:	Renamer_Numbering		Formát:
 Numbering	Renamer_Numbering		Číslování
 Please select	Renamer_Numbering		Prosím vyberte
 Start with:	Renamer_Numbering		Začít s:
+Text after:	Renamer_Numbering		Text za:
 Text before:	Renamer_Numbering		Text před:
-Text behind:	Renamer_Numbering		Text za:
 from the back (right)	Renamer_Remove		zezadu (vpravo)
 from the front (left)	Renamer_Remove		zepředu (vlevo)
 Please select	Renamer_Remove		Prosím vyberte

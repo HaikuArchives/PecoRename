@@ -1,11 +1,11 @@
-1	English (British)	application/x-vnd.pecora-PecoRename	737301785
+1	English (Australian)	application/x-vnd.pecora-PecoRename	737301785
 {0, plural,=0{no duplicates}=1{1 duplicate}other{# duplicates}}	functions		{0, plural,=0{no duplicates}=1{1 duplicate}other{# duplicates}}
 {0, plural,=0{no items}=1{1 item}other{# items}}	functions		{0, plural,=0{no items}=1{1 item}other{# items}}
 {0, plural,=0{no renames}=1{1 rename}other{# renames}}	functions		{0, plural,=0{no renames}=1{1 rename}other{# renames}}
 {0, plural,=1{A problem was encountered during processing:  One file couldn't be renamed}other{Problems were encountered during processing:  # files couldn't be renamed}}	ReportWindow		{0, plural,=1{A problem was encountered during processing:  One file couldn't be renamed}other{Problems were encountered during processing:  # files couldn't be renamed}}
 File already exists	ReportWindow		File already exists
 File already exists (as in preview)	ReportWindow		File already exists (as in preview)
-OK	ReportWindow		Alright
+OK	ReportWindow		OK
 Original name	ReportWindow	Column title	Original name
 Problem	ReportWindow	Column title	Problem
 Report	ReportWindow		Report
@@ -39,7 +39,7 @@ Text:	Renamer_InsertOverwrite		Text:
 Upper case	Renamer_InsertOverwrite		Upper case
 Cancel	PecoApp		Cancel
 Files from different folders cannot be renamed.\n\nOnly the files of the first found folder will be imported!	PecoApp		Files from different folders cannot be renamed.\n\nOnly the files of the first found folder will be imported!
-OK	PecoApp		Alright
+OK	PecoApp		OK
 Select	PecoApp		Select
 Select files for renaming	PecoApp		Select files for renaming
 The volume is read only: files cannot be renamed.	PecoApp		The volume is read only: files cannot be renamed.

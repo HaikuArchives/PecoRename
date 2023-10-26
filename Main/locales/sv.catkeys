@@ -1,4 +1,4 @@
-1	Swedish	application/x-vnd.pecora-PecoRename	4063603093
+1	Swedish	application/x-vnd.pecora-PecoRename	737301785
 {0, plural,=0{no duplicates}=1{1 duplicate}other{# duplicates}}	functions		{0, plural,=0{inga dubbletter}=1{1 dubblett}other{# dubbletter}}
 {0, plural,=0{no items}=1{1 item}other{# items}}	functions		{0, plural,=0{inga poster}=1{1 post}other{# poster}}
 {0, plural,=0{no renames}=1{1 rename}other{# renames}}	functions		{0, plural,=0{inga namnändringar}=1{1 namnändring}other{# namnändringar}}
@@ -22,13 +22,21 @@ lowercase	Renamer_Extension		gemener
 Replace old extension	Renamer_Extension		Ersätt äldre filändelse
 UPPERCASE	Renamer_Extension		VERSALER
 At position:	Renamer_InsertOverwrite		Vid placering:
+Count:	Renamer_InsertOverwrite		Räkna:
+Custom set of characters	Renamer_InsertOverwrite		Anpassad uppsättning tecken
+Custom:	Renamer_InsertOverwrite		Anpassad:
 from the back (right)	Renamer_InsertOverwrite		bakifrån (höger)
 from the front (left)	Renamer_InsertOverwrite		framifrån (vänster)
 Insert	Renamer_InsertOverwrite		Infoga
 Insert / overwrite	Renamer_InsertOverwrite		Infoga / skriv över
+Lower case	Renamer_InsertOverwrite		Små bokstäver
+Numbers	Renamer_InsertOverwrite		Tal
 Overwrite with	Renamer_InsertOverwrite		Skriv över med
 Please select	Renamer_InsertOverwrite		Välj
+Random symbols	Renamer_InsertOverwrite		Slumpmässiga symboler
+Symbols	Renamer_InsertOverwrite		Symboler
 Text:	Renamer_InsertOverwrite		Text:
+Upper case	Renamer_InsertOverwrite		Versaler
 Cancel	PecoApp		Avbryt
 Files from different folders cannot be renamed.\n\nOnly the files of the first found folder will be imported!	PecoApp		Det går inte att ändra namn på filer från olika mappar.\n\nBara filerna i den först hittade mappen kommer bli importerade!
 OK	PecoApp		OK
@@ -56,8 +64,8 @@ Format:	Renamer_Numbering		Format:
 Numbering	Renamer_Numbering		Numrering
 Please select	Renamer_Numbering		Välj
 Start with:	Renamer_Numbering		Starta med:
+Text after:	Renamer_Numbering		Text bakom:
 Text before:	Renamer_Numbering		Text före:
-Text behind:	Renamer_Numbering		Text bakom:
 from the back (right)	Renamer_Remove		bakifrån (höger)
 from the front (left)	Renamer_Remove		framifrån (vänster)
 Please select	Renamer_Remove		Välj

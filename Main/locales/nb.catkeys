@@ -1,0 +1,79 @@
+1	Norwegian	application/x-vnd.pecora-PecoRename	737301785
+{0, plural,=0{no duplicates}=1{1 duplicate}other{# duplicates}}	functions		{0, plural,=0{ingen duplikater}=1{1 duplikat}other{# duplikater}}
+{0, plural,=0{no items}=1{1 item}other{# items}}	functions		{0, plural,=0{ingen elementer}=1{1 element}other{# elementer}}
+{0, plural,=0{no renames}=1{1 rename}other{# renames}}	functions		{0, plural,=0{ingen navnendringer}=1{1 navnendring}other{# navnendringer}}
+{0, plural,=1{A problem was encountered during processing:  One file couldn't be renamed}other{Problems were encountered during processing:  # files couldn't be renamed}}	ReportWindow		{0, plural,=1{Det oppsto et problem under behandlingen: Én fil kunne ikke gis nytt navn}other{Det oppsto problemer under behandlingen: # filer kunne ikke gis nytt navn}}
+File already exists	ReportWindow		Filen eksisterer allerede
+File already exists (as in preview)	ReportWindow		Filen eksisterer allerede (som forhåndsvisning)
+OK	ReportWindow		OK
+Original name	ReportWindow	Column title	Opprinnelig navn
+Problem	ReportWindow	Column title	Problem
+Report	ReportWindow		Rapport
+Target name	ReportWindow	Column title	Målnavn
+Unknown error	ReportWindow		Ukjent feil
+About PecoRename	MainWindow		Om PecoRename
+File	MainWindow		Fil
+Quit	MainWindow		Avslutt
+ReadMe.html	MainWindow	Path to the help file. Only change if a translated file is provided.	ReadMe.html
+Select files…	MainWindow		Velg filer…
+Show documentation	MainWindow		Vis dokumentasjon
+Add file extension	Renamer_Extension		Legg til filendelse
+lowercase	Renamer_Extension		små bokstaver
+Replace old extension	Renamer_Extension		Erstatt tidligere filendelse
+UPPERCASE	Renamer_Extension		STORE BOKSTAVER
+At position:	Renamer_InsertOverwrite		Ved posisjon:
+Count:	Renamer_InsertOverwrite		Antall:
+Custom set of characters	Renamer_InsertOverwrite		Egendefinert tegnsett
+Custom:	Renamer_InsertOverwrite		Tilpasset:
+from the back (right)	Renamer_InsertOverwrite		bakfra (høyre)
+from the front (left)	Renamer_InsertOverwrite		forfra (venstre)
+Insert	Renamer_InsertOverwrite		Sett inn
+Insert / overwrite	Renamer_InsertOverwrite		Sett inn / overskriv
+Lower case	Renamer_InsertOverwrite		Små bokstaver
+Numbers	Renamer_InsertOverwrite		Tall
+Overwrite with	Renamer_InsertOverwrite		Overskriv med
+Please select	Renamer_InsertOverwrite		Vennligst velg
+Random symbols	Renamer_InsertOverwrite		Tilfeldige symboler
+Symbols	Renamer_InsertOverwrite		Symboler
+Text:	Renamer_InsertOverwrite		Tekst:
+Upper case	Renamer_InsertOverwrite		Store bokstaver
+Cancel	PecoApp		Avbryt
+Files from different folders cannot be renamed.\n\nOnly the files of the first found folder will be imported!	PecoApp		Det er ikke mulig å endre navn på filer fra forskjellige mapper.\n\nBare filer fra den første mappen funnet vil bli importert!
+OK	PecoApp		OK
+Select	PecoApp		Velg
+Select files for renaming	PecoApp		Velg filer for å navnendring
+The volume is read only: files cannot be renamed.	PecoApp		Volumet er skrivebeskyttet: filer kan ikke gis nytt navn.
+Werner Freytag (original author)	PecoApp		Werner Freytag (originalforfatter)
+Case sensitive	Renamer_SearchReplace		Skill mellom store og små bokstaver
+Find pattern:	Renamer_SearchReplace		Finn mønster:
+Replace with:	Renamer_SearchReplace		Erstatt med:
+Search and replace	Renamer_SearchReplace		Søk og erstatt
+Choose files and folders	MainView		Velg filer og mapper
+Open	MainView		Åpne
+Open location	MainView		Åpne sted
+Remove	MainView		Fjern
+Rename	MainView		Endre navn
+Convert to:	Renamer_UpperLower		Converter til:
+lowercase	Renamer_UpperLower		små bokstaver
+Please select	Renamer_UpperLower		Vennligst velg
+Sentence case	Renamer_UpperLower		Setningskapitalisering
+Title Case	Renamer_UpperLower		Tittelkapitalisering
+UPPERCASE	Renamer_UpperLower		STORE BOKSTAVER
+Uppercase / lowercase	Renamer_UpperLower		Store / små bokstaver
+Format:	Renamer_Numbering		Format:
+Numbering	Renamer_Numbering		Nummerering
+Please select	Renamer_Numbering		Vennligst velg
+Start with:	Renamer_Numbering		Begynn med:
+Text after:	Renamer_Numbering		Tekst etter:
+Text before:	Renamer_Numbering		Tekst før:
+from the back (right)	Renamer_Remove		bakfra (høyre)
+from the front (left)	Renamer_Remove		forfra (venstre)
+Please select	Renamer_Remove		Vennligst velg
+Remove	Renamer_Remove		Fjern
+Remove from position	Renamer_Remove		Fjern fra posisjon
+To position	Renamer_Remove		Til posisjon
+Modified	FileListView	Column title	Endret
+Name	FileListView	Column title	Navn
+Preview	FileListView	Column title	Forhåndsvisning
+Size	FileListView	Column title	Størrelse
+PecoRename	System name		PecoRename

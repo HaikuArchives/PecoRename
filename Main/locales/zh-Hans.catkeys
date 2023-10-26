@@ -1,0 +1,79 @@
+1	Chinese (simplified)	application/x-vnd.pecora-PecoRename	737301785
+{0, plural,=0{no duplicates}=1{1 duplicate}other{# duplicates}}	functions		{0, plural,=0{无重复}=1{1 个重复}other{# 个重复}}
+{0, plural,=0{no items}=1{1 item}other{# items}}	functions		{0, plural,=0{无}=1{1 项}other{# 项}}
+{0, plural,=0{no renames}=1{1 rename}other{# renames}}	functions		{0, plural,=0{没有重命名}=1{1 个重命名}other{# 个重命名}}
+{0, plural,=1{A problem was encountered during processing:  One file couldn't be renamed}other{Problems were encountered during processing:  # files couldn't be renamed}}	ReportWindow		{0, plural,=1{处理过程中遇到问题：一个文件无法重命名}other{处理过程中遇到问题： # files 无法重命名}}
+File already exists	ReportWindow		文件已存在
+File already exists (as in preview)	ReportWindow		文件已经存在(如预览)
+OK	ReportWindow		确定
+Original name	ReportWindow	Column title	原名
+Problem	ReportWindow	Column title	问题
+Report	ReportWindow		报告
+Target name	ReportWindow	Column title	目标名称
+Unknown error	ReportWindow		未知错误
+About PecoRename	MainWindow		关于 PecoRename
+File	MainWindow		文件
+Quit	MainWindow		退出
+ReadMe.html	MainWindow	Path to the help file. Only change if a translated file is provided.	ReadMe.html
+Select files…	MainWindow		选择文件…
+Show documentation	MainWindow		显示文档
+Add file extension	Renamer_Extension		添加文件扩展名
+lowercase	Renamer_Extension		小写字母
+Replace old extension	Renamer_Extension		替换原来的扩展名
+UPPERCASE	Renamer_Extension		大写字母
+At position:	Renamer_InsertOverwrite		所在位置：
+Count:	Renamer_InsertOverwrite		Count:
+Custom set of characters	Renamer_InsertOverwrite		Custom set of characters
+Custom:	Renamer_InsertOverwrite		Custom:
+from the back (right)	Renamer_InsertOverwrite		从后面(右)
+from the front (left)	Renamer_InsertOverwrite		从前面(左)
+Insert	Renamer_InsertOverwrite		插入
+Insert / overwrite	Renamer_InsertOverwrite		插入 / 覆盖
+Lower case	Renamer_InsertOverwrite		Lower case
+Numbers	Renamer_InsertOverwrite		Numbers
+Overwrite with	Renamer_InsertOverwrite		覆盖为
+Please select	Renamer_InsertOverwrite		请选择
+Random symbols	Renamer_InsertOverwrite		Random symbols
+Symbols	Renamer_InsertOverwrite		Symbols
+Text:	Renamer_InsertOverwrite		文本：
+Upper case	Renamer_InsertOverwrite		Upper case
+Cancel	PecoApp		取消
+Files from different folders cannot be renamed.\n\nOnly the files of the first found folder will be imported!	PecoApp		无法重命名来自不同文件夹的文件。\n\n只有第一个找到的文件夹中的文件才会被导入！
+OK	PecoApp		确定
+Select	PecoApp		选择
+Select files for renaming	PecoApp		选择要重命名的文件
+The volume is read only: files cannot be renamed.	PecoApp		只读卷：文件不能重命名。
+Werner Freytag (original author)	PecoApp		Werner Freytag (原作者)
+Case sensitive	Renamer_SearchReplace		区分大小写
+Find pattern:	Renamer_SearchReplace		查找模式：
+Replace with:	Renamer_SearchReplace		替换为：
+Search and replace	Renamer_SearchReplace		搜索和替换
+Choose files and folders	MainView		选择文件和文件夹
+Open	MainView		打开
+Open location	MainView		打开位置
+Remove	MainView		移除
+Rename	MainView		重命名
+Convert to:	Renamer_UpperLower		转换为：
+lowercase	Renamer_UpperLower		小写字母
+Please select	Renamer_UpperLower		请选择
+Sentence case	Renamer_UpperLower		句首字母大写
+Title Case	Renamer_UpperLower		词首字母大写
+UPPERCASE	Renamer_UpperLower		大写字母
+Uppercase / lowercase	Renamer_UpperLower		大写 / 小写
+Format:	Renamer_Numbering		格式:
+Numbering	Renamer_Numbering		编号方式
+Please select	Renamer_Numbering		请选择
+Start with:	Renamer_Numbering		开始编号：
+Text after:	Renamer_Numbering		Text after:
+Text before:	Renamer_Numbering		之前的文本：
+from the back (right)	Renamer_Remove		从后面(右)
+from the front (left)	Renamer_Remove		从前面(左)
+Please select	Renamer_Remove		请选择
+Remove	Renamer_Remove		移除
+Remove from position	Renamer_Remove		移除的开始位置
+To position	Renamer_Remove		结束位置
+Modified	FileListView	Column title	修改时间
+Name	FileListView	Column title	名称
+Preview	FileListView	Column title	预览
+Size	FileListView	Column title	大小
+PecoRename	System name		PecoRename

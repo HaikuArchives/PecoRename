@@ -1,12 +1,12 @@
-1	French	application/x-vnd.pecora-PecoRename	4063603093
+1	French	application/x-vnd.pecora-PecoRename	737301785
 {0, plural,=0{no duplicates}=1{1 duplicate}other{# duplicates}}	functions		{0, plural,=0{aucun doublon}=1{1 doublon}other{# doublons}}
 {0, plural,=0{no items}=1{1 item}other{# items}}	functions		{0, plural,=0{aucun élément}=1{1 élément}other{# éléments}}
 {0, plural,=0{no renames}=1{1 rename}other{# renames}}	functions		{0, plural,=0{aucun renommé}=1{1 renommé}other{# renommés}}
-{0, plural,=1{A problem was encountered during processing:  One file couldn't be renamed}other{Problems were encountered during processing:  # files couldn't be renamed}}	ReportWindow		{0, plural,=1{Un problème a été rencontré durant l'exécution :  Un fichier n'a pas pu être renommé}other{Des problèmes ont été rencontrés durant l'exécution :  # fichiers n'ont pu être renommés}}
+{0, plural,=1{A problem was encountered during processing:  One file couldn't be renamed}other{Problems were encountered during processing:  # files couldn't be renamed}}	ReportWindow		{0, plural,=1{Un problème a été rencontré durant l’opération :  Un fichier n’a pas pu être renommé}other{Des problèmes ont été rencontrés durant l’opération :  # fichiers n’ont pu être renommés}}
 File already exists	ReportWindow		Le fichier existe déjà
-File already exists (as in preview)	ReportWindow		Le fichier existe déjà (comme dans l'aperçu)
-OK	ReportWindow		D'accord
-Original name	ReportWindow	Column title	Nom d'origine
+File already exists (as in preview)	ReportWindow		Le fichier existe déjà (comme dans l’aperçu)
+OK	ReportWindow		D’accord
+Original name	ReportWindow	Column title	Nom d’origine
 Problem	ReportWindow	Column title	Problème
 Report	ReportWindow		Compte rendu
 Target name	ReportWindow	Column title	Nom souhaité
@@ -19,19 +19,27 @@ Select files…	MainWindow		Sélectionnez les fichiers...
 Show documentation	MainWindow		Afficher la documentation
 Add file extension	Renamer_Extension		Ajouter une extension de fichier
 lowercase	Renamer_Extension		Minuscule
-Replace old extension	Renamer_Extension		Remplacer l'ancienne extension
+Replace old extension	Renamer_Extension		Remplacer l’ancienne extension
 UPPERCASE	Renamer_Extension		MAJUSCULE
 At position:	Renamer_InsertOverwrite		Position :
+Count:	Renamer_InsertOverwrite		Compte :
+Custom set of characters	Renamer_InsertOverwrite		Jeu de caractères personnalisé
+Custom:	Renamer_InsertOverwrite		Personnalisé :
 from the back (right)	Renamer_InsertOverwrite		en fin (à droite)
 from the front (left)	Renamer_InsertOverwrite		en tête (à gauche)
 Insert	Renamer_InsertOverwrite		Insérer
 Insert / overwrite	Renamer_InsertOverwrite		Insérer / remplacer
+Lower case	Renamer_InsertOverwrite		Minuscules
+Numbers	Renamer_InsertOverwrite		Chiffres
 Overwrite with	Renamer_InsertOverwrite		Remplacer par
 Please select	Renamer_InsertOverwrite		Sélectionner
+Random symbols	Renamer_InsertOverwrite		Symboles aléatoires
+Symbols	Renamer_InsertOverwrite		Symboles
 Text:	Renamer_InsertOverwrite		Texte :
+Upper case	Renamer_InsertOverwrite		Majuscules
 Cancel	PecoApp		Annuler
-Files from different folders cannot be renamed.\n\nOnly the files of the first found folder will be imported!	PecoApp		Il n'est pas possible de renommer des fichiers situés dans des dossiers multiples.\n\nSeulement les fichiers du premier dossier trouvé seront importés !
-OK	PecoApp		D'accord
+Files from different folders cannot be renamed.\n\nOnly the files of the first found folder will be imported!	PecoApp		Il n’est pas possible de renommer des fichiers situés dans des dossiers multiples.\n\nSeuls les fichiers du premier dossier trouvé seront importés !
+OK	PecoApp		D’accord
 Select	PecoApp		Sélectionner
 Select files for renaming	PecoApp		Sélectionnez les fichiers à renommer
 The volume is read only: files cannot be renamed.	PecoApp		Le volume est en lecture seule : Les fichiers ne peuvent pas être renommés.
@@ -42,7 +50,7 @@ Replace with:	Renamer_SearchReplace		Remplacer par :
 Search and replace	Renamer_SearchReplace		Rechercher / Remplacer
 Choose files and folders	MainView		Choisir fichiers et dossiers
 Open	MainView		Ouvrir
-Open location	MainView		Ouvrir l'emplacement
+Open location	MainView		Ouvrir l’emplacement
 Remove	MainView		Supprimer
 Rename	MainView		Renommer
 Convert to:	Renamer_UpperLower		Convertir en :
@@ -56,8 +64,8 @@ Format:	Renamer_Numbering		Format :
 Numbering	Renamer_Numbering		Numérotation
 Please select	Renamer_Numbering		Sélectionner
 Start with:	Renamer_Numbering		Commencer à :
+Text after:	Renamer_Numbering		Texte en fin :
 Text before:	Renamer_Numbering		Texte en tête :
-Text behind:	Renamer_Numbering		Texte en fin :
 from the back (right)	Renamer_Remove		en fin (à droite)
 from the front (left)	Renamer_Remove		en tête (à gauche)
 Please select	Renamer_Remove		Sélectionner

@@ -1,4 +1,4 @@
-1	Catalan	application/x-vnd.pecora-PecoRename	4063603093
+1	Catalan	application/x-vnd.pecora-PecoRename	737301785
 {0, plural,=0{no duplicates}=1{1 duplicate}other{# duplicates}}	functions		{0, plural,=0{cap duplicat}=1{1 duplicat}other{# duplicats}}
 {0, plural,=0{no items}=1{1 item}other{# items}}	functions		{0, plural,=0{cap element}=1{1 element}other{# elements}}
 {0, plural,=0{no renames}=1{1 rename}other{# renames}}	functions		{0, plural,=0{cap canvi}=1{1 canvi}other{# canvis}}
@@ -22,13 +22,21 @@ lowercase	Renamer_Extension		minúscules
 Replace old extension	Renamer_Extension		Reemplaça'n l'extensió anterior
 UPPERCASE	Renamer_Extension		MAJÚSCULES
 At position:	Renamer_InsertOverwrite		A la posició:
+Count:	Renamer_InsertOverwrite		Compte:
+Custom set of characters	Renamer_InsertOverwrite		Conjunt de caràcters personalitzat
+Custom:	Renamer_InsertOverwrite		Personalitzat:
 from the back (right)	Renamer_InsertOverwrite		de la part posterior (dreta)
 from the front (left)	Renamer_InsertOverwrite		des de la part frontal (esquerra)
 Insert	Renamer_InsertOverwrite		Insereix
 Insert / overwrite	Renamer_InsertOverwrite		Insereix / sobreescriu
+Lower case	Renamer_InsertOverwrite		Minúscules
+Numbers	Renamer_InsertOverwrite		Números
 Overwrite with	Renamer_InsertOverwrite		Sobreescriu amb
 Please select	Renamer_InsertOverwrite		Si us plau, seleccioneu-ho.
+Random symbols	Renamer_InsertOverwrite		Símbols aleatoris
+Symbols	Renamer_InsertOverwrite		Símbols
 Text:	Renamer_InsertOverwrite		Text:
+Upper case	Renamer_InsertOverwrite		Majúscules
 Cancel	PecoApp		Cancel·la
 Files from different folders cannot be renamed.\n\nOnly the files of the first found folder will be imported!	PecoApp		No es poden canviar els noms de fitxers de carpetes diferents.\n\nNomés s’importaran els fitxers de la primera carpeta trobada.
 OK	PecoApp		D'acord
@@ -56,8 +64,8 @@ Format:	Renamer_Numbering		Format:
 Numbering	Renamer_Numbering		Numeració
 Please select	Renamer_Numbering		Si us plau, seleccioneu-ho.
 Start with:	Renamer_Numbering		Comença amb:
+Text after:	Renamer_Numbering		Text darrere:
 Text before:	Renamer_Numbering		Text davant:
-Text behind:	Renamer_Numbering		Text darrere:
 from the back (right)	Renamer_Remove		de la part posterior (dreta)
 from the front (left)	Renamer_Remove		des de la part frontal (esquerra)
 Please select	Renamer_Remove		Si us plau, seleccioneu-ho.

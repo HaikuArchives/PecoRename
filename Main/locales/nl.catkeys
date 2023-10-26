@@ -1,4 +1,4 @@
-1	Dutch	application/x-vnd.pecora-PecoRename	4063603093
+1	Dutch	application/x-vnd.pecora-PecoRename	737301785
 {0, plural,=0{no duplicates}=1{1 duplicate}other{# duplicates}}	functions		{0, plural,=0{geen duplicaten}=1{1 duplicaat}meer{# duplicaten}}
 {0, plural,=0{no items}=1{1 item}other{# items}}	functions		{0, plural,=0{geen items}=1{1 item}meer{# items}}
 {0, plural,=0{no renames}=1{1 rename}other{# renames}}	functions		{0, plural,=0{geen hernoeming}=1{1 hernoem}meer{# hernoemen}}
@@ -22,13 +22,21 @@ lowercase	Renamer_Extension		kleine letters
 Replace old extension	Renamer_Extension		Vervang oude extentie
 UPPERCASE	Renamer_Extension		HOOFDLETTERS
 At position:	Renamer_InsertOverwrite		Op positie:
+Count:	Renamer_InsertOverwrite		Count:
+Custom set of characters	Renamer_InsertOverwrite		Custom set of characters
+Custom:	Renamer_InsertOverwrite		Custom:
 from the back (right)	Renamer_InsertOverwrite		van achteren (rechts)
 from the front (left)	Renamer_InsertOverwrite		van voren (links)
 Insert	Renamer_InsertOverwrite		Invoegen
 Insert / overwrite	Renamer_InsertOverwrite		Invoegen / Overschrijven
+Lower case	Renamer_InsertOverwrite		Lower case
+Numbers	Renamer_InsertOverwrite		Numbers
 Overwrite with	Renamer_InsertOverwrite		Overschrijf met
 Please select	Renamer_InsertOverwrite		Selecteer aub
+Random symbols	Renamer_InsertOverwrite		Random symbols
+Symbols	Renamer_InsertOverwrite		Symbols
 Text:	Renamer_InsertOverwrite		Tekst:
+Upper case	Renamer_InsertOverwrite		Upper case
 Cancel	PecoApp		Annuleer
 Files from different folders cannot be renamed.\n\nOnly the files of the first found folder will be imported!	PecoApp		Bestanden van verschillende mapper kunnen niet hernoemd worden.\n\nEnkel de bestanden van de eerste map worden geïmporteerd!
 OK	PecoApp		OK
@@ -56,8 +64,8 @@ Format:	Renamer_Numbering		Formaat:
 Numbering	Renamer_Numbering		Nummering
 Please select	Renamer_Numbering		Selecteer aub
 Start with:	Renamer_Numbering		Start met:
+Text after:	Renamer_Numbering		Tekst achteraan:
 Text before:	Renamer_Numbering		Tekst vooraf:
-Text behind:	Renamer_Numbering		Tekst achteraan:
 from the back (right)	Renamer_Remove		van achteren (rechts)
 from the front (left)	Renamer_Remove		van voren (links)
 Please select	Renamer_Remove		Selecteer aub

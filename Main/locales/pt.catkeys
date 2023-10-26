@@ -1,4 +1,4 @@
-1	Portuguese	application/x-vnd.pecora-PecoRename	4063603093
+1	Portuguese	application/x-vnd.pecora-PecoRename	737301785
 {0, plural,=0{no duplicates}=1{1 duplicate}other{# duplicates}}	functions		{0, plural,=0{sem duplicados}=1{1 duplicado}other{# duplicados}}
 {0, plural,=0{no items}=1{1 item}other{# items}}	functions		{0, plural,=0{sem items}=1{1 item}other{# items}}
 {0, plural,=0{no renames}=1{1 rename}other{# renames}}	functions		{0, plural,=0{sem alterações}=1{1 alteração}other{# alterações}}
@@ -22,13 +22,21 @@ lowercase	Renamer_Extension		minúsculas
 Replace old extension	Renamer_Extension		Substituir a extensão antiga
 UPPERCASE	Renamer_Extension		MAIÚSCULAS
 At position:	Renamer_InsertOverwrite		Na posição:
+Count:	Renamer_InsertOverwrite		Count:
+Custom set of characters	Renamer_InsertOverwrite		Custom set of characters
+Custom:	Renamer_InsertOverwrite		Custom:
 from the back (right)	Renamer_InsertOverwrite		a partir de trás (direita)
 from the front (left)	Renamer_InsertOverwrite		a partir da frente (esquerda)
 Insert	Renamer_InsertOverwrite		Inserir
 Insert / overwrite	Renamer_InsertOverwrite		Inserir / sobrescrever
+Lower case	Renamer_InsertOverwrite		Lower case
+Numbers	Renamer_InsertOverwrite		Numbers
 Overwrite with	Renamer_InsertOverwrite		Sobrescrever com
 Please select	Renamer_InsertOverwrite		Por favor selecione
+Random symbols	Renamer_InsertOverwrite		Random symbols
+Symbols	Renamer_InsertOverwrite		Symbols
 Text:	Renamer_InsertOverwrite		Texto:
+Upper case	Renamer_InsertOverwrite		Upper case
 Cancel	PecoApp		Cancelar
 Files from different folders cannot be renamed.\n\nOnly the files of the first found folder will be imported!	PecoApp		Não é possível alterar o nome a ficheiros de pastas diferentes.\n\nApenas serão importados os ficheiros da primeira pasta encontrada!
 OK	PecoApp		OK
@@ -56,8 +64,8 @@ Format:	Renamer_Numbering		Formato:
 Numbering	Renamer_Numbering		Numeração
 Please select	Renamer_Numbering		Por favor selecione
 Start with:	Renamer_Numbering		Iniciar com:
+Text after:	Renamer_Numbering		Texto por detrás:
 Text before:	Renamer_Numbering		Texto antes:
-Text behind:	Renamer_Numbering		Texto por detrás:
 from the back (right)	Renamer_Remove		a partir de trás (direita)
 from the front (left)	Renamer_Remove		a partir da frente (esquerda)
 Please select	Renamer_Remove		Por favor selecione
