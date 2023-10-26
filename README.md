@@ -11,6 +11,7 @@ Rename Modes
 PecoRename can rename the files using the following modes:
 * Search and replace
 * Insert / overwrite
+* Random symbols
 * Remove
 * Numbering
 * Add file extension
