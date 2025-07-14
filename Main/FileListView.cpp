@@ -21,32 +21,34 @@
 #include <String.h>
 #include <Window.h>
 
-#include "constants.h"
 #include "DateColumn.h"
-#include "functions.h"
-#include "FileListView.h"
 #include "FileListItem.h"
+#include "FileListView.h"
 #include "MainWindow.h"
 #include "PecoApp.h"
 #include "PreviewColumn.h"
+#include "constants.h"
+#include "functions.h"
 
 #undef B_TRANSLATION_CONTEXT
 #define B_TRANSLATION_CONTEXT "FileListView"
 
 
 FileListView::FileListView()
-	: BColumnListView("fileListView", B_FRAME_EVENTS | B_NAVIGABLE)
+	:
+	BColumnListView("fileListView", B_FRAME_EVENTS | B_NAVIGABLE)
 {
 	int32 i = 0;
 	AddColumn(new BBitmapColumn("Icon", 16, 16, 16, B_ALIGN_CENTER), i++);
-	AddColumn(new BStringColumn(B_TRANSLATE_COMMENT(
-		"Name", "Column title"), WIDTH_NAME, 10, 6000, 0), i++);
-	AddColumn(new BSizeColumn(B_TRANSLATE_COMMENT(
-		"Size", "Column title"), WIDTH_SIZE, 10, 600), i++);
-	AddColumn(new DateColumn(B_TRANSLATE_COMMENT(
-		"Modified", "Column title"), WIDTH_DATE, 10, 600), i++);
-	AddColumn(new PreviewColumn(B_TRANSLATE_COMMENT(
-		"Preview", "Column title"), WIDTH_PREVIEW, 10, 6000, 0), i++);
+	AddColumn(
+		new BStringColumn(B_TRANSLATE_COMMENT("Name", "Column title"), WIDTH_NAME, 10, 6000, 0),
+		i++);
+	AddColumn(new BSizeColumn(B_TRANSLATE_COMMENT("Size", "Column title"), WIDTH_SIZE, 10, 600),
+		i++);
+	AddColumn(new DateColumn(B_TRANSLATE_COMMENT("Modified", "Column title"), WIDTH_DATE, 10, 600),
+		i++);
+	AddColumn(new PreviewColumn(B_TRANSLATE_COMMENT("Preview", "Column title"), WIDTH_PREVIEW, 10,
+		6000, 0), i++);
 
 	BMessage msg;
 	ReadPreferences("filecol_state", msg);
@@ -73,8 +75,8 @@ void
 FileListView::MouseDown(BPoint where)
 {
 	BColumnListView::MouseDown(where);
-//	DeselectAll();
-};
+	//	DeselectAll();
+}
 
 
 bool
@@ -121,24 +123,24 @@ FileListView::InitiateDrag(BPoint where, bool initialySelected)
 	}
 	*/
 
-//	DeselectAll();
+	//	DeselectAll();
 	return true;
-};
+}
 
 
 void
 FileListView::KeyDown(const char* bytes, int32 numBytes)
 {
-	FileListItem* Item = (FileListItem*) CurrentSelection();
+	FileListItem* Item = (FileListItem*)CurrentSelection();
 	if (Item == NULL)
 		return;
 	int32 selectedItem = IndexOf(Item);
 
 	if (bytes[0] == 127) {
-		((PecoApp* )be_app)->fWindow->Lock();
+		((PecoApp*)be_app)->fWindow->Lock();
 		RemoveItem(Item);
-		((PecoApp* )be_app)->fList->RemoveItem(Item);
-		((PecoApp* )be_app)->fWindow->Unlock();
+		((PecoApp*)be_app)->fList->RemoveItem(Item);
+		((PecoApp*)be_app)->fWindow->Unlock();
 		MakeList();
 		MakeFocus(true);
 
@@ -155,7 +157,7 @@ FileListView::KeyDown(const char* bytes, int32 numBytes)
 FileListItem*
 FileListView::ItemAt(int32 index) const
 {
-	return (FileListItem*) RowAt(index);
+	return (FileListItem*)RowAt(index);
 }
 
 
@@ -184,7 +186,7 @@ void
 FileListView::AddList(BList* list)
 {
 	for (int32 i = 0; i < list->CountItems(); i++)
-		AddRow((FileListItem*) list->ItemAt(i));
+		AddRow((FileListItem*)list->ItemAt(i));
 }
 
 

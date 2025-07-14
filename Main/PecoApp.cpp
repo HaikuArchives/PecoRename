@@ -52,7 +52,7 @@ PecoApp::PecoApp()
 	:
 	BApplication(kAppsignature)
 {
-	fRenameMode	= 0;
+	fRenameMode = 0;
 	fPath = NULL;
 	fList = new BList();
 
@@ -66,10 +66,11 @@ PecoApp::PecoApp()
 }
 
 
-void PecoApp::AboutRequested()
+void
+PecoApp::AboutRequested()
 {
-	BAboutWindow* about = new BAboutWindow(
-		B_TRANSLATE_SYSTEM_NAME("PecoRename"), kAppsignature);
+	BAboutWindow* about = new BAboutWindow(B_TRANSLATE_SYSTEM_NAME("PecoRename"), kAppsignature);
+	// clang-format off
 	const char* extraCopyrights[] = {
 		"2011 Axel Dörfler",
 		"2014 Diver",
@@ -87,6 +88,7 @@ void PecoApp::AboutRequested()
 		"Markus Himmel",
 		NULL
 	};
+	// clang-format on
 	about->AddCopyright(2000, "Werner Freytag", extraCopyrights);
 	about->AddAuthors(authors);
 	about->Show();
@@ -98,7 +100,7 @@ PecoApp::MessageReceived(BMessage* msg)
 {
 	switch (msg->what) {
 		case B_SIMPLE_DATA:
-			RefsReceived (msg);
+			RefsReceived(msg);
 			break;
 		case MSG_MENU_NEW:
 			New();
@@ -152,7 +154,7 @@ PecoApp::MessageReceived(BMessage* msg)
 				if (location) {
 					BMessage selectMsg('Tsel');
 					selectMsg.AddRef("refs", &fileRef);
-					snooze(300000);	// wait 0.3 sec to give Tracker time to populate
+					snooze(300000); // wait 0.3 sec to give Tracker time to populate
 					msgr.SendMessage(&selectMsg);
 				}
 			}
@@ -179,7 +181,7 @@ PecoApp::ReadyToRun()
 
 	BRect rect;
 	if (msg.FindRect("pos", &rect) != B_OK)
-		rect = BRect(20, 40, 640, 460);		// default
+		rect = BRect(20, 40, 640, 460); // default
 
 	fWindow = new MainWindow(rect);
 	fListView = (FileListView*)fWindow->FindView("fileListView");
@@ -187,8 +189,7 @@ PecoApp::ReadyToRun()
 
 	UpdateWindowStatus();
 
-	fFilePanel = new BFilePanel(B_OPEN_PANEL, NULL, NULL,
-		B_FILE_NODE | B_DIRECTORY_NODE);
+	fFilePanel = new BFilePanel(B_OPEN_PANEL, NULL, NULL, B_FILE_NODE | B_DIRECTORY_NODE);
 	fFilePanel->SetButtonLabel(B_DEFAULT_BUTTON, B_TRANSLATE("Select"));
 	fFilePanel->SetButtonLabel(B_CANCEL_BUTTON, B_TRANSLATE("Cancel"));
 	fFilePanel->Window()->SetTitle(B_TRANSLATE("Select files for renaming"));
@@ -198,34 +199,34 @@ PecoApp::ReadyToRun()
 
 
 void
-PecoApp::RefsReceived (BMessage* msg)
+PecoApp::RefsReceived(BMessage* msg)
 {
 	entry_ref ref;
 	BPath aPath;
 	BEntry aEntry;
 	off_t size;
 	time_t timer;
-	
+
 	fWindow->Lock();
 	BStringView* pathView = (BStringView*)fWindow->FindView("pathView");
 	fWindow->Unlock();
-	
+
 	// Find path
-	for (int i = 0; msg->FindRef("refs", i, &ref) == B_OK; i++)
+	for (int i = 0; msg->FindRef("refs", i, &ref) == B_OK; i++) {
 		if (ref.device > 1)
 			break;
+	}
 
 	BVolume volume(ref.device);
 	if (volume.IsReadOnly()) {
-		BAlert* myAlert = new BAlert(NULL, B_TRANSLATE(
-			"The volume is read only: files cannot be renamed."),
-			B_TRANSLATE("OK"));
+		BAlert* myAlert = new BAlert(NULL,
+			B_TRANSLATE("The volume is read only: files cannot be renamed."), B_TRANSLATE("OK"));
 		myAlert->Go();
 		return;
 	}
 
 	fWindow->Lock();
-	BButton* ChooseButton = (BButton*) fWindow->FindView("selectFiles");
+	BButton* ChooseButton = (BButton*)fWindow->FindView("selectFiles");
 	ChooseButton->SetFlat(true);
 	fWindow->Unlock();
 
@@ -234,72 +235,74 @@ PecoApp::RefsReceived (BMessage* msg)
 
 		aEntry = BEntry(&ref);
 		BPath(&aEntry).GetParent(&fPath);
-				
+
 		fWindow->Lock();
 		pathView->SetText(fPath.Path());
 		fWindow->Unlock();
-		
+
 		// count
 		type_code typeFound;
 		int32 total = 0;
 		msg->GetInfo("refs", &typeFound, &total);
-		
+
 		fWindow->Lock();
 		fStatusBar->SetText("");
 		fStatusBar->Show();
 		fStatusBar->SetMaxValue(total);
 		fWindow->Unlock();
-		
+
 		BPath newPath;
 		bool didntshow_msgmultidir = true;
-		
+
 		for (int i = 0; msg->FindRef("refs", i, &ref) == B_OK; i++) {
 			fWindow->Lock();
 			fStatusBar->Update(1);
 			fWindow->Unlock();
-			
+
 			// filter out devices
-			if (ref.device == 1) continue;
- 			
+			if (ref.device == 1)
+				continue;
+
 			// filter out files with wrong path
 			aEntry = BEntry(&ref);
 			aPath = BPath(&aEntry);
-			
+
 			BPath(&aEntry).GetParent(&newPath);
-			
-			if ((strcmp(fPath.Path(), newPath.Path()) != 0)) {
+
+			if (strcmp(fPath.Path(), newPath.Path()) != 0) {
 				if (didntshow_msgmultidir) {
-					BAlert*	myAlert = new BAlert(NULL, B_TRANSLATE(
-						"Files from different folders cannot be renamed.\n\n"
-						"Only the files of the first found folder will be "
-						"imported!"), B_TRANSLATE("OK"));
+					BAlert* myAlert = new BAlert(NULL,
+						B_TRANSLATE("Files from different folders cannot be renamed.\n\n"
+									"Only the files of the first found folder will be "
+									"imported!"),
+						B_TRANSLATE("OK"));
 					myAlert->Go();
 					didntshow_msgmultidir = false;
 				}
 				continue;
 			}
-			
+
 			// Read values
 			if (aEntry.IsFile())
-				aEntry.GetSize(&size); 
+				aEntry.GetSize(&size);
 			else if (aEntry.IsSymLink())
 				size = -1;
 			else if (aEntry.IsDirectory())
 				size = -2;
 			else
 				continue;
-			
+
 			aEntry.GetModificationTime(&timer);
 			fList->AddItem(new FileListItem(aPath.Leaf(), size, timer, &ref));
 		}
-		
+
 		fWindow->Lock();
 		fListView->AddList(fList);
 		fStatusBar->Hide();
 		fStatusBar->SetMaxValue(fList->CountItems());
 		fStatusBar->Reset("");
 		fWindow->Unlock();
-		
+
 		MakeList();
 	}
 	fWindow->Activate();
@@ -307,7 +310,7 @@ PecoApp::RefsReceived (BMessage* msg)
 }
 
 
-#pragma mark -- Public Methods --
+#pragma mark-- Public Methods --
 
 
 void
@@ -323,23 +326,24 @@ PecoApp::DoIt()
 
 	BButton* okButton = (BButton*)fWindow->FindView("DoIt");
 	okButton->SetEnabled(false);
-	
+
 	BStringView* pathView = (BStringView*)fWindow->FindView("pathView");
-	BString	Path(pathView->Text());
+	BString Path(pathView->Text());
 	fWindow->Unlock();
-	
-	BString	OldName, NewName;
-	BEntry	File;
+
+	BString OldName, NewName;
+	BEntry File;
 	FileListItem* ListItem;
 
-	for (int32 i = 0; (ListItem = (FileListItem*)fListView->ItemAt(i))
-			!= NULL; i++) {
+	for (int32 i = 0; (ListItem = (FileListItem*)fListView->ItemAt(i)) != NULL; i++) {
 		fWindow->Lock();
 		fStatusBar->Update(1);
 		fWindow->Unlock();
 		if (ListItem->fNewName != "" && ListItem->Error() == 0) {
-			OldName = Path; OldName.Append("/").Append(ListItem->fName);
-			NewName = Path; NewName.Append("/").Append(ListItem->fNewName);
+			OldName = Path;
+			OldName.Append("/").Append(ListItem->fName);
+			NewName = Path;
+			NewName.Append("/").Append(ListItem->fNewName);
 			File.SetTo(OldName.String());
 			status_t result;
 			if ((result = File.Rename(NewName.String())) != B_OK) {
@@ -368,32 +372,30 @@ PecoApp::DoIt()
 	bool noerror = true;
 	bool noerrorDup = true;
 
-	for (int32 i = 0; (ListItem = (FileListItem*)fListView->ItemAt(i))
-			!= NULL; i++) {
+	for (int32 i = 0; (ListItem = (FileListItem*)fListView->ItemAt(i)) != NULL; i++) {
 		if (ListItem->fErrorStatus > 1) {
 			noerror = false;
 			break;
-		} else if (ListItem->fErrorStatus > 0)
+		} else if (ListItem->fErrorStatus > 0) {
 			noerrorDup = false;
+		}
 	}
 
-	if (noerror && noerrorDup)
+	if (noerror && noerrorDup) {
 		MakeList();
-	else {
-		if (!noerror) {
-			BMessage msg;
-			ReadPreferences("report_window", msg);
+	} else if (!noerror) {
+		BMessage msg;
+		ReadPreferences("report_window", msg);
 
-			BRect rect;
-			if (msg.FindRect("size", &rect) != B_OK)
-				rect = BRect(60, 80, 705, 280);		// default size
+		BRect rect;
+		if (msg.FindRect("size", &rect) != B_OK)
+			rect = BRect(60, 80, 705, 280); // default size
 
-			rect.OffsetBy(fWindow->Frame().LeftTop() + BPoint(80, 100));
-			
-			ReportWindow* reportWindow = new ReportWindow(rect, fList);
-			reportWindow->Show();
-			UpdateWindowStatus();
-		}
+		rect.OffsetBy(fWindow->Frame().LeftTop() + BPoint(80, 100));
+
+		ReportWindow* reportWindow = new ReportWindow(rect, fList);
+		reportWindow->Show();
+		UpdateWindowStatus();
 	}
 }
 
@@ -422,12 +424,12 @@ PecoApp::NothingToDo()
 	FileListItem* ListItem;
 	bool nothing_to_do = true;
 
-	for (int32 i = 0; (ListItem = (FileListItem*)fListView->ItemAt(i))
-			!= NULL; i++)
+	for (int32 i = 0; (ListItem = (FileListItem*)fListView->ItemAt(i)) != NULL; i++) {
 		if (ListItem->fNewName.Length() > 0) {
 			nothing_to_do = false;
 			break;
 		}
+	}
 
 	return nothing_to_do;
 }

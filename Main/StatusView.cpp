@@ -23,7 +23,7 @@ const float kHorzSpacing = 5.f;
 StatusView::StatusView(BScrollBar* scrollBar)
 	:
 	BView(BRect(), "statusview", B_FOLLOW_BOTTOM | B_FOLLOW_LEFT, B_WILL_DRAW),
-		fScrollBar(scrollBar),
+	fScrollBar(scrollBar),
 	fPreferredSize(0.0, 0.0)
 {
 	memset(fCellWidth, 0, sizeof(fCellWidth));
@@ -53,15 +53,14 @@ StatusView::Draw(BRect updateRect)
 		bounds.left++;
 		bounds.top++;
 		bounds.bottom--;
-		be_control_look->DrawMenuBarBackground(this,
-			bounds, updateRect,	ui_color(B_PANEL_BACKGROUND_COLOR));
+		be_control_look->DrawMenuBarBackground(this, bounds, updateRect,
+			ui_color(B_PANEL_BACKGROUND_COLOR));
 	}
 
 	BRect bounds(Bounds());
 	rgb_color highColor = ui_color(B_PANEL_TEXT_COLOR);
 
-	SetHighColor(tint_color(ui_color(B_PANEL_BACKGROUND_COLOR),
-		B_DARKEN_2_TINT));
+	SetHighColor(tint_color(ui_color(B_PANEL_BACKGROUND_COLOR), B_DARKEN_2_TINT));
 	StrokeLine(bounds.LeftTop(), bounds.RightTop());
 	StrokeLine(bounds.LeftBottom(), bounds.RightBottom());
 	StrokeLine(bounds.LeftTop(), bounds.LeftBottom());
@@ -80,8 +79,8 @@ StatusView::Draw(BRect updateRect)
 	GetFontHeight(&fontHeight);
 
 	x = bounds.left;
-	float y = (bounds.bottom + bounds.top
-		+ ceilf(fontHeight.ascent) - ceilf(fontHeight.descent)) / 2;
+	float y
+		= (bounds.bottom + bounds.top + ceilf(fontHeight.ascent) - ceilf(fontHeight.descent)) / 2;
 
 	for (size_t i = 0; i < kStatusCellCount; i++) {
 		if (fCellText[i].Length() == 0)
@@ -125,8 +124,7 @@ StatusView::MouseDown(BPoint where)
 
 
 void
-StatusView::Update(const BString& text,	const BString& pages,
-	const BString& imageType)
+StatusView::Update(const BString& text, const BString& pages, const BString& imageType)
 {
 	_SetItemsNumberText(text);
 	_SetRenamesNumberText(pages);
@@ -137,7 +135,7 @@ StatusView::Update(const BString& text,	const BString& pages,
 }
 
 
-#pragma mark -- Private Methods --
+#pragma mark-- Private Methods --
 
 
 void
@@ -183,8 +181,7 @@ StatusView::_ValidatePreferredSize()
 	font_height fontHeight;
 	GetFontHeight(&fontHeight);
 
-	fPreferredSize.height = ceilf(fontHeight.ascent + fontHeight.descent
-		+ fontHeight.leading);
+	fPreferredSize.height = ceilf(fontHeight.ascent + fontHeight.descent + fontHeight.leading);
 
 	if (fPreferredSize.height < B_H_SCROLL_BAR_HEIGHT)
 		fPreferredSize.height = B_H_SCROLL_BAR_HEIGHT;

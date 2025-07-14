@@ -34,41 +34,42 @@
 
 
 Renamer_Remove::Renamer_Remove()
-	: Renamer()
+	:
+	Renamer()
 {
 	fName = B_TRANSLATE("Remove");
 
-	fPosition1 = new BSpinner(NULL,	B_TRANSLATE("Remove from position"),
+	fPosition1 = new BSpinner(NULL, B_TRANSLATE("Remove from position"),
 		new BMessage(MSG_RENAME_SETTINGS));
 	fPosition1->SetMinValue(0);
 	fPosition1->SetValue(0);
 
 	BPopUpMenu* myMenu;
 	myMenu = new BPopUpMenu(B_TRANSLATE("Please select"));
-	myMenu->AddItem(new BMenuItem(B_TRANSLATE("from the front (left)"),
-		new BMessage(MSG_RENAME_SETTINGS)));
-	myMenu->AddItem(new BMenuItem(B_TRANSLATE("from the back (right)"),
-		new BMessage(MSG_RENAME_SETTINGS)));
+	myMenu->AddItem(
+		new BMenuItem(B_TRANSLATE("from the front (left)"), new BMessage(MSG_RENAME_SETTINGS)));
+	myMenu->AddItem(
+		new BMenuItem(B_TRANSLATE("from the back (right)"), new BMessage(MSG_RENAME_SETTINGS)));
 
 	myMenu->ItemAt(0)->SetMarked(true);
 
 	fDirection1 = new BMenuField(NULL, NULL, myMenu);
 
-	fPosition2 = new BSpinner(NULL, B_TRANSLATE("To position"),
-		new BMessage(MSG_RENAME_SETTINGS));
+	fPosition2 = new BSpinner(NULL, B_TRANSLATE("To position"), new BMessage(MSG_RENAME_SETTINGS));
 	fPosition2->SetMinValue(0);
 	fPosition2->SetValue(0);
 
 	myMenu = new BPopUpMenu(B_TRANSLATE("Please select"));
-	myMenu->AddItem(new BMenuItem(B_TRANSLATE("from the front (left)"),
-		new BMessage(MSG_RENAME_SETTINGS)));
-	myMenu->AddItem(new BMenuItem(B_TRANSLATE("from the back (right)"),
-		new BMessage(MSG_RENAME_SETTINGS)));
+	myMenu->AddItem(
+		new BMenuItem(B_TRANSLATE("from the front (left)"), new BMessage(MSG_RENAME_SETTINGS)));
+	myMenu->AddItem(
+		new BMenuItem(B_TRANSLATE("from the back (right)"), new BMessage(MSG_RENAME_SETTINGS)));
 
 	myMenu->ItemAt(0)->SetMarked(true);
 
 	fDirection2 = new BMenuField(NULL, NULL, myMenu);
 
+	// clang-format off
 	BLayoutBuilder::Group<>(this, B_VERTICAL)
 		.SetInsets(B_USE_WINDOW_INSETS)
 		.AddGroup(B_HORIZONTAL)
@@ -80,6 +81,7 @@ Renamer_Remove::Renamer_Remove()
 			.Add(fDirection2)
 		.End()
 		.AddGlue();
+	// clang-format on
 }
 
 
@@ -88,22 +90,20 @@ Renamer_Remove::RenameList(BList* FileList)
 {
 	Renamer::RenameList(FileList);
 
-	bool FromRight1 = bool(fDirection1->Menu()
-		->IndexOf(fDirection1->Menu()->FindMarked()));
-	bool FromRight2 = bool(fDirection2->Menu()
-		->IndexOf(fDirection2->Menu()->FindMarked()));
+	bool FromRight1 = bool(fDirection1->Menu()->IndexOf(fDirection1->Menu()->FindMarked()));
+	bool FromRight2 = bool(fDirection2->Menu()->IndexOf(fDirection2->Menu()->FindMarked()));
 
 	FileListItem* ListItem;
 	BString ResultString, Part2;
 	int EndPart1, StartPart2;
 
 	int32 Position1 = fPosition1->Value();
-	int32 Position2 = fPosition2->Value();	
+	int32 Position2 = fPosition2->Value();
 	int32 positionMaxValue = 0;
 	int32 UTF_LengthOfFilename, LengthOfFilename;
-		
+
 	for (int i = 0; i < fNumberOfItems; i++) {
-		ListItem = (FileListItem* )FileList->ItemAt(i);
+		ListItem = (FileListItem*)FileList->ItemAt(i);
 		UTF_LengthOfFilename = LengthOfFilename = ListItem->fName.Length();
 
 		if (LengthOfFilename > positionMaxValue)
@@ -111,41 +111,34 @@ Renamer_Remove::RenameList(BList* FileList)
 
 		char* tempStr = new char[UTF_LengthOfFilename + 1];
 
-		convert_from_utf8(B_ISO1_CONVERSION, ListItem->fName.String(),
-			&UTF_LengthOfFilename, tempStr, &LengthOfFilename, 0);
+		convert_from_utf8(B_ISO1_CONVERSION, ListItem->fName.String(), &UTF_LengthOfFilename,
+			tempStr, &LengthOfFilename, 0);
 		tempStr[LengthOfFilename] = 0;
 
-		if (FromRight1) {
-			EndPart1 = (LengthOfFilename >= Position1)
-				? LengthOfFilename - Position1 : 0;
-		} else {
-			EndPart1 = (LengthOfFilename >= Position1)
-				? Position1 : LengthOfFilename;
-		}
+		if (FromRight1)
+			EndPart1 = (LengthOfFilename >= Position1) ? LengthOfFilename - Position1 : 0;
+		else
+			EndPart1 = (LengthOfFilename >= Position1) ? Position1 : LengthOfFilename;
 
-		if (FromRight2) {
-			StartPart2 = (LengthOfFilename >= Position2)
-				? LengthOfFilename - Position2 : 0;
-		} else {
-			StartPart2 = (LengthOfFilename >= Position2)
-				? Position2 : LengthOfFilename;
-		}
+		if (FromRight2)
+			StartPart2 = (LengthOfFilename >= Position2) ? LengthOfFilename - Position2 : 0;
+		else
+			StartPart2 = (LengthOfFilename >= Position2) ? Position2 : LengthOfFilename;
 
 		if (StartPart2 < EndPart1)
 			std::swap(StartPart2, EndPart1);
 
 		ResultString.SetTo(tempStr, EndPart1);
 
-		BString(tempStr).CopyInto(Part2, StartPart2,
-			LengthOfFilename - StartPart2);
+		BString(tempStr).CopyInto(Part2, StartPart2, LengthOfFilename - StartPart2);
 		ResultString.Append(Part2);
 
 		LengthOfFilename = ResultString.Length();
-		UTF_LengthOfFilename = LengthOfFilename*  2;
+		UTF_LengthOfFilename = LengthOfFilename * 2;
 		char* utf_String = new char[UTF_LengthOfFilename + 1];
-		
-		convert_to_utf8(B_ISO1_CONVERSION, ResultString.String(),
-			&LengthOfFilename, utf_String, &UTF_LengthOfFilename, 0);
+
+		convert_to_utf8(B_ISO1_CONVERSION, ResultString.String(), &LengthOfFilename, utf_String,
+			&UTF_LengthOfFilename, 0);
 		utf_String[UTF_LengthOfFilename] = 0;
 
 		ListItem->SetNewName(utf_String);
@@ -160,7 +153,7 @@ Renamer_Remove::AttachedToWindow()
 {
 	BMessage msg;
 	ReadPreferences("ren_remove", msg);
-	
+
 	BString string = "";
 	int32 integer = 0;
 	bool boolean = 0;

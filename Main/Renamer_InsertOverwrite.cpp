@@ -37,33 +37,31 @@ Renamer_InsertOverwrite::Renamer_InsertOverwrite()
 	fName = B_TRANSLATE("Insert / overwrite");
 
 	BPopUpMenu* myMenu = new BPopUpMenu(B_TRANSLATE("Please select"));
-	myMenu->AddItem(new BMenuItem(B_TRANSLATE("Insert"),
-		new BMessage(MSG_RENAME_SETTINGS)));
-	myMenu->AddItem(new BMenuItem(B_TRANSLATE("Overwrite with"),
-		new BMessage(MSG_RENAME_SETTINGS)));
+	myMenu->AddItem(new BMenuItem(B_TRANSLATE("Insert"), new BMessage(MSG_RENAME_SETTINGS)));
+	myMenu->AddItem(
+		new BMenuItem(B_TRANSLATE("Overwrite with"), new BMessage(MSG_RENAME_SETTINGS)));
 
 	myMenu->ItemAt(0)->SetMarked(true);
 
 	fInsertOrOverwrite = new BMenuField(NULL, myMenu);
 
-	fText = new BTextControl(NULL, B_TRANSLATE("Text:"), NULL,
-		new BMessage(MSG_RENAME_SETTINGS));
+	fText = new BTextControl(NULL, B_TRANSLATE("Text:"), NULL, new BMessage(MSG_RENAME_SETTINGS));
 	fText->SetModificationMessage(new BMessage(MSG_RENAME_SETTINGS));
-	fPosition = new BSpinner(NULL, B_TRANSLATE("At position:"),
-		new BMessage(MSG_RENAME_SETTINGS));
+	fPosition = new BSpinner(NULL, B_TRANSLATE("At position:"), new BMessage(MSG_RENAME_SETTINGS));
 	fPosition->SetMinValue(0);
 	fPosition->SetValue(0);
 
 	myMenu = new BPopUpMenu(B_TRANSLATE("Please select"));
-	myMenu->AddItem(new BMenuItem(B_TRANSLATE("from the front (left)"),
-		new BMessage(MSG_RENAME_SETTINGS)));
-	myMenu->AddItem(new BMenuItem(B_TRANSLATE("from the back (right)"),
-		new BMessage(MSG_RENAME_SETTINGS)));
+	myMenu->AddItem(
+		new BMenuItem(B_TRANSLATE("from the front (left)"), new BMessage(MSG_RENAME_SETTINGS)));
+	myMenu->AddItem(
+		new BMenuItem(B_TRANSLATE("from the back (right)"), new BMessage(MSG_RENAME_SETTINGS)));
 
 	myMenu->ItemAt(0)->SetMarked(true);
 
 	fDirection = new BMenuField(NULL, NULL, myMenu);
 
+	// clang-format off
 	BLayoutBuilder::Group<>(this, B_VERTICAL)
 		.SetInsets(B_USE_WINDOW_INSETS)
 		.AddGroup(B_HORIZONTAL)
@@ -75,6 +73,7 @@ Renamer_InsertOverwrite::Renamer_InsertOverwrite()
 			.Add(fDirection)
 		.End()
 		.AddGlue();
+	// clang-format on
 }
 
 
@@ -83,11 +82,10 @@ Renamer_InsertOverwrite::RenameList(BList* FileList)
 {
 	Renamer::RenameList(FileList);
 
-	bool Overwrite = bool(fInsertOrOverwrite->Menu()
-		->IndexOf(fInsertOrOverwrite->Menu()->FindMarked()));
-	
-	bool FromRight = bool(fDirection->Menu()
-		->IndexOf(fDirection->Menu()->FindMarked()));
+	bool Overwrite
+		= bool(fInsertOrOverwrite->Menu()->IndexOf(fInsertOrOverwrite->Menu()->FindMarked()));
+	bool FromRight
+		= bool(fDirection->Menu()->IndexOf(fDirection->Menu()->FindMarked()));
 
 	FileListItem* ListItem;
 	BString ResultString, Part2;
@@ -98,8 +96,8 @@ Renamer_InsertOverwrite::RenameList(BList* FileList)
 	UTF_LengthOfInsert = LengthOfInsert = Text.Length();
 	char* tempInsertStr = new char[UTF_LengthOfInsert + 1];
 
-	convert_from_utf8(B_ISO1_CONVERSION, Text.String(), &UTF_LengthOfInsert,
-		tempInsertStr, &LengthOfInsert, 0);
+	convert_from_utf8(B_ISO1_CONVERSION, Text.String(), &UTF_LengthOfInsert, tempInsertStr,
+		&LengthOfInsert, 0);
 	tempInsertStr[LengthOfInsert] = 0;
 
 	int32 Position = fPosition->Value();
@@ -115,37 +113,33 @@ Renamer_InsertOverwrite::RenameList(BList* FileList)
 
 		char* tempStr = new char[UTF_LengthOfFilename + 1];
 
-		convert_from_utf8(B_ISO1_CONVERSION, ListItem->fName.String(),
-			&UTF_LengthOfFilename, tempStr, &LengthOfFilename, 0);
+		convert_from_utf8(B_ISO1_CONVERSION, ListItem->fName.String(), &UTF_LengthOfFilename,
+			tempStr, &LengthOfFilename, 0);
 		tempStr[LengthOfFilename] = 0;
 
-		if (FromRight) {
-			EndPart1 = (LengthOfFilename >= Position)
-				? LengthOfFilename - Position : 0;
-		} else {
-			EndPart1 = (LengthOfFilename >= Position)
-				? Position : LengthOfFilename;
-		}
+		if (FromRight)
+			EndPart1 = (LengthOfFilename >= Position) ? LengthOfFilename - Position : 0;
+		else
+			EndPart1 = (LengthOfFilename >= Position) ? Position : LengthOfFilename;
 
 		ResultString.SetTo(tempStr, EndPart1);
 
 		if (Overwrite) {
-			StartPart2 = (EndPart1 + LengthOfInsert <= LengthOfFilename)
-				? EndPart1 + LengthOfInsert : LengthOfFilename;
-		} else		
+			StartPart2 = (EndPart1 + LengthOfInsert <= LengthOfFilename) ?
+				EndPart1 + LengthOfInsert : LengthOfFilename;
+		} else
 			StartPart2 = EndPart1;
-		
-		BString(tempStr).CopyInto(Part2, StartPart2,
-			LengthOfFilename - StartPart2);
+
+		BString(tempStr).CopyInto(Part2, StartPart2, LengthOfFilename - StartPart2);
 		ResultString.Append(tempInsertStr);
 		ResultString.Append(Part2);
 
 		LengthOfFilename = ResultString.Length();
 		UTF_LengthOfFilename = LengthOfFilename * 2;
 		char* utf_String = new char[UTF_LengthOfFilename + 1];
-		
-		convert_to_utf8(B_ISO1_CONVERSION, ResultString.String(),
-			&LengthOfFilename, utf_String, &UTF_LengthOfFilename, 0);
+
+		convert_to_utf8(B_ISO1_CONVERSION, ResultString.String(), &LengthOfFilename, utf_String,
+			&UTF_LengthOfFilename, 0);
 		utf_String[UTF_LengthOfFilename] = 0;
 
 		ListItem->SetNewName(utf_String);
@@ -164,7 +158,7 @@ Renamer_InsertOverwrite::DetachedFromWindow()
 	msg.AddInt32("position", fPosition->Value());
 	menu = fDirection->Menu();
 	msg.AddBool("fromright", bool(menu->IndexOf(menu->FindMarked())));
-	
+
 	UpdatePreferences("ren_insertoverwrite", msg);
 }
 
@@ -174,8 +168,8 @@ Renamer_InsertOverwrite::AttachedToWindow()
 {
 	BMessage msg;
 	ReadPreferences("ren_insertoverwrite", msg);
-	
-	BString string ="";
+
+	BString string = "";
 	int32 integer = 0;
 	bool boolean = 0;
 	if (msg.FindBool("overwrite", &boolean) == B_OK) {

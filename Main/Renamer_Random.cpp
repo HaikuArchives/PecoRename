@@ -38,10 +38,9 @@ Renamer_Random::Renamer_Random()
 	fName = B_TRANSLATE("Random symbols");
 
 	BPopUpMenu* myMenu = new BPopUpMenu(B_TRANSLATE("Please select"));
-	myMenu->AddItem(new BMenuItem(B_TRANSLATE("Insert"),
-		new BMessage(MSG_RENAME_SETTINGS)));
-	myMenu->AddItem(new BMenuItem(B_TRANSLATE("Overwrite with"),
-		new BMessage(MSG_RENAME_SETTINGS)));
+	myMenu->AddItem(new BMenuItem(B_TRANSLATE("Insert"), new BMessage(MSG_RENAME_SETTINGS)));
+	myMenu->AddItem(
+		new BMenuItem(B_TRANSLATE("Overwrite with"), new BMessage(MSG_RENAME_SETTINGS)));
 
 	myMenu->ItemAt(0)->SetMarked(true);
 
@@ -51,47 +50,44 @@ Renamer_Random::Renamer_Random()
 	fCount->SetMinValue(1);
 	fCount->SetValue(5);
 
-	fUpperCase = new BCheckBox(
-		"uppercase", B_TRANSLATE("Upper case"), new BMessage(MSG_RENAME_SETTINGS));
+	fUpperCase
+		= new BCheckBox("uppercase", B_TRANSLATE("Upper case"), new BMessage(MSG_RENAME_SETTINGS));
 	fUpperCase->SetValue(B_CONTROL_ON);
 
-	fLowerCase = new BCheckBox(
-		"lowercase", B_TRANSLATE("Lower case"), new BMessage(MSG_RENAME_SETTINGS));
+	fLowerCase
+		= new BCheckBox("lowercase", B_TRANSLATE("Lower case"), new BMessage(MSG_RENAME_SETTINGS));
 	fLowerCase->SetValue(B_CONTROL_ON);
 
-	fNumbers = new BCheckBox(
-		"numbers", B_TRANSLATE("Numbers"), new BMessage(MSG_RENAME_SETTINGS));
+	fNumbers = new BCheckBox("numbers", B_TRANSLATE("Numbers"), new BMessage(MSG_RENAME_SETTINGS));
 	fNumbers->SetValue(B_CONTROL_ON);
 
-	fSpecialSymbols = new BCheckBox(
-		"specialsymbols", B_TRANSLATE("Symbols"), new BMessage(MSG_RENAME_SETTINGS));
+	fSpecialSymbols = new BCheckBox("specialsymbols", B_TRANSLATE("Symbols"),
+		new BMessage(MSG_RENAME_SETTINGS));
 	fSpecialSymbols->SetToolTip(spec_symbols);
 
-	fCustom = new BCheckBox(
-		"custom", B_TRANSLATE("Custom:"), new BMessage(MSG_CUSTOM_SYMBOLS));
+	fCustom = new BCheckBox("custom", B_TRANSLATE("Custom:"), new BMessage(MSG_CUSTOM_SYMBOLS));
 	fCustom->SetToolTip(B_TRANSLATE("Custom set of characters"));
 
-	fCustomInput
-		= new BTextControl("custominput", "", NULL, new BMessage(MSG_RENAME_SETTINGS));
+	fCustomInput = new BTextControl("custominput", "", NULL, new BMessage(MSG_RENAME_SETTINGS));
 	fCustomInput->SetModificationMessage(new BMessage(MSG_RENAME_SETTINGS));
 	fCustomInput->SetDivider(0);
 	fCustomInput->SetEnabled(false);
 
-	fPosition = new BSpinner(NULL, B_TRANSLATE("At position:"),
-		new BMessage(MSG_RENAME_SETTINGS));
+	fPosition = new BSpinner(NULL, B_TRANSLATE("At position:"), new BMessage(MSG_RENAME_SETTINGS));
 	fPosition->SetMinValue(0);
 	fPosition->SetValue(0);
 
 	myMenu = new BPopUpMenu(B_TRANSLATE("Please select"));
-	myMenu->AddItem(new BMenuItem(B_TRANSLATE("from the front (left)"),
-		new BMessage(MSG_RENAME_SETTINGS)));
-	myMenu->AddItem(new BMenuItem(B_TRANSLATE("from the back (right)"),
-		new BMessage(MSG_RENAME_SETTINGS)));
+	myMenu->AddItem(
+		new BMenuItem(B_TRANSLATE("from the front (left)"), new BMessage(MSG_RENAME_SETTINGS)));
+	myMenu->AddItem(
+		new BMenuItem(B_TRANSLATE("from the back (right)"), new BMessage(MSG_RENAME_SETTINGS)));
 
 	myMenu->ItemAt(0)->SetMarked(true);
 
 	fDirection = new BMenuField(NULL, NULL, myMenu);
 
+	// clang-format off
 	BLayoutBuilder::Group<>(this, B_HORIZONTAL)
 		.SetInsets(B_USE_WINDOW_INSETS)
 		.AddGroup(B_VERTICAL)
@@ -113,6 +109,7 @@ Renamer_Random::Renamer_Random()
 			.Add(fCustom, 0, 2)
 			.Add(fCustomInput, 1, 2)
 		.End();
+	// clang-format on
 }
 
 
@@ -138,11 +135,10 @@ Renamer_Random::RenameList(BList* FileList)
 {
 	Renamer::RenameList(FileList);
 
-	bool Overwrite = bool(fInsertOrOverwrite->Menu()
-		->IndexOf(fInsertOrOverwrite->Menu()->FindMarked()));
-
-	bool FromRight = bool(fDirection->Menu()
-		->IndexOf(fDirection->Menu()->FindMarked()));
+	bool Overwrite
+		= bool(fInsertOrOverwrite->Menu()->IndexOf(fInsertOrOverwrite->Menu()->FindMarked()));
+	bool FromRight
+		= bool(fDirection->Menu()->IndexOf(fDirection->Menu()->FindMarked()));
 
 	FileListItem* ListItem;
 	BString ResultString, Part2;
@@ -189,12 +185,12 @@ Renamer_Random::RenameList(BList* FileList)
 			randomstring[i] = allSymbols[rand() % strlen(allSymbols)];
 		randomstring[length] = '\0';
 
-		convert_from_utf8(B_ISO1_CONVERSION, randomstring, &UTF_LengthOfInsert,
-			tempInsertStr, &LengthOfInsert, 0);
+		convert_from_utf8(B_ISO1_CONVERSION, randomstring, &UTF_LengthOfInsert, tempInsertStr,
+			&LengthOfInsert, 0);
 		tempInsertStr[LengthOfInsert] = 0;
 
-		convert_from_utf8(B_ISO1_CONVERSION, ListItem->fName.String(),
-			&UTF_LengthOfFilename, tempStr, &LengthOfFilename, 0);
+		convert_from_utf8(B_ISO1_CONVERSION, ListItem->fName.String(), &UTF_LengthOfFilename,
+			tempStr, &LengthOfFilename, 0);
 		tempStr[LengthOfFilename] = 0;
 
 		if (FromRight)
@@ -205,13 +201,12 @@ Renamer_Random::RenameList(BList* FileList)
 		ResultString.SetTo(tempStr, EndPart1);
 
 		if (Overwrite) {
-			StartPart2 = (EndPart1 + LengthOfInsert <= LengthOfFilename)
-				? EndPart1 + LengthOfInsert : LengthOfFilename;
+			StartPart2 = (EndPart1 + LengthOfInsert <= LengthOfFilename) ?
+				EndPart1 + LengthOfInsert : LengthOfFilename;
 		} else
 			StartPart2 = EndPart1;
 
-		BString(tempStr).CopyInto(Part2, StartPart2,
-			LengthOfFilename - StartPart2);
+		BString(tempStr).CopyInto(Part2, StartPart2, LengthOfFilename - StartPart2);
 		ResultString.Append(tempInsertStr);
 		ResultString.Append(Part2);
 
@@ -219,8 +214,8 @@ Renamer_Random::RenameList(BList* FileList)
 		UTF_LengthOfFilename = LengthOfFilename * 2;
 		char* utf_String = new char[UTF_LengthOfFilename + 1];
 
-		convert_to_utf8(B_ISO1_CONVERSION, ResultString.String(),
-			&LengthOfFilename, utf_String, &UTF_LengthOfFilename, 0);
+		convert_to_utf8(B_ISO1_CONVERSION, ResultString.String(), &LengthOfFilename, utf_String,
+			&UTF_LengthOfFilename, 0);
 		utf_String[UTF_LengthOfFilename] = 0;
 
 		ListItem->SetNewName(utf_String);
