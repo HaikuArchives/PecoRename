@@ -40,13 +40,13 @@ FileListView::FileListView()
 	int32 i = 0;
 	AddColumn(new BBitmapColumn("Icon", 16, 16, 16, B_ALIGN_CENTER), i++);
 	AddColumn(new BStringColumn(B_TRANSLATE_COMMENT(
-		"Name", "Column title"), WIDTH_NAME, 10, 600, 0), i++);
+		"Name", "Column title"), WIDTH_NAME, 10, 6000, 0), i++);
 	AddColumn(new BSizeColumn(B_TRANSLATE_COMMENT(
 		"Size", "Column title"), WIDTH_SIZE, 10, 600), i++);
 	AddColumn(new DateColumn(B_TRANSLATE_COMMENT(
 		"Modified", "Column title"), WIDTH_DATE, 10, 600), i++);
 	AddColumn(new PreviewColumn(B_TRANSLATE_COMMENT(
-		"Preview", "Column title"), WIDTH_PREVIEW, 10, 600, 0), i++);
+		"Preview", "Column title"), WIDTH_PREVIEW, 10, 6000, 0), i++);
 
 	BMessage msg;
 	ReadPreferences("filecol_state", msg);
@@ -97,7 +97,7 @@ FileListView::InitiateDrag(BPoint where, bool initialySelected)
 	Item->DrawItem(ItemView, r, 1);
 	ItemView->Sync();
 	bmp->Unlock();
-	
+
 	BMessage msg(B_NO_REPLY);
 	msg.AddInt32("be:actions", B_TRASH_TARGET);
 	DragMessage(&msg, bmp, B_OP_ALPHA,
@@ -118,7 +118,7 @@ FileListView::InitiateDrag(BPoint where, bool initialySelected)
 		((PecoApp* )be_app)->fWindow->Unlock();
 		MakeList();
 		delete Item;
-	}	
+	}
 	*/
 
 //	DeselectAll();
@@ -133,7 +133,7 @@ FileListView::KeyDown(const char* bytes, int32 numBytes)
 	if (Item == NULL)
 		return;
 	int32 selectedItem = IndexOf(Item);
-	
+
 	if (bytes[0] == 127) {
 		((PecoApp* )be_app)->fWindow->Lock();
 		RemoveItem(Item);
@@ -147,7 +147,7 @@ FileListView::KeyDown(const char* bytes, int32 numBytes)
 		else
 			Select(selectedItem);
 		delete Item;
-	} else 
+	} else
 		BColumnListView::KeyDown(bytes, numBytes);
 }
 
