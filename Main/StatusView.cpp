@@ -34,7 +34,7 @@ void
 StatusView::AttachedToWindow()
 {
 	SetFont(be_plain_font);
-	SetFontSize(10.0);
+	SetFontSize(be_plain_font->Size() * 0.8);
 
 	AdoptParentColors();
 
@@ -181,7 +181,7 @@ StatusView::_ValidatePreferredSize()
 	font_height fontHeight;
 	GetFontHeight(&fontHeight);
 
-	fPreferredSize.height = ceilf(fontHeight.ascent + fontHeight.descent + fontHeight.leading);
+	fPreferredSize.height = ceilf(fontHeight.ascent + fontHeight.descent + fontHeight.leading) + 2;
 
 	if (fPreferredSize.height < B_H_SCROLL_BAR_HEIGHT)
 		fPreferredSize.height = B_H_SCROLL_BAR_HEIGHT;
