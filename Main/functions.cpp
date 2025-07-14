@@ -60,8 +60,6 @@ UpdateWindowStatus()
 {
 	BButton* okButton = (BButton*)((PecoApp*)be_app)->fWindow->FindView("DoIt");
 	StatusView* statusView = (StatusView*)((PecoApp*)be_app)->fWindow->FindView("statusview");
-	FileListView* fileListView
-		= (FileListView*)((PecoApp*)be_app)->fWindow->FindView("fileListView");
 	((PecoApp*)be_app)->fWindow->Lock();
 
 	bool isenabled = !((PecoApp*)be_app)->NothingToDo();
