@@ -145,6 +145,7 @@ Renamer_InsertOverwrite::RenameList(BList* FileList)
 		ListItem->SetNewName(utf_String);
 	}
 	fPosition->SetMaxValue(positionMaxValue);
+	delete[] tempInsertStr;
 }
 
 

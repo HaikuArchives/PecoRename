@@ -219,6 +219,8 @@ Renamer_Random::RenameList(BList* FileList)
 		utf_String[UTF_LengthOfFilename] = 0;
 
 		ListItem->SetNewName(utf_String);
+		delete[] tempInsertStr;
+		delete[] randomstring;
 	}
 	fPosition->SetMaxValue(positionMaxValue);
 }
