@@ -30,11 +30,11 @@ void
 Renamer::RenameList(BList* FileList)
 {
 	fNumberOfItems = FileList->CountItems();
-	
+
 	FileListItem* ListItem;
 	for (int32 i = 0; i < fNumberOfItems; i++) {
 		ListItem = (FileListItem*)FileList->ItemAt(i);
-		ListItem->SetNewName("");	
+		ListItem->SetNewName("");
 	}
 }
 
@@ -52,7 +52,7 @@ Renamer::Draw(BRect updateRect)
 	SetHighColor(220, 220, 225);
 	StrokeLine(LittleRect.RightBottom());
 	StrokeLine(LittleRect.RightTop());
-	
+
 	SetHighColor(60, 80, 150);
 	StrokeRect(Bounds());
 }

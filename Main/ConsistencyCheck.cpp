@@ -9,15 +9,16 @@
 
 #include <stdio.h>
 
+#include "ConsistencyCheck.h"
 #include "constants.h"
 #include "functions.h"
-#include "ConsistencyCheck.h"
+
 
 int
 SortByName(const void* item1, const void* item2)
 {
-	NameToCheck	**Item1 = (NameToCheck **)item1;
-	NameToCheck	**Item2 = (NameToCheck **)item2;
+	NameToCheck** Item1 = (NameToCheck**)item1;
+	NameToCheck** Item2 = (NameToCheck**)item2;
 
 	return (*Item1)->Name().Compare((*Item2)->Name());
 }
@@ -31,8 +32,8 @@ ConsistencyCheck::ConsistencyCheck(BList* namesList)
 
 ConsistencyCheck::~ConsistencyCheck()
 {
-	for(int i = 0; i < fNames.CountItems(); i++)
-		delete (NameToCheck*)fNames.ItemAt(i);
+	for (int i = 0; i < fNames.CountItems(); i++)
+		delete(NameToCheck*)fNames.ItemAt(i);
 
 	fNames.MakeEmpty();
 }
@@ -52,15 +53,15 @@ ConsistencyCheck::AddOldName(FileListItem* fileListItem)
 }
 
 
-void ConsistencyCheck::AddNamesList(BList* nameList)
+void
+ConsistencyCheck::AddNamesList(BList* nameList)
 {
-	for (int i = 0; i < nameList->CountItems(); i++)
-	{
-		FileListItem* listItem = (FileListItem*) nameList->ItemAt(i);
+	for (int i = 0; i < nameList->CountItems(); i++) {
+		FileListItem* listItem = (FileListItem*)nameList->ItemAt(i);
 		listItem->SetError(0);
- 		AddOldName(listItem);
- 		if (listItem->fNewName != "")
- 			AddNewName(listItem);
+		AddOldName(listItem);
+		if (listItem->fNewName != "")
+			AddNewName(listItem);
 	}
 }
 
@@ -81,8 +82,7 @@ ConsistencyCheck::CheckForDuplicates()
 		return false;
 
 	bool duplicateFound = false;
-	for (int i = 0; i < fNames.CountItems() - 1; i++)
-	{
+	for (int i = 0; i < fNames.CountItems() - 1; i++) {
 		NameToCheck* name1 = (NameToCheck*)fNames.ItemAt(i);
 		NameToCheck* name2 = (NameToCheck*)fNames.ItemAt(i + 1);
 
