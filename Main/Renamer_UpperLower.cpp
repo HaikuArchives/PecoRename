@@ -17,7 +17,6 @@
 #include <LayoutBuilder.h>
 #include <MenuItem.h>
 #include <PopUpMenu.h>
-#include <StopWatch.h>
 #include <TextControl.h>
 #include <UnicodeChar.h>
 
@@ -68,8 +67,6 @@ Renamer_UpperLower::RenameList(BList* FileList)
 
 	FileListItem* ListItem;
 	{
-		BStopWatch("Upper/lower");
-
 		char newNameArr[B_FILE_NAME_LENGTH + 4];
 
 		int conversionMenuIndex
@@ -131,7 +128,7 @@ Renamer_UpperLower::RenameList(BList* FileList)
 			*pointOutName = 0;
 			ListItem->SetNewName(newNameArr);
 		}
-	} // BStopWatch
+	}
 }
 
 
