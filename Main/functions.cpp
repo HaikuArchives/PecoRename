@@ -12,12 +12,12 @@
  */
 
 
+#include "MainWindow.h"
 #include <Catalog.h>
 #include <FindDirectory.h>
 #include <MenuBar.h>
 #include <MenuItem.h>
 #include <StringFormat.h>
-#include "MainWindow.h"
 
 #include "constants.h"
 #include "functions.h"
@@ -43,8 +43,7 @@ MakeList()
 		FileList = &numberingList;
 	}
 	((PecoApp*)be_app)->fWindow->Lock();
-	((PecoApp*)be_app)->fRenamers[((PecoApp*)be_app)
-		->fRenameMode]->RenameList(FileList);
+	((PecoApp*)be_app)->fRenamers[((PecoApp*)be_app)->fRenameMode]->RenameList(FileList);
 
 	ConsistencyCheck(FileList).CheckForDuplicates();
 
@@ -60,10 +59,7 @@ void
 UpdateWindowStatus()
 {
 	BButton* okButton = (BButton*)((PecoApp*)be_app)->fWindow->FindView("DoIt");
-	StatusView * statusView
-		= (StatusView*)((PecoApp*)be_app)->fWindow->FindView("statusview");
-	FileListView* fileListView
-		= (FileListView*)((PecoApp*)be_app)->fWindow->FindView("fileListView");
+	StatusView* statusView = (StatusView*)((PecoApp*)be_app)->fWindow->FindView("statusview");
 	((PecoApp*)be_app)->fWindow->Lock();
 
 	bool isenabled = !((PecoApp*)be_app)->NothingToDo();
@@ -76,9 +72,9 @@ UpdateWindowStatus()
 
 	BList* fileList = ((PecoApp*)be_app)->fList;
 	static BStringFormat formatItems(B_TRANSLATE("{0, plural,"
-		"=0{no items}"
-		"=1{1 item}"
-		"other{# items}}"));
+												 "=0{no items}"
+												 "=1{1 item}"
+												 "other{# items}}"));
 	formatItems.Format(itemsNumber, fileList->CountItems());
 
 	int duplicates = 0;
@@ -93,16 +89,16 @@ UpdateWindowStatus()
 	}
 	if (renames > 0) {
 		static BStringFormat formatRenamed(B_TRANSLATE("{0, plural,"
-		"=0{no renames}"
-		"=1{1 rename}"
-		"other{# renames}}"));
+													   "=0{no renames}"
+													   "=1{1 rename}"
+													   "other{# renames}}"));
 		formatRenamed.Format(renamesNumber, renames);
 	}
 	if (duplicates > 0) {
 		static BStringFormat formatDuplicated(B_TRANSLATE("{0, plural,"
-		"=0{no duplicates}"
-		"=1{1 duplicate}"
-		"other{# duplicates}}"));
+														  "=0{no duplicates}"
+														  "=1{1 duplicate}"
+														  "other{# duplicates}}"));
 		formatDuplicated.Format(duplicatesNumber, duplicates);
 	}
 	statusView->Update(itemsNumber, renamesNumber, duplicatesNumber);

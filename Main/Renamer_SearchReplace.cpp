@@ -47,25 +47,26 @@
 
 
 Renamer_SearchReplace::Renamer_SearchReplace()
-	:	Renamer()
+	:
+	Renamer()
 {
 	fName = B_TRANSLATE("Search and replace");
 
-	MatchCase = new BCheckBox(NULL, B_TRANSLATE("Case sensitive"),
-		new BMessage(MSG_RENAME_SETTINGS));
+	MatchCase
+		= new BCheckBox(NULL, B_TRANSLATE("Case sensitive"), new BMessage(MSG_RENAME_SETTINGS));
 
 #if __INTEL__
-	RegEx = new BCheckBox(B_TRANSLATE("Regular expression"),
-		new BMessage(MSG_RENAME_SETTINGS));
+	RegEx = new BCheckBox(B_TRANSLATE("Regular expression"), new BMessage(MSG_RENAME_SETTINGS));
 #endif
 
-	SearchFor = new BTextControl(B_TRANSLATE("Find pattern:"), NULL,
-		new BMessage(MSG_RENAME_SETTINGS));
+	SearchFor
+		= new BTextControl(B_TRANSLATE("Find pattern:"), NULL, new BMessage(MSG_RENAME_SETTINGS));
 	SearchFor->SetModificationMessage(new BMessage(MSG_RENAME_SETTINGS));
 	ReplaceWith = new BTextControl(NULL, B_TRANSLATE("Replace with:"), NULL,
 		new BMessage(MSG_RENAME_SETTINGS));
 	ReplaceWith->SetModificationMessage(new BMessage(MSG_RENAME_SETTINGS));
 
+	// clang-format off
 	BLayoutBuilder::Group<>(this, B_VERTICAL)
 		.SetInsets(B_USE_WINDOW_INSETS)
 		.AddGroup(B_HORIZONTAL)
@@ -80,6 +81,7 @@ Renamer_SearchReplace::Renamer_SearchReplace()
 			.AddGlue()
 		.End()
 		.AddGlue();
+	// clang-format on
 }
 
 
@@ -89,9 +91,9 @@ Renamer_SearchReplace::RenameList(BList* FileList)
 	Renamer::RenameList(FileList);
 
 	// Read data from the form
-	const bool 	matchcase = bool(MatchCase->Value());
+	const bool matchcase = bool(MatchCase->Value());
 #if __INTEL__
-	const bool	do_reg = bool(RegEx->Value());
+	const bool do_reg = bool(RegEx->Value());
 #endif
 	const char* utf_pattern = SearchFor->Text();
 	const char* utf_replacestring = ReplaceWith->Text();
@@ -102,49 +104,46 @@ Renamer_SearchReplace::RenameList(BList* FileList)
 		return;
 
 #if __INTEL__
- 	if (do_reg) {
+	if (do_reg) {
 		// Convert pattern and replace string from UTF to ASCII ISO1
 		int32 length1, length2;
 
 		length1 = length2 = strlen(utf_pattern);
 		char* pattern = new char[length2 + 1];
-		convert_from_utf8(B_ISO1_CONVERSION, utf_pattern, &length1, pattern,
-			&length2, 0);
+		convert_from_utf8(B_ISO1_CONVERSION, utf_pattern, &length1, pattern, &length2, 0);
 		pattern[length2] = 0;
 
 		length1 = length2 = strlen(utf_replacestring);
 		char* replacestring = new char[length2 + 1];
-		convert_from_utf8(B_ISO1_CONVERSION, utf_replacestring, &length1,
-			replacestring, &length2, 0);
+		convert_from_utf8(B_ISO1_CONVERSION, utf_replacestring, &length1, replacestring, &length2,
+			0);
 		replacestring[length2] = 0;
 
 		// Apply the regular expression
 		unsigned char buffer[REG_BUFFER_SIZE];
 
-		regex_t my_regex = {
-			(unsigned char*)&buffer, REG_BUFFER_SIZE, 0, RE_SYNTAX_POSIX_AWK,
-				NULL, NULL, 0, 1, REGS_FIXED, 0, 1, 0, 0, 0
-		};
+		regex_t my_regex = {(unsigned char*)&buffer, REG_BUFFER_SIZE, 0, RE_SYNTAX_POSIX_AWK, NULL,
+			NULL, 0, 1, REGS_FIXED, 0, 1, 0, 0, 0};
 
 		// Error in the regular expression
-		if 	(regcomp (&my_regex, pattern, matchcase ? 0 : REG_ICASE) != 0)
+		if (regcomp(&my_regex, pattern, matchcase ? 0 : REG_ICASE) != 0)
 			return;
 
-		regmatch_t my_regmatch = { 0, 0 };
+		regmatch_t my_regmatch = {0, 0};
 
 		for (int32 i = 0; i < fNumberOfItems; i++) {
 			ListItem = (FileListItem*)FileList->ItemAt(i);
-			BString		ResultString;
+			BString ResultString;
 
 			length1 = length2 = strlen(ListItem->fName.String());
 			char* str = new char[length2 + 1];
 
-			convert_from_utf8(B_ISO1_CONVERSION, ListItem->fName.String(),
-				&length1, str, &length2, 0);
+			convert_from_utf8(B_ISO1_CONVERSION, ListItem->fName.String(), &length1, str, &length2,
+				0);
 			str[length2] = 0;
 
-			while (regexec (&my_regex, str, 1, &my_regmatch, 0) == 0) {
-				if  (my_regmatch.rm_eo == 0) {
+			while (regexec(&my_regex, str, 1, &my_regmatch, 0) == 0) {
+				if (my_regmatch.rm_eo == 0) {
 					ResultString = "";
 					break;
 				}
@@ -173,25 +172,25 @@ Renamer_SearchReplace::RenameList(BList* FileList)
 			length2 = length1 * 2;
 			char* utf_String = new char[length2 + 1];
 
-			convert_to_utf8(B_ISO1_CONVERSION, ResultString.String(), &length1,
-				utf_String, &length2, 0);
+			convert_to_utf8(B_ISO1_CONVERSION, ResultString.String(), &length1, utf_String,
+				&length2, 0);
 			utf_String[length2] = 0;
 
 			ListItem->SetNewName(utf_String);
 		}
 	} else {
 #endif
-		for (int32 i = 0; i < fNumberOfItems; i++) {
-			ListItem = (FileListItem*)FileList->ItemAt(i);
-			BString		ResultString(ListItem->fName);
+	for (int32 i = 0; i < fNumberOfItems; i++) {
+		ListItem = (FileListItem*)FileList->ItemAt(i);
+		BString ResultString(ListItem->fName);
 
-			if (matchcase)
-				ResultString.ReplaceAll(utf_pattern, utf_replacestring);
-			else
-				ResultString.IReplaceAll(utf_pattern, utf_replacestring);
+		if (matchcase)
+			ResultString.ReplaceAll(utf_pattern, utf_replacestring);
+		else
+			ResultString.IReplaceAll(utf_pattern, utf_replacestring);
 
-			ListItem->SetNewName(ResultString);
-		}
+		ListItem->SetNewName(ResultString);
+	}
 #if __INTEL__
 	}
 #endif

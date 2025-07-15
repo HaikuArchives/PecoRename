@@ -37,8 +37,8 @@ PreviewField::SetError(bool error)
 // #pragma mark - PreviewColumn
 
 
-PreviewColumn::PreviewColumn(const char* title, float width, float minWidth,
-	float maxWidth, uint32 truncate, alignment align)
+PreviewColumn::PreviewColumn(const char* title, float width, float minWidth, float maxWidth,
+	uint32 truncate, alignment align)
 	:
 	BStringColumn(title, width, minWidth, maxWidth, align)
 {
@@ -61,7 +61,7 @@ PreviewColumn::DrawField(BField* _field, BRect rect, BView* parent)
 	if (field->Error()) {
 		rgb_color red = ui_color(B_FAILURE_COLOR);
 		parent->SetHighColor(red);
-		}
+	}
 
 	BStringColumn::DrawField(_field, rect, parent);
 	parent->SetHighColor(color);

@@ -24,8 +24,8 @@
 #include <Roster.h>
 #include <View.h>
 
-#include <string.h>
 #include <stdlib.h>
+#include <string.h>
 
 #include "constants.h"
 #include "functions.h"
@@ -39,40 +39,40 @@
 
 MainWindow::MainWindow(BRect frame)
 	:
-	BWindow(frame, B_TRANSLATE_SYSTEM_NAME("PecoRename"),
-		B_TITLED_WINDOW, B_AUTO_UPDATE_SIZE_LIMITS) {
+	BWindow(frame, B_TRANSLATE_SYSTEM_NAME("PecoRename"), B_TITLED_WINDOW,
+		B_AUTO_UPDATE_SIZE_LIMITS)
+{
 
 	BMenuBar* MenuBar = new BMenuBar("MenuBar");
 	BMenu* Menu;
 
 	Menu = new BMenu(B_TRANSLATE("File"));
 	MenuBar->AddItem(Menu);
-//	Maybe in the future...Multi directories support
-//	Menu->AddItem(new BMenuItem(B_TRANSLATE("New"),
-//		new BMessage(MSG_MENU_NEW), 'N'));
+	//	Maybe in the future...Multi directories support
+	//	Menu->AddItem(new BMenuItem(B_TRANSLATE("New"),
+	//		new BMessage(MSG_MENU_NEW), 'N'));
 
 	Menu->AddItem(new BMenuItem(B_TRANSLATE("Select files" B_UTF8_ELLIPSIS),
 		new BMessage(MSG_SELECT_FILES), 'O'));
 	Menu->AddSeparatorItem();
 
-	Menu->AddItem(new BMenuItem(B_TRANSLATE("Show documentation"),
-	new BMessage(MSG_MENU_DOCU)));
+	Menu->AddItem(new BMenuItem(B_TRANSLATE("Show documentation"), new BMessage(MSG_MENU_DOCU)));
 
-	Menu->AddItem(new BMenuItem(B_TRANSLATE("About PecoRename"),
-		new BMessage(B_ABOUT_REQUESTED)));
+	Menu->AddItem(new BMenuItem(B_TRANSLATE("About PecoRename"), new BMessage(B_ABOUT_REQUESTED)));
 
-//	Menu = new BMenu(B_TRANSLATE("Help"));
-//	MenuBar->AddItem(Menu);
+	//	Menu = new BMenu(B_TRANSLATE("Help"));
+	//	MenuBar->AddItem(Menu);
 
 	Menu->AddSeparatorItem();
-	Menu->AddItem(new BMenuItem(B_TRANSLATE("Quit"),
-		new BMessage(B_QUIT_REQUESTED), 'Q'));
+	Menu->AddItem(new BMenuItem(B_TRANSLATE("Quit"), new BMessage(B_QUIT_REQUESTED), 'Q'));
 
 	MainView* mainView = new MainView();
 
+	// clang-format off
 	BLayoutBuilder::Group<>(this, B_VERTICAL, 0)
 		.Add(MenuBar)
 		.Add(mainView);
+	// clang-format on
 }
 
 
@@ -88,7 +88,7 @@ MainWindow::QuitRequested()
 
 
 void
-MainWindow::MessageReceived (BMessage* msg)
+MainWindow::MessageReceived(BMessage* msg)
 {
 	switch (msg->what) {
 		case MSG_MENU_DOCU:
@@ -103,7 +103,7 @@ MainWindow::MessageReceived (BMessage* msg)
 }
 
 
-#pragma mark -- Private Methods --
+#pragma mark-- Private Methods --
 
 
 void
@@ -114,14 +114,15 @@ MainWindow::_ShowDocumentation()
 	BPath path;
 	BEntry entry;
 
-	status_t error = pathFinder.FindPaths(B_FIND_PATH_DOCUMENTATION_DIRECTORY,
-		"packages/pecorename", paths);
+	status_t error
+		= pathFinder.FindPaths(B_FIND_PATH_DOCUMENTATION_DIRECTORY, "packages/pecorename", paths);
 
 	for (int i = 0; i < paths.CountStrings(); ++i) {
 		if (error == B_OK && path.SetTo(paths.StringAt(i)) == B_OK
-				&& path.Append(B_TRANSLATE_COMMENT("ReadMe.html",
-				"Path to the help file. Only change if a translated file is "
-				"provided.")) == B_OK) {
+			&& path.Append(B_TRANSLATE_COMMENT("ReadMe.html",
+				   "Path to the help file. Only change if a translated file is "
+				   "provided."))
+				== B_OK) {
 			entry = path.Path();
 			entry_ref ref;
 			entry.GetRef(&ref);

@@ -14,8 +14,8 @@
 
 #include <ColumnTypes.h>
 #include <Entry.h>
-#include <NodeInfo.h>
 #include <Node.h>
+#include <NodeInfo.h>
 
 #include "constants.h"
 #include "functions.h"
@@ -24,8 +24,7 @@
 #include "PreviewColumn.h"
 
 
-FileListItem::FileListItem(const char* name, int64 size, time_t timer,
-	const entry_ref* ref)
+FileListItem::FileListItem(const char* name, int64 size, time_t timer, const entry_ref* ref)
 	:
 	BRow()
 {
@@ -37,10 +36,10 @@ FileListItem::FileListItem(const char* name, int64 size, time_t timer,
 	BNodeInfo myNodeInfo;
 	if (myNode.InitCheck() == B_OK)
 		myNodeInfo.SetTo(&myNode);
-	
+
 	fIcon = new BBitmap(BRect(0, 0, 15, 15), B_RGBA32);
 	myNodeInfo.GetTrackerIcon(fIcon, B_MINI_ICON);
-	
+
 	myNodeInfo.GetType((char*)&fMimeType);
 	SetName(name);
 
@@ -60,7 +59,7 @@ FileListItem::~FileListItem()
 }
 
 
-#pragma mark -- Public Methods --
+#pragma mark-- Public Methods --
 
 
 bool
@@ -75,7 +74,8 @@ FileListItem::CompareWith(FileListItem* CompareItem)
 	BString* CompareString;
 	if (CompareItem->fNewName != "")
 		CompareString = &CompareItem->fNewName;
-	else CompareString = &CompareItem->fName;
+	else
+		CompareString = &CompareItem->fName;
 
 	if (fNewName == *CompareString) {
 		fErrorStatus = 1;

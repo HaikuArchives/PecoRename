@@ -11,10 +11,11 @@
 
 #include "functions.h"
 
+
 int
 main()
 {
-	PecoApp	myApp;
+	PecoApp myApp;
 	myApp.Run();
 	return 0;
 }
