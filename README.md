@@ -3,7 +3,7 @@ PecoRename
 
 ![PecoRename screenshot](PecoRename.png "PecoRename")
 
-PecoRename is a powerful renaming utility, which allows you to rename many files according to a preset pattern. See the [ReadMe](http://rawgit.com/HaikuArchives/PecoRename/master/Docs/ReadMe.html) for more information.
+PecoRename is a powerful renaming utility, which allows you to rename many files according to a preset pattern. See the [ReadMe](https://rawgit.com/HaikuArchives/PecoRename/master/Docs/ReadMe.html) for more information.
 
 Rename Modes
 ------------
