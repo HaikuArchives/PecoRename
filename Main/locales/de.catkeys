@@ -15,7 +15,7 @@ About PecoRename	MainWindow		Über PecoRename
 File	MainWindow		Datei
 Quit	MainWindow		Beenden
 ReadMe.html	MainWindow	Path to the help file. Only change if a translated file is provided.	ReadMe.html
-Select files…	MainWindow		Dateien wählen…
+Select files…	MainWindow		Dateien wählen …
 Show documentation	MainWindow		Dokumentation anzeigen
 Add file extension	Renamer_Extension		Dateiendung hinzufügen
 lowercase	Renamer_Extension		kleinbuchstaben

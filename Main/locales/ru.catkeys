@@ -22,28 +22,28 @@ lowercase	Renamer_Extension		нижний регистр
 Replace old extension	Renamer_Extension		Заменить старое расширение
 UPPERCASE	Renamer_Extension		ВЕРХНИЙ РЕГИСТР
 At position:	Renamer_InsertOverwrite		На позиции:
-Count:	Renamer_InsertOverwrite		Count:
-Custom set of characters	Renamer_InsertOverwrite		Custom set of characters
-Custom:	Renamer_InsertOverwrite		Custom:
+Count:	Renamer_InsertOverwrite		Количество:
+Custom set of characters	Renamer_InsertOverwrite		Пользовательский набор символов
+Custom:	Renamer_InsertOverwrite		Дополнительно:
 from the back (right)	Renamer_InsertOverwrite		сзади (справа)
 from the front (left)	Renamer_InsertOverwrite		спереди (слева)
 Insert	Renamer_InsertOverwrite		Вставить
 Insert / overwrite	Renamer_InsertOverwrite		Вставить / перезаписать
-Lower case	Renamer_InsertOverwrite		Lower case
-Numbers	Renamer_InsertOverwrite		Numbers
+Lower case	Renamer_InsertOverwrite		Нижний регистр
+Numbers	Renamer_InsertOverwrite		Числа
 Overwrite with	Renamer_InsertOverwrite		Перезаписать
 Please select	Renamer_InsertOverwrite		Пожалуйста, выберите
-Random symbols	Renamer_InsertOverwrite		Random symbols
-Symbols	Renamer_InsertOverwrite		Symbols
+Random symbols	Renamer_InsertOverwrite		Случайные символы
+Symbols	Renamer_InsertOverwrite		Символы
 Text:	Renamer_InsertOverwrite		Текст:
-Upper case	Renamer_InsertOverwrite		Upper case
+Upper case	Renamer_InsertOverwrite		Верхний регистр
 Cancel	PecoApp		Отмена
 Files from different folders cannot be renamed.\n\nOnly the files of the first found folder will be imported!	PecoApp		Невозможно переименовать файлы из разных папок.\n\nБудут импортированы только файлы из первой найденной папки!
 OK	PecoApp		OK
 Select	PecoApp		Выбрать
 Select files for renaming	PecoApp		Выберите файлы для переименования
 The volume is read only: files cannot be renamed.	PecoApp		Том подключен только для чтения: невозможно переименовать файлы.
-Werner Freytag (original author)	PecoApp		Werner Freytag (автор)
+Werner Freytag (original author)	PecoApp		Werner Freytag (первоначальный автор)
 Case sensitive	Renamer_SearchReplace		С учетом регистра
 Find pattern:	Renamer_SearchReplace		Найти:
 Replace with:	Renamer_SearchReplace		Заменить на:

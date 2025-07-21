@@ -17,26 +17,26 @@ Quit	MainWindow		Salir
 ReadMe.html	MainWindow	Path to the help file. Only change if a translated file is provided.	ReadMe.html
 Select files…	MainWindow		Seleccionar archivos…
 Show documentation	MainWindow		Mostrar documentación
-Add file extension	Renamer_Extension		Agregar extensión de archivo
+Add file extension	Renamer_Extension		Añadir extensión de archivo
 lowercase	Renamer_Extension		minúsculas
-Replace old extension	Renamer_Extension		Reemplazar extensión vieja
+Replace old extension	Renamer_Extension		Reemplazar extensión antigua
 UPPERCASE	Renamer_Extension		MAYÚSCULAS
 At position:	Renamer_InsertOverwrite		En posición:
-Count:	Renamer_InsertOverwrite		Count:
-Custom set of characters	Renamer_InsertOverwrite		Custom set of characters
-Custom:	Renamer_InsertOverwrite		Custom:
+Count:	Renamer_InsertOverwrite		Número:
+Custom set of characters	Renamer_InsertOverwrite		Conjunto de caracteres personalizado
+Custom:	Renamer_InsertOverwrite		Personalizado:
 from the back (right)	Renamer_InsertOverwrite		desde el final (derecha)
 from the front (left)	Renamer_InsertOverwrite		desde el inicio (izquierda)
 Insert	Renamer_InsertOverwrite		Insertar
 Insert / overwrite	Renamer_InsertOverwrite		Insertar / sobreescribir
-Lower case	Renamer_InsertOverwrite		Lower case
-Numbers	Renamer_InsertOverwrite		Numbers
+Lower case	Renamer_InsertOverwrite		Minúscula
+Numbers	Renamer_InsertOverwrite		Números
 Overwrite with	Renamer_InsertOverwrite		Sobreescribir con
 Please select	Renamer_InsertOverwrite		Por favor seleccione
-Random symbols	Renamer_InsertOverwrite		Random symbols
-Symbols	Renamer_InsertOverwrite		Symbols
+Random symbols	Renamer_InsertOverwrite		Símbolos aleatorios
+Symbols	Renamer_InsertOverwrite		Símbolos
 Text:	Renamer_InsertOverwrite		Texto:
-Upper case	Renamer_InsertOverwrite		Upper case
+Upper case	Renamer_InsertOverwrite		Mayúscula
 Cancel	PecoApp		Cancelar
 Files from different folders cannot be renamed.\n\nOnly the files of the first found folder will be imported!	PecoApp		Archivos de distintas carpetas no pueden ser renombrados.\n\nSólo los archivos de la primer carpeta encontrada serán importados.
 OK	PecoApp		Aceptar
@@ -56,15 +56,15 @@ Rename	MainView		Renombrar
 Convert to:	Renamer_UpperLower		Convertir a:
 lowercase	Renamer_UpperLower		minúsculas
 Please select	Renamer_UpperLower		Por favor seleccione
-Sentence case	Renamer_UpperLower		Capitalización de oración
-Title Case	Renamer_UpperLower		Capitalización de Título
+Sentence case	Renamer_UpperLower		Mayúsculas tipo oración
+Title Case	Renamer_UpperLower		Mayúsculas Tipo Título
 UPPERCASE	Renamer_UpperLower		MAYUSCULAS
 Uppercase / lowercase	Renamer_UpperLower		Mayúsculas / minúsculas
 Format:	Renamer_Numbering		Formato:
 Numbering	Renamer_Numbering		Numeración
 Please select	Renamer_Numbering		Por favor seleccione
 Start with:	Renamer_Numbering		Comenzar con:
-Text after:	Renamer_Numbering		Text detrás:
+Text after:	Renamer_Numbering		Texto detrás:
 Text before:	Renamer_Numbering		Texto delante:
 from the back (right)	Renamer_Remove		desde el final (derecha)
 from the front (left)	Renamer_Remove		desde el comienzo (izquierda)

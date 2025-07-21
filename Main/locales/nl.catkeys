@@ -22,21 +22,21 @@ lowercase	Renamer_Extension		kleine letters
 Replace old extension	Renamer_Extension		Vervang oude extentie
 UPPERCASE	Renamer_Extension		HOOFDLETTERS
 At position:	Renamer_InsertOverwrite		Op positie:
-Count:	Renamer_InsertOverwrite		Count:
-Custom set of characters	Renamer_InsertOverwrite		Custom set of characters
-Custom:	Renamer_InsertOverwrite		Custom:
+Count:	Renamer_InsertOverwrite		Aantal:
+Custom set of characters	Renamer_InsertOverwrite		\nAangepaste set karakters
+Custom:	Renamer_InsertOverwrite		Aangepast:
 from the back (right)	Renamer_InsertOverwrite		van achteren (rechts)
 from the front (left)	Renamer_InsertOverwrite		van voren (links)
 Insert	Renamer_InsertOverwrite		Invoegen
 Insert / overwrite	Renamer_InsertOverwrite		Invoegen / Overschrijven
-Lower case	Renamer_InsertOverwrite		Lower case
-Numbers	Renamer_InsertOverwrite		Numbers
+Lower case	Renamer_InsertOverwrite		Kleine letters
+Numbers	Renamer_InsertOverwrite		Nummers
 Overwrite with	Renamer_InsertOverwrite		Overschrijf met
 Please select	Renamer_InsertOverwrite		Selecteer aub
-Random symbols	Renamer_InsertOverwrite		Random symbols
-Symbols	Renamer_InsertOverwrite		Symbols
+Random symbols	Renamer_InsertOverwrite		Willekeurige symbolen
+Symbols	Renamer_InsertOverwrite		Symbolen
 Text:	Renamer_InsertOverwrite		Tekst:
-Upper case	Renamer_InsertOverwrite		Upper case
+Upper case	Renamer_InsertOverwrite		Hoofdletters
 Cancel	PecoApp		Annuleer
 Files from different folders cannot be renamed.\n\nOnly the files of the first found folder will be imported!	PecoApp		Bestanden van verschillende mapper kunnen niet hernoemd worden.\n\nEnkel de bestanden van de eerste map worden geïmporteerd!
 OK	PecoApp		OK

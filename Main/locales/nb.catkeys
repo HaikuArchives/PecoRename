@@ -4,7 +4,7 @@
 {0, plural,=0{no renames}=1{1 rename}other{# renames}}	functions		{0, plural,=0{ingen navnendringer}=1{1 navnendring}other{# navnendringer}}
 {0, plural,=1{A problem was encountered during processing:  One file couldn't be renamed}other{Problems were encountered during processing:  # files couldn't be renamed}}	ReportWindow		{0, plural,=1{Det oppsto et problem under behandlingen: Én fil kunne ikke gis nytt navn}other{Det oppsto problemer under behandlingen: # filer kunne ikke gis nytt navn}}
 File already exists	ReportWindow		Filen eksisterer allerede
-File already exists (as in preview)	ReportWindow		Filen eksisterer allerede (som forhåndsvisning)
+File already exists (as in preview)	ReportWindow		Filen eksisterer allerede (som i forhåndsvisning)
 OK	ReportWindow		OK
 Original name	ReportWindow	Column title	Opprinnelig navn
 Problem	ReportWindow	Column title	Problem
@@ -53,7 +53,7 @@ Open	MainView		Åpne
 Open location	MainView		Åpne sted
 Remove	MainView		Fjern
 Rename	MainView		Endre navn
-Convert to:	Renamer_UpperLower		Converter til:
+Convert to:	Renamer_UpperLower		Konverter til:
 lowercase	Renamer_UpperLower		små bokstaver
 Please select	Renamer_UpperLower		Vennligst velg
 Sentence case	Renamer_UpperLower		Setningskapitalisering

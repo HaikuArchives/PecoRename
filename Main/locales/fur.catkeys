@@ -22,21 +22,21 @@ lowercase	Renamer_Extension		minusculis
 Replace old extension	Renamer_Extension		Sostituìs estension vecje
 UPPERCASE	Renamer_Extension		MAIUSCULIS
 At position:	Renamer_InsertOverwrite		Ae posizion:
-Count:	Renamer_InsertOverwrite		Count:
-Custom set of characters	Renamer_InsertOverwrite		Custom set of characters
-Custom:	Renamer_InsertOverwrite		Custom:
+Count:	Renamer_InsertOverwrite		Cont:
+Custom set of characters	Renamer_InsertOverwrite		Cumbinazion di caratars personalizade
+Custom:	Renamer_InsertOverwrite		Personalizade:
 from the back (right)	Renamer_InsertOverwrite		de fin (diestre)
 from the front (left)	Renamer_InsertOverwrite		dal inizi (çampe)
 Insert	Renamer_InsertOverwrite		Inserìs
 Insert / overwrite	Renamer_InsertOverwrite		Inserìs / sorescrîf
-Lower case	Renamer_InsertOverwrite		Lower case
-Numbers	Renamer_InsertOverwrite		Numbers
+Lower case	Renamer_InsertOverwrite		Minusculis
+Numbers	Renamer_InsertOverwrite		Numars
 Overwrite with	Renamer_InsertOverwrite		Sorescrîf cun
 Please select	Renamer_InsertOverwrite		Par plasê selezione
-Random symbols	Renamer_InsertOverwrite		Random symbols
-Symbols	Renamer_InsertOverwrite		Symbols
+Random symbols	Renamer_InsertOverwrite		Simbui casuâi
+Symbols	Renamer_InsertOverwrite		Simbui
 Text:	Renamer_InsertOverwrite		Test:
-Upper case	Renamer_InsertOverwrite		Upper case
+Upper case	Renamer_InsertOverwrite		Maiusculis
 Cancel	PecoApp		Anule
 Files from different folders cannot be renamed.\n\nOnly the files of the first found folder will be imported!	PecoApp		No si pues cambiâ i nons dai file di cartelis diferentis.\n\nA vignaran impuartâts dome i file de prime cartele cjatade!
 OK	PecoApp		Va ben

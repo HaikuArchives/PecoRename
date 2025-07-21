@@ -22,21 +22,21 @@ lowercase	Renamer_Extension		нижній регістр
 Replace old extension	Renamer_Extension		Замінити старе розширення
 UPPERCASE	Renamer_Extension		ВЕРХНІЙ РЕГІСТР
 At position:	Renamer_InsertOverwrite		На позиції:
-Count:	Renamer_InsertOverwrite		Count:
-Custom set of characters	Renamer_InsertOverwrite		Custom set of characters
-Custom:	Renamer_InsertOverwrite		Custom:
+Count:	Renamer_InsertOverwrite		Кількість:
+Custom set of characters	Renamer_InsertOverwrite		Власний набір символів
+Custom:	Renamer_InsertOverwrite		Спеціальне:
 from the back (right)	Renamer_InsertOverwrite		ззаду (праворуч)
 from the front (left)	Renamer_InsertOverwrite		спереду (ліворуч)
 Insert	Renamer_InsertOverwrite		Вставити
 Insert / overwrite	Renamer_InsertOverwrite		Вставити / перезаписати
-Lower case	Renamer_InsertOverwrite		Lower case
-Numbers	Renamer_InsertOverwrite		Numbers
+Lower case	Renamer_InsertOverwrite		Нижній регістр
+Numbers	Renamer_InsertOverwrite		Числа
 Overwrite with	Renamer_InsertOverwrite		Перезаписати
 Please select	Renamer_InsertOverwrite		Будь ласка, виберіть
-Random symbols	Renamer_InsertOverwrite		Random symbols
-Symbols	Renamer_InsertOverwrite		Symbols
+Random symbols	Renamer_InsertOverwrite		Випадкові символи
+Symbols	Renamer_InsertOverwrite		Символи
 Text:	Renamer_InsertOverwrite		Текст:
-Upper case	Renamer_InsertOverwrite		Upper case
+Upper case	Renamer_InsertOverwrite		Верхній регістр
 Cancel	PecoApp		Скасувати
 Files from different folders cannot be renamed.\n\nOnly the files of the first found folder will be imported!	PecoApp		Неможливо перейменувати файли з різних папок.\n\nБудуть імпортовані лише файли з першої знайденої папки!
 OK	PecoApp		OK

@@ -22,7 +22,7 @@ lowercase	Renamer_Extension		minuscolo
 Replace old extension	Renamer_Extension		Sostituisci la vecchia estensione
 UPPERCASE	Renamer_Extension		MAIUSCOLO
 At position:	Renamer_InsertOverwrite		Nella posizione:
-Count:	Renamer_InsertOverwrite		Count:
+Count:	Renamer_InsertOverwrite		Quantità:
 Custom set of characters	Renamer_InsertOverwrite		Insieme personalizzato di caratteri
 Custom:	Renamer_InsertOverwrite		Personalizzato:
 from the back (right)	Renamer_InsertOverwrite		dalla fine (destra)

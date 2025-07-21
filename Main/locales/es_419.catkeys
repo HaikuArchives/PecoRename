@@ -1,0 +1,79 @@
+1	Spanish (Latin American)	application/x-vnd.pecora-PecoRename	737301785
+{0, plural,=0{no duplicates}=1{1 duplicate}other{# duplicates}}	functions		{0, plural,=0{no hay duplicados}=1{1 duplicado}other{# duplicados}}
+{0, plural,=0{no items}=1{1 item}other{# items}}	functions		{0, plural,=0{sin items}=1{1 item}other{# items}}
+{0, plural,=0{no renames}=1{1 rename}other{# renames}}	functions		{0, plural,=0{no hay renombrados}=1{1 renombrado}other{# renombrados}}
+{0, plural,=1{A problem was encountered during processing:  One file couldn't be renamed}other{Problems were encountered during processing:  # files couldn't be renamed}}	ReportWindow		{0, plural,=1{Se produjo un problema durante el procesamiento:  No se pudo renombrar un archivo}other{Se produjo un problema durante el procesamiento: No se pudieron renombrar # archivos}}
+File already exists	ReportWindow		Archivo ya existe
+File already exists (as in preview)	ReportWindow		Archivo ya existe (como vista previa)
+OK	ReportWindow		Aceptar
+Original name	ReportWindow	Column title	Nombre original
+Problem	ReportWindow	Column title	Problema
+Report	ReportWindow		Reporte
+Target name	ReportWindow	Column title	Nombre del objetivo
+Unknown error	ReportWindow		Error desconocido
+About PecoRename	MainWindow		Acerca de PecoRename
+File	MainWindow		Archivo
+Quit	MainWindow		Salir
+ReadMe.html	MainWindow	Path to the help file. Only change if a translated file is provided.	ReadMe.html
+Select files…	MainWindow		Seleccionar archivos...
+Show documentation	MainWindow		Mostrar documentación
+Add file extension	Renamer_Extension		Añadir extensión de archivo
+lowercase	Renamer_Extension		minúsculas
+Replace old extension	Renamer_Extension		Reemplazar extensión anterior
+UPPERCASE	Renamer_Extension		MAYÚSCULAS
+At position:	Renamer_InsertOverwrite		En posición:
+Count:	Renamer_InsertOverwrite		Número:
+Custom set of characters	Renamer_InsertOverwrite		Conjunto personalizado de caracteres
+Custom:	Renamer_InsertOverwrite		Personalizado:
+from the back (right)	Renamer_InsertOverwrite		desde atrás (derecha)
+from the front (left)	Renamer_InsertOverwrite		desde adelante (izquierda)
+Insert	Renamer_InsertOverwrite		Insertar
+Insert / overwrite	Renamer_InsertOverwrite		Insertar/sobreescribir
+Lower case	Renamer_InsertOverwrite		Minúsculas
+Numbers	Renamer_InsertOverwrite		Números
+Overwrite with	Renamer_InsertOverwrite		Sobreescribir con
+Please select	Renamer_InsertOverwrite		Por favor, seleccione
+Random symbols	Renamer_InsertOverwrite		Símbolos aleatorios
+Symbols	Renamer_InsertOverwrite		Símbolos
+Text:	Renamer_InsertOverwrite		Texto:
+Upper case	Renamer_InsertOverwrite		Mayúsculas
+Cancel	PecoApp		Cancelar
+Files from different folders cannot be renamed.\n\nOnly the files of the first found folder will be imported!	PecoApp		Los archivos de diferentes carpetas no pueden renombrarse.\n\nSólo se importarán los archivos de la primera carpeta encontrada.
+OK	PecoApp		Aceptar
+Select	PecoApp		Seleccionar
+Select files for renaming	PecoApp		Seleccionar archivos para renombrar
+The volume is read only: files cannot be renamed.	PecoApp		Volumen de sólo lectura: no se pueden renombrar los archivos.
+Werner Freytag (original author)	PecoApp		Werner Freytag (autor original)
+Case sensitive	Renamer_SearchReplace		Distinguir mayúsculas/minúsculas
+Find pattern:	Renamer_SearchReplace		Encontrar patrón:
+Replace with:	Renamer_SearchReplace		Reemplazar con:
+Search and replace	Renamer_SearchReplace		Buscar y reemplazar
+Choose files and folders	MainView		Seleccionar archivos y carpetas
+Open	MainView		Abrir
+Open location	MainView		Abrir ubicación
+Remove	MainView		Remover
+Rename	MainView		Renombrar
+Convert to:	Renamer_UpperLower		Convertir a:
+lowercase	Renamer_UpperLower		minúsculas
+Please select	Renamer_UpperLower		Por favor, seleccione
+Sentence case	Renamer_UpperLower		Capitalización de la frase
+Title Case	Renamer_UpperLower		Capitalización del título
+UPPERCASE	Renamer_UpperLower		MAYÚSCULAS
+Uppercase / lowercase	Renamer_UpperLower		Mayúsculas / minúsculas
+Format:	Renamer_Numbering		Formato:
+Numbering	Renamer_Numbering		Numeración
+Please select	Renamer_Numbering		Por favor, seleccione
+Start with:	Renamer_Numbering		Empezar con:
+Text after:	Renamer_Numbering		Texto después:
+Text before:	Renamer_Numbering		Texto anterior:
+from the back (right)	Renamer_Remove		desde atrás (derecha)
+from the front (left)	Renamer_Remove		desde adelante (izquierda)
+Please select	Renamer_Remove		Por favor, seleccione
+Remove	Renamer_Remove		Remover
+Remove from position	Renamer_Remove		Remover desde posición
+To position	Renamer_Remove		Hacia posición
+Modified	FileListView	Column title	Modificado
+Name	FileListView	Column title	Nombre
+Preview	FileListView	Column title	Previsualizar
+Size	FileListView	Column title	Tamaño
+PecoRename	System name		PecoRename

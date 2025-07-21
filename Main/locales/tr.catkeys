@@ -2,8 +2,8 @@
 {0, plural,=0{no duplicates}=1{1 duplicate}other{# duplicates}}	functions		{0, plural,=0{yinelenen yok}=1{1 yinelenen}other{# yinelenen}}
 {0, plural,=0{no items}=1{1 item}other{# items}}	functions		{0, plural,=0{öge yok}=1{1 öge}other{# öge}}
 {0, plural,=0{no renames}=1{1 rename}other{# renames}}	functions		{0, plural,=0{yeniden adlandırma yok}=1{1 yeniden adlandırma}other{# yeniden adlandırma}}
-{0, plural,=1{A problem was encountered during processing:  One file couldn't be renamed}other{Problems were encountered during processing:  # files couldn't be renamed}}	ReportWindow		{0, plural,=1{İşleme sırasında bir sorunla karşılaşıldı:  1 adet dosya yeniden adlandırılamadı}other{İşleme sırasında sorunlarla karşılaşıldı: # dosya yeniden adlandırılamadı}}
-File already exists	ReportWindow		Dosya halihazırda mevcut
+{0, plural,=1{A problem was encountered during processing:  One file couldn't be renamed}other{Problems were encountered during processing:  # files couldn't be renamed}}	ReportWindow		{0, plural,=1{İşleme sırasında bir sorunla karşılaşıldı: 1 dosya yeniden adlandırılamadı}other{İşleme sırasında sorunlarla karşılaşıldı: # dosya yeniden adlandırılamadı}}
+File already exists	ReportWindow		Dosya halihazırda var
 File already exists (as in preview)	ReportWindow		Dosya halihazırda var (önizlemede olduğu gibi)
 OK	ReportWindow		Tamam
 Original name	ReportWindow	Column title	Orijinal adı
@@ -23,7 +23,7 @@ Replace old extension	Renamer_Extension		Eski uzantıyı değiştir
 UPPERCASE	Renamer_Extension		BÜYÜK harf
 At position:	Renamer_InsertOverwrite		Şu konumda:
 Count:	Renamer_InsertOverwrite		Sayım:
-Custom set of characters	Renamer_InsertOverwrite		Özel karakterler kümesi
+Custom set of characters	Renamer_InsertOverwrite		Özel karakter kümesi
 Custom:	Renamer_InsertOverwrite		Özel:
 from the back (right)	Renamer_InsertOverwrite		arkadan (sağ)
 from the front (left)	Renamer_InsertOverwrite		önden (sol)
@@ -43,7 +43,7 @@ OK	PecoApp		Tamam
 Select	PecoApp		Seç
 Select files for renaming	PecoApp		Yeniden adlandırılacak dosyaları seçin
 The volume is read only: files cannot be renamed.	PecoApp		Bu disk bölümü saltokunur; dosyalar yeniden adlandırılamıyor.
-Werner Freytag (original author)	PecoApp		Werner Freytag (ilk yazan)
+Werner Freytag (original author)	PecoApp		Werner Freytag (özgün yazar)
 Case sensitive	Renamer_SearchReplace		BÜYÜK/küçük harf duyarlı
 Find pattern:	Renamer_SearchReplace		Dizgi bul:
 Replace with:	Renamer_SearchReplace		Şununla değiştir:

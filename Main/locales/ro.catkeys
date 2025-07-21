@@ -22,21 +22,21 @@ lowercase	Renamer_Extension		minuscule
 Replace old extension	Renamer_Extension		Înlocuiește extensia veche
 UPPERCASE	Renamer_Extension		MAJUSCULE
 At position:	Renamer_InsertOverwrite		La poziția:
-Count:	Renamer_InsertOverwrite		Count:
-Custom set of characters	Renamer_InsertOverwrite		Custom set of characters
-Custom:	Renamer_InsertOverwrite		Custom:
+Count:	Renamer_InsertOverwrite		Total:
+Custom set of characters	Renamer_InsertOverwrite		Set de caractere personalizat
+Custom:	Renamer_InsertOverwrite		Personalizat:
 from the back (right)	Renamer_InsertOverwrite		de la sfârșit (dreapta)
 from the front (left)	Renamer_InsertOverwrite		de la început (stânga)
 Insert	Renamer_InsertOverwrite		Inserare
 Insert / overwrite	Renamer_InsertOverwrite		Inserare / Suprascriere
-Lower case	Renamer_InsertOverwrite		Lower case
-Numbers	Renamer_InsertOverwrite		Numbers
+Lower case	Renamer_InsertOverwrite		Cu minuscule
+Numbers	Renamer_InsertOverwrite		Numere
 Overwrite with	Renamer_InsertOverwrite		Suprascrie cu
 Please select	Renamer_InsertOverwrite		Selectați
-Random symbols	Renamer_InsertOverwrite		Random symbols
-Symbols	Renamer_InsertOverwrite		Symbols
+Random symbols	Renamer_InsertOverwrite		Simboluri aleatorii
+Symbols	Renamer_InsertOverwrite		Simboluri
 Text:	Renamer_InsertOverwrite		Text:
-Upper case	Renamer_InsertOverwrite		Upper case
+Upper case	Renamer_InsertOverwrite		Cu majuscule
 Cancel	PecoApp		Anulează
 Files from different folders cannot be renamed.\n\nOnly the files of the first found folder will be imported!	PecoApp		Fișierele din dosare diferite nu pot fi redenumite.\n\nDoar fișierele din primul dosar găsit vor fi importate!
 OK	PecoApp		OK
